@@ -1,0 +1,613 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installing PyCBC &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="index.html"/>
+        <link rel="next" title="Setting up virtualenv" href="install_virtualenv.html"/>
+        <link rel="prev" title="Running PyCBC under Docker" href="docker.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installing PyCBC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-a-virtual-environment-for-installing-pycbc">Setting up a virtual environment for installing PyCBC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install_virtualenv.html">Setting up virtualenv</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-lalsuite-into-a-virtual-environment">Installing lalsuite into a virtual environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install_lalsuite.html">Installing lalsuite for PyCBC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-pycbc-in-a-virtual-environment">Installing PyCBC in a virtual environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-a-released-version-of-pycbc">Installing a released version of PyCBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-source-from-github-for-development">Installing source from GitHub for development</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-and-installing-documentation">Building and Installing Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="build_gh_pages.html">Building Documentation for Git Hub Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modifying-pycbc-glue">Modifying pycbc-glue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-of-intel-mkl-optimized-fft-libraries">Use of Intel MKL Optimized FFT libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphics-processing-unit-support-with-cuda">Graphics Processing Unit support with CUDA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install_cuda.html">Instructions to add CUDA support (optional)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Installing PyCBC</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installing-pycbc">
+<span id="id1"></span><h1>Installing PyCBC<a class="headerlink" href="#installing-pycbc" title="Permalink to this headline">¶</a></h1>
+<p>This document explains how to set up a virtual environment to install PyCBC
+either for development or use in a production analysis with a release. The
+code build will be a standard Python install which requires that the
+installation directory containing the Python libraries is accessible at
+runtime. Some executables also use weave for just-in-time compilation of code
+at runtime. These executables require a gcc and Python build environment on
+the execution machine.</p>
+<p>If you wish to run PyCBC executables on a machine that does not have the
+required environment, then you must use PyInstaller to build bundled versions
+of the executables. Documentation on doing this is available on the page
+<a class="reference internal" href="building_bundled_executables.html#building-bundled-executables"><span class="std std-ref">Building Bundled Executables</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">PyCBC uses the <a class="reference external" href="https://help.github.com/articles/using-pull-requests/">fork and pull</a> model for development. If you wish to develop PyCBC, then you will need an account on <a class="reference external" href="https://www.github.com">GitHub</a>. Once you have set up your account you should follow the instructions to <a class="reference external" href="https://help.github.com/articles/fork-a-repo/">fork a repository</a> to fork the <a class="reference external" href="https://github.com/ligo-cbc/pycbc">ligo-cbc/pycbc</a> repository into your own account. From your own fork, you can follow the <a class="reference external" href="https://help.github.com/articles/github-flow-in-the-browser/">GitHub flow model</a> to develop and maintain the code. For each new feature or bug fix, you should <a class="reference external" href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/">create a new branch</a> to develop the feature. You can then <a class="reference external" href="https://help.github.com/articles/creating-a-pull-request/">create a pull request</a> so that the PyCBC maintainers can review and merge your changes into the official repository.</p>
+</div>
+<p>These instructions walk you through the process of</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Initial Setup to install PyCBC</dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#setting-up-a-virtual-environment-for-installing-pycbc">Setting up a virtual environment for installing PyCBC</a>.</li>
+<li><a class="reference internal" href="#installing-lalsuite-into-a-virtual-environment">Installing lalsuite into a virtual environment</a>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#installing-pycbc-in-a-virtual-environment">Installing PyCBC in a virtual environment</a>.</dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#installing-a-released-version-of-pycbc">Installing a released version of PyCBC</a>.</li>
+<li><a class="reference internal" href="#installing-source-from-github-for-development">Installing source from GitHub for development</a>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Optional additional installation steps</dt>
+<dd><ul class="first last">
+<li><a class="reference internal" href="#building-and-installing-documentation">Building and Installing Documentation</a>.</li>
+<li><a class="reference internal" href="#modifying-pycbc-glue">Modifying pycbc-glue</a>.</li>
+<li><a class="reference internal" href="#use-of-intel-mkl-optimized-fft-libraries">Use of Intel MKL Optimized FFT libraries</a>.</li>
+<li><a class="reference internal" href="#graphics-processing-unit-support-with-cuda">Graphics Processing Unit support with CUDA</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<div class="section" id="setting-up-a-virtual-environment-for-installing-pycbc">
+<h2>Setting up a virtual environment for installing PyCBC<a class="headerlink" href="#setting-up-a-virtual-environment-for-installing-pycbc" title="Permalink to this headline">¶</a></h2>
+<p>The recommended way of installing PyCBC is to use <a class="reference external" href="https://pip.pypa.io/en/stable/">pip</a> within a <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">Python Virtual Environment</a>. Virtualenv isolates PyCBC and its dependencies from the system environment and installing with pip ensures that PyCBC picks up the correct dependencies. The following instructions will create a working virtual environment into which you can install PyCBC.</p>
+<p>Make sure that you have at least version 13.1.1 of virtualenv. To do this, you can run the command below and check the return result. Run this command and note the result:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>virtualenv --version
+</pre></div>
+</div>
+<p>If this returns <code class="docutils literal"><span class="pre">virtualenv:</span> <span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code> or the command returns a lower version than <code class="docutils literal"><span class="pre">13.1.1</span></code> (as is the case with Scientific Linux 6 systems) then follow the instructions for setting virtualenv at:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install_virtualenv.html">Setting up virtualenv</a></li>
+</ul>
+</div>
+<p>Once you have a version virtualenv installed that is at least as new as <code class="docutils literal"><span class="pre">13.1.1</span></code> you can continue with these instructions.</p>
+<p>Unset your current <code class="docutils literal"><span class="pre">PYTHONPATH</span></code> so that you do not inherit any packages that may conflict with your installation. To do this, run the command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">unset</span> PYTHONPATH
+</pre></div>
+</div>
+<p>By default, virtualenv will modify your shell prompt so that it prepends the name of the virtual environment. This can be very useful to make sure that you are developing in the virtual environment, or if you have several virtual environments, so it is not recommended to disable this. However, if you do not want your prompt changed, then you can set</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">VIRTUAL_ENV_DISABLE_PROMPT</span><span class="o">=</span>True
+</pre></div>
+</div>
+<p>Before running the command to create the new virtual environment.</p>
+<p>Next, you need to choose a directory name where you’d like to make your virtual environment, and then make it. In this example, we use <code class="docutils literal"><span class="pre">${HOME}/pycbc-dev</span></code> but this can be changed to any path that you you have write access to, except for <code class="docutils literal"><span class="pre">${HOME}/.local</span></code> as that will cause conflicts with pip.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is very important that your <code class="docutils literal"><span class="pre">virtualenv</span></code> version is at least 13.1.1 before continuing. Read the preceding instructions if you are not sure how to check this, or need to upgrade virtualenv.</p>
+</div>
+<p>You first set up a new virtual environment. A virtual environment is defined by a directory path that will hold the contents of the virtual environment. In this example, we chose <code class="docutils literal"><span class="pre">~/src/pycbc</span></code> although you can change this to whatever you like by changing the command below. Initialize the virtual environment by running the command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>virtualenv ~/src/pycbc
+</pre></div>
+</div>
+<p>You can create as many different virtual environments as you like, as long as
+they all have different paths.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Do not run <code class="docutils literal"><span class="pre">virtualenv</span></code> twice with the same path as it will overwrite the existing virtual environment with a new one, destroying the environment.</p>
+</div>
+<p>To enter your virtual environment run the command (replacing the string <code class="docutils literal"><span class="pre">~/src/pycbc/</span></code> if you chose a different path)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/src/pycbc/bin/activate
+</pre></div>
+</div>
+<p>After running the <code class="docutils literal"><span class="pre">activate</span></code> script, you will now be in your virtual environment, and so you can install packages without conflicting with either the system build, or other builds that you may have sitting around. You may install other programs and libraries, such as lalsuite (<a class="reference internal" href="install_lalsuite.html#lalsuite-install"><span class="std std-ref">Installing lalsuite for PyCBC</span></a>), into this virtual environment. The <code class="docutils literal"><span class="pre">activate</span></code> script also sets the environment variable <code class="docutils literal"><span class="pre">${VIRTUAL_ENV}</span></code> to the full path to your virtual environment.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Python implements a <a class="reference external" href="https://www.python.org/dev/peps/pep-0370/">per user site packages directory</a> to install packages in the user’s home directory. By default this is <code class="docutils literal"><span class="pre">~/.local</span></code> but the location is controlled by the <code class="docutils literal"><span class="pre">PYTHONUSERBASE</span></code> environment variable. If you make use of the <code class="docutils literal"><span class="pre">~/.local</span></code> directory, you should add the line <code class="docutils literal"><span class="pre">export</span> <span class="pre">PYTHONUSERBASE=${VIRTUAL_ENV}/.local</span></code> to the end of your virtual environment’s <code class="docutils literal"><span class="pre">activate</span></code> script to prevent conflicts. Similarly, pip caches data in the directory <code class="docutils literal"><span class="pre">~/.caches/pip</span></code>. To prevent conflicts with this directory, you can add the line <code class="docutils literal"><span class="pre">export</span> <span class="pre">XDG_CACHE_HOME=${VIRTUAL_ENV}/.cache</span></code> to the virtual environment <code class="docutils literal"><span class="pre">activate</span></code> script so that pip uses a cache that is specific to the virtual environment.</p>
+</div>
+<p>To leave this virtual environment type</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>deactivate
+</pre></div>
+</div>
+<p>which will return you to a regular shell.</p>
+</div>
+<div class="section" id="installing-lalsuite-into-a-virtual-environment">
+<span id="installinglalsuite"></span><h2>Installing lalsuite into a virtual environment<a class="headerlink" href="#installing-lalsuite-into-a-virtual-environment" title="Permalink to this headline">¶</a></h2>
+<p>Enter the virtual environment that you wish to use for PyCBC development by sourcing the activate script, for example</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/src/pycbc/bin/activate
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">CentOS 6 provides a buggy version of the HDF5 library, so you will need to install a newer version into your virtual environment. If you are using a CentOS 6 cluster, you must install HDF5. If you are using another cluster, then this step is optional.</p>
+</div>
+<p>If you are running on a Scientific Linux 6 cluster, you need to install the HDF5 library. To do this, run the commands:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir -p <span class="nv">$VIRTUAL_ENV</span>/src
+<span class="nb">cd</span> <span class="nv">$VIRTUAL_ENV</span>/src
+pip install <span class="s2">&quot;nose&gt;=1.0.0&quot;</span>
+curl https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.12/src/hdf5-1.8.12.tar.gz &gt; hdf5-1.8.12.tar.gz
+tar -zxvf hdf5-1.8.12.tar.gz
+<span class="nb">cd</span> hdf5-1.8.12
+./configure --prefix<span class="o">=</span><span class="nv">$VIRTUAL_ENV</span>/opt/hdf5-1.8.12
+make install
+<span class="nv">HDF5_DIR</span><span class="o">=</span><span class="nv">$VIRTUAL_ENV</span>/opt/hdf5-1.8.12 pip install h5py
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">On a Scientific Linux 6 or Scientific Linux 7 system, if you do not upgrade the version of setuptools that is in your virtual environment, then the PyCBC install will fail to process the required dependencies.</p>
+</div>
+<p>Make sure your versions of <code class="docutils literal"><span class="pre">pip</span></code> and <code class="docutils literal"><span class="pre">setuptools</span></code> are up to date by running the command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install --upgrade pip
+pip install --upgrade setuptools
+</pre></div>
+</div>
+<p>Install unittest2, python-cjson, and numpy with the command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install <span class="s2">&quot;numpy&gt;=1.6.4&quot;</span> unittest2 python-cjson Cython decorator
+</pre></div>
+</div>
+<p>To authenticate with LIGO Data Grid services, you need M2Crypto which you should install with</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">SWIG_FEATURES</span><span class="o">=</span><span class="s2">&quot;-cpperraswarn -includeall -I/usr/include/openssl&quot;</span> pip install M2Crypto
+</pre></div>
+</div>
+<p>On MacOS using homebrew to install openssl you may need to set the following extra environment variables to install M2Crypto:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib&quot;</span> <span class="nv">SWIG_FEATURES</span><span class="o">=</span><span class="s2">&quot;-cpperraswarn -includeall -I/usr/local/opt/openssl/include/&quot;</span> pip install M2Crypto
+</pre></div>
+</div>
+<p>Once you have these packages installed, you can now install lalsuite following the instructions at:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install_lalsuite.html">Installing lalsuite for PyCBC</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="installing-pycbc-in-a-virtual-environment">
+<h2>Installing PyCBC in a virtual environment<a class="headerlink" href="#installing-pycbc-in-a-virtual-environment" title="Permalink to this headline">¶</a></h2>
+<p>Enter the virtual environment that you wish to use for PyCBC development by sourcing the activate script, for example</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/src/pycbc/bin/activate
+</pre></div>
+</div>
+<p>Next install the Pegasus WMS python libraries needed to build the workflows with the command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install http://download.pegasus.isi.edu/pegasus/4.7.3/pegasus-python-source-4.7.3.tar.gz
+</pre></div>
+</div>
+<p>To query the new Advanced LIGO and Advanced Virgo Segment Database, you will need to install the <code class="docutils literal"><span class="pre">dqsegdb</span></code> tools. Install the 1.4.1 pre-release of these tools, run the command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install dqsegdb
+</pre></div>
+</div>
+<p>For uploading triggers to GraceDB at the end of the workflow you will need to have the gracedb client tools installed. The latest release is in pip</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install ligo-gracedb
+</pre></div>
+</div>
+<p>You now need to decide whether you want to install a release of PyCBC or an editable version of the source code from a git repository for development.</p>
+<div class="section" id="installing-a-released-version-of-pycbc">
+<h3>Installing a released version of PyCBC<a class="headerlink" href="#installing-a-released-version-of-pycbc" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Make sure you have run the commands in the section <a class="reference internal" href="#installinglalsuite"><span class="std std-ref">Installing lalsuite into a virtual environment</span></a> above to install unittest2 before installing PyCBC.</p>
+</div>
+<p>Releases of PyCBC are available from the <a class="reference external" href="https://pypi.python.org/pypi/PyCBC/1.6.0">PyPi PyCBC page</a>. To install the latest release run the command</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install PyCBC
+</pre></div>
+</div>
+<p>To install an older version, use the <a class="reference external" href="https://packaging.python.org/glossary/#term-version-specifier">pip version specifier</a>.</p>
+<p>To install a release of the code from GitHub, determine the tag of the release that you want to install from the <a class="reference external" href="https://github.com/ligo-cbc/pycbc/tags">list of PyCBC tags</a>. This example installs the v1.1.0 release. If you want to install a different release, change the command below accordingly:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install git+https://github.com/ligo-cbc/pycbc@v1.1.0#egg<span class="o">=</span>pycbc
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-source-from-github-for-development">
+<h3>Installing source from GitHub for development<a class="headerlink" href="#installing-source-from-github-for-development" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Make sure you have run the command in the section <a class="reference internal" href="#installinglalsuite"><span class="std std-ref">Installing lalsuite into a virtual environment</span></a> above to install unittest2 before installing PyCBC.</p>
+</div>
+<p>To install and editable version of PyCBC you need to have <a class="reference external" href="https://help.github.com/articles/fork-a-repo/">forked PyCBC to your own account</a> and know the URL of your fork. This can be obtained from the clone URL on your GitHub repository page. This example uses the URL <code class="docutils literal"><span class="pre">git&#64;github.com:your-username-here/pycbc.git</span></code> which you should change to the URL of your fork of PyCBC on GitHub.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There are two main authentication schemes for GitHub: SSH and HTTPS. The examples below use URLs containing <code class="docutils literal"><span class="pre">git&#64;github.com</span></code>, which assumed that you are usingg SSH authentication. If you have not already enabled ssh keys on your GitHub account, you can follow the <a class="reference external" href="https://help.github.com/articles/generating-ssh-keys/">GitHub instructions for setting up ssh keys</a> to set this up. Alternatively, you can use the HTTPS connection method, where <code class="docutils literal"><span class="pre">git&#64;github.com:</span></code> is replaced with <code class="docutils literal"><span class="pre">https://github.com/</span></code>. See the <a class="reference external" href="https://help.github.com/articles/which-remote-url-should-i-use/">GitHub documentation on URLs</a> for more information. You can also read the <a class="reference external" href="https://pip.pypa.io/en/latest/reference/pip_install.html#git">pip git instructions</a> for more details on how to install a branch or a specific tag.</p>
+</div>
+<p>Install the PyCBC source code from the GitHub URL using the command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install -e git+git@github.com:your-username-here/pycbc.git#egg<span class="o">=</span>pycbc
+</pre></div>
+</div>
+<p>This will fetch the PyCBC source and will also install all the listed dependencies. The <code class="docutils literal"><span class="pre">-e</span></code> option to pip creates a directory called <code class="docutils literal"><span class="pre">${VIRTUAL_ENV}/src/pycbc</span></code> with a git checkout which is fully editable. To prevent pip from removing this source directory run the command</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>rm -f <span class="si">${</span><span class="nv">VIRTUAL_ENV</span><span class="si">}</span>/src/pip-delete-this-directory.txt
+</pre></div>
+</div>
+<p>You can then make changes to your PyCBC source code in the directory <code class="docutils literal"><span class="pre">${VIRTUAL_ENV}/src/pycbc</span></code></p>
+<p>You can also use the repository created by pip as your working repository, creating branches, commits, and <a class="reference external" href="https://help.github.com/articles/creating-a-pull-request/">pull requests</a> as you need to. To keep your repository in sync with the ligo-cbc/pycbc repository, you can read the GitHub instructions that explain how to <a class="reference external" href="https://help.github.com/articles/syncing-a-fork/">sync a fork of a repository to keep it up-to-date with the upstream repository.</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The version of PyCBC that is checked out will be on the master branch. To track a remote branch from your GitHub repository, run the command</p>
+<p><code class="docutils literal"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">--set-upstream</span> <span class="pre">branch_name</span> <span class="pre">origin/branch_name</span></code></p>
+<p><code class="docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">branch_name</span></code></p>
+<p class="last">where branch_name is the name of the branch that you want to track.</p>
+</div>
+<p>To build and install any changes that you make to the source code in your virtual environment, run the command</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python setup.py install
+</pre></div>
+</div>
+<p>from the PyCBC source directory in <code class="docutils literal"><span class="pre">${VIRTUAL_ENV}/src/pycbc</span></code></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">PyCBC no longer requires an installation of the <code class="docutils literal"><span class="pre">pycbc-pylal</span></code> package.
+If you are running a workflow that needs code from this package, you will
+need to manually install it with <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pycbc-pylal</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="building-and-installing-documentation">
+<h2>Building and Installing Documentation<a class="headerlink" href="#building-and-installing-documentation" title="Permalink to this headline">¶</a></h2>
+<p>To build the documentation from your virtual environment, first make sure that you have <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> and the required helper tools installed with</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install <span class="s2">&quot;Sphinx&gt;=1.5.0&quot;</span>
+pip install sphinx-rtd-theme
+pip install git+https://github.com/ligo-cbc/sphinxcontrib-programoutput.git#egg<span class="o">=</span>sphinxcontrib-programoutput
+</pre></div>
+</div>
+<p>To generate the documentation and push it to your personal GitHub pages, first create a branch names <code class="docutils literal"><span class="pre">gh-pages</span></code>, if you do not already have one. Follow the <a class="reference external" href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/">GitHub branch</a> instructions to do this.</p>
+<p>To build and publish the documentation, run the following commands from the
+top-level of your PyCBC source tree, replacing <code class="docutils literal"><span class="pre">github-username</span></code> with your
+GitHub user name:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone git@github.com:github-username/pycbc.git _gh-pages
+<span class="nb">cd</span> _gh-pages
+git checkout gh-pages
+git rm -rf *
+git commit -a -m <span class="s2">&quot;flush documentation&quot;</span>
+<span class="nb">cd</span> ..
+python setup.py build_gh_pages
+<span class="nb">cd</span> _gh-pages
+git add --all
+git commit -a -m <span class="s2">&quot;documentation update&quot;</span>
+git push origin gh-pages
+</pre></div>
+</div>
+<p>The documentation will then be visible at <a class="reference external" href="http://github-username.github.io/pycbc/latest/html">http://github-username.github.io/pycbc/latest/html</a> where <code class="docutils literal"><span class="pre">github-username</span></code> should be replaced with your GitHub username.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Be careful with the <code class="docutils literal"><span class="pre">git</span> <span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">*</span></code> command as if you run it in the wrong
+directory you can delete the contents of your git repository. If you do
+this by accident, you can use <code class="docutils literal"><span class="pre">git</span> <span class="pre">reset</span></code> to undo the commit.</p>
+</div>
+<p>For more details on building and maintaining the documentation under GitHub project pages, see</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="build_gh_pages.html">Building Documentation for Git Hub Pages</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="modifying-pycbc-glue">
+<h2>Modifying pycbc-glue<a class="headerlink" href="#modifying-pycbc-glue" title="Permalink to this headline">¶</a></h2>
+<p>PyCBC depends on the package pycbc-glue which is a fork of the lalsuite packages. The correct version is automatically installed by pip as part of the main PyCBC install. If you are developing code in pycbc-glue, then you can clone them from GitHib into your virtual environment’s source directory and build and install them from there.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you want to develop pycbc-glue, you should follow the instructions to <a class="reference external" href="https://help.github.com/articles/fork-a-repo/">fork a repository</a> to fork the <a class="reference external" href="https://github.com/ligo-cbc/pycbc-glue">ligo-cbc/pycbc-glue</a> repository into your own account.</p>
+</div>
+<p>You can obtain these repositories in the standard way using git, replacing <code class="docutils literal"><span class="pre">ligo-cbc</span></code> with your GitHub user account name</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">VIRTUAL_ENV</span><span class="si">}</span>/src
+git clone git@github.com:ligo-cbc/pycbc-glue.git
+</pre></div>
+</div>
+<p>Once you have the source code cloned, you can run</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python setup.py install
+</pre></div>
+</div>
+<p>to install pycbc-glue into your virtual environment.</p>
+</div>
+<div class="section" id="use-of-intel-mkl-optimized-fft-libraries">
+<h2>Use of Intel MKL Optimized FFT libraries<a class="headerlink" href="#use-of-intel-mkl-optimized-fft-libraries" title="Permalink to this headline">¶</a></h2>
+<p>PyCBC has the ability to use optimized FFT libraries such as FFTW and MKL. If MKL is the correct library for your platform, you can add the script that sets up the MKL environment to you virtualenv <code class="docutils literal"><span class="pre">activate</span></code> script with the command</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;source /opt/intel/bin/compilervars.sh intel64&#39;</span> &gt;&gt; <span class="si">${</span><span class="nv">VIRTUAL_ENV</span><span class="si">}</span>/bin/activate
+</pre></div>
+</div>
+<p>changing the path to the <code class="docutils literal"><span class="pre">compilervars.sh</span></code> script appropriately for your cluster.</p>
+</div>
+<div class="section" id="graphics-processing-unit-support-with-cuda">
+<h2>Graphics Processing Unit support with CUDA<a class="headerlink" href="#graphics-processing-unit-support-with-cuda" title="Permalink to this headline">¶</a></h2>
+<p>PyCBC has the ability to accelerate its processing using CUDA. To take advantage of this, follow the instructions linked below to install the CUDA dependencies.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install_cuda.html">Instructions to add CUDA support (optional)</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install_virtualenv.html" class="btn btn-neutral float-right" title="Setting up virtualenv" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="docker.html" class="btn btn-neutral" title="Running PyCBC under Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

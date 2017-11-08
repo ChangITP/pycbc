@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Running PyCBC under Docker &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="index.html"/>
+        <link rel="next" title="Installing PyCBC" href="install.html"/>
+        <link rel="prev" title="Use of PyCBC in Scientific Publications" href="credit.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running PyCBC under Docker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#graphics-on-mac-os-x">Graphics on Mac OS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphics-on-linux">Graphics on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sharing-user-files-and-ssh-keys">Sharing user files and SSH keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-ssh-to-display-graphics">Using SSH to display graphics</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Running PyCBC under Docker</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/docker.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-pycbc-under-docker">
+<h1>Running PyCBC under Docker<a class="headerlink" href="#running-pycbc-under-docker" title="Permalink to this headline">¶</a></h1>
+<p>The easiest way to start using PyCBC is to install one of our <a class="reference external" href="https://hub.docker.com/u/pycbc/">Docker containers</a>. First, install the <a class="reference external" href="https://www.docker.com/community-edition">Docker Community Edition</a> for your <a class="reference external" href="https://store.docker.com/editions/community/docker-ce-desktop-mac?tab=description">Mac</a> or <a class="reference external" href="https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description">Windows</a> desktop. Docker CE installations for <a class="reference external" href="https://www.docker.com/community-edition#/download">Linux platforms</a> are also available.</p>
+<p>To start a Docker container with no graphics, type the commands:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">pycbc</span><span class="o">/</span><span class="n">pycbc</span><span class="o">-</span><span class="n">el7</span><span class="p">:</span><span class="n">latest</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="n">pycbc</span><span class="o">/</span><span class="n">pycbc</span><span class="o">-</span><span class="n">el7</span><span class="p">:</span><span class="n">latest</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<p>This example downloads current version of the code from the <a class="reference external" href="https://github.com/ligo-cbc/pycbc">GitHub master branch.</a> Replace the string <code class="docutils literal"><span class="pre">latest</span></code> with one of the <a class="reference external" href="https://github.com/ligo-cbc/pycbc/releases">PyCBC release tags</a> (e.g. <code class="docutils literal"><span class="pre">v1.7.0</span></code>) to install a container containing a released version of PyCBC. The container includes all of the required software and dependencies to run PyCBC, including a compatible version of LALSuite.</p>
+<div class="section" id="graphics-on-mac-os-x">
+<h2>Graphics on Mac OS X<a class="headerlink" href="#graphics-on-mac-os-x" title="Permalink to this headline">¶</a></h2>
+<p>To start a Docker container on Mac OS X that can display graphics on Mac OS X, you must be running <a class="reference external" href="https://www.xquartz.org/">XQuartz</a> version 2.7.11 or higher. To start an X11 server, run the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="o">-</span><span class="n">a</span> <span class="n">Xquartz</span>
+</pre></div>
+</div>
+<p>In the Xquartz preferences, make sure that <code class="docutils literal"><span class="pre">Allow</span> <span class="pre">connections</span> <span class="pre">from</span> <span class="pre">network</span> <span class="pre">clients</span></code> is checked, as shown below:</p>
+<a class="reference internal image-reference" href="_images/xquartz_pref.png"><img alt="_images/xquartz_pref.png" class="align-center" src="_images/xquartz_pref.png" style="width: 400px;" /></a>
+<p>Next, enable Docker to connect to your X11 server by running the commands:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>ip=$(ifconfig en0 | grep inet | awk &#39;$1==&quot;inet&quot; {print $2}&#39;)
+xhost + $ip
+</pre></div>
+</div>
+<p>Finally, start the Docker container with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>docker run -e DISPLAY=${ip}:0 -it pycbc/pycbc-el7:latest /bin/bash -l
+</pre></div>
+</div>
+</div>
+<div class="section" id="graphics-on-linux">
+<h2>Graphics on Linux<a class="headerlink" href="#graphics-on-linux" title="Permalink to this headline">¶</a></h2>
+<p>To start a Docker container on Linux that can display graphics, run the commands:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>docker run -e DISPLAY=${DISPLAY} -v /tmp/.X11-unix:/tmp/.X11-unix/ -it pycbc/pycbc-el7:latest /bin/bash -l
+</pre></div>
+</div>
+<p>If you are having problems with this method, try <a class="reference internal" href="#using-ssh-to-display-graphics">Using ssh to display graphics</a>.</p>
+</div>
+<div class="section" id="sharing-user-files-and-ssh-keys">
+<h2>Sharing user files and SSH keys<a class="headerlink" href="#sharing-user-files-and-ssh-keys" title="Permalink to this headline">¶</a></h2>
+<p>It can be useful to share your SSH public/private key with the Docker container, for example to allow you to git push and pull from your repository on GitHub. To do this, add the argument <code class="docutils literal"><span class="pre">-v</span> <span class="pre">${HOME}/.ssh:/home/pycbc/.ssh</span></code> to the <code class="docutils literal"><span class="pre">docker</span> <span class="pre">run</span></code> commands.  You can also create e.g. a <code class="docutils literal"><span class="pre">scratch</span></code> directory and use the <code class="docutils literal"><span class="pre">-v</span></code> option to mount it in the container. This directory can be used to transfer files between the container and the host computer.  The command below will start a Docker container with graphics on a Mac and share ssh keys and a <code class="docutils literal"><span class="pre">scratch</span></code> directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>mkdir -p scratch
+docker run -e DISPLAY=$(ifconfig en0 | grep inet | awk &#39;$1==&quot;inet&quot; {print $2}&#39;):0 -v `pwd`/scratch:/home/pycbc/scratch -v ${HOME}/.ssh:/home/pycbc/.ssh -it pycbc/pycbc-el7:latest /bin/bash -l
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-ssh-to-display-graphics">
+<h2>Using SSH to display graphics<a class="headerlink" href="#using-ssh-to-display-graphics" title="Permalink to this headline">¶</a></h2>
+<p>If you do not have a recent version of Xquartz, or you are encountering other X11 issues, another way to run a docker container with graphics is to start a container that runs an SSH daemon and connect to that. This is also useful for trabsfering files to and from the Docker container using <code class="docutils literal"><span class="pre">scp</span></code> from your host computer.</p>
+<p>If do not already have a personal ssh public/private key, first create one with the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span>
+<span class="n">cat</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="o">.</span><span class="n">pub</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span>
+</pre></div>
+</div>
+<p>Now start the docker container with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>docker run --name pycbc -d -P -v ${HOME}/.ssh:/home/pycbc/.ssh -t pycbc/pycbc-el7 tail -f /dev/null i
+docker exec -u root -it pycbc /usr/bin/pycbc-sshd
+</pre></div>
+</div>
+<p>And then you can connect to it with the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>ssh -Y pycbc@127.0.0.1 -p `docker port pycbc 22 | awk -F: &#39;{print $NF}&#39;`
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installing PyCBC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="credit.html" class="btn btn-neutral" title="Use of PyCBC in Scientific Publications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

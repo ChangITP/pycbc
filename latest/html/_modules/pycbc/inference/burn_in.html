@@ -1,0 +1,610 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.inference.burn_in &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.inference.burn_in</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.inference.burn_in</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2017  Collin Capano</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                                   Preamble</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This modules provides classes and functions for determining when Markov Chains</span>
+<span class="sd">have burned in.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">ks_2samp</span>
+
+<div class="viewcode-block" id="ks_test"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.ks_test">[docs]</a><span class="k">def</span> <span class="nf">ks_test</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Burn in based on whether the p-value of the KS test between the samples</span>
+<span class="sd">    at the last iteration and the samples midway along the chain for each</span>
+<span class="sd">    parameter is &gt; 0.1 and &lt; 0.9</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sampler : pycbc.inference.sampler</span>
+<span class="sd">        Sampler to determine burn in for. May be either an instance of a</span>
+<span class="sd">        `inference.sampler`, or the class itself.</span>
+<span class="sd">    fp : InferenceFile</span>
+<span class="sd">        Open inference hdf file containing the samples to load for determing</span>
+<span class="sd">        burn in.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    burn_in_idx : array</span>
+<span class="sd">        Array of indices giving the burn-in index for each chain.</span>
+<span class="sd">    is_burned_in : array</span>
+<span class="sd">        Array of booleans indicating whether each chain is burned in.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span>
+    <span class="n">niterations</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">niterations</span>
+    <span class="c1"># Create a dictionary which would have keys are the variable args and values</span>
+    <span class="c1"># are booleans indicating whether the p-value for the parameters satisfies</span>
+    <span class="c1"># the KS test</span>
+    <span class="n">is_burned_in_param</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># iterate over the parameters</span>
+    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">:</span>
+        <span class="c1"># read samples for the parameter from the last iteration of the chain</span>
+        <span class="n">samples_last_iter</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                                                 <span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="n">param</span><span class="p">]</span>
+        <span class="c1"># read samples for the parameter from the iteration midway along the chain</span>
+        <span class="n">samples_chain_midpt</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">niterations</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span>
+                                                  <span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="n">param</span><span class="p">]</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">ks_2samp</span><span class="p">(</span><span class="n">samples_last_iter</span><span class="p">,</span> <span class="n">samples_chain_midpt</span><span class="p">)</span>
+        <span class="c1"># check if p_value is within the desired range</span>
+        <span class="n">is_burned_in_param</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">&lt;</span> <span class="n">p_value</span> <span class="o">&lt;</span> <span class="mf">0.9</span>
+    <span class="c1"># The chains are burned in if the p-value of the KS test lies in the range [0.1,0.9]</span>
+    <span class="c1"># for all the parameters. If the KS test is passed, the chains have burned in at their</span>
+    <span class="c1"># mid-way point. </span>
+    <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">is_burned_in_param</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+        <span class="n">is_burned_in</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="n">burn_in_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">niterations</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">is_burned_in</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="n">burn_in_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">niterations</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">is_burned_in</span></div>
+
+<div class="viewcode-block" id="max_posterior"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.max_posterior">[docs]</a><span class="k">def</span> <span class="nf">max_posterior</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Burn in based on samples being within dim/2 of maximum posterior.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sampler : pycbc.inference.sampler</span>
+<span class="sd">        Sampler to determine burn in for. May be either an instance of a</span>
+<span class="sd">        `inference.sampler`, or the class itself.</span>
+<span class="sd">    fp : InferenceFile</span>
+<span class="sd">        Open inference hdf file containing the samples to load for determing</span>
+<span class="sd">        burn in.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    burn_in_idx : array</span>
+<span class="sd">        Array of indices giving the burn-in index for each chain.</span>
+<span class="sd">    is_burned_in : array</span>
+<span class="sd">        Array of booleans indicating whether each chain is burned in.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># get the posteriors</span>
+    <span class="c1"># Note: multi-tempered samplers should just return the coldest chain by</span>
+    <span class="c1"># default</span>
+    <span class="n">chain_stats</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;loglr&#39;</span><span class="p">,</span> <span class="s1">&#39;prior&#39;</span><span class="p">],</span>
+        <span class="n">samples_group</span><span class="o">=</span><span class="n">fp</span><span class="o">.</span><span class="n">stats_group</span><span class="p">,</span> <span class="n">thin_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thin_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">thin_end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">chain_posteriors</span> <span class="o">=</span> <span class="n">chain_stats</span><span class="p">[</span><span class="s1">&#39;loglr&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">chain_stats</span><span class="p">[</span><span class="s1">&#39;prior&#39;</span><span class="p">]</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">)</span>
+    <span class="c1"># find the posterior to compare against</span>
+    <span class="n">max_p</span> <span class="o">=</span> <span class="n">chain_posteriors</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">criteria</span> <span class="o">=</span> <span class="n">max_p</span> <span class="o">-</span> <span class="n">dim</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">chain_posteriors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">niterations</span> <span class="o">=</span> <span class="n">chain_posteriors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">burn_in_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">niterations</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">is_burned_in</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="c1"># find the first iteration in each chain where the logplr has exceeded</span>
+    <span class="c1"># max_p - dim/2</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">):</span>
+        <span class="n">chain</span> <span class="o">=</span> <span class="n">chain_posteriors</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">ii</span><span class="p">,:]</span>
+        <span class="c1"># numpy.where will return a tuple with multiple arrays if the chain is</span>
+        <span class="c1"># more than 1D (which can happen for multi-tempered samplers). Always</span>
+        <span class="c1"># taking the last array ensures we are looking at the indices that</span>
+        <span class="c1"># count out iterations</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">chain</span> <span class="o">&gt;=</span> <span class="n">criteria</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">idx</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">burn_in_idx</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">is_burned_in</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">is_burned_in</span></div>
+
+
+<div class="viewcode-block" id="posterior_step"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.posterior_step">[docs]</a><span class="k">def</span> <span class="nf">posterior_step</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Burn in based on the last time a chain made a jump &gt; dim/2.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sampler : pycbc.inference.sampler</span>
+<span class="sd">        Sampler to determine burn in for. May be either an instance of a</span>
+<span class="sd">        `inference.sampler`, or the class itself.</span>
+<span class="sd">    fp : InferenceFile</span>
+<span class="sd">        Open inference hdf file containing the samples to load for determing</span>
+<span class="sd">        burn in.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    burn_in_idx : array</span>
+<span class="sd">        Array of indices giving the burn-in index for each chain.</span>
+<span class="sd">    is_burned_in : array</span>
+<span class="sd">        Array of booleans indicating whether each chain is burned in.</span>
+<span class="sd">        By definition of this function, all values are set to True.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># get the posteriors</span>
+    <span class="c1"># Note: multi-tempered samplers should just return the coldest chain by</span>
+    <span class="c1"># default</span>
+    <span class="n">chain_stats</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;loglr&#39;</span><span class="p">,</span> <span class="s1">&#39;prior&#39;</span><span class="p">],</span>
+        <span class="n">samples_group</span><span class="o">=</span><span class="n">fp</span><span class="o">.</span><span class="n">stats_group</span><span class="p">,</span> <span class="n">thin_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thin_start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">thin_end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">chain_posteriors</span> <span class="o">=</span> <span class="n">chain_stats</span><span class="p">[</span><span class="s1">&#39;loglr&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">chain_stats</span><span class="p">[</span><span class="s1">&#39;prior&#39;</span><span class="p">]</span>
+    <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">chain_posteriors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">)</span>
+    <span class="n">burn_in_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">criteria</span> <span class="o">=</span> <span class="n">dim</span><span class="o">/</span><span class="mf">2.</span>
+    <span class="c1"># find the last iteration in each chain where the logplr has</span>
+    <span class="c1"># jumped by more than dim/2</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">):</span>
+        <span class="n">chain</span> <span class="o">=</span> <span class="n">chain_posteriors</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">ii</span><span class="p">,:]</span>
+        <span class="n">dp</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">chain</span><span class="p">))</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dp</span> <span class="o">&gt;=</span> <span class="n">criteria</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">idx</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">burn_in_idx</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">burn_in_idx</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="half_chain"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.half_chain">[docs]</a><span class="k">def</span> <span class="nf">half_chain</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Takes the second half of the iterations as post-burn in.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sampler : pycbc.inference.sampler</span>
+<span class="sd">        Sampler to determine burn in for. May be either an instance of a</span>
+<span class="sd">        `inference.sampler`, or the class itself.</span>
+<span class="sd">    fp : InferenceFile</span>
+<span class="sd">        Open inference hdf file containing the samples to load for determing</span>
+<span class="sd">        burn in.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    burn_in_idx : array</span>
+<span class="sd">        Array of indices giving the burn-in index for each chain.</span>
+<span class="sd">    is_burned_in : array</span>
+<span class="sd">        Array of booleans indicating whether each chain is burned in.</span>
+<span class="sd">        By definition of this function, all values are set to True.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">nwalkers</span>
+    <span class="n">niterations</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">niterations</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">niterations</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> \
+           <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="use_sampler"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.use_sampler">[docs]</a><span class="k">def</span> <span class="nf">use_sampler</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Uses the sampler&#39;s burn_in function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sampler : pycbc.inference.sampler</span>
+<span class="sd">        Sampler to determine burn in for. Must be an instance of an</span>
+<span class="sd">        `inference.sampler` that has a `burn_in` function.</span>
+<span class="sd">    fp : InferenceFile, optional</span>
+<span class="sd">        This option is not used; it is just here give consistent API as the</span>
+<span class="sd">        other burn in functions.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    burn_in_idx : array</span>
+<span class="sd">        Array of indices giving the burn-in index for each chain.</span>
+<span class="sd">    is_burned_in : array</span>
+<span class="sd">        Array of booleans indicating whether each chain is burned in.</span>
+<span class="sd">        Since the sampler&#39;s burn in function will run until all chains</span>
+<span class="sd">        are burned, all values are set to True.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sampler</span><span class="o">.</span><span class="n">burn_in</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">sampler</span><span class="o">.</span><span class="n">burn_in_iterations</span><span class="p">,</span> \
+           <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sampler</span><span class="o">.</span><span class="n">burn_in_iterations</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span></div>
+
+
+<span class="n">burn_in_functions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;ks_test&#39;</span><span class="p">:</span> <span class="n">ks_test</span><span class="p">,</span>
+    <span class="s1">&#39;max_posterior&#39;</span><span class="p">:</span> <span class="n">max_posterior</span><span class="p">,</span>
+    <span class="s1">&#39;posterior_step&#39;</span><span class="p">:</span> <span class="n">posterior_step</span><span class="p">,</span>
+    <span class="s1">&#39;half_chain&#39;</span><span class="p">:</span> <span class="n">half_chain</span><span class="p">,</span>
+    <span class="s1">&#39;use_sampler&#39;</span><span class="p">:</span> <span class="n">use_sampler</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<div class="viewcode-block" id="BurnIn"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.BurnIn">[docs]</a><span class="k">class</span> <span class="nc">BurnIn</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class to estimate the number of burn in iterations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    function_names : list, optional</span>
+<span class="sd">        List of name of burn in functions to use. All names in the provided</span>
+<span class="sd">        list muset be in the `burn_in_functions` dict. If none provided, will</span>
+<span class="sd">        use no burn-in functions.</span>
+<span class="sd">    min_iterations : int, optional</span>
+<span class="sd">        Minimum number of burn in iterations to use. The burn in iterations</span>
+<span class="sd">        returned by evaluate will be the maximum of this value</span>
+<span class="sd">        and the values returned by the burn in functions provided in</span>
+<span class="sd">        `function_names`. Default is 0.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Initialize a `BurnIn` instance that will use `max_posterior` and</span>
+<span class="sd">    `posterior_step` as the burn in criteria:</span>
+
+<span class="sd">    &gt;&gt;&gt; from pycbc import inference</span>
+<span class="sd">    &gt;&gt;&gt; burn_in = inference.BurnIn([&#39;max_posterior&#39;, &#39;posterior_step&#39;])</span>
+
+<span class="sd">    Use this `BurnIn` instance to find the burn-in iteration of each walker</span>
+<span class="sd">    in an inference result file:</span>
+
+<span class="sd">    &gt;&gt;&gt; from pycbc.io import InferenceFile</span>
+<span class="sd">    &gt;&gt;&gt; fp = InferenceFile(&#39;inference.hdf&#39;, &#39;r&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; burn_in.evaluate(inference.samplers[fp.sampler_name], fp)</span>
+<span class="sd">    array([11486, 11983, 11894, ..., 11793, 11888, 11981])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function_names</span><span class="p">,</span> <span class="n">min_iterations</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">function_names</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">function_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_iterations</span> <span class="o">=</span> <span class="n">min_iterations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_functions</span> <span class="o">=</span> <span class="p">{</span><span class="n">fname</span><span class="p">:</span> <span class="n">burn_in_functions</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span>
+                                  <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">function_names</span><span class="p">}</span>
+
+<div class="viewcode-block" id="BurnIn.evaluate"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.BurnIn.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Evaluates sampler&#39;s chains to find burn in.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        sampler : pycbc.inference.sampler</span>
+<span class="sd">            Sampler to determine burn in for. May be either an instance of a</span>
+<span class="sd">            `inference.sampler`, or the class itself.</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            Open inference hdf file containing the samples to load for</span>
+<span class="sd">            determing burn in.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        array :</span>
+<span class="sd">            Array of indices giving the burn-in index for each chain.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># if the number of iterations is &lt; than the minimium desired,</span>
+        <span class="c1"># just return the number of iterations and all False</span>
+        <span class="k">if</span> <span class="n">fp</span><span class="o">.</span><span class="n">niterations</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_iterations</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_iterations</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">),</span> \
+                   <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="c1"># if the file already has burn in iterations saved, use those as a</span>
+        <span class="c1"># base</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">burnidx</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="s1">&#39;burn_in_iterations&#39;</span><span class="p">][:]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="c1"># just use the minimum</span>
+            <span class="n">burnidx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_iterations</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">)</span>
+        <span class="c1"># start by assuming is burned in; the &amp;= below will make this false</span>
+        <span class="c1"># if any test yields false</span>
+        <span class="n">is_burned_in</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_functions</span> <span class="o">!=</span> <span class="p">{}:</span>
+            <span class="n">newidx</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">burn_in_functions</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">idx</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+                <span class="n">newidx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+                <span class="n">is_burned_in</span> <span class="o">&amp;=</span> <span class="n">state</span>
+            <span class="n">newidx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">newidx</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="c1"># update the burn in idx if any test yields a larger iteration</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">burnidx</span> <span class="o">&lt;</span> <span class="n">newidx</span>
+            <span class="n">burnidx</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">newidx</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+        <span class="c1"># if any burn-in idx are less than the min iterations, set to the</span>
+        <span class="c1"># min iterations</span>
+        <span class="n">burnidx</span><span class="p">[</span><span class="n">burnidx</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_iterations</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_iterations</span>
+        <span class="k">return</span> <span class="n">burnidx</span><span class="p">,</span> <span class="n">is_burned_in</span></div>
+
+<div class="viewcode-block" id="BurnIn.update"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.burn_in.BurnIn.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Evaluates burn in and saves the updated indices to the given file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        sampler : pycbc.inference.sampler</span>
+<span class="sd">            Sampler to determine burn in for. May be either an instance of a</span>
+<span class="sd">            `inference.sampler`, or the class itself.</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            Open inference hdf file containing the samples to load for</span>
+<span class="sd">            determing burn in.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">burnidx</span><span class="p">,</span> <span class="n">is_burned_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">sampler</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+        <span class="n">sampler</span><span class="o">.</span><span class="n">burn_in_iterations</span> <span class="o">=</span> <span class="n">burnidx</span>
+        <span class="n">sampler</span><span class="o">.</span><span class="n">write_burn_in_iterations</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">burnidx</span><span class="p">,</span> <span class="n">is_burned_in</span><span class="p">)</span></div></div>
+
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

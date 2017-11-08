@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.events.triggers &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.events.triggers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.events.triggers</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2017 Christopher M. Biwer</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+<span class="sd">&quot;&quot;&quot; This modules contains functions for reading single and coincident triggers</span>
+<span class="sd">from the command line.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">h5py</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">types</span><span class="p">,</span> <span class="n">pnutils</span>
+<span class="kn">from</span> <span class="nn">pycbc.events</span> <span class="k">import</span> <span class="n">coinc</span>
+<span class="kn">from</span> <span class="nn">pycbc.io</span> <span class="k">import</span> <span class="n">hdf</span>
+<span class="kn">import</span> <span class="nn">pycbc.detector</span>
+
+<div class="viewcode-block" id="insert_bank_bins_option_group"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.insert_bank_bins_option_group">[docs]</a><span class="k">def</span> <span class="nf">insert_bank_bins_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Add options to the optparser object for selecting templates in bins.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    parser : object</span>
+<span class="sd">        OptionParser instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bins_group</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span>
+                                 <span class="s2">&quot;Options for selecting templates in bins.&quot;</span><span class="p">)</span>
+    <span class="n">bins_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--bank-bins&quot;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Ordered list of mass bin upper boundaries. &quot;</span>
+                                 <span class="s2">&quot;An ordered list of type-boundary pairs, &quot;</span>
+                                 <span class="s2">&quot;applied sequentially. Must provide a name &quot;</span>
+                                 <span class="s2">&quot;(can be any unique string for tagging &quot;</span>
+                                 <span class="s2">&quot;purposes), the parameter to bin &quot;</span>
+                                 <span class="s2">&quot;on, and the membership condition via &quot;</span>
+                                 <span class="s2">&quot;&#39;lt&#39; / &#39;gt&#39; operators. &quot;</span>
+                                 <span class="s2">&quot;Ex. name1:component:lt2 name2:total:lt15&quot;</span><span class="p">)</span>
+    <span class="n">bins_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--bank-file&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;HDF format template bank file.&quot;</span><span class="p">)</span>
+    <span class="n">bins_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--f-lower&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                            <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Low frequency cutoff in Hz.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bins_group</span></div>
+
+<div class="viewcode-block" id="bank_bins_from_cli"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.bank_bins_from_cli">[docs]</a><span class="k">def</span> <span class="nf">bank_bins_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Parses the CLI options related to binning templates in the bank.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    opts : object</span>
+<span class="sd">        Result of parsing the CLI with OptionParser.</span>
+
+<span class="sd">    Results</span>
+<span class="sd">    -------</span>
+<span class="sd">    bins_idx : dict</span>
+<span class="sd">        A dict with bin names as key and an array of their indices as value.</span>
+<span class="sd">    bank : dict</span>
+<span class="sd">        A dict of the datasets from the bank file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bank</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">bank_file</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">fp</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">bank</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">key</span><span class="p">][:]</span>
+    <span class="n">bank</span><span class="p">[</span><span class="s2">&quot;f_lower&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">f_lower</span><span class="p">)</span> <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">f_lower</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">bank_bins</span><span class="p">:</span>
+        <span class="n">bins_idx</span> <span class="o">=</span> <span class="n">coinc</span><span class="o">.</span><span class="n">background_bin_from_string</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">bank_bins</span><span class="p">,</span> <span class="n">bank</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">bins_idx</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;all&quot;</span> <span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bank</span><span class="p">[</span><span class="n">fp</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]))}</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">bins_idx</span><span class="p">,</span> <span class="n">bank</span></div>
+
+<div class="viewcode-block" id="insert_loudest_triggers_option_group"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.insert_loudest_triggers_option_group">[docs]</a><span class="k">def</span> <span class="nf">insert_loudest_triggers_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">coinc_options</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Add options to the optparser object for selecting templates in bins.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    parser : object</span>
+<span class="sd">        OptionParser instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">opt_group</span> <span class="o">=</span> <span class="n">insert_bank_bins_option_group</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
+    <span class="n">opt_group</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Options for finding loudest triggers.&quot;</span>
+    <span class="k">if</span> <span class="n">coinc_options</span><span class="p">:</span>
+        <span class="n">opt_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--statmap-file&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                               <span class="n">help</span><span class="o">=</span><span class="s2">&quot;HDF format clustered coincident trigger &quot;</span>
+                                    <span class="s2">&quot;result file.&quot;</span><span class="p">)</span>
+        <span class="n">opt_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--statmap-group&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;foreground&quot;</span><span class="p">,</span>
+                               <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name of group in statmap file to &quot;</span>
+                                    <span class="s2">&quot;get triggers.&quot;</span><span class="p">)</span>
+    <span class="n">opt_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--sngl-trigger-files&quot;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">action</span><span class="o">=</span><span class="n">types</span><span class="o">.</span><span class="n">MultiDetOptionAction</span><span class="p">,</span>
+                           <span class="n">help</span><span class="o">=</span><span class="s2">&quot;HDF format merged single detector &quot;</span>
+                                <span class="s2">&quot;trigger files.&quot;</span><span class="p">)</span>
+    <span class="n">opt_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--veto-file&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">help</span><span class="o">=</span><span class="s2">&quot;XML file with segment_definer and &quot;</span>
+                                <span class="s2">&quot;segment table.&quot;</span><span class="p">)</span>
+    <span class="n">opt_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--veto-segment-name&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name of segment to use as veto in &quot;</span>
+                                 <span class="s2">&quot;XML file&#39;s segment_definer table.&quot;</span><span class="p">)</span>
+    <span class="n">opt_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--search-n-loudest&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of triggers to search over.&quot;</span><span class="p">)</span>
+    <span class="n">opt_group</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--n-loudest&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of triggers to return in results.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">opt_group</span></div>
+
+<div class="viewcode-block" id="loudest_triggers_from_cli"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.loudest_triggers_from_cli">[docs]</a><span class="k">def</span> <span class="nf">loudest_triggers_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">coinc_parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                              <span class="n">sngl_parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bank_parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Parses the CLI options related to find the loudest coincident or</span>
+<span class="sd">    single detector triggers.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    opts : object</span>
+<span class="sd">        Result of parsing the CLI with OptionParser.</span>
+<span class="sd">    coinc_parameters : list</span>
+<span class="sd">        List of datasets in statmap file to retrieve.</span>
+<span class="sd">    sngl_parameters : list</span>
+<span class="sd">        List of datasets in single-detector trigger files to retrieve.</span>
+<span class="sd">    bank_parameters : list</span>
+<span class="sd">        List of datasets in template bank file to retrieve.</span>
+
+<span class="sd">    Results</span>
+<span class="sd">    -------</span>
+<span class="sd">    bin_names : dict</span>
+<span class="sd">        A list of bin names.</span>
+<span class="sd">    bin_results : dict</span>
+<span class="sd">        A list of dict holding trigger data data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># list to hold trigger data</span>
+    <span class="n">bin_results</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># list of IFOs</span>
+    <span class="n">ifos</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">sngl_trigger_files</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+    <span class="c1"># get indices of bins in template bank</span>
+    <span class="n">bins_idx</span><span class="p">,</span> <span class="n">bank_data</span> <span class="o">=</span> <span class="n">bank_bins_from_cli</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
+    <span class="n">bin_names</span> <span class="o">=</span> <span class="n">bins_idx</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+    <span class="c1"># if taking triggers from statmap file</span>
+    <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">statmap_file</span> <span class="ow">and</span> <span class="n">opts</span><span class="o">.</span><span class="n">bank_file</span> <span class="ow">and</span> <span class="n">opts</span><span class="o">.</span><span class="n">sngl_trigger_files</span><span class="p">:</span>
+
+        <span class="c1"># loop over each bin</span>
+        <span class="k">for</span> <span class="n">bin_name</span> <span class="ow">in</span> <span class="n">bin_names</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="c1"># get template has and detection statistic for coincident events</span>
+            <span class="n">statmap</span> <span class="o">=</span> <span class="n">hdf</span><span class="o">.</span><span class="n">ForegroundTriggers</span><span class="p">(</span>
+                                 <span class="n">opts</span><span class="o">.</span><span class="n">statmap_file</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">bank_file</span><span class="p">,</span>
+                                 <span class="n">sngl_files</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">sngl_trigger_files</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span>
+                                 <span class="n">n_loudest</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">search_n_loudest</span><span class="p">,</span>
+                                 <span class="n">group</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">statmap_group</span><span class="p">)</span>
+            <span class="n">template_hash</span> <span class="o">=</span> <span class="n">statmap</span><span class="o">.</span><span class="n">get_bankfile_array</span><span class="p">(</span><span class="s2">&quot;template_hash&quot;</span><span class="p">)</span>
+            <span class="n">stat</span> <span class="o">=</span> <span class="n">statmap</span><span class="o">.</span><span class="n">get_coincfile_array</span><span class="p">(</span><span class="s2">&quot;stat&quot;</span><span class="p">)</span>
+
+            <span class="c1"># get indices of triggers in bin</span>
+            <span class="n">bin_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">template_hash</span><span class="p">,</span>
+                              <span class="n">bank_data</span><span class="p">[</span><span class="s2">&quot;template_hash&quot;</span><span class="p">][</span><span class="n">bins_idx</span><span class="p">[</span><span class="n">bin_name</span><span class="p">]])</span>
+
+            <span class="c1"># get indices for sorted detection statistic in bin</span>
+            <span class="n">sorting</span> <span class="o">=</span> <span class="n">stat</span><span class="p">[</span><span class="n">bin_idx</span><span class="p">]</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="c1"># get variables for n-th loudest triggers</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">coinc_parameters</span><span class="p">:</span>
+                <span class="n">arr</span> <span class="o">=</span> <span class="n">statmap</span><span class="o">.</span><span class="n">get_coincfile_array</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">bin_idx</span><span class="p">][</span><span class="n">sorting</span><span class="p">][:</span><span class="n">opts</span><span class="o">.</span><span class="n">n_loudest</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sngl_parameters</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
+                    <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">ifo</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>
+                    <span class="n">arr</span> <span class="o">=</span> <span class="n">statmap</span><span class="o">.</span><span class="n">get_snglfile_array_dict</span><span class="p">(</span><span class="n">p</span><span class="p">)[</span><span class="n">ifo</span><span class="p">]</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">bin_idx</span><span class="p">][</span><span class="n">sorting</span><span class="p">][:</span><span class="n">opts</span><span class="o">.</span><span class="n">n_loudest</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">bank_parameters</span><span class="p">:</span>
+                <span class="n">arr</span> <span class="o">=</span> <span class="n">statmap</span><span class="o">.</span><span class="n">get_bankfile_array</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">bin_idx</span><span class="p">][</span><span class="n">sorting</span><span class="p">][:</span><span class="n">opts</span><span class="o">.</span><span class="n">n_loudest</span><span class="p">]</span>
+
+            <span class="c1"># append results</span>
+            <span class="n">bin_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># if taking triggers from single detector file</span>
+    <span class="k">elif</span> <span class="n">opts</span><span class="o">.</span><span class="n">bank_file</span> <span class="ow">and</span> <span class="n">opts</span><span class="o">.</span><span class="n">sngl_trigger_files</span><span class="p">:</span>
+
+        <span class="c1"># loop over each bin</span>
+        <span class="k">for</span> <span class="n">bin_name</span> <span class="ow">in</span> <span class="n">bin_names</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="c1"># only use one IFO</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">sngl_trigger_files</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">ifo</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">sngl_trigger_files</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Too many IFOs&quot;</span><span class="p">)</span>
+
+            <span class="c1"># get newSNR as statistic from single detector files</span>
+            <span class="n">sngls</span> <span class="o">=</span>  <span class="n">hdf</span><span class="o">.</span><span class="n">SingleDetTriggers</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">sngl_trigger_files</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span>
+                                           <span class="n">opts</span><span class="o">.</span><span class="n">bank_file</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">veto_file</span><span class="p">,</span>
+                                           <span class="n">opts</span><span class="o">.</span><span class="n">veto_segment_name</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ifo</span><span class="p">)</span>
+
+            <span class="c1"># cluster</span>
+            <span class="n">n_loudest</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">search_n_loudest</span> \
+                           <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">search_n_loudest</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">sngls</span><span class="o">.</span><span class="n">template_id</span><span class="p">)</span>
+            <span class="n">sngls</span><span class="o">.</span><span class="n">mask_to_n_loudest_clustered_events</span><span class="p">(</span><span class="n">n_loudest</span><span class="o">=</span><span class="n">n_loudest</span><span class="p">)</span>
+            <span class="n">template_hash</span> <span class="o">=</span> \
+                  <span class="n">sngls</span><span class="o">.</span><span class="n">bank</span><span class="p">[</span><span class="s2">&quot;template_hash&quot;</span><span class="p">][:][</span><span class="n">sngls</span><span class="o">.</span><span class="n">template_id</span><span class="p">]</span>
+
+            <span class="c1"># get indices of triggers in bin</span>
+            <span class="n">bin_idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">template_hash</span><span class="p">,</span>
+                              <span class="n">bank_data</span><span class="p">[</span><span class="s2">&quot;template_hash&quot;</span><span class="p">][</span><span class="n">bins_idx</span><span class="p">[</span><span class="n">bin_name</span><span class="p">]])</span>
+
+            <span class="c1"># sort by detection statistic</span>
+            <span class="n">stats</span> <span class="o">=</span> <span class="n">sngls</span><span class="o">.</span><span class="n">stat</span>
+            <span class="n">sorting</span> <span class="o">=</span> <span class="n">stats</span><span class="p">[</span><span class="n">bin_idx</span><span class="p">]</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="c1"># get indices for sorted detection statistic in bin</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sngl_parameters</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">ifo</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>
+                <span class="n">arr</span> <span class="o">=</span> <span class="n">sngls</span><span class="o">.</span><span class="n">get_column</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">bin_idx</span><span class="p">][</span><span class="n">sorting</span><span class="p">][:</span><span class="n">opts</span><span class="o">.</span><span class="n">n_loudest</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">bank_parameters</span><span class="p">:</span>
+                <span class="n">arr</span> <span class="o">=</span> <span class="n">sngls</span><span class="o">.</span><span class="n">bank</span><span class="p">[</span><span class="n">p</span><span class="p">][:]</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> \
+                      <span class="n">arr</span><span class="p">[</span><span class="n">sngls</span><span class="o">.</span><span class="n">template_id</span><span class="p">][</span><span class="n">bin_idx</span><span class="p">][</span><span class="n">sorting</span><span class="p">][:</span><span class="n">opts</span><span class="o">.</span><span class="n">n_loudest</span><span class="p">]</span>
+
+            <span class="c1"># append results</span>
+            <span class="n">bin_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># else did not supply enough command line options</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must have --bank-file and --sngl-trigger-files&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">bin_names</span><span class="p">,</span> <span class="n">bin_results</span></div>
+
+<div class="viewcode-block" id="get_found_param"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.get_found_param">[docs]</a><span class="k">def</span> <span class="nf">get_found_param</span><span class="p">(</span><span class="n">injfile</span><span class="p">,</span> <span class="n">bankfile</span><span class="p">,</span> <span class="n">trigfile</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">ifo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Translates some popular trigger parameters into functions that calculate</span>
+<span class="sd">    them from an hdf found injection file</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    injfile: hdf5 File object</span>
+<span class="sd">        Injection file of format known to ANitz (DOCUMENTME)</span>
+<span class="sd">    bankfile: hdf5 File object or None</span>
+<span class="sd">        Template bank file</span>
+<span class="sd">    trigfile: hdf5 File object or None</span>
+<span class="sd">        Single-detector trigger file</span>
+<span class="sd">    param: string</span>
+<span class="sd">        Parameter to be calculated for the recovered triggers</span>
+<span class="sd">    ifo: string or None</span>
+<span class="sd">        Standard ifo name, ex. &#39;L1&#39;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    [return value]: NumPy array of floats</span>
+<span class="sd">        The calculated parameter values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">foundtmp</span> <span class="o">=</span> <span class="n">injfile</span><span class="p">[</span><span class="s2">&quot;found_after_vetoes/template_id&quot;</span><span class="p">][:]</span>
+    <span class="k">if</span> <span class="n">trigfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># get the name of the ifo in the injection file, eg &quot;detector_1&quot;</span>
+        <span class="c1"># and the integer from that name</span>
+        <span class="n">ifolabel</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">injfile</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> \
+                    <span class="s2">&quot;detector&quot;</span> <span class="ow">in</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">val</span> <span class="o">==</span> <span class="n">ifo</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">foundtrg</span> <span class="o">=</span> <span class="n">injfile</span><span class="p">[</span><span class="s2">&quot;found_after_vetoes/trigger_id&quot;</span> <span class="o">+</span> <span class="n">ifolabel</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="n">bankfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">bankfile</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">bankfile</span><span class="p">[</span><span class="n">param</span><span class="p">][:][</span><span class="n">foundtmp</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">trigfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">trigfile</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">trigfile</span><span class="p">[</span><span class="n">ifo</span><span class="p">][</span><span class="n">param</span><span class="p">][:][</span><span class="n">foundtrg</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">bankfile</span>
+        <span class="n">found_param_dict</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="s2">&quot;mtotal&quot;</span> <span class="p">:</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:])[</span><span class="n">foundtmp</span><span class="p">],</span>
+          <span class="s2">&quot;mchirp&quot;</span> <span class="p">:</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">mass1_mass2_to_mchirp_eta</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
+                     <span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:])[</span><span class="mi">0</span><span class="p">][</span><span class="n">foundtmp</span><span class="p">],</span>
+          <span class="s2">&quot;eta&quot;</span>    <span class="p">:</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">mass1_mass2_to_mchirp_eta</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
+                     <span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:])[</span><span class="mi">1</span><span class="p">][</span><span class="n">foundtmp</span><span class="p">],</span>
+          <span class="s2">&quot;effective_spin&quot;</span> <span class="p">:</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">phenomb_chi</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
+                                                 <span class="n">b</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:],</span>
+                                                 <span class="n">b</span><span class="p">[</span><span class="s1">&#39;spin1z&#39;</span><span class="p">][:],</span>
+                                                 <span class="n">b</span><span class="p">[</span><span class="s1">&#39;spin2z&#39;</span><span class="p">][:])[</span><span class="n">foundtmp</span><span class="p">]</span>
+        <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">found_param_dict</span><span class="p">[</span><span class="n">param</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="get_inj_param"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.triggers.get_inj_param">[docs]</a><span class="k">def</span> <span class="nf">get_inj_param</span><span class="p">(</span><span class="n">injfile</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">ifo</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Translates some popular injection parameters into functions that calculate</span>
+<span class="sd">    them from an hdf found injection file</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    injfile: hdf5 File object</span>
+<span class="sd">        Injection file of format known to ANitz (DOCUMENTME)</span>
+<span class="sd">    param: string</span>
+<span class="sd">        Parameter to be calculated for the injected signals</span>
+<span class="sd">    ifo: string</span>
+<span class="sd">        Standard detector name, ex. &#39;L1&#39;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    [return value]: NumPy array of floats</span>
+<span class="sd">        The calculated parameter values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">det</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">detector</span><span class="o">.</span><span class="n">Detector</span><span class="p">(</span><span class="n">ifo</span><span class="p">)</span>
+    <span class="n">time_delay</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="c1">#lambda dec, ra, t :</span>
+                                 <span class="n">det</span><span class="o">.</span><span class="n">time_delay_from_earth_center</span><span class="p">)</span><span class="c1">#(dec, ra, t))</span>
+
+    <span class="n">inj</span> <span class="o">=</span> <span class="n">injfile</span><span class="p">[</span><span class="s2">&quot;injections&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">inj</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">inj</span><span class="p">[</span><span class="s2">&quot;injections/&quot;</span><span class="o">+</span><span class="n">param</span><span class="p">]</span>
+    <span class="n">inj_param_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;mtotal&quot;</span> <span class="p">:</span> <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:]</span> <span class="o">+</span> <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:],</span>
+        <span class="s2">&quot;mchirp&quot;</span> <span class="p">:</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">mass1_mass2_to_mchirp_eta</span><span class="p">(</span><span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
+                                                     <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:])[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="s2">&quot;eta&quot;</span> <span class="p">:</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">mass1_mass2_to_mchirp_eta</span><span class="p">(</span><span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
+                                                  <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:])[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="s2">&quot;effective_spin&quot;</span> <span class="p">:</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">phenomb_chi</span><span class="p">(</span><span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass1&#39;</span><span class="p">][:],</span>
+                                               <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;mass2&#39;</span><span class="p">][:],</span>
+                                               <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;spin1z&#39;</span><span class="p">][:],</span>
+                                               <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;spin2z&#39;</span><span class="p">][:]),</span>
+        <span class="s2">&quot;end_time_&quot;</span><span class="o">+</span><span class="n">ifo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="p">:</span>
+            <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">][:]</span> <span class="o">+</span> <span class="n">time_delay</span><span class="p">(</span><span class="n">inj</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">][:],</span>
+                                            <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">][:],</span>
+                                            <span class="n">inj</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">][:]),</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">inj_param_dict</span><span class="p">[</span><span class="n">param</span><span class="p">]</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

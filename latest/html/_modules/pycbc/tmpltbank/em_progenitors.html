@@ -1,0 +1,1030 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.tmpltbank.em_progenitors &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.tmpltbank.em_progenitors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.tmpltbank.em_progenitors</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2015 Francesco Pannarale</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pycbc</span>
+<span class="kn">import</span> <span class="nn">pycbc.tmpltbank.em_progenitors</span>
+<span class="c1">#from pycbc.tmpltbank import NS_SEQUENCE_FILE_DIRECTORY</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">scipy.optimize</span>
+<span class="kn">import</span> <span class="nn">scipy.interpolate</span>
+<span class="c1">#from lal import LAL_PI, LAL_MTSUN_SI</span>
+
+<span class="c1">#############################################################################</span>
+<span class="c1"># Innermost Stable Spherical Orbit (ISSO) solver in the Perez-Giz formalism #</span>
+<span class="c1"># [see Stone, Loeb, Berger, PRD 87, 084053 (2013)].                         #</span>
+<span class="c1">#############################################################################</span>
+
+<span class="c1"># Equation that determines the ISCO radius (in BH mass units)</span>
+<div class="viewcode-block" id="ISCO_eq"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.ISCO_eq">[docs]</a><span class="k">def</span> <span class="nf">ISCO_eq</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">chi</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Polynomial that enables the calculation of the Kerr</span>
+<span class="sd">    inntermost stable circular orbit (ISCO) radius via its</span>
+<span class="sd">    roots.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    r: float</span>
+<span class="sd">        the radial coordinate in BH mass units</span>
+<span class="sd">    chi: float</span>
+<span class="sd">        the BH dimensionless spin parameter</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    float</span>
+<span class="sd">        (r*(r-6))**2-chi**2*(2*r*(3*r+14)-9*chi**2)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">6</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">+</span><span class="mi">14</span><span class="p">)</span><span class="o">-</span><span class="mi">9</span><span class="o">*</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
+
+<span class="c1"># Equation that determines the ISCO radius (in BH mass units):</span>
+<span class="c1"># arguments and sign are inverted wrt to ISCO_eq</span>
+<div class="viewcode-block" id="ISCO_eq_chi_first"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.ISCO_eq_chi_first">[docs]</a><span class="k">def</span> <span class="nf">ISCO_eq_chi_first</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span><span class="n">r</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Polynomial that enables the calculation of the Kerr</span>
+<span class="sd">    inntermost stable circular orbit (ISCO) radius via its</span>
+<span class="sd">    roots.  The arguments of the function and the sign of</span>
+<span class="sd">    the polynomial are inverted with respect to ISCO_eq:</span>
+<span class="sd">    this facilitates the job of the root-finder that calls</span>
+<span class="sd">    this function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    chi: float</span>
+<span class="sd">        the BH dimensionless spin parameter</span>
+<span class="sd">    r: float</span>
+<span class="sd">        the radial coordinate in BH mass units</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    float</span>
+<span class="sd">        -((r*(r-6))**2-chi**2*(2*r*(3*r+14)-9*chi**2))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">ISCO_eq</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">chi</span><span class="p">)</span></div>
+
+<span class="c1"># Equation that determines the ISSO radius (in BH mass units) at one of the</span>
+<span class="c1"># poles</span>
+<div class="viewcode-block" id="ISSO_eq_at_pole"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.ISSO_eq_at_pole">[docs]</a><span class="k">def</span> <span class="nf">ISSO_eq_at_pole</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">chi</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Polynomial that enables the calculation of the Kerr polar</span>
+<span class="sd">    (inclination = +/- pi/2) innermost stable spherical orbit</span>
+<span class="sd">    (ISSO) radius via its roots.  Physical solutions are</span>
+<span class="sd">    between 6 and 1+sqrt[3]+sqrt[3+2sqrt[3]].</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    r: float</span>
+<span class="sd">        the radial coordinate in BH mass units</span>
+<span class="sd">    chi: float</span>
+<span class="sd">        the BH dimensionless spin parameter</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    float</span>
+<span class="sd">        r**3*(r**2*(r-6)+chi**2*(3*r+4))+chi**4*(3*r*(r-2)+chi**2)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">r</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">+</span><span class="mi">4</span><span class="p">))</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
+
+<span class="c1"># Equation that determines the ISSO radius (in BH mass units) for a generic</span>
+<span class="c1"># orbital inclination</span>
+<div class="viewcode-block" id="PG_ISSO_eq"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.PG_ISSO_eq">[docs]</a><span class="k">def</span> <span class="nf">PG_ISSO_eq</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">chi</span><span class="p">,</span> <span class="n">ci</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Polynomial that enables the calculation of a generic innermost</span>
+<span class="sd">    stable spherical orbit (ISSO) radius via its roots.  Physical</span>
+<span class="sd">    solutions are between the equatorial ISSO (aka the ISCO) radius</span>
+<span class="sd">    and the polar ISSO radius.</span>
+<span class="sd">    [See Stone, Loeb, Berger, PRD 87, 084053 (2013)]</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    r: float</span>
+<span class="sd">        the radial coordinate in BH mass units</span>
+<span class="sd">    chi: float</span>
+<span class="sd">        the BH dimensionless spin parameter</span>
+<span class="sd">    ci: float</span>
+<span class="sd">        cosine of the inclination angle between the BH spin</span>
+<span class="sd">        and the orbital angular momentum</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    float</span>
+<span class="sd">        r**8*Z+chi**2*(1-ci**2)*(chi**2*(1-ci**2)*Y-2*r**4*X)</span>
+<span class="sd">        where</span>
+<span class="sd">        X=chi**2*(chi**2*(3*chi**2+4*r*(2*r-3))+r**2*(15*r*(r-4)+28))-6*r**4*(r**2-4)</span>
+<span class="sd">        Y=chi**4*(chi**4+r**2*(7*r*(3*r-4)+36))+6*r*(r-2)*(chi**6+2*r**3*(chi**2*(3*r+2)+3*r**2*(r-2)))</span>
+<span class="sd">        Z=ISCO_eq(r,chi)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">X</span><span class="o">=</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">15</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span><span class="mi">28</span><span class="p">))</span><span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">Y</span><span class="o">=</span><span class="n">chi</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">chi</span><span class="o">**</span><span class="mi">4</span><span class="o">+</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span><span class="mi">36</span><span class="p">))</span><span class="o">+</span><span class="mi">6</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">chi</span><span class="o">**</span><span class="mi">6</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="n">Z</span><span class="o">=</span><span class="n">ISCO_eq</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">chi</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">r</span><span class="o">**</span><span class="mi">8</span><span class="o">*</span><span class="n">Z</span><span class="o">+</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ci</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">chi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ci</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">Y</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">4</span><span class="o">*</span><span class="n">X</span><span class="p">)</span></div>
+
+<span class="c1"># ISSO radius solver</span>
+<div class="viewcode-block" id="PG_ISSO_solver"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.PG_ISSO_solver">[docs]</a><span class="k">def</span> <span class="nf">PG_ISSO_solver</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span><span class="n">incl</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that determines the radius of the innermost stable</span>
+<span class="sd">    spherical orbit (ISSO) for a Kerr BH and a generic inclination</span>
+<span class="sd">    angle between the BH spin and the orbital angular momentum.</span>
+<span class="sd">    This function finds the appropriat root of PG_ISSO_eq.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    chi: float</span>
+<span class="sd">        the BH dimensionless spin parameter</span>
+<span class="sd">    incl: float</span>
+<span class="sd">        the inclination angle between the BH spin and the orbital</span>
+<span class="sd">        angular momentum in radians</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    solution: float</span>
+<span class="sd">        the radius of the orbit in BH mass units</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Auxiliary variables</span>
+    <span class="n">ci</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">incl</span><span class="p">)</span>
+    <span class="n">sgnchi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span><span class="o">*</span><span class="n">chi</span>
+
+    <span class="c1"># ISCO radius for the given spin magnitude</span>
+    <span class="k">if</span> <span class="n">sgnchi</span> <span class="o">&gt;</span> <span class="mf">0.99</span><span class="p">:</span>
+        <span class="n">initial_guess</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># Works better than 6 for chi=1</span>
+    <span class="k">elif</span> <span class="n">sgnchi</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">initial_guess</span> <span class="o">=</span> <span class="mi">9</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">initial_guess</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># Works better than 6 for chi=0.5</span>
+    <span class="n">rISCO_limit</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">ISCO_eq</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">sgnchi</span><span class="p">)</span>
+
+    <span class="c1"># ISSO radius for an inclination of pi/2</span>
+    <span class="k">if</span> <span class="n">chi</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">initial_guess</span> <span class="o">=</span> <span class="mi">9</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">initial_guess</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">rISSO_at_pole_limit</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">ISSO_eq_at_pole</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">chi</span><span class="p">)</span>
+
+    <span class="c1"># If the inclination is 0 or pi, just output the ISCO radius</span>
+    <span class="k">if</span> <span class="n">incl</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">]:</span>
+        <span class="n">solution</span> <span class="o">=</span> <span class="n">rISCO_limit</span>
+    <span class="c1"># If the inclination is pi/2, just output the ISSO radius at the pole(s)</span>
+    <span class="k">elif</span> <span class="n">incl</span> <span class="o">==</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">solution</span> <span class="o">=</span> <span class="n">rISSO_at_pole_limit</span>
+    <span class="c1"># Otherwise, find the ISSO radius for a generic inclination</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">initial_guess</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">rISCO_limit</span><span class="p">,</span><span class="n">rISSO_at_pole_limit</span><span class="p">)</span>
+        <span class="n">solution</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">PG_ISSO_eq</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">ci</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">solution</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">solution</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">:</span>
+            <span class="n">initial_guess</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">rISCO_limit</span><span class="p">,</span><span class="n">rISSO_at_pole_limit</span><span class="p">)</span>
+            <span class="n">solution</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">PG_ISSO_eq</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">ci</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">solution</span></div>
+
+<span class="c1">############################################################################</span>
+<span class="c1"># Effective aligned spin of a NS-BH binary with tilted BH spin, as defined #</span>
+<span class="c1"># in Stone, Loeb, Berger, PRD 87, 084053 (2013)].                          #</span>
+<span class="c1">############################################################################</span>
+<span class="c1"># Branch of positive chi solutions to rISCO(chi_eff) = rISSO(chi,incl)</span>
+<div class="viewcode-block" id="pos_branch"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.pos_branch">[docs]</a><span class="k">def</span> <span class="nf">pos_branch</span><span class="p">(</span><span class="n">incl</span><span class="p">,</span> <span class="n">chi</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines the effective [as defined in Stone, Loeb,</span>
+<span class="sd">    Berger, PRD 87, 084053 (2013)] aligned dimensionless</span>
+<span class="sd">    spin parameter of a NS-BH binary with tilted BH spin.</span>
+<span class="sd">    This means finding the root chi_eff of</span>
+<span class="sd">    ISCO_eq_chi_first(chi_eff, PG_ISSO_solver(chi,incl)).</span>
+<span class="sd">    The result returned by this function belongs to the</span>
+<span class="sd">    branch of the greater solutions, i.e. the greater of</span>
+<span class="sd">    the two possible solutions is returned.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    incl: float</span>
+<span class="sd">        the inclination angle between the BH spin and the orbital</span>
+<span class="sd">        angular momentum in radians</span>
+<span class="sd">    chi: float</span>
+<span class="sd">        the BH dimensionless spin parameter</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    chi_eff: float</span>
+<span class="sd">        the (greater) effective dimensionless spin parameter solution</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">incl</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">chi_eff</span> <span class="o">=</span> <span class="n">chi</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">rISSO</span> <span class="o">=</span> <span class="n">PG_ISSO_solver</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span><span class="n">incl</span><span class="p">)</span>
+        <span class="n">chi_eff</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">ISCO_eq_chi_first</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">rISSO</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">chi_eff</span></div>
+
+<span class="c1"># Solution to rISCO(chi_eff) = rISSO(chi,incl) with the correct sign</span>
+<div class="viewcode-block" id="bh_effective_spin"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.bh_effective_spin">[docs]</a><span class="k">def</span> <span class="nf">bh_effective_spin</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span><span class="n">incl</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines the effective [as defined in Stone, Loeb,</span>
+<span class="sd">    Berger, PRD 87, 084053 (2013)] aligned dimensionless</span>
+<span class="sd">    spin parameter of a NS-BH binary with tilted BH spin.</span>
+<span class="sd">    This means finding the root chi_eff of</span>
+<span class="sd">    ISCO_eq_chi_first(chi_eff, PG_ISSO_solver(chi,incl))</span>
+<span class="sd">    with the correct sign.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    chi: float</span>
+<span class="sd">        the BH dimensionless spin parameter</span>
+<span class="sd">    incl: float</span>
+<span class="sd">        the inclination angle between the BH spin and the orbital</span>
+<span class="sd">        angular momentum in radians</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    chi_eff: float</span>
+<span class="sd">        the effective dimensionless spin parameter solution</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">incl</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">chi_eff</span> <span class="o">=</span> <span class="n">chi</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># ISSO radius for the given BH spin magnitude and inclination</span>
+        <span class="n">rISSO</span> <span class="o">=</span> <span class="n">PG_ISSO_solver</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span><span class="n">incl</span><span class="p">)</span>
+        <span class="c1"># Angle at which the branch of positive solutions has its minumum</span>
+        <span class="n">incl_flip</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span><span class="n">pos_branch</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="nb">tuple</span><span class="p">([</span><span class="n">chi</span><span class="p">]),</span> <span class="n">full_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># Use incl_flip to determine the initial guess: the sign difference</span>
+        <span class="c1"># in the initial_guess ensures that chi_eff has the correct sign</span>
+        <span class="k">if</span> <span class="n">incl</span><span class="o">&gt;</span><span class="n">incl_flip</span><span class="p">:</span>
+            <span class="n">initial_guess</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">initial_guess</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">chi_eff</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">ISCO_eq_chi_first</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">rISSO</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">chi_eff</span></div>
+
+<span class="c1">############################################################################</span>
+<span class="c1"># 2H 2-piecewise polytropic EOS, NS non-rotating equilibrium sequence      #</span>
+<span class="c1"># File format is: grav mass (Msun)   baryonic mass (Msun)    compactness   #</span>
+<span class="c1">#                                                                          #</span>
+<span class="c1"># Eventually, the function should call an NS sequence generator within LAL #</span>
+<span class="c1"># the EOS prescribed by the user and store it.                             #</span>
+<span class="c1">############################################################################</span>
+<div class="viewcode-block" id="load_ns_sequence"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.load_ns_sequence">[docs]</a><span class="k">def</span> <span class="nf">load_ns_sequence</span><span class="p">(</span><span class="n">eos_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load the data of an NS non-rotating equilibrium sequence</span>
+<span class="sd">    generated using the equation of state (EOS) chosen by the</span>
+<span class="sd">    user.  [Only the 2H 2-piecewise polytropic EOS is currently</span>
+<span class="sd">    supported.  This yields NSs with large radiss (15-16km).]</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    eos_name: string</span>
+<span class="sd">        NS equation of state label (&#39;2H&#39; is the only supported</span>
+<span class="sd">        choice at the moment)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ns_sequence: 3D-array</span>
+<span class="sd">        contains the sequence data in the form NS gravitational</span>
+<span class="sd">         mass (in solar masses), NS baryonic mass (in solar</span>
+<span class="sd">         masses), NS compactness (dimensionless)</span>
+<span class="sd">    max_ns_g_mass: float</span>
+<span class="sd">        the maximum NS gravitational mass (in solar masses) in</span>
+<span class="sd">        the sequence (this is the mass of the most massive stable</span>
+<span class="sd">        NS)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ns_sequence</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="n">eos_name</span> <span class="o">==</span> <span class="s1">&#39;2H&#39;</span><span class="p">:</span>
+        <span class="n">ns_sequence_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pycbc</span><span class="o">.</span><span class="n">tmpltbank</span><span class="o">.</span><span class="n">NS_SEQUENCE_FILE_DIRECTORY</span><span class="p">,</span> <span class="s1">&#39;equil_2H.dat&#39;</span><span class="p">)</span>
+        <span class="c1">#ns_sequence_path = os.path.join(NS_SEQUENCE_FILE_DIRECTORY, &#39;equil_2H.dat&#39;)</span>
+        <span class="n">ns_sequence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">ns_sequence_path</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Only the 2H EOS is currently supported!&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;If you plan to use a different NS EOS, be sure not to filter&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;too many templates!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Unsupported EOS!&#39;</span><span class="p">)</span>
+
+    <span class="n">max_ns_g_mass</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ns_sequence</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">ns_sequence</span><span class="p">,</span> <span class="n">max_ns_g_mass</span><span class="p">)</span></div>
+
+<span class="c1">####################################################################################</span>
+<span class="c1"># Given an NS equilibrium sequence and gravitational mass (in Msun), return the NS #</span>
+<span class="c1"># baryonic mass (in Msun).                                                         #</span>
+<span class="c1">####################################################################################</span>
+<div class="viewcode-block" id="ns_g_mass_to_ns_b_mass"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.ns_g_mass_to_ns_b_mass">[docs]</a><span class="k">def</span> <span class="nf">ns_g_mass_to_ns_b_mass</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines the baryonic mass of an NS given its gravitational</span>
+<span class="sd">    mass and an NS equilibrium sequence.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    ns_g_mass: float</span>
+<span class="sd">        NS gravitational mass (in solar masses)</span>
+<span class="sd">    ns_sequence: 3D-array</span>
+<span class="sd">        contains the sequence data in the form NS gravitational</span>
+<span class="sd">         mass (in solar masses), NS baryonic mass (in solar</span>
+<span class="sd">         masses), NS compactness (dimensionless)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    float</span>
+<span class="sd">        The NS baryonic mass (in solar massesr**3*(r**2*(r-6)+chi**2*(3*r+4))+chi**4*(3*r*(r-2)+chi**2))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">ns_sequence</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">ns_sequence</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">)</span></div>
+
+<span class="c1">####################################################################################</span>
+<span class="c1"># Given an NS equilibrium sequence and gravitational mass (in Msun), return the NS #</span>
+<span class="c1"># compactness.                                                                     #</span>
+<span class="c1">####################################################################################</span>
+<div class="viewcode-block" id="ns_g_mass_to_ns_compactness"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.ns_g_mass_to_ns_compactness">[docs]</a><span class="k">def</span> <span class="nf">ns_g_mass_to_ns_compactness</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines the compactness of an NS given its</span>
+<span class="sd">    gravitational mass and an NS equilibrium sequence.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    ns_g_mass: float</span>
+<span class="sd">        NS gravitational mass (in solar masses)</span>
+<span class="sd">    ns_sequence: 3D-array</span>
+<span class="sd">        contains the sequence data in the form NS gravitational</span>
+<span class="sd">         mass (in solar masses), NS baryonic mass (in solar</span>
+<span class="sd">         masses), NS compactness (dimensionless)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    float</span>
+<span class="sd">        The NS compactness (dimensionless)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">ns_sequence</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">ns_sequence</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">)</span></div>
+
+<span class="c1">########################################################################################</span>
+<span class="c1"># Physical parameters passed to remnant_mass (see later) must not be unphysical        #</span>
+<span class="c1">########################################################################################</span>
+
+<span class="c1">########################################################################################</span>
+<span class="c1"># Remnant mass for a NS-BH merger [Foucart PRD 86, 124007 (2012)]                      #</span>
+<span class="c1"># The result is shifted by a quantity (shift, in solar masses) passed as an argument   #</span>
+<span class="c1"># of remnant_mass: this can effectively used as a remnant mass threshold when solving  #</span>
+<span class="c1"># the constraint remnant_mass(...)=0.                                                  #</span>
+<span class="c1"># Allowing for negative remanant mass to be able to solve remnant mass == 0 if neeeded #</span>
+<span class="c1"># THIS ASSUMES THE NS SPIN IS 0 (the user is warned about this)                        #</span>
+<span class="c1">########################################################################################</span>
+<div class="viewcode-block" id="xi_eq"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.xi_eq">[docs]</a><span class="k">def</span> <span class="nf">xi_eq</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">chi_eff</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The roots of this equation determine the orbital radius</span>
+<span class="sd">    at the onset of NS tidal disruption in a nonprecessing</span>
+<span class="sd">    NS-BH binary [(7) in Foucart PRD 86, 124007 (2012)]</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    x: float</span>
+<span class="sd">        orbital separation in units of the NS radius</span>
+<span class="sd">    kappa: float</span>
+<span class="sd">        the BH mass divided by the NS radius</span>
+<span class="sd">    chi_eff: float</span>
+<span class="sd">        the BH dimensionless spin parameter</span>
+<span class="sd">    q: float</span>
+<span class="sd">        the binary mass ratio (BH mass / NS mass)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    float</span>
+<span class="sd">        x**3*(x**2-3*kappa*x+2*chi_eff*kappa*sqrt[kappa*x)</span>
+<span class="sd">        -3*q*(x**2-2*kappa*x+(chi_eff*kappa)**2)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">kappa</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">chi_eff</span><span class="o">*</span><span class="n">kappa</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">kappa</span><span class="o">*</span><span class="n">x</span><span class="p">))</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">q</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">kappa</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="p">(</span><span class="n">chi_eff</span><span class="o">*</span><span class="n">kappa</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="remnant_mass"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.remnant_mass">[docs]</a><span class="k">def</span> <span class="nf">remnant_mass</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span> <span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">,</span> <span class="n">chi</span><span class="p">,</span> <span class="n">incl</span><span class="p">,</span> <span class="n">shift</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that determines the remnant disk mass of</span>
+<span class="sd">    an NS-BH system using the fit to numerical-relativity</span>
+<span class="sd">    results discussed in Foucart PRD 86, 124007 (2012).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    eta: float</span>
+<span class="sd">        the symmetric mass ratio of the binary</span>
+<span class="sd">    ns_g_mass: float</span>
+<span class="sd">        NS gravitational mass (in solar masses)</span>
+<span class="sd">    ns_sequence: 3D-array</span>
+<span class="sd">        contains the sequence data in the form NS gravitational</span>
+<span class="sd">         mass (in solar masses), NS baryonic mass (in solar</span>
+<span class="sd">         masses), NS compactness (dimensionless)</span>
+<span class="sd">    chi: float</span>
+<span class="sd">        the BH dimensionless spin parameter</span>
+<span class="sd">    incl: float</span>
+<span class="sd">        the inclination angle between the BH spin and the orbital</span>
+<span class="sd">        angular momentum in radians</span>
+<span class="sd">    shift: float</span>
+<span class="sd">        an amount to be subtracted to the remnant mass predicted</span>
+<span class="sd">        by the model (in solar masses)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    remnant_mass: float</span>
+<span class="sd">        The remnant mass in solar masses</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sanity checks</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">eta</span><span class="o">&gt;</span><span class="mf">0.</span> <span class="ow">and</span> <span class="n">eta</span><span class="o">&lt;=</span><span class="mf">0.25</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">chi</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The BH spin magnitude must be &lt;=1 and eta must be between 0 and 0.25&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This script was launched with ns_mass=</span><span class="si">{0}</span><span class="s1">, eta=</span><span class="si">{1}</span><span class="s1">, chi=</span><span class="si">{2}</span><span class="s1">, inclination=</span><span class="si">{3}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">chi</span><span class="p">,</span> <span class="n">incl</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Unphysical parameters!&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Binary mass ratio define to be &gt; 1</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">eta</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">eta</span><span class="p">)</span><span class="o">/</span><span class="n">eta</span><span class="o">*</span><span class="mf">0.5</span>
+
+    <span class="c1"># NS compactness and rest mass</span>
+    <span class="n">ns_compactness</span> <span class="o">=</span> <span class="n">ns_g_mass_to_ns_compactness</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">)</span>
+    <span class="n">ns_b_mass</span> <span class="o">=</span> <span class="n">ns_g_mass_to_ns_b_mass</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">)</span>
+
+    <span class="c1"># Sanity checks</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">ns_compactness</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">q</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A positive NS compactness and a mass ratio that is &gt;1 must be obtained.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This script was launched with ns_mass=</span><span class="si">{0}</span><span class="s1">, eta=</span><span class="si">{1}</span><span class="s1">, chi=</span><span class="si">{2}</span><span class="s1">, inclination=</span><span class="si">{3}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ns_b_mass</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">chi</span><span class="p">,</span> <span class="n">incl</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;and obtained ns_compactness=</span><span class="si">{0}</span><span class="s1"> and q=</span><span class="si">{1}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ns_compactness</span><span class="p">,</span> <span class="n">q</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SOMETHING WENT WRONG!!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Unphysical parameters!&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the dimensionless parameter kappa</span>
+    <span class="n">kappa</span> <span class="o">=</span> <span class="n">q</span><span class="o">*</span><span class="n">ns_compactness</span>
+
+    <span class="c1"># Effective equatorial spin parameter needed to determine the torus mass*)</span>
+    <span class="n">chi_eff</span> <span class="o">=</span> <span class="n">bh_effective_spin</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span> <span class="n">incl</span><span class="p">)</span>
+
+    <span class="c1">#Sanity checks</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">abs</span><span class="p">(</span><span class="n">chi_eff</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The effective BH spin magnitude must be &lt;=1&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This script was launched with ns_mass=</span><span class="si">{0}</span><span class="s1">, eta=</span><span class="si">{1}</span><span class="s1">, chi=</span><span class="si">{2}</span><span class="s1">, inclination=</span><span class="si">{3}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ns_b_mass</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">chi</span><span class="p">,</span> <span class="n">incl</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;and obtained chi_eff=</span><span class="si">{0}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">chi_eff</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SOMETHING WENT WRONG!!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Unphysical parameters!&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Taking the 1st element with full_output=1 avoids some annoying messages on stdout</span>
+    <span class="n">xi</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">fsolve</span><span class="p">(</span><span class="n">xi_eq</span><span class="p">,</span> <span class="mf">100.</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">kappa</span><span class="p">,</span><span class="n">chi_eff</span><span class="p">,</span><span class="n">q</span><span class="p">),</span> <span class="n">full_output</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Fit parameters and tidal correction</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.296</span> <span class="c1"># +/- 0.011</span>
+    <span class="n">beta</span>  <span class="o">=</span> <span class="mf">0.171</span> <span class="c1"># +/- 0.008</span>
+    <span class="c1"># The remnant mass over the NS rest mass</span>
+    <span class="n">remnant_mass</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">xi</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">ns_compactness</span><span class="p">)</span><span class="o">-</span><span class="n">beta</span><span class="o">*</span><span class="n">kappa</span><span class="o">*</span><span class="n">PG_ISSO_solver</span><span class="p">(</span><span class="n">chi_eff</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># The remnant mass in the same units as the NS rest mass (presumably solar masses)</span>
+    <span class="n">remnant_mass</span> <span class="o">=</span> <span class="n">remnant_mass</span><span class="o">*</span><span class="n">ns_b_mass</span> <span class="o">-</span> <span class="n">shift</span>
+
+    <span class="k">return</span> <span class="n">remnant_mass</span></div>
+
+<span class="c1">######################################################################################</span>
+<span class="c1"># Calculate an upper limit to the remnant mass by setting the BH spin magnitude to 1 #</span>
+<span class="c1"># (its maximum possible value) and allowing the BH spin vector to be tilted so that  #</span>
+<span class="c1"># chi_z*cos(tilt) = 1.  An unreasonably large remnant disk mass is returned if the   #</span>
+<span class="c1"># maximum possible NS mass is exceeded.  Works with list and single numbers.         #</span>
+<span class="c1">######################################################################################</span>
+<div class="viewcode-block" id="remnant_mass_ulim"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.remnant_mass_ulim">[docs]</a><span class="k">def</span> <span class="nf">remnant_mass_ulim</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span> <span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">bh_spin_z</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">,</span> <span class="n">max_ns_g_mass</span><span class="p">,</span> <span class="n">shift</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that determines the maximum remnant disk mass</span>
+<span class="sd">    for an NS-BH system with given symmetric mass ratio,</span>
+<span class="sd">    NS mass, and BH spin parameter component along the</span>
+<span class="sd">    orbital angular momentum.  This is a wrapper to</span>
+<span class="sd">    the function remnant_mass.  Maximization is achieved</span>
+<span class="sd">    by setting the BH dimensionless spin magntitude to unity.</span>
+<span class="sd">    An unreasonably large remnant disk mass (100 solar masses)</span>
+<span class="sd">    is returned if the maximum possible NS mass is exceeded</span>
+<span class="sd">    in applying the model of Foucart PRD 86, 124007 (2012).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    eta: float</span>
+<span class="sd">        the symmetric mass ratio of the binary</span>
+<span class="sd">    ns_g_mass: float</span>
+<span class="sd">        NS gravitational mass (in solar masses)</span>
+<span class="sd">    bh_spin_z: float</span>
+<span class="sd">        the BH dimensionless spin parameter for the spin projection</span>
+<span class="sd">        along the orbital angular momentum</span>
+<span class="sd">    ns_sequence: 3D-array</span>
+<span class="sd">        contains the sequence data in the form NS gravitational</span>
+<span class="sd">         mass (in solar masses), NS baryonic mass (in solar</span>
+<span class="sd">         masses), NS compactness (dimensionless)</span>
+<span class="sd">    shift: float</span>
+<span class="sd">        an amount to be subtracted to the remnant mass upper limit</span>
+<span class="sd">        predicted by the model (in solar masses)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    remnant_mass_upper_limit: float</span>
+<span class="sd">        The remnant mass upper limit in solar masses</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sanity checks</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">eta</span> <span class="o">&gt;</span> <span class="mf">0.</span> <span class="ow">and</span> <span class="n">eta</span> <span class="o">&lt;=</span><span class="mf">0.25</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">bh_spin_z</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;The absolute value of the BH spin z-component must be &lt;=1.</span>
+<span class="s2">           Eta must be between 0 and 0.25.</span>
+<span class="s2">           The function remnant_mass_ulim was launched with eta=</span><span class="si">{0}</span><span class="s2"> and chi_z=</span><span class="si">{1}</span><span class="s2">.</span>
+<span class="s2">           Unphysical parameters!&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span> <span class="n">bh_spin_z</span><span class="p">))</span>
+    <span class="c1"># To maximise the remnant mass, allow for the BH spin magnitude to be maximum</span>
+    <span class="n">bh_spin_magnitude</span> <span class="o">=</span> <span class="mf">1.</span>
+    <span class="c1"># Unreasonably large remnant disk mass</span>
+    <span class="n">default_remnant_mass</span> <span class="o">=</span> <span class="mf">100.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ns_g_mass</span> <span class="o">&gt;</span> <span class="n">max_ns_g_mass</span><span class="p">:</span>
+        <span class="n">bh_spin_inclination</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">bh_spin_z</span><span class="o">/</span><span class="n">bh_spin_magnitude</span><span class="p">)</span>
+        <span class="n">remnant_mass_upper_limit</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">tmpltbank</span><span class="o">.</span><span class="n">em_progenitors</span><span class="o">.</span><span class="n">remnant_mass</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span> <span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">,</span> <span class="n">bh_spin_magnitude</span><span class="p">,</span> <span class="n">bh_spin_inclination</span><span class="p">,</span> <span class="n">shift</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">remnant_mass_upper_limit</span> <span class="o">=</span> <span class="n">default_remnant_mass</span>
+
+    <span class="k">return</span> <span class="n">remnant_mass_upper_limit</span></div>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># Given a NS mass, a BH spin z-component, and and EOS, find the minimum value  #</span>
+<span class="c1"># of the symmetric mass ratio (eta) required to produce and EM counterpart.    #</span>
+<span class="c1"># The user must specify the remnant disk mass threshold (thershold) and a      #</span>
+<span class="c1"># default value to be assigned to eta if the NS gravitational mass exceeds the #</span>
+<span class="c1"># maximum NS mass allowed by the EOS (eta_default).                            #</span>
+<span class="c1">################################################################################</span>
+<div class="viewcode-block" id="find_em_constraint_data_point"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.find_em_constraint_data_point">[docs]</a><span class="k">def</span> <span class="nf">find_em_constraint_data_point</span><span class="p">(</span><span class="n">mNS</span><span class="p">,</span> <span class="n">sBH</span><span class="p">,</span> <span class="n">eos_name</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">eta_default</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that determines the minimum symmetric mass ratio</span>
+<span class="sd">    for an NS-BH system with given NS mass, BH spin parameter</span>
+<span class="sd">    component along the orbital angular momentum, and NS equation</span>
+<span class="sd">    of state (EOS), required for the remnant disk mass to exceed</span>
+<span class="sd">    a certain threshold value specified by the user.  A default</span>
+<span class="sd">    value specified by the user is returned if the NS gravitational</span>
+<span class="sd">    mass exceeds the maximum NS mass allowed by the EOS.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    mNS: float</span>
+<span class="sd">        the NS mass</span>
+<span class="sd">    sBH: float</span>
+<span class="sd">        BH dimensionless spin parameter for the BH spin</span>
+<span class="sd">        component along the orbital angular momentum</span>
+<span class="sd">    eos_name: string</span>
+<span class="sd">        NS equation of state label (&#39;2H&#39; is the only supported</span>
+<span class="sd">        choice at the moment)</span>
+<span class="sd">    eta_default: float</span>
+<span class="sd">        the value to be returned if the input NS mass is too high</span>
+<span class="sd">    threshold: float</span>
+<span class="sd">        an amount to be subtracted to the remnant mass upper limit</span>
+<span class="sd">        predicted by the model (in solar masses)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    eta_sol: float</span>
+<span class="sd">        The miniumum symmetric mass ratio for which the remnant</span>
+<span class="sd">        disk mass exceeds the threshold</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ns_sequence</span><span class="p">,</span> <span class="n">max_ns_g_mass</span> <span class="o">=</span> <span class="n">load_ns_sequence</span><span class="p">(</span><span class="n">eos_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mNS</span> <span class="o">&gt;</span> <span class="n">max_ns_g_mass</span><span class="p">:</span>
+        <span class="n">eta_sol</span> <span class="o">=</span> <span class="n">eta_default</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">eta_min</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1">#mBH_max*mNS/(mBH_max+mNS)**2</span>
+        <span class="n">disk_mass_down</span> <span class="o">=</span> <span class="n">remnant_mass_ulim</span><span class="p">(</span><span class="n">eta_min</span><span class="p">,</span> <span class="n">mNS</span><span class="p">,</span> <span class="n">sBH</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">,</span> <span class="n">max_ns_g_mass</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+        <span class="n">eta_max</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="c1">#mBH_min*mNS/(mBH_min+mNS)**2</span>
+        <span class="n">disk_mass_up</span> <span class="o">=</span> <span class="n">remnant_mass_ulim</span><span class="p">(</span><span class="n">eta_max</span><span class="p">,</span> <span class="n">mNS</span><span class="p">,</span> <span class="n">sBH</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">,</span> <span class="n">max_ns_g_mass</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">disk_mass_down</span><span class="o">*</span><span class="n">disk_mass_up</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Methods that work are (in order of performance speed): brentq, brenth, ridder, bisect</span>
+            <span class="n">eta_sol</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">brentq</span><span class="p">(</span><span class="n">remnant_mass_ulim</span><span class="p">,</span> <span class="n">eta_min</span><span class="p">,</span> <span class="n">eta_max</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">mNS</span><span class="p">,</span> <span class="n">sBH</span><span class="p">,</span> <span class="n">ns_sequence</span><span class="p">,</span> <span class="n">max_ns_g_mass</span><span class="p">,</span> <span class="n">threshold</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">disk_mass_down</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">eta_sol</span> <span class="o">=</span> <span class="mf">0.</span>        <span class="c1"># EM counterpart requires eta&lt;eta_min: penalize this point</span>
+        <span class="k">elif</span> <span class="n">disk_mass_up</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">eta_sol</span> <span class="o">=</span> <span class="mf">0.2500001</span> <span class="c1"># EM counterpart is impossible</span>
+        <span class="k">elif</span> <span class="n">disk_mass_down</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">eta_sol</span> <span class="o">=</span> <span class="n">eta_min</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">eta_sol</span> <span class="o">=</span> <span class="n">eta_max</span>
+
+    <span class="k">return</span> <span class="n">eta_sol</span></div>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># Vectorized version of find_em_constraint_data_point.  Numpy v1.7 and above   #</span>
+<span class="c1"># allows one to list the arguments to exclude from vectorization.  An older    #</span>
+<span class="c1"># version of numpy is available on several clusters, so for now we will have   #</span>
+<span class="c1"># to work around this and make sure we pass all arguments as vectors of the    #</span>
+<span class="c1"># same length.                                                                 #</span>
+<span class="c1">################################################################################</span>
+<span class="n">find_em_constraint_data_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">find_em_constraint_data_point</span><span class="p">)</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># Generate the (bh_spin_z, ns_g_mass, eta) surface above which EM counterparts #</span>
+<span class="c1"># are possible.  The user must specify the remnant disk mass threshold (shift) #</span>
+<span class="c1"># and the default eta to be assigned to points for which ns_g_mass exceeds the #</span>
+<span class="c1"># maximum NS mass allowed by the EOS (eta_default).                            #</span>
+<span class="c1">################################################################################</span>
+<div class="viewcode-block" id="generate_em_constraint_data"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.generate_em_constraint_data">[docs]</a><span class="k">def</span> <span class="nf">generate_em_constraint_data</span><span class="p">(</span><span class="n">mNS_min</span><span class="p">,</span> <span class="n">mNS_max</span><span class="p">,</span> <span class="n">delta_mNS</span><span class="p">,</span> <span class="n">sBH_min</span><span class="p">,</span> <span class="n">sBH_max</span><span class="p">,</span> <span class="n">delta_sBH</span><span class="p">,</span> <span class="n">eos_name</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">eta_default</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Wrapper that calls find_em_constraint_data_point over a grid</span>
+<span class="sd">    of points to generate the bh_spin_z x ns_g_mass x eta surface</span>
+<span class="sd">    above which NS-BH binaries yield a remnant disk mass that</span>
+<span class="sd">    exceeds the threshold required by the user.  The user must also</span>
+<span class="sd">    specify the default symmetric mass ratio value to be assigned</span>
+<span class="sd">    to points for which the NS mass exceeds the maximum NS mass</span>
+<span class="sd">    allowed by the chosend NS equation of state.</span>
+<span class="sd">    The 2D surface that is generated is saved to file in two formats:</span>
+<span class="sd">    constraint_em_bright.npz and constraint_em_bright.npz.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    mNS_min: float</span>
+<span class="sd">        lower boundary of the grid in the NS mass direction</span>
+<span class="sd">    mNS_max: float</span>
+<span class="sd">        upper boundary of the grid in the NS mass direction</span>
+<span class="sd">    delta_mNS: float</span>
+<span class="sd">        grid spacing in the NS mass direction</span>
+<span class="sd">    sBH_min: float</span>
+<span class="sd">        lower boundary of the grid in the direction of the</span>
+<span class="sd">        BH dimensionless spin component along the orbital</span>
+<span class="sd">        angular momentum</span>
+<span class="sd">    sBH_max: float</span>
+<span class="sd">        upper boundary of the grid in the direction of the</span>
+<span class="sd">        BH dimensionless spin component along the orbital</span>
+<span class="sd">        angular momentum</span>
+<span class="sd">    delta_sBH: float</span>
+<span class="sd">        grid spacing in the direction of the BH dimensionless</span>
+<span class="sd">        spin component along the orbital angular momentum</span>
+<span class="sd">    eos_name: string</span>
+<span class="sd">        NS equation of state label (&#39;2H&#39; is the only supported</span>
+<span class="sd">        choice at the moment)</span>
+<span class="sd">    threshold: float</span>
+<span class="sd">        an amount to be subtracted to the remnant mass upper limit</span>
+<span class="sd">        predicted by the model (in solar masses)</span>
+<span class="sd">    eta_default: float</span>
+<span class="sd">        the value to be returned for points in the grids in which</span>
+<span class="sd">        the NS mass is too high</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Build a grid of points in the mNS x sBHz space,</span>
+    <span class="c1"># making sure maxima and minima are included</span>
+    <span class="n">mNS_nsamples</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">mNS_max</span><span class="o">-</span><span class="n">mNS_min</span><span class="p">)</span><span class="o">/</span><span class="n">delta_mNS</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">sBH_nsamples</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">sBH_max</span><span class="o">-</span><span class="n">sBH_min</span><span class="p">)</span><span class="o">/</span><span class="n">delta_sBH</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">mNS_vec</span><span class="p">,</span> <span class="n">sBH_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="n">mNS_min</span><span class="p">:</span><span class="n">mNS_max</span><span class="p">:</span><span class="n">mNS_nsamples</span><span class="p">,</span> <span class="n">sBH_min</span><span class="p">:</span><span class="n">sBH_max</span><span class="p">:</span><span class="n">sBH_nsamples</span><span class="p">]</span> <span class="c1"># pylint:disable=invalid-slice-index</span>
+    <span class="n">mNS_locations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mNS_vec</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">sBH_locations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sBH_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">mNS_sBH_grid</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">mNS_vec</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">sBH_vec</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">mNS_sBH_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mNS_sBH_grid</span><span class="p">)</span>
+    <span class="n">mNS_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mNS_sBH_grid</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">sBH_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mNS_sBH_grid</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># Until a numpy v&gt;=1.7 is available everywhere, we have to use a silly</span>
+    <span class="c1"># vectorization of find_em_constraint_data_point and pass to it a bunch of</span>
+    <span class="c1"># constant arguments as vectors with one entry repeated several times</span>
+    <span class="n">eos_name_vec</span><span class="o">=</span><span class="p">[</span><span class="n">eos_name</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mNS_vec</span><span class="p">))]</span>
+    <span class="n">eos_name_vec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">eos_name_vec</span><span class="p">)</span>
+    <span class="n">threshold_vec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mNS_vec</span><span class="p">))</span>
+    <span class="n">threshold_vec</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
+    <span class="n">eta_default_vec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mNS_vec</span><span class="p">))</span>
+    <span class="n">eta_default_vec</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">eta_default</span><span class="p">)</span>
+
+    <span class="c1"># Compute the minimum etas at all point in the mNS x sBHz grid</span>
+    <span class="n">eta_sol</span> <span class="o">=</span> <span class="n">find_em_constraint_data_points</span><span class="p">(</span><span class="n">mNS_vec</span><span class="p">,</span> <span class="n">sBH_vec</span><span class="p">,</span> <span class="n">eos_name_vec</span><span class="p">,</span> <span class="n">threshold_vec</span><span class="p">,</span> <span class="n">eta_default_vec</span><span class="p">)</span>
+    <span class="n">eta_sol</span> <span class="o">=</span> <span class="n">eta_sol</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">sBH_locations</span><span class="p">))</span>
+    <span class="c1"># Save the results</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s1">&#39;constraint_em_bright&#39;</span><span class="p">,</span> <span class="n">mNS_pts</span><span class="o">=</span><span class="n">mNS_locations</span><span class="p">,</span> <span class="n">sBH_pts</span><span class="o">=</span><span class="n">sBH_locations</span><span class="p">,</span> <span class="n">eta_mins</span><span class="o">=</span><span class="n">eta_sol</span><span class="p">)</span>
+    <span class="c1"># Cast the results in a format that is quick to plot from textfile</span>
+    <span class="n">constraint_data</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">mNS_vec</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">sBH_vec</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">eta_sol</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;constraint_em_bright.dat&#39;</span><span class="p">,</span> <span class="n">constraint_data</span><span class="p">)</span></div>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># Given a BH spin z-component and an NS mass, return the minumum symmetric     #</span>
+<span class="c1"># mass ratio (eta) required to produce an EM counterpart.  The function uses   #</span>
+<span class="c1"># data of a sampled constraint surface eta(bh_spin_z, ns_g_mass).  The remant  #</span>
+<span class="c1"># mass threshold to generate a counterpart must be set when generating such    #</span>
+<span class="c1"># constraint data (see generate_em_constraint_data).                           #</span>
+<span class="c1">################################################################################</span>
+<div class="viewcode-block" id="min_eta_for_em_bright"><a class="viewcode-back" href="../../../pycbc.tmpltbank.html#pycbc.tmpltbank.em_progenitors.min_eta_for_em_bright">[docs]</a><span class="k">def</span> <span class="nf">min_eta_for_em_bright</span><span class="p">(</span><span class="n">bh_spin_z</span><span class="p">,</span> <span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">mNS_pts</span><span class="p">,</span> <span class="n">sBH_pts</span><span class="p">,</span> <span class="n">eta_mins</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that uses the end product of generate_em_constraint_data</span>
+<span class="sd">    to swipe over a set of NS-BH binaries and determine the minimum</span>
+<span class="sd">    symmetric mass ratio required by each binary to yield a remnant</span>
+<span class="sd">    disk mass that exceeds a certain threshold.  Each binary passed</span>
+<span class="sd">    to this function consists of a NS mass and a BH spin parameter</span>
+<span class="sd">    component along the orbital angular momentum.  Unlike</span>
+<span class="sd">    find_em_constraint_data_point, which solves the problem at</span>
+<span class="sd">    a given point in the paremter space and is more generic, this</span>
+<span class="sd">    function interpolates the results produced by</span>
+<span class="sd">    generate_em_constraint_data at the desired locations:</span>
+<span class="sd">    generate_em_constraint_data must be run once prior to calling</span>
+<span class="sd">    min_eta_for_em_bright.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    bh_spin_z: array</span>
+<span class="sd">        desired values of the BH dimensionless spin parameter for the</span>
+<span class="sd">        spin projection along the orbital angular momentum</span>
+<span class="sd">    ns_g_mass: array</span>
+<span class="sd">        desired values of the NS gravitational mass (in solar masses)</span>
+<span class="sd">    mNS_pts: array</span>
+<span class="sd">        NS mass values (in solar masses) from the output of</span>
+<span class="sd">        generate_em_constraint_data</span>
+<span class="sd">    sBH_pts: array</span>
+<span class="sd">        BH dimensionless spin parameter values along the orbital</span>
+<span class="sd">        angular momentum from the output of generate_em_constraint_data</span>
+<span class="sd">    eta_mins: array</span>
+<span class="sd">        minimum symmetric mass ratio values to exceed a given remnant</span>
+<span class="sd">        disk mass threshold from the output of generate_em_constraint_data</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    eta_min: array</span>
+<span class="sd">        the minimum symmetric mass ratio required by each binary in the</span>
+<span class="sd">        input to yield a remnant disk mass that exceeds a certain</span>
+<span class="sd">        threshold</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">RectBivariateSpline</span><span class="p">(</span><span class="n">mNS_pts</span><span class="p">,</span> <span class="n">sBH_pts</span><span class="p">,</span> <span class="n">eta_mins</span><span class="p">,</span> <span class="n">kx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ky</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># If bh_spin_z is a numpy array (assuming ns_g_mass has the same size)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bh_spin_z</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="n">eta_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bh_spin_z</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bh_spin_z</span><span class="p">)):</span>
+            <span class="n">eta_min</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">bh_spin_z</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="c1"># Else (assuming ns_g_mass and bh_spin_z are single numbers)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">eta_min</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ns_g_mass</span><span class="p">,</span> <span class="n">bh_spin_z</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">eta_min</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

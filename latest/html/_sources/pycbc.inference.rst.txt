@@ -1,0 +1,102 @@
+pycbc\.inference package
+========================
+
+Submodules
+----------
+
+pycbc\.inference\.burn\_in module
+---------------------------------
+
+.. automodule:: pycbc.inference.burn_in
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.inference\.entropy module
+--------------------------------
+
+.. automodule:: pycbc.inference.entropy
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.inference\.gelman\_rubin module
+--------------------------------------
+
+.. automodule:: pycbc.inference.gelman_rubin
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.inference\.geweke module
+-------------------------------
+
+.. automodule:: pycbc.inference.geweke
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.inference\.likelihood module
+-----------------------------------
+
+.. automodule:: pycbc.inference.likelihood
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.inference\.option\_utils module
+--------------------------------------
+
+.. automodule:: pycbc.inference.option_utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.inference\.prior module
+------------------------------
+
+.. automodule:: pycbc.inference.prior
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.inference\.sampler module
+--------------------------------
+
+.. automodule:: pycbc.inference.sampler
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.inference\.sampler\_base module
+--------------------------------------
+
+.. automodule:: pycbc.inference.sampler_base
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.inference\.sampler\_emcee module
+---------------------------------------
+
+.. automodule:: pycbc.inference.sampler_emcee
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.inference\.sampler\_kombine module
+-----------------------------------------
+
+.. automodule:: pycbc.inference.sampler_kombine
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: pycbc.inference
+    :members:
+    :undoc-members:
+    :show-inheritance:

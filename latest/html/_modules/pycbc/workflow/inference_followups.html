@@ -1,0 +1,642 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.workflow.inference_followups &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.workflow.inference_followups</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.workflow.inference_followups</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2016 Christopher M. Biwer, Alexander Harvey Nitz</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module that contains functions for setting up the inference workflow.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span><span class="o">,</span> <span class="nn">os.path</span>
+<span class="kn">from</span> <span class="nn">pycbc.workflow.core</span> <span class="k">import</span> <span class="n">Executable</span><span class="p">,</span> <span class="n">FileList</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">makedir</span><span class="p">,</span> <span class="n">File</span><span class="p">,</span> <span class="n">Workflow</span>
+<span class="kn">from</span> <span class="nn">pycbc.workflow.plotting</span> <span class="k">import</span> <span class="n">PlotExecutable</span><span class="p">,</span> <span class="n">requirestr</span><span class="p">,</span> <span class="n">excludestr</span>
+<span class="kn">from</span> <span class="nn">pycbc.workflow</span> <span class="k">import</span> <span class="n">WorkflowConfigParser</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">izip_longest</span>
+<span class="kn">from</span> <span class="nn">Pegasus</span> <span class="k">import</span> <span class="n">DAX3</span> <span class="k">as</span> <span class="n">dax</span>
+<span class="kn">from</span> <span class="nn">pycbc.workflow</span> <span class="k">import</span> <span class="n">pegasus_workflow</span> <span class="k">as</span> <span class="n">wdax</span>
+
+<div class="viewcode-block" id="setup_foreground_inference"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.setup_foreground_inference">[docs]</a><span class="k">def</span> <span class="nf">setup_foreground_inference</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">coinc_file</span><span class="p">,</span> <span class="n">single_triggers</span><span class="p">,</span>
+                       <span class="n">tmpltbank_file</span><span class="p">,</span> <span class="n">insp_segs</span><span class="p">,</span> <span class="n">insp_data_name</span><span class="p">,</span>
+                       <span class="n">insp_anal_name</span><span class="p">,</span> <span class="n">dax_output</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Creates workflow node that will run the inference workflow.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    workflow: pycbc.workflow.Workflow</span>
+<span class="sd">        The core workflow instance we are populating</span>
+<span class="sd">    coinc_file: pycbc.workflow.File</span>
+<span class="sd">        The file associated with coincident triggers.</span>
+<span class="sd">    single_triggers: list of pycbc.workflow.File</span>
+<span class="sd">        A list cointaining the file objects associated with the merged</span>
+<span class="sd">        single detector trigger files for each ifo.</span>
+<span class="sd">    tmpltbank_file: pycbc.workflow.File</span>
+<span class="sd">        The file object pointing to the HDF format template bank</span>
+<span class="sd">    insp_segs: SegFile</span>
+<span class="sd">       The segment file containing the data read and analyzed by each inspiral</span>
+<span class="sd">       job.</span>
+<span class="sd">    insp_data_name: str</span>
+<span class="sd">        The name of the segmentlist storing data read.</span>
+<span class="sd">    insp_anal_name: str</span>
+<span class="sd">        The name of the segmentlist storing data analyzed.</span>
+<span class="sd">    dax_output : str</span>
+<span class="sd">        The name of the output DAX file.</span>
+<span class="sd">    out_dir: path</span>
+<span class="sd">        The directory to store inference result plots and files</span>
+<span class="sd">    tags: {None, optional}</span>
+<span class="sd">        Tags to add to the inference executables</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Entering inference module&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check if configuration file has inference section    </span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">has_section</span><span class="p">(</span><span class="s2">&quot;workflow-inference&quot;</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;There is no [workflow-inference] section in configuration file&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving inference module&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># default tags is a list</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
+
+    <span class="c1"># make the directory that will contain the dax file</span>
+    <span class="n">makedir</span><span class="p">(</span><span class="n">dax_output</span><span class="p">)</span>
+    
+    <span class="c1"># turn the config file into a File class</span>
+    <span class="n">config_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">dax_output</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span> \
+                                        <span class="o">+</span> <span class="s2">&quot;foreground_inference.ini&quot;</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">))</span>
+    <span class="n">config_file</span> <span class="o">=</span> <span class="n">wdax</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">config_path</span><span class="p">))</span>
+    <span class="n">config_file</span><span class="o">.</span><span class="n">PFN</span><span class="p">(</span><span class="n">config_path</span><span class="p">,</span> <span class="s2">&quot;local&quot;</span><span class="p">)</span>
+
+    <span class="c1"># create an Executable for the inference workflow generator</span>
+    <span class="n">exe</span> <span class="o">=</span> <span class="n">Executable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;foreground_inference&quot;</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
+                     <span class="n">out_dir</span><span class="o">=</span><span class="n">dax_output</span><span class="p">)</span>
+
+    <span class="c1"># create the node that will run in the workflow</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">exe</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s2">&quot;--config-files&quot;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s2">&quot;--bank-file&quot;</span><span class="p">,</span> <span class="n">tmpltbank_file</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s2">&quot;--statmap-file&quot;</span><span class="p">,</span> <span class="n">coinc_file</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_multiifo_input_list_opt</span><span class="p">(</span><span class="s2">&quot;--single-detector-triggers&quot;</span><span class="p">,</span>
+                                     <span class="n">single_triggers</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s2">&quot;.dax&quot;</span><span class="p">,</span> <span class="s2">&quot;--output-file&quot;</span><span class="p">,</span>
+                                     <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span><span class="p">,</span> <span class="s2">&quot;.dax.map&quot;</span><span class="p">,</span>
+                                     <span class="s2">&quot;--output-map&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span>
+
+    <span class="c1"># get dax name and use it for the workflow name</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s2">&quot;--workflow-name&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="c1"># get output map name and use it for the output dir name</span>
+    <span class="n">map_file</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s2">&quot;--output-dir&quot;</span><span class="p">,</span> <span class="n">out_dir</span><span class="p">)</span>
+
+    <span class="c1"># add this node to the workflow</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+
+    <span class="c1"># create job for dax that will run a sub-workflow</span>
+    <span class="c1"># and add it to the workflow</span>
+    <span class="n">fil</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">job</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">DAX</span><span class="p">(</span><span class="n">fil</span><span class="p">)</span>
+    <span class="n">job</span><span class="o">.</span><span class="n">addArguments</span><span class="p">(</span><span class="s2">&quot;--basename </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">name</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">Workflow</span><span class="o">.</span><span class="n">set_job_properties</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">map_file</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addJob</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+
+    <span class="c1"># make dax a child of the inference workflow generator node</span>
+    <span class="n">dep</span> <span class="o">=</span> <span class="n">dax</span><span class="o">.</span><span class="n">Dependency</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">_dax_node</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="n">job</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">_adag</span><span class="o">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">dep</span><span class="p">)</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Leaving inference module&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="make_inference_prior_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_prior_plot">[docs]</a><span class="k">def</span> <span class="nf">make_inference_prior_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
+                    <span class="n">sections</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;inference_prior&quot;</span><span class="p">,</span>
+                    <span class="n">analysis_seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Sets up the corner plot of the priors in the workflow.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    workflow: pycbc.workflow.Workflow</span>
+<span class="sd">        The core workflow instance we are populating</span>
+<span class="sd">    config_file: pycbc.workflow.File</span>
+<span class="sd">        The WorkflowConfigParser parasable inference configuration file..</span>
+<span class="sd">    output_dir: str</span>
+<span class="sd">        The directory to store result plots and files.</span>
+<span class="sd">    sections : list</span>
+<span class="sd">        A list of subsections to use.</span>
+<span class="sd">    name: str</span>
+<span class="sd">        The name in the [executables] section of the configuration file</span>
+<span class="sd">        to use.</span>
+<span class="sd">    analysis_segs: {None, glue.segments.Segment}</span>
+<span class="sd">       The segment this job encompasses. If None then use the total analysis</span>
+<span class="sd">       time from the workflow.</span>
+<span class="sd">    tags: {None, optional}</span>
+<span class="sd">        Tags to add to the inference executables.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pycbc.workflow.FileList</span>
+<span class="sd">        A list of result and output files. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># default values</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
+    <span class="n">analysis_seg</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span> \
+                       <span class="k">if</span> <span class="n">analysis_seg</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">analysis_seg</span>
+
+    <span class="c1"># make the directory that will contain the output files</span>
+    <span class="n">makedir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+
+    <span class="c1"># make a node for plotting the posterior as a corner plot</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">PlotExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
+                      <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">universe</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">,</span>
+                      <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
+
+    <span class="c1"># add command line options</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s2">&quot;--config-file&quot;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">analysis_seg</span><span class="p">,</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span> <span class="s2">&quot;--output-file&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sections</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s2">&quot;--sections&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sections</span><span class="p">))</span>
+
+    <span class="c1"># add node to workflow</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
+
+<div class="viewcode-block" id="make_inference_summary_table"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_summary_table">[docs]</a><span class="k">def</span> <span class="nf">make_inference_summary_table</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
+                    <span class="n">variable_args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;inference_table&quot;</span><span class="p">,</span>
+                    <span class="n">analysis_seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Sets up the corner plot of the posteriors in the workflow.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    workflow: pycbc.workflow.Workflow</span>
+<span class="sd">        The core workflow instance we are populating</span>
+<span class="sd">    inference_file: pycbc.workflow.File</span>
+<span class="sd">        The file with posterior samples.</span>
+<span class="sd">    output_dir: str</span>
+<span class="sd">        The directory to store result plots and files.</span>
+<span class="sd">    variable_args : list</span>
+<span class="sd">        A list of parameters to use instead of [variable_args].</span>
+<span class="sd">    name: str</span>
+<span class="sd">        The name in the [executables] section of the configuration file</span>
+<span class="sd">        to use.</span>
+<span class="sd">    analysis_segs: {None, glue.segments.Segment}</span>
+<span class="sd">       The segment this job encompasses. If None then use the total analysis</span>
+<span class="sd">       time from the workflow.</span>
+<span class="sd">    tags: {None, optional}</span>
+<span class="sd">        Tags to add to the inference executables.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pycbc.workflow.FileList</span>
+<span class="sd">        A list of result and output files. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># default values</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
+    <span class="n">analysis_seg</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span> \
+                       <span class="k">if</span> <span class="n">analysis_seg</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">analysis_seg</span>
+
+    <span class="c1"># make the directory that will contain the output files</span>
+    <span class="n">makedir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+
+    <span class="c1"># make a node for plotting the posterior as a corner plot</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">PlotExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
+                      <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
+
+    <span class="c1"># add command line options</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s2">&quot;--input-file&quot;</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">analysis_seg</span><span class="p">,</span> <span class="s2">&quot;.html&quot;</span><span class="p">,</span> <span class="s2">&quot;--output-file&quot;</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s2">&quot;--parameters&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">variable_args</span><span class="p">))</span>
+
+    <span class="c1"># add node to workflow</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
+
+<div class="viewcode-block" id="make_inference_posterior_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_posterior_plot">[docs]</a><span class="k">def</span> <span class="nf">make_inference_posterior_plot</span><span class="p">(</span>
+                    <span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;inference_posterior&quot;</span><span class="p">,</span> <span class="n">analysis_seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Sets up the corner plot of the posteriors in the workflow.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    workflow: pycbc.workflow.Workflow</span>
+<span class="sd">        The core workflow instance we are populating</span>
+<span class="sd">    inference_file: pycbc.workflow.File</span>
+<span class="sd">        The file with posterior samples.</span>
+<span class="sd">    output_dir: str</span>
+<span class="sd">        The directory to store result plots and files.</span>
+<span class="sd">    parameters : list</span>
+<span class="sd">        A list of parameters to plot.</span>
+<span class="sd">    name: str</span>
+<span class="sd">        The name in the [executables] section of the configuration file</span>
+<span class="sd">        to use.</span>
+<span class="sd">    analysis_segs: {None, glue.segments.Segment}</span>
+<span class="sd">       The segment this job encompasses. If None then use the total analysis</span>
+<span class="sd">       time from the workflow.</span>
+<span class="sd">    tags: {None, optional}</span>
+<span class="sd">        Tags to add to the inference executables.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pycbc.workflow.FileList</span>
+<span class="sd">        A list of result and output files. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># default values</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
+    <span class="n">analysis_seg</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span> \
+                       <span class="k">if</span> <span class="n">analysis_seg</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">analysis_seg</span>
+
+    <span class="c1"># make the directory that will contain the output files</span>
+    <span class="n">makedir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+
+    <span class="c1"># make a node for plotting the posterior as a corner plot</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">PlotExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
+                      <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">universe</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">,</span>
+                      <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
+
+    <span class="c1"># add command line options</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s2">&quot;--input-file&quot;</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">analysis_seg</span><span class="p">,</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span> <span class="s2">&quot;--output-file&quot;</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s2">&quot;--parameters&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parameters</span><span class="p">))</span>
+
+    <span class="c1"># add node to workflow</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
+
+<div class="viewcode-block" id="make_inference_1d_posterior_plots"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_1d_posterior_plots">[docs]</a><span class="k">def</span> <span class="nf">make_inference_1d_posterior_plots</span><span class="p">(</span>
+                    <span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">analysis_seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">parameters</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">FileList</span><span class="p">([])</span>
+    <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">+=</span> <span class="n">make_inference_posterior_plot</span><span class="p">(</span>
+                    <span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
+                    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">parameter</span><span class="p">],</span> <span class="n">analysis_seg</span><span class="o">=</span><span class="n">analysis_seg</span><span class="p">,</span>
+                    <span class="n">tags</span><span class="o">=</span><span class="n">tags</span> <span class="o">+</span> <span class="p">[</span><span class="n">parameter</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">files</span></div>
+
+<div class="viewcode-block" id="make_inference_samples_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_samples_plot">[docs]</a><span class="k">def</span> <span class="nf">make_inference_samples_plot</span><span class="p">(</span>
+                    <span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;inference_samples&quot;</span><span class="p">,</span> <span class="n">analysis_seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># default values</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
+    <span class="n">analysis_seg</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span> \
+                       <span class="k">if</span> <span class="n">analysis_seg</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">analysis_seg</span>
+
+    <span class="c1"># make the directory that will contain the output files</span>
+    <span class="n">makedir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+
+    <span class="c1"># make a node for plotting the posterior as a corner plot</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">PlotExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
+                      <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">universe</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">,</span>
+                      <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
+
+    <span class="c1"># add command line options</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s2">&quot;--input-file&quot;</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">analysis_seg</span><span class="p">,</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span> <span class="s2">&quot;--output-file&quot;</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_opt</span><span class="p">(</span><span class="s2">&quot;--parameters&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parameters</span><span class="p">))</span>
+
+    <span class="c1"># add node to workflow</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
+
+
+<div class="viewcode-block" id="make_inference_acceptance_rate_plot"><a class="viewcode-back" href="../../../pycbc.workflow.html#pycbc.workflow.inference_followups.make_inference_acceptance_rate_plot">[docs]</a><span class="k">def</span> <span class="nf">make_inference_acceptance_rate_plot</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span>
+                    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;inference_rate&quot;</span><span class="p">,</span> <span class="n">analysis_seg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Sets up the acceptance rate plot in the workflow.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    workflow: pycbc.workflow.Workflow</span>
+<span class="sd">        The core workflow instance we are populating</span>
+<span class="sd">    inference_file: pycbc.workflow.File</span>
+<span class="sd">        The file with posterior samples.</span>
+<span class="sd">    output_dir: str</span>
+<span class="sd">        The directory to store result plots and files.</span>
+<span class="sd">    name: str</span>
+<span class="sd">        The name in the [executables] section of the configuration file</span>
+<span class="sd">        to use.</span>
+<span class="sd">    analysis_segs: {None, glue.segments.Segment}</span>
+<span class="sd">       The segment this job encompasses. If None then use the total analysis</span>
+<span class="sd">       time from the workflow.</span>
+<span class="sd">    tags: {None, optional}</span>
+<span class="sd">        Tags to add to the inference executables.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pycbc.workflow.FileList</span>
+<span class="sd">        A list of result and output files. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># default values</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">tags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">tags</span>
+    <span class="n">analysis_seg</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">analysis_time</span> \
+                       <span class="k">if</span> <span class="n">analysis_seg</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">analysis_seg</span>
+
+    <span class="c1"># make the directory that will contain the output files</span>
+    <span class="n">makedir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+
+    <span class="c1"># make a node for plotting the acceptance rate</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">PlotExecutable</span><span class="p">(</span><span class="n">workflow</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ifos</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">ifos</span><span class="p">,</span>
+                      <span class="n">out_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">)</span><span class="o">.</span><span class="n">create_node</span><span class="p">()</span>
+
+    <span class="c1"># add command line options</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">add_input_opt</span><span class="p">(</span><span class="s2">&quot;--input-file&quot;</span><span class="p">,</span> <span class="n">inference_file</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">new_output_file_opt</span><span class="p">(</span><span class="n">analysis_seg</span><span class="p">,</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span> <span class="s2">&quot;--output-file&quot;</span><span class="p">)</span>
+
+    <span class="c1"># add node to workflow</span>
+    <span class="n">workflow</span> <span class="o">+=</span> <span class="n">node</span>
+
+    <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">output_files</span></div>
+
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

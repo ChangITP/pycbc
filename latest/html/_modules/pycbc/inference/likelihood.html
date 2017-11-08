@@ -1,0 +1,1140 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.inference.likelihood &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.inference.likelihood</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.inference.likelihood</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2016  Collin Capano</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                                   Preamble</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This modules provides classes and functions for evaluating the log likelihood</span>
+<span class="sd">for parameter estimation.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">conversions</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="nb">filter</span>
+<span class="kn">import</span> <span class="nn">pycbc.transforms</span>
+<span class="kn">from</span> <span class="nn">pycbc.waveform</span> <span class="k">import</span> <span class="n">NoWaveformError</span>
+<span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">Array</span>
+<span class="kn">from</span> <span class="nn">pycbc.io</span> <span class="k">import</span> <span class="n">FieldArray</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span>
+
+<span class="c1"># Used to manage a likelihood instance across multiple cores or MPI</span>
+<span class="n">_global_instance</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">def</span> <span class="nf">_call_global_likelihood</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_global_instance</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span> <span class="c1"># pylint:disable=not-callable</span>
+
+<span class="k">class</span> <span class="nc">_NoPrior</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Dummy class to just return 0 if no prior is provided in a</span>
+<span class="sd">    likelihood generator.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">apply_boundary_conditions</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">params</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">0.</span>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator">[docs]</a><span class="k">class</span> <span class="nc">BaseLikelihoodEvaluator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Base container class for generating waveforms, storing the data, and</span>
+<span class="sd">    computing posteriors.</span>
+
+<span class="sd">    The nomenclature used by this class and those that inherit from it is as</span>
+<span class="sd">    follows: Given some model parameters :math:`\Theta` and some data</span>
+<span class="sd">    :math:`d` with noise model :math:`n`, we define:</span>
+
+<span class="sd">     * the **likelihood function**: :math:`p(d|\Theta)`</span>
+
+<span class="sd">     * the **noise likelihood**: :math:`p(d|n)`</span>
+
+<span class="sd">     * the **likelihood ratio**: :math:`\mathcal{L}(\Theta) = \frac{p(d|\Theta)}{p(d|n)}`</span>
+
+<span class="sd">     * the **prior**: :math:`p(\Theta)`</span>
+
+<span class="sd">     * the **posterior**: :math:`p(\Theta|d) \propto p(d|\Theta)p(\Theta)`</span>
+
+<span class="sd">     * the **prior-weighted likelihood ratio**: :math:`\hat{\mathcal{L}}(\Theta) = \frac{p(d|\Theta)p(\Theta)}{p(d|n)}`</span>
+
+<span class="sd">     * the **SNR**: :math:`\rho(\Theta) = \sqrt{2\log\mathcal{L}(\Theta)}`; for</span>
+<span class="sd">       two detectors, this is approximately the same quantity as the coincident</span>
+<span class="sd">       SNR used in the CBC search.</span>
+
+<span class="sd">    .. note::</span>
+
+<span class="sd">        Although the posterior probability is only proportional to</span>
+<span class="sd">        :math:`p(d|\Theta)p(\Theta)`, here we refer to this quantity as the</span>
+<span class="sd">        posterior. Also note that for a given noise model, the prior-weighted</span>
+<span class="sd">        likelihood ratio is proportional to the posterior, and so the two can</span>
+<span class="sd">        usually be swapped for each other.</span>
+
+<span class="sd">    When performing parameter estimation we work with the log of these values</span>
+<span class="sd">    since we are mostly concerned with their values around the maxima. If</span>
+<span class="sd">    we have multiple detectors, each with data :math:`d_i`, then these values</span>
+<span class="sd">    simply sum over the detectors. For example, the log likelihood ratio is:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \log \mathcal{L}(\Theta) = \sum_i \left[\log p(\Theta|d_i) - \log p(n|d_i)\right]</span>
+
+<span class="sd">    This class provides boiler-plate methods and attributes for evaluating the</span>
+<span class="sd">    log likelihood ratio, log prior, and log likelihood. This class</span>
+<span class="sd">    makes no assumption about the detectors&#39; noise model :math:`n`. As such,</span>
+<span class="sd">    the methods for computing these values raise ``NotImplementedErrors``. These</span>
+<span class="sd">    functions need to be monkey patched, or other classes that inherit from</span>
+<span class="sd">    this class need to define their own functions.</span>
+
+<span class="sd">    Instances of this class can be called like a function. The default is for</span>
+<span class="sd">    this class to call its ``logposterior`` function, but this can be changed</span>
+<span class="sd">    with the ``set_callfunc`` method.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    variable_args : (tuple of) string(s)</span>
+<span class="sd">        A tuple of parameter names that will be varied.</span>
+<span class="sd">    waveform_generator : generator class, optional</span>
+<span class="sd">        A generator class that creates waveforms.</span>
+<span class="sd">    data : dict, optional</span>
+<span class="sd">        A dictionary of data, in which the keys are the detector names and the</span>
+<span class="sd">        values are the data.</span>
+<span class="sd">    prior : callable, optional</span>
+<span class="sd">        A callable class or function that computes the log of the prior. If</span>
+<span class="sd">        None provided, will use ``_noprior``, which returns 0 for all parameter</span>
+<span class="sd">        values.</span>
+<span class="sd">    sampling_parameters : list, optional</span>
+<span class="sd">        Replace one or more of the variable args with the given parameters</span>
+<span class="sd">        for sampling.</span>
+<span class="sd">    replace_parameters : list, optional</span>
+<span class="sd">        The variable args to replace with sampling parameters. Must be the</span>
+<span class="sd">        same length as ``sampling_parameters``.</span>
+<span class="sd">    sampling_transforms : list, optional</span>
+<span class="sd">        List of transforms to use to go between the variable args and the</span>
+<span class="sd">        sampling parameters. Required if ``sampling_parameters`` is not None.</span>
+<span class="sd">    waveform_transforms : list, optional</span>
+<span class="sd">        List of transforms to use to go from the variable args to parameters</span>
+<span class="sd">        understood by the waveform generator.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    waveform_generator : dict</span>
+<span class="sd">        The waveform generator that the class was initialized with.</span>
+<span class="sd">    data : dict</span>
+<span class="sd">        The data that the class was initialized with.</span>
+<span class="sd">    lognl : {None, float}</span>
+<span class="sd">        The log of the noise likelihood summed over the number of detectors.</span>
+<span class="sd">    return_meta : {True, bool}</span>
+<span class="sd">        If True, ``prior``, ``logposterior``, and ``logplr`` will return the</span>
+<span class="sd">        value of the prior, the loglikelihood ratio, and the log jacobian,</span>
+<span class="sd">        along with the posterior/plr.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    logjacobian :</span>
+<span class="sd">        Returns the log of the jacobian needed to go from the parameter space</span>
+<span class="sd">        of the variable args to the sampling args.</span>
+<span class="sd">    prior :</span>
+<span class="sd">        A function that returns the log of the prior.</span>
+<span class="sd">    loglikelihood :</span>
+<span class="sd">        A function that returns the log of the likelihood function.</span>
+<span class="sd">    logposterior :</span>
+<span class="sd">        A function that returns the log of the posterior.</span>
+<span class="sd">    loglr :</span>
+<span class="sd">        A function that returns the log of the likelihood ratio.</span>
+<span class="sd">    logplr :</span>
+<span class="sd">        A function that returns the log of the prior-weighted likelihood ratio.</span>
+<span class="sd">    snr :</span>
+<span class="sd">        A function that returns the square root of twice the log likelihood</span>
+<span class="sd">        ratio. If the log likelihood ratio is &lt; 0, will return 0.</span>
+<span class="sd">    evaluate :</span>
+<span class="sd">        Maps a list of values to their parameter names and calls whatever the</span>
+<span class="sd">        call function is set to.</span>
+<span class="sd">    set_callfunc :</span>
+<span class="sd">        Set the function to use when the class is called as a function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">required_kwargs</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_args</span><span class="p">,</span>
+                 <span class="n">waveform_generator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">sampling_parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">replace_parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">sampling_transforms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">waveform_transforms</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">return_meta</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">variable_args</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">variable_args</span><span class="p">,</span> <span class="n">unicode</span><span class="p">):</span>
+            <span class="n">variable_args</span> <span class="o">=</span> <span class="p">(</span><span class="n">variable_args</span><span class="p">,)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">variable_args</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">variable_args</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">variable_args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variable_args</span> <span class="o">=</span> <span class="n">variable_args</span>
+        <span class="c1"># store data, waveform generator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_waveform_generator</span> <span class="o">=</span> <span class="n">waveform_generator</span>
+        <span class="c1"># we&#39;ll store a copy of the data</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([[</span><span class="n">ifo</span><span class="p">,</span> <span class="mi">1</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="n">ifo</span><span class="p">]]</span> <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># store prior</span>
+        <span class="k">if</span> <span class="n">prior</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_prior</span> <span class="o">=</span> <span class="n">_NoPrior</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># check that the variable args of the prior evaluator is the same</span>
+            <span class="c1"># as the waveform generator</span>
+            <span class="k">if</span> <span class="n">prior</span><span class="o">.</span><span class="n">variable_args</span> <span class="o">!=</span> <span class="n">variable_args</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;variable args of prior and waveform &quot;</span>
+                    <span class="s2">&quot;generator do not match&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_prior</span> <span class="o">=</span> <span class="n">prior</span>
+        <span class="c1"># initialize the log nl to None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lognl</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">return_meta</span> <span class="o">=</span> <span class="n">return_meta</span>
+        <span class="c1"># store sampling parameters and transforms</span>
+        <span class="k">if</span> <span class="n">sampling_parameters</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">replace_parameters</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> \
+                    <span class="nb">len</span><span class="p">(</span><span class="n">replace_parameters</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sampling_parameters</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;number of sampling parameters must be the &quot;</span>
+                                 <span class="s2">&quot;same as the number of replace parameters&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">sampling_transforms</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;must provide sampling transforms for the &quot;</span>
+                                 <span class="s2">&quot;sampling parameters&quot;</span><span class="p">)</span>
+            <span class="c1"># pull out the replaced parameters</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">arg</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_args</span> \
+                                       <span class="k">if</span> <span class="n">arg</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">replace_parameters</span><span class="p">]</span>
+            <span class="c1"># add the samplign parameters</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_args</span> <span class="o">+=</span> <span class="n">sampling_parameters</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_transforms</span> <span class="o">=</span> <span class="n">sampling_transforms</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_args</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_transforms</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_waveform_transforms</span> <span class="o">=</span> <span class="n">waveform_transforms</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">variable_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the variable arguments.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable_args</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">waveform_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the waveform generator that was set.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waveform_generator</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the data that was set.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sampling_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the sampling arguments.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_args</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sampling_transforms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the sampling transforms.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_transforms</span>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.apply_sampling_transforms"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.apply_sampling_transforms">[docs]</a>    <span class="k">def</span> <span class="nf">apply_sampling_transforms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Applies the sampling transforms to the given samples.</span>
+
+<span class="sd">        If ``sampling_transforms`` is None, just returns the samples.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        samples : dict or FieldArray</span>
+<span class="sd">            The samples to apply the transforms to.</span>
+<span class="sd">        inverse : bool, optional</span>
+<span class="sd">            Whether to apply the inverse transforms (i.e., go from the sampling</span>
+<span class="sd">            args to the variable args). Default is False.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict or FieldArray</span>
+<span class="sd">            The transformed samples, along with the original samples.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_transforms</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">samples</span>
+        <span class="k">return</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">apply_transforms</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span>
+                                                 <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_transforms</span><span class="p">,</span>
+                                                 <span class="n">inverse</span><span class="o">=</span><span class="n">inverse</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lognl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the log of the noise likelihood.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lognl</span>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.set_lognl"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.set_lognl">[docs]</a>    <span class="k">def</span> <span class="nf">set_lognl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lognl</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the value of the log noise likelihood.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lognl</span> <span class="o">=</span> <span class="n">lognl</span></div>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.logjacobian"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.logjacobian">[docs]</a>    <span class="k">def</span> <span class="nf">logjacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the log of the jacobian needed to transform pdfs in the</span>
+<span class="sd">        ``variable_args`` parameter space to the ``sampling_args`` parameter</span>
+<span class="sd">        space.</span>
+
+<span class="sd">        Let :math:`\mathbf{x}` be the set of variable parameters,</span>
+<span class="sd">        :math:`\mathbf{y} = f(\mathbf{x})` the set of sampling parameters, and</span>
+<span class="sd">        :math:`p_x(\mathbf{x})` a probability density function defined over</span>
+<span class="sd">        :math:`\mathbf{x}`. The corresponding pdf in :math:`\mathbf{y}` is then:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            p_y(\mathbf{y}) = p_x(\mathbf{x})\left|\mathrm{det}\,\mathbf{J}_{ij}\right|,</span>
+
+<span class="sd">        where :math:`\mathbf{J}_{ij}` is the Jacobian of the inverse transform</span>
+<span class="sd">        :math:`\mathbf{x} = g(\mathbf{y})`. This has elements:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \mathbf{J}_{ij} = \frac{\partial g_i}{\partial{y_j}}</span>
+
+<span class="sd">        This function returns</span>
+<span class="sd">        :math:`\log \left|\mathrm{det}\,\mathbf{J}_{ij}\right|`.</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        \**params :</span>
+<span class="sd">            The keyword arguments should specify values for all of the variable</span>
+<span class="sd">            args and all of the sampling args.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float :</span>
+<span class="sd">            The value of the jacobian.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_transforms</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">pycbc</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">compute_jacobian</span><span class="p">(</span><span class="n">params</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_transforms</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.prior"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.prior">[docs]</a>    <span class="k">def</span> <span class="nf">prior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function should return the prior of the given params.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">logjacobian</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">logp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prior</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span> <span class="o">+</span> <span class="n">logj</span>
+        <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">logp</span><span class="p">):</span>
+            <span class="n">logp</span> <span class="o">=</span> <span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">inf</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formatreturn</span><span class="p">(</span><span class="n">logp</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">logp</span><span class="p">,</span> <span class="n">logjacobian</span><span class="o">=</span><span class="n">logj</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.prior_rvs"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.prior_rvs">[docs]</a>    <span class="k">def</span> <span class="nf">prior_rvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns random variates drawn from the prior.</span>
+
+<span class="sd">        If the ``sampling_args`` are different from the ``variable_args``, the</span>
+<span class="sd">        variates are transformed to the `sampling_args` parameter space before</span>
+<span class="sd">        being returned.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        size : int, optional</span>
+<span class="sd">            Number of random values to return for each parameter. Default is 1.</span>
+<span class="sd">        prior : PriorEvaluator, optional</span>
+<span class="sd">            Use the given prior to draw values rather than the saved prior.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        FieldArray</span>
+<span class="sd">            A field array of the random values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># draw values from the prior</span>
+        <span class="k">if</span> <span class="n">prior</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">prior</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prior</span>
+        <span class="n">p0</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+        <span class="c1"># transform if necessary</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_transforms</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ptrans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_sampling_transforms</span><span class="p">(</span><span class="n">p0</span><span class="p">)</span>
+            <span class="c1"># pull out the sampling args</span>
+            <span class="n">p0</span> <span class="o">=</span> <span class="n">FieldArray</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">([</span><span class="n">ptrans</span><span class="p">[</span><span class="n">arg</span><span class="p">]</span>
+                                         <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_args</span><span class="p">],</span>
+                                        <span class="n">names</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_sampling_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">p0</span></div>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.loglikelihood"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.loglikelihood">[docs]</a>    <span class="k">def</span> <span class="nf">loglikelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the natural log of the likelihood function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Likelihood function not set.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.loglr"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.loglr">[docs]</a>    <span class="k">def</span> <span class="nf">loglr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the natural log of the likelihood ratio.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">loglikelihood</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lognl</span></div>
+
+    <span class="c1"># the names and order of data returned by _formatreturn when</span>
+    <span class="c1"># return_metadata is True</span>
+    <span class="n">metadata_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;prior&quot;</span><span class="p">,</span> <span class="s2">&quot;loglr&quot;</span><span class="p">,</span> <span class="s2">&quot;logjacobian&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_formatreturn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loglr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logjacobian</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Adds the prior to the return value if return_meta is True.</span>
+<span class="sd">        Otherwise, just returns the value.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        val : float</span>
+<span class="sd">            The value to return.</span>
+<span class="sd">        prior : float, optional</span>
+<span class="sd">            The value of the prior.</span>
+<span class="sd">        loglr : float, optional</span>
+<span class="sd">            The value of the log likelihood-ratio.</span>
+<span class="sd">        logjacobian : float, optional</span>
+<span class="sd">            The value of the log jacobian used to go from the variable args</span>
+<span class="sd">            to the sampling args.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        val : float</span>
+<span class="sd">            The given value to return.</span>
+<span class="sd">        *If return_meta is True:*</span>
+<span class="sd">        metadata : (prior, loglr, logjacobian)</span>
+<span class="sd">            A tuple of the prior, log likelihood ratio, and logjacobian.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_meta</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">loglr</span><span class="p">,</span> <span class="n">logjacobian</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">val</span>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.logplr"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.logplr">[docs]</a>    <span class="k">def</span> <span class="nf">logplr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the log of the prior-weighted likelihood ratio.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_meta</span><span class="p">:</span>
+            <span class="n">logp</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">logj</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prior</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prior</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+            <span class="n">logj</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># if the prior returns -inf, just return</span>
+        <span class="k">if</span> <span class="n">logp</span> <span class="o">==</span> <span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formatreturn</span><span class="p">(</span><span class="n">logp</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">logp</span><span class="p">,</span> <span class="n">logjacobian</span><span class="o">=</span><span class="n">logj</span><span class="p">)</span>
+        <span class="n">llr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loglr</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formatreturn</span><span class="p">(</span><span class="n">llr</span> <span class="o">+</span> <span class="n">logp</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">logp</span><span class="p">,</span> <span class="n">loglr</span><span class="o">=</span><span class="n">llr</span><span class="p">,</span>
+                                  <span class="n">logjacobian</span><span class="o">=</span><span class="n">logj</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.logposterior"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.logposterior">[docs]</a>    <span class="k">def</span> <span class="nf">logposterior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the log of the posterior of the given params.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_meta</span><span class="p">:</span>
+            <span class="n">logp</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">logj</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prior</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prior</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+            <span class="n">logj</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># if the prior returns -inf, just return</span>
+        <span class="k">if</span> <span class="n">logp</span> <span class="o">==</span> <span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formatreturn</span><span class="p">(</span><span class="n">logp</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">logp</span><span class="p">,</span> <span class="n">logjacobian</span><span class="o">=</span><span class="n">logj</span><span class="p">)</span>
+        <span class="n">ll</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loglikelihood</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formatreturn</span><span class="p">(</span><span class="n">ll</span> <span class="o">+</span> <span class="n">logp</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">logp</span><span class="p">,</span> <span class="n">loglr</span><span class="o">=</span><span class="n">ll</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_lognl</span><span class="p">,</span>
+                                  <span class="n">logjacobian</span><span class="o">=</span><span class="n">logj</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.snr"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.snr">[docs]</a>    <span class="k">def</span> <span class="nf">snr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the &quot;SNR&quot; of the given params. This will return</span>
+<span class="sd">        imaginary values if the log likelihood ratio is &lt; 0.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">conversions</span><span class="o">.</span><span class="n">snr_from_loglr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loglr</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">))</span></div>
+
+    <span class="n">_callfunc</span> <span class="o">=</span> <span class="n">logposterior</span>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.set_callfunc"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.set_callfunc">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">set_callfunc</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">funcname</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets the function used when the class is called as a function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        funcname : str</span>
+<span class="sd">            The name of the function to use; must be the name of an instance</span>
+<span class="sd">            method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_callfunc</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">funcname</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseLikelihoodEvaluator.evaluate"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.BaseLikelihoodEvaluator.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">callfunc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Evaluates the call function at the given list of parameter values.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        params : list</span>
+<span class="sd">            A list of values. These are assumed to be in the same order as</span>
+<span class="sd">            variable args.</span>
+<span class="sd">        callfunc : str, optional</span>
+<span class="sd">            The name of the function to call. If None, will use</span>
+<span class="sd">            ``self._callfunc``. Default is None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float or tuple :</span>
+<span class="sd">            If ``return_meta`` is False, the output of the call function. If</span>
+<span class="sd">            ``return_meta`` is True, a tuple of the output of the call function</span>
+<span class="sd">            and the meta data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sampling_args</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+        <span class="c1"># apply inverse transforms to go from sampling parameters to</span>
+        <span class="c1"># variable args</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_sampling_transforms</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># apply boundary conditions</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prior</span><span class="o">.</span><span class="n">apply_boundary_conditions</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="c1"># apply waveform transforms</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waveform_transforms</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">apply_transforms</span><span class="p">(</span><span class="n">params</span><span class="p">,</span>
+                                                 <span class="bp">self</span><span class="o">.</span><span class="n">_waveform_transforms</span><span class="p">,</span>
+                                                 <span class="n">inverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># apply any boundary conditions to the parameters before</span>
+        <span class="c1"># generating/evaluating</span>
+        <span class="k">if</span> <span class="n">callfunc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callfunc</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callfunc</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span></div>
+
+    <span class="fm">__call__</span> <span class="o">=</span> <span class="n">evaluate</span></div>
+
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                              Test distributions</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<div class="viewcode-block" id="TestNormal"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.TestNormal">[docs]</a><span class="k">class</span> <span class="nc">TestNormal</span><span class="p">(</span><span class="n">BaseLikelihoodEvaluator</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The test distribution is an multi-variate normal distribution.</span>
+
+<span class="sd">    The number of dimensions is set by the number of ``variable_args`` that are</span>
+<span class="sd">    passed. For details on the distribution used, see</span>
+<span class="sd">    ``scipy.stats.multivariate_normal``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    variable_args : (tuple of) string(s)</span>
+<span class="sd">        A tuple of parameter names that will be varied.</span>
+<span class="sd">    mean : array-like, optional</span>
+<span class="sd">        The mean values of the parameters. If None provide, will use 0 for all</span>
+<span class="sd">        parameters.</span>
+<span class="sd">    cov : array-like, optional</span>
+<span class="sd">        The covariance matrix of the parameters. If None provided, will use</span>
+<span class="sd">        unit variance for all parameters, with cross-terms set to 0.</span>
+<span class="sd">    \**kwargs :</span>
+<span class="sd">        All other keyword arguments are passed to ``BaseLikelihoodEvaluator``.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;test_normal&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_args</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># set up base likelihood parameters</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TestNormal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">variable_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># set the lognl to 0 since there is no data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_lognl</span><span class="p">(</span><span class="mf">0.</span><span class="p">)</span>
+        <span class="c1"># store the pdf</span>
+        <span class="k">if</span> <span class="n">mean</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mean</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">variable_args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cov</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cov</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">variable_args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dist</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">cov</span><span class="p">)</span>
+        <span class="c1"># check that the dimension is correct</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dist</span><span class="o">.</span><span class="n">dim</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">variable_args</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;dimension mis-match between variable_args and &quot;</span>
+                             <span class="s2">&quot;mean and/or cov&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TestNormal.loglikelihood"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.TestNormal.loglikelihood">[docs]</a>    <span class="k">def</span> <span class="nf">loglikelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the log pdf of the multivariate normal.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dist</span><span class="o">.</span><span class="n">logpdf</span><span class="p">([</span><span class="n">params</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variable_args</span><span class="p">])</span></div></div>
+
+
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                              Data-based likelihoods</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<div class="viewcode-block" id="GaussianLikelihood"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.GaussianLikelihood">[docs]</a><span class="k">class</span> <span class="nc">GaussianLikelihood</span><span class="p">(</span><span class="n">BaseLikelihoodEvaluator</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes log likelihoods assuming the detectors&#39; noise is Gaussian.</span>
+
+<span class="sd">    With Gaussian noise the log likelihood functions for signal</span>
+<span class="sd">    :math:`\log p(d|\Theta)` and for noise :math:`\log p(d|n)` are given by:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \log p(d|\Theta) &amp;= -\frac{1}{2} \sum_i \left&lt;h_i(\Theta) - d_i | h_i(\Theta) - d_i\right&gt; \\</span>
+<span class="sd">        \log p(d|n) &amp;= -\frac{1}{2} \sum_i \left&lt;d_i | d_i\right&gt;</span>
+
+<span class="sd">    where the sum is over the number of detectors, :math:`d_i` is the data in</span>
+<span class="sd">    each detector, and :math:`h_i(\Theta)` is the model signal in each</span>
+<span class="sd">    detector. The inner product is given by:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \left&lt;a | b\right&gt; = 4\Re \int_{0}^{\infty} \frac{\tilde{a}(f) \tilde{b}(f)}{S_n(f)} \mathrm{d}f,</span>
+
+<span class="sd">    where :math:`S_n(f)` is the PSD in the given detector.</span>
+
+<span class="sd">    Note that the log prior-weighted likelihood ratio has one less term</span>
+<span class="sd">    than the log posterior, since the :math:`\left&lt;d_i|d_i\right&gt;` term cancels</span>
+<span class="sd">    in the likelihood ratio:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \log \hat{\mathcal{L}} = \log p(\Theta) + \sum_i \left[ \left&lt;h_i(\Theta)|d_i\right&gt; - \frac{1}{2} \left&lt;h_i(\Theta)|h_i(\Theta)\right&gt; \right]</span>
+
+<span class="sd">    For this reason, by default this class returns ``logplr`` when called as a</span>
+<span class="sd">    function instead of ``logposterior``. This can be changed via the</span>
+<span class="sd">    ``set_callfunc`` method.</span>
+
+<span class="sd">    Upon initialization, the data is whitened using the given PSDs. If no PSDs</span>
+<span class="sd">    are given the data and waveforms returned by the waveform generator are</span>
+<span class="sd">    assumed to be whitened. The likelihood function of the noise,</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        p(d|n) = \frac{1}{2} \sum_i \left&lt;d_i|d_i\right&gt;,</span>
+
+<span class="sd">    is computed on initialization and stored as the `lognl` attribute.</span>
+
+<span class="sd">    By default, the data is assumed to be equally sampled in frequency, but</span>
+<span class="sd">    unequally sampled data can be supported by passing the appropriate</span>
+<span class="sd">    normalization using the ``norm`` keyword argument.</span>
+
+<span class="sd">    For more details on initialization parameters and definition of terms, see</span>
+<span class="sd">    ``BaseLikelihoodEvaluator``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    variable_args : (tuple of) string(s)</span>
+<span class="sd">        A tuple of parameter names that will be varied.</span>
+<span class="sd">    waveform_generator : generator class</span>
+<span class="sd">        A generator class that creates waveforms. This must have a ``generate``</span>
+<span class="sd">        function which takes parameter values as keyword arguments, a</span>
+<span class="sd">        detectors attribute which is a dictionary of detectors keyed by their</span>
+<span class="sd">        names, and an epoch which specifies the start time of the generated</span>
+<span class="sd">        waveform.</span>
+<span class="sd">    data : dict</span>
+<span class="sd">        A dictionary of data, in which the keys are the detector names and the</span>
+<span class="sd">        values are the data (assumed to be unwhitened). The list of keys must</span>
+<span class="sd">        match the waveform generator&#39;s detectors keys, and the epoch of every</span>
+<span class="sd">        data set must be the same as the waveform generator&#39;s epoch.</span>
+<span class="sd">    f_lower : float</span>
+<span class="sd">        The starting frequency to use for computing inner products.</span>
+<span class="sd">    psds : {None, dict}</span>
+<span class="sd">        A dictionary of FrequencySeries keyed by the detector names. The</span>
+<span class="sd">        dictionary must have a psd for each detector specified in the data</span>
+<span class="sd">        dictionary. If provided, the inner products in each detector will be</span>
+<span class="sd">        weighted by 1/psd of that detector.</span>
+<span class="sd">    f_upper : {None, float}</span>
+<span class="sd">        The ending frequency to use for computing inner products. If not</span>
+<span class="sd">        provided, the minimum of the largest frequency stored in the data</span>
+<span class="sd">        and a given waveform will be used.</span>
+<span class="sd">    norm : {None, float or array}</span>
+<span class="sd">        An extra normalization weight to apply to the inner products. Can be</span>
+<span class="sd">        either a float or an array. If ``None``, ``4*data.values()[0].delta_f``</span>
+<span class="sd">        will be used.</span>
+<span class="sd">    \**kwargs :</span>
+<span class="sd">        All other keyword arguments are passed to ``BaseLikelihoodEvaluator``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Create a signal, and set up the likelihood evaluator on that signal:</span>
+
+<span class="sd">    &gt;&gt;&gt; from pycbc import psd as pypsd</span>
+<span class="sd">    &gt;&gt;&gt; from pycbc.waveform.generator import FDomainDetFrameGenerator, FDomainCBCGenerator</span>
+<span class="sd">    &gt;&gt;&gt; from pycbc import inference</span>
+<span class="sd">    &gt;&gt;&gt; seglen = 4</span>
+<span class="sd">    &gt;&gt;&gt; sample_rate = 2048</span>
+<span class="sd">    &gt;&gt;&gt; N = seglen*sample_rate/2+1</span>
+<span class="sd">    &gt;&gt;&gt; fmin = 30.</span>
+<span class="sd">    &gt;&gt;&gt; m1, m2, s1z, s2z, tsig, ra, dec, pol, dist = 38.6, 29.3, 0., 0., 3.1, 1.37, -1.26, 2.76, 3*500.</span>
+<span class="sd">    &gt;&gt;&gt; generator = FDomainDetFrameGenerator(FDomainCBCGenerator, 0., variable_args=[&#39;tc&#39;], detectors=[&#39;H1&#39;, &#39;L1&#39;], delta_f=1./seglen, f_lower=fmin, approximant=&#39;SEOBNRv2_ROM_DoubleSpin&#39;, mass1=m1, mass2=m2, spin1z=s1z, spin2z=s2z, ra=ra, dec=dec, polarization=pol, distance=dist)</span>
+<span class="sd">    &gt;&gt;&gt; signal = generator.generate(tc=tsig)</span>
+<span class="sd">    &gt;&gt;&gt; psd = pypsd.aLIGOZeroDetHighPower(N, 1./seglen, 20.)</span>
+<span class="sd">    &gt;&gt;&gt; psds = {&#39;H1&#39;: psd, &#39;L1&#39;: psd}</span>
+<span class="sd">    &gt;&gt;&gt; likelihood_eval = inference.GaussianLikelihood([&#39;tc&#39;], generator, signal, fmin, psds=psds, return_meta=False)</span>
+
+<span class="sd">    Now compute the log likelihood ratio and prior-weighted likelihood ratio;</span>
+<span class="sd">    since we have not provided a prior, these should be equal to each other:</span>
+
+<span class="sd">    &gt;&gt;&gt; likelihood_eval.loglr(tc=tsig), likelihood_eval.logplr(tc=tsig)</span>
+<span class="sd">        (ArrayWithAligned(277.92945279883855), ArrayWithAligned(277.92945279883855))</span>
+
+<span class="sd">    Compute the log likelihood and log posterior; since we have not</span>
+<span class="sd">    provided a prior, these should both be equal to zero:</span>
+
+<span class="sd">    &gt;&gt;&gt; likelihood_eval.loglikelihood(tc=tsig), likelihood_eval.logposterior(tc=tsig)</span>
+<span class="sd">        (ArrayWithAligned(0.0), ArrayWithAligned(0.0))</span>
+
+<span class="sd">    Compute the SNR; for this system and PSD, this should be approximately 24:</span>
+
+<span class="sd">    &gt;&gt;&gt; likelihood_eval.snr([tsig])</span>
+<span class="sd">        ArrayWithAligned(23.576660187517593)</span>
+
+<span class="sd">    Using the same likelihood evaluator, evaluate the log prior-weighted</span>
+<span class="sd">    likelihood ratio at several points in time, check that the max is at tsig,</span>
+<span class="sd">    and plot (note that we use the class as a function here, which defaults</span>
+<span class="sd">    to calling ``logplr``):</span>
+
+<span class="sd">    &gt;&gt;&gt; from matplotlib import pyplot</span>
+<span class="sd">    &gt;&gt;&gt; times = numpy.arange(seglen*sample_rate)/float(sample_rate)</span>
+<span class="sd">    &gt;&gt;&gt; lls = numpy.array([likelihood_eval([t]) for t in times])</span>
+<span class="sd">    &gt;&gt;&gt; times[lls.argmax()]</span>
+<span class="sd">        3.10009765625</span>
+<span class="sd">    &gt;&gt;&gt; fig = pyplot.figure(); ax = fig.add_subplot(111)</span>
+<span class="sd">    &gt;&gt;&gt; ax.plot(times, lls)</span>
+<span class="sd">        [&lt;matplotlib.lines.Line2D at 0x1274b5c50&gt;]</span>
+<span class="sd">    &gt;&gt;&gt; fig.show()</span>
+
+<span class="sd">    Create a prior and use it (see distributions module for more details):</span>
+
+<span class="sd">    &gt;&gt;&gt; from pycbc import distributions</span>
+<span class="sd">    &gt;&gt;&gt; uniform_prior = distributions.Uniform(tc=(tsig-0.2,tsig+0.2))</span>
+<span class="sd">    &gt;&gt;&gt; prior_eval = inference.PriorEvaluator([&#39;tc&#39;], uniform_prior)</span>
+<span class="sd">    &gt;&gt;&gt; likelihood_eval = inference.GaussianLikelihood(generator, signal, 20., psds=psds, prior=prior_eval, return_meta=False)</span>
+<span class="sd">    &gt;&gt;&gt; likelihood_eval.logplr([tsig]), likelihood_eval.logposterior([tsig])</span>
+<span class="sd">        (ArrayWithAligned(278.84574353071264), ArrayWithAligned(0.9162907318741418))</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;gaussian&#39;</span>
+    <span class="n">required_kwargs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;waveform_generator&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;f_lower&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable_args</span><span class="p">,</span> <span class="n">waveform_generator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">f_lower</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">psds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">f_upper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">waveform_generator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;waveform_generator must be provided&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;data must be provided&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">f_lower</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;f_lower must be provided&quot;</span><span class="p">)</span>
+        <span class="c1"># set up the boiler-plate attributes; note: we&#39;ll compute the</span>
+        <span class="c1"># log evidence later</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GaussianLikelihood</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">variable_args</span><span class="p">,</span>
+            <span class="n">waveform_generator</span><span class="o">=</span><span class="n">waveform_generator</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># check that the data and waveform generator have the same detectors</span>
+        <span class="k">if</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">waveform_generator</span><span class="o">.</span><span class="n">detectors</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">!=</span> \
+                <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;waveform generator&#39;s detectors (</span><span class="si">%s</span><span class="s2">) &quot;</span> <span class="o">%</span><span class="p">(</span>
+                <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">waveform_generator</span><span class="o">.</span><span class="n">detector_names</span><span class="p">)))</span> <span class="o">+</span>
+                <span class="s2">&quot;does not match data (</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span><span class="p">(</span>
+                <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()))))</span>
+        <span class="c1"># check that the data and waveform generator have the same epoch</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">waveform_generator</span><span class="o">.</span><span class="n">epoch</span> <span class="o">!=</span> <span class="n">d</span><span class="o">.</span><span class="n">epoch</span>
+               <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;waveform generator does not have the same epoch &quot;</span>
+                <span class="s2">&quot;as all of the data sets.&quot;</span><span class="p">)</span>
+        <span class="c1"># check that the data sets all have the same lengths</span>
+        <span class="n">dlens</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">dlens</span> <span class="o">==</span> <span class="n">dlens</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;all data must be of the same length&quot;</span><span class="p">)</span>
+        <span class="c1"># we&#39;ll use the first data set for setting values</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="c1"># figure out the kmin, kmax to use</span>
+        <span class="n">kmin</span><span class="p">,</span> <span class="n">kmax</span> <span class="o">=</span> <span class="nb">filter</span><span class="o">.</span><span class="n">get_cutoff_indices</span><span class="p">(</span><span class="n">f_lower</span><span class="p">,</span> <span class="n">f_upper</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span> <span class="o">=</span> <span class="n">kmin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kmax</span> <span class="o">=</span> <span class="n">kmax</span>
+        <span class="k">if</span> <span class="n">norm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">norm</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">d</span><span class="o">.</span><span class="n">delta_f</span>
+        <span class="c1"># we&#39;ll store the weight to apply to the inner product</span>
+        <span class="k">if</span> <span class="n">psds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">norm</span><span class="p">)</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_weight</span> <span class="o">=</span> <span class="p">{</span><span class="n">det</span><span class="p">:</span> <span class="n">w</span> <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="n">data</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># temporarily suppress numpy divide by 0 warning</span>
+            <span class="n">numpysettings</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_weight</span> <span class="o">=</span> <span class="p">{</span><span class="n">det</span><span class="p">:</span> <span class="n">Array</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">norm</span><span class="o">/</span><span class="n">psds</span><span class="p">[</span><span class="n">det</span><span class="p">]))</span>
+                            <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="n">data</span><span class="p">}</span>
+            <span class="n">numpy</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="o">**</span><span class="n">numpysettings</span><span class="p">)</span>
+        <span class="c1"># whiten the data</span>
+        <span class="k">for</span> <span class="n">det</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">det</span><span class="p">][</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_weight</span><span class="p">[</span><span class="n">det</span><span class="p">][</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span>
+        <span class="c1"># compute the log likelihood function of the noise and save it</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_lognl</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="nb">sum</span><span class="p">([</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">])</span><span class="o">.</span><span class="n">real</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">values</span><span class="p">()]))</span>
+        <span class="c1"># set default call function to logplor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_callfunc</span><span class="p">(</span><span class="s1">&#39;logplr&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="GaussianLikelihood.loglr"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.GaussianLikelihood.loglr">[docs]</a>    <span class="k">def</span> <span class="nf">loglr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the log likelihood ratio,</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \log \mathcal{L}(\Theta) = \sum_i \left&lt;h_i(\Theta)|d_i\right&gt; - \frac{1}{2}\left&lt;h_i(\Theta)|h_i(\Theta)\right&gt;,</span>
+
+<span class="sd">        at the given point in parameter space :math:`\Theta`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        \**params :</span>
+<span class="sd">            The keyword arguments should give the values of each parameter to</span>
+<span class="sd">            evaluate.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy.float64</span>
+<span class="sd">            The value of the log likelihood ratio evaluated at the given point.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lr</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">wfs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_waveform_generator</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">NoWaveformError</span><span class="p">:</span>
+            <span class="c1"># if no waveform was generated, just return 0</span>
+            <span class="k">return</span> <span class="n">lr</span>
+        <span class="k">for</span> <span class="n">det</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="n">wfs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># the kmax of the waveforms may be different than internal kmax</span>
+            <span class="n">kmax</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kmax</span><span class="p">)</span>
+            <span class="c1"># whiten the waveform</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span> <span class="o">&gt;=</span> <span class="n">kmax</span><span class="p">:</span>
+                <span class="c1"># if the waveform terminates before the filtering low frequency</span>
+                <span class="c1"># cutoff, there is nothing to filter, so just go onto the next</span>
+                <span class="k">continue</span>
+            <span class="n">h</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_weight</span><span class="p">[</span><span class="n">det</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span>
+            <span class="n">lr</span> <span class="o">+=</span> <span class="p">(</span>
+                <span class="c1"># &lt;h, d&gt;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">det</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">])</span><span class="o">.</span><span class="n">real</span>
+                <span class="c1"># - &lt;h, h&gt;/2.</span>
+                <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">])</span><span class="o">.</span><span class="n">real</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">lr</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GaussianLikelihood.loglikelihood"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.GaussianLikelihood.loglikelihood">[docs]</a>    <span class="k">def</span> <span class="nf">loglikelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the log likelihood of the paramaters,</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            p(d|\Theta) = -\frac{1}{2}\sum_i \left&lt;h_i(\Theta) - d_i | h_i(\Theta) - d_i\right&gt;</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        \**params :</span>
+<span class="sd">            The keyword arguments should give the values of each parameter to</span>
+<span class="sd">            evaluate.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The value of the log likelihood evaluated at the given point.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># since the loglr has fewer terms, we&#39;ll call that, then just add</span>
+        <span class="c1"># back the noise term that canceled in the log likelihood ratio</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">loglr</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lognl</span></div>
+
+
+<div class="viewcode-block" id="GaussianLikelihood.logposterior"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.likelihood.GaussianLikelihood.logposterior">[docs]</a>    <span class="k">def</span> <span class="nf">logposterior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Computes the log-posterior probability at the given point in</span>
+<span class="sd">        parameter space.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        \**params :</span>
+<span class="sd">            The keyword arguments should give the values of each parameter to</span>
+<span class="sd">            evaluate.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The value of the log-posterior evaluated at the given point in</span>
+<span class="sd">            parameter space.</span>
+<span class="sd">        metadata : tuple</span>
+<span class="sd">            If ``return_meta``, the prior and likelihood ratio as a tuple.</span>
+<span class="sd">            Otherwise, just returns the log-posterior.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># since the logplr has fewer terms, we&#39;ll call that, then just add</span>
+        <span class="c1"># back the noise term that canceled in the log likelihood ratio</span>
+        <span class="n">logplr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">logplr</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_meta</span><span class="p">:</span>
+            <span class="n">logplr</span><span class="p">,</span> <span class="p">(</span><span class="n">pr</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">lj</span><span class="p">)</span> <span class="o">=</span> <span class="n">logplr</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pr</span> <span class="o">=</span> <span class="n">lr</span> <span class="o">=</span> <span class="n">lj</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formatreturn</span><span class="p">(</span><span class="n">logplr</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lognl</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">pr</span><span class="p">,</span> <span class="n">loglr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span>
+                                  <span class="n">logjacobian</span><span class="o">=</span><span class="n">lj</span><span class="p">)</span></div></div>
+
+
+<span class="n">likelihood_evaluators</span> <span class="o">=</span> <span class="p">{</span><span class="n">TestNormal</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">TestNormal</span><span class="p">,</span>
+                         <span class="n">GaussianLikelihood</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">GaussianLikelihood</span><span class="p">}</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BaseLikelihoodEvaluator&#39;</span><span class="p">,</span> <span class="s1">&#39;TestNormal&#39;</span><span class="p">,</span> <span class="s1">&#39;GaussianLikelihood&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;likelihood_evaluators&#39;</span><span class="p">]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

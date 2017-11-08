@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.vetoes.chisq_cpu &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.vetoes.chisq_cpu</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.vetoes.chisq_cpu</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2012  Alex Nitz</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                                   Preamble</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">import</span> <span class="nn">numpy</span><span class="o">,</span> <span class="nn">pycbc</span>
+<span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">real_same_precision_as</span>
+<span class="kn">from</span> <span class="nn">weave</span> <span class="k">import</span> <span class="n">inline</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">WEAVE_FLAGS</span>
+
+<span class="k">if</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">HAVE_OMP</span><span class="p">:</span>
+    <span class="n">omp_libs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gomp&#39;</span><span class="p">]</span>
+    <span class="n">omp_flags</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;-fopenmp&#39;</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">omp_libs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">omp_flags</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="chisq_accum_bin_numpy"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.chisq_cpu.chisq_accum_bin_numpy">[docs]</a><span class="k">def</span> <span class="nf">chisq_accum_bin_numpy</span><span class="p">(</span><span class="n">chisq</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="n">chisq</span> <span class="o">+=</span> <span class="n">q</span><span class="o">.</span><span class="n">squared_norm</span><span class="p">()</span></div>
+    
+<div class="viewcode-block" id="chisq_accum_bin_inline"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.chisq_cpu.chisq_accum_bin_inline">[docs]</a><span class="k">def</span> <span class="nf">chisq_accum_bin_inline</span><span class="p">(</span><span class="n">chisq</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    
+    <span class="n">chisq</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">chisq</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chisq</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        #pragma omp parallel for</span>
+<span class="s2">        for (int i=0; i&lt;N; i++){</span>
+<span class="s2">            chisq[i] += q[i].real()*q[i].real()+q[i].imag()*q[i].imag();</span>
+<span class="s2">        }</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;chisq&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">],</span> 
+                    <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span>
+                    <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span>
+          <span class="p">)</span></div>
+          
+<span class="n">chisq_accum_bin</span> <span class="o">=</span> <span class="n">chisq_accum_bin_inline</span>
+
+<span class="n">point_chisq_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    int num_parallel_regions = 16;</span>
+<span class="s2">    </span>
+<span class="s2">    for (unsigned int r=0; r&lt;blen; r++){     </span>
+<span class="s2">        int bstart = bins[r];</span>
+<span class="s2">        int bend = bins[r+1];</span>
+<span class="s2">        int blen = bend - bstart;</span>
+<span class="s2">        </span>
+<span class="s2">        TYPE* outr = (TYPE*) malloc(sizeof(TYPE)*n);</span>
+<span class="s2">        TYPE* outi = (TYPE*) malloc(sizeof(TYPE)*n);</span>
+<span class="s2">        for (int i=0; i&lt;n; i++){</span>
+<span class="s2">            outr[i] = 0;</span>
+<span class="s2">            outi[i] = 0;</span>
+<span class="s2">        }</span>
+<span class="s2">    </span>
+<span class="s2">        #pragma omp parallel for</span>
+<span class="s2">        for (unsigned int k=0; k&lt;num_parallel_regions; k++){</span>
+<span class="s2">            unsigned int start = blen * k / num_parallel_regions + bstart;</span>
+<span class="s2">            unsigned int end = blen * (k + 1) / num_parallel_regions + bstart;</span>
+<span class="s2">        </span>
+<span class="s2">            //start the cumulative rotations at the offset point</span>
+<span class="s2">            TYPE* pr = (TYPE*) malloc(sizeof(TYPE)*n);</span>
+<span class="s2">            TYPE* pi = (TYPE*) malloc(sizeof(TYPE)*n);</span>
+<span class="s2">            TYPE* vsr = (TYPE*) malloc(sizeof(TYPE)*n);</span>
+<span class="s2">            TYPE* vsi = (TYPE*) malloc(sizeof(TYPE)*n);</span>
+<span class="s2">            TYPE* outr_tmp = (TYPE*) malloc(sizeof(TYPE)*n);</span>
+<span class="s2">            TYPE* outi_tmp = (TYPE*) malloc(sizeof(TYPE)*n);</span>
+
+<span class="s2">            </span>
+<span class="s2">            for (int i=0; i&lt;n; i++){</span>
+<span class="s2">                pr[i] = cos(2 * 3.141592653 * shifts[i] * (start) / slen);</span>
+<span class="s2">                pi[i] = sin(2 * 3.141592653 * shifts[i] * (start) / slen);</span>
+<span class="s2">                vsr[i] = cos(2 * 3.141592653 * shifts[i] / slen);</span>
+<span class="s2">                vsi[i] = sin(2 * 3.141592653 * shifts[i] / slen);</span>
+<span class="s2">                outr_tmp[i] = 0;</span>
+<span class="s2">                outi_tmp[i] = 0;</span>
+<span class="s2">            }</span>
+<span class="s2">            </span>
+<span class="s2">            TYPE t1, t2, k1, k2, k3, vs, va;</span>
+<span class="s2">            </span>
+<span class="s2">            for (unsigned int j=start; j&lt;end; j++){</span>
+<span class="s2">                std::complex&lt;TYPE&gt; v = v1[j];</span>
+<span class="s2">                TYPE vr = v.real();</span>
+<span class="s2">                TYPE vi = v.imag();  </span>
+<span class="s2">                vs = vr + vi;</span>
+<span class="s2">                va = vi - vr;</span>
+<span class="s2">                </span>
+<span class="s2">                for (int i=0; i&lt;n; i++){</span>
+<span class="s2">                    t1 = pr[i];</span>
+<span class="s2">                    t2 = pi[i];</span>
+<span class="s2">                    </span>
+<span class="s2">                    // Complex multiply pr[i] * v</span>
+<span class="s2">                    k1 = vr * (t1 + t2);</span>
+<span class="s2">                    k2 = t1 * va;</span>
+<span class="s2">                    k3 = t2 * vs;</span>
+<span class="s2">                                </span>
+<span class="s2">                    outr_tmp[i] += k1 - k3;</span>
+<span class="s2">                    outi_tmp[i] += k1 + k2;</span>
+<span class="s2">                    </span>
+<span class="s2">                    // phase shift for the next time point</span>
+<span class="s2">                    pr[i] = t1 * vsr[i] - t2 * vsi[i];</span>
+<span class="s2">                    pi[i] = t1 * vsi[i] + t2 * vsr[i]; </span>
+<span class="s2">                }                                              </span>
+<span class="s2">            } </span>
+<span class="s2">            </span>
+<span class="s2">            #pragma omp critical</span>
+<span class="s2">            {</span>
+<span class="s2">                for (unsigned int i=0; i&lt;n; i++){</span>
+<span class="s2">                    outr[i] += outr_tmp[i];</span>
+<span class="s2">                    outi[i] += outi_tmp[i];</span>
+<span class="s2">                }</span>
+<span class="s2">            }</span>
+<span class="s2">            </span>
+<span class="s2">            free(pr);</span>
+<span class="s2">            free(pi);  </span>
+<span class="s2">            free(outr_tmp);</span>
+<span class="s2">            free(outi_tmp); </span>
+<span class="s2">            free(vsr);</span>
+<span class="s2">            free(vsi);</span>
+<span class="s2">            </span>
+<span class="s2">        }    </span>
+<span class="s2">        </span>
+<span class="s2">        for (unsigned int i=0; i&lt;n; i++){</span>
+<span class="s2">            chisq[i] += outr[i]*outr[i] + outi[i]*outi[i];</span>
+<span class="s2">        }</span>
+<span class="s2">        free(outr);</span>
+<span class="s2">        free(outi);</span>
+<span class="s2">    }    </span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">point_chisq_code_single</span> <span class="o">=</span> <span class="n">point_chisq_code</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;TYPE&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>
+<span class="n">point_chisq_code_double</span> <span class="o">=</span> <span class="n">point_chisq_code</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;TYPE&#39;</span><span class="p">,</span> <span class="s1">&#39;double&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="shift_sum"><a class="viewcode-back" href="../../../pycbc.vetoes.html#pycbc.vetoes.chisq_cpu.shift_sum">[docs]</a><span class="k">def</span> <span class="nf">shift_sum</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">shifts</span><span class="p">,</span> <span class="n">bins</span><span class="p">):</span>
+    <span class="n">real_type</span> <span class="o">=</span> <span class="n">real_same_precision_as</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+    <span class="n">shifts</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">shifts</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">real_type</span><span class="p">)</span>
+    
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
+    <span class="n">blen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="c1"># pylint:disable=unused-variable</span>
+    <span class="n">v1</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">slen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
+
+    <span class="k">if</span> <span class="n">v1</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;complex64&#39;</span><span class="p">:</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">point_chisq_code_single</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">point_chisq_code_double</span>
+    
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shifts</span><span class="p">))</span>
+    
+    <span class="c1"># Create some output memory</span>
+    <span class="n">chisq</span> <span class="o">=</span>  <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">real_type</span><span class="p">)</span>
+    
+    <span class="n">inline</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;v1&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;chisq&#39;</span><span class="p">,</span> <span class="s1">&#39;slen&#39;</span><span class="p">,</span> <span class="s1">&#39;shifts&#39;</span><span class="p">,</span> <span class="s1">&#39;bins&#39;</span><span class="p">,</span> <span class="s1">&#39;blen&#39;</span><span class="p">],</span>
+                    <span class="n">extra_compile_args</span><span class="o">=</span><span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span>
+                    <span class="n">libraries</span><span class="o">=</span><span class="n">omp_libs</span>
+          <span class="p">)</span>
+          
+    <span class="k">return</span>  <span class="n">chisq</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

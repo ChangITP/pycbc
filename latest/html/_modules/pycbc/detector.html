@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.detector &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../index.html"/>
+        <link rel="up" title="pycbc" href="../pycbc.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.detector</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.detector</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2012  Alex Nitz</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                                   Preamble</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="sd">&quot;&quot;&quot;This module provides utilities for calculating detector responses.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">lalsimulation</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">lal</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
+<span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">TimeSeries</span>
+
+
+<div class="viewcode-block" id="Detector"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector">[docs]</a><span class="k">class</span> <span class="nc">Detector</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A gravitaional wave detector</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">detector_name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">detector_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span> <span class="o">=</span>  <span class="n">lalsimulation</span><span class="o">.</span><span class="n">DetectorPrefixToLALDetector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">response</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">location</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">vertexLatitudeRadians</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">frDetector</span><span class="o">.</span><span class="n">vertexLongitudeRadians</span>
+
+<div class="viewcode-block" id="Detector.light_travel_time_to_detector"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.light_travel_time_to_detector">[docs]</a>    <span class="k">def</span> <span class="nf">light_travel_time_to_detector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">det</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Return the light travel time from this detector</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        detector: Detector</span>
+<span class="sd">            The other detector to determine the light travel time to.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        time: float</span>
+<span class="sd">            The light travel time in seconds</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">lal</span><span class="o">.</span><span class="n">LightTravelTime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="p">,</span> <span class="n">det</span><span class="o">.</span><span class="n">frDetector</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-9</span></div>
+
+<div class="viewcode-block" id="Detector.antenna_pattern"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.antenna_pattern">[docs]</a>    <span class="k">def</span> <span class="nf">antenna_pattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">right_ascension</span><span class="p">,</span> <span class="n">declination</span><span class="p">,</span> <span class="n">polarization</span><span class="p">,</span> <span class="n">t_gps</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the detector response.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gmst</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">GreenwichMeanSiderealTime</span><span class="p">(</span><span class="n">t_gps</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">ComputeDetAMResponse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="p">,</span>
+                     <span class="n">right_ascension</span><span class="p">,</span> <span class="n">declination</span><span class="p">,</span> <span class="n">polarization</span><span class="p">,</span> <span class="n">gmst</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Detector.time_delay_from_earth_center"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.time_delay_from_earth_center">[docs]</a>    <span class="k">def</span> <span class="nf">time_delay_from_earth_center</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">right_ascension</span><span class="p">,</span> <span class="n">declination</span><span class="p">,</span> <span class="n">t_gps</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the time delay from the earth center</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">lal</span><span class="o">.</span><span class="n">TimeDelayFromEarthCenter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span>
+                      <span class="nb">float</span><span class="p">(</span><span class="n">right_ascension</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">declination</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">t_gps</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Detector.time_delay_from_detector"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.time_delay_from_detector">[docs]</a>    <span class="k">def</span> <span class="nf">time_delay_from_detector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_detector</span><span class="p">,</span> <span class="n">right_ascension</span><span class="p">,</span>
+                                 <span class="n">declination</span><span class="p">,</span> <span class="n">t_gps</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the time delay from the given to detector for a signal with</span>
+<span class="sd">        the given sky location; i.e. return `t1 - t2` where `t1` is the</span>
+<span class="sd">        arrival time in this detector and `t2` is the arrival time in the</span>
+<span class="sd">        other detector. Note that this would return the same value as</span>
+<span class="sd">        `time_delay_from_earth_center` if `other_detector` was geocentric.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other_detector : detector.Detector</span>
+<span class="sd">            A detector instance.</span>
+<span class="sd">        right_ascension : float</span>
+<span class="sd">            The right ascension (in rad) of the signal.</span>
+<span class="sd">        declination : float</span>
+<span class="sd">            The declination (in rad) of the signal.</span>
+<span class="sd">        t_gps : float</span>
+<span class="sd">            The GPS time (in s) of the signal.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The arrival time difference between the detectors.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">lal</span><span class="o">.</span><span class="n">ArrivalTimeDiff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="n">other_detector</span><span class="o">.</span><span class="n">location</span><span class="p">,</span>
+                                   <span class="nb">float</span><span class="p">(</span><span class="n">right_ascension</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">declination</span><span class="p">),</span>
+                                   <span class="nb">float</span><span class="p">(</span><span class="n">t_gps</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Detector.project_wave"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.project_wave">[docs]</a>    <span class="k">def</span> <span class="nf">project_wave</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">hc</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">polarization</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the strain of a wave with given amplitudes and angles as</span>
+<span class="sd">        measured by the detector.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">h_lal</span> <span class="o">=</span> <span class="n">lalsimulation</span><span class="o">.</span><span class="n">SimDetectorStrainREAL8TimeSeries</span><span class="p">(</span>
+                <span class="n">hp</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">lal</span><span class="p">(),</span> <span class="n">hc</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">lal</span><span class="p">(),</span>
+                <span class="n">longitude</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">polarization</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frDetector</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">TimeSeries</span><span class="p">(</span>
+                <span class="n">h_lal</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">h_lal</span><span class="o">.</span><span class="n">deltaT</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="n">h_lal</span><span class="o">.</span><span class="n">epoch</span><span class="p">,</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Detector.optimal_orientation"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.Detector.optimal_orientation">[docs]</a>    <span class="k">def</span> <span class="nf">optimal_orientation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_gps</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the optimal orientation in right ascension and declination</span>
+<span class="sd">           for a given GPS time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ra</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">+</span> <span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">GreenwichMeanSiderealTime</span><span class="p">(</span><span class="n">t_gps</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+        <span class="n">dec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span>
+        <span class="k">return</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span></div></div>
+
+<div class="viewcode-block" id="overhead_antenna_pattern"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.overhead_antenna_pattern">[docs]</a><span class="k">def</span> <span class="nf">overhead_antenna_pattern</span><span class="p">(</span><span class="n">right_ascension</span><span class="p">,</span> <span class="n">declination</span><span class="p">,</span> <span class="n">polarization</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the detector response where (0, 0) indicates an overhead source. </span>
+<span class="sd">    This functions uses coordinates such that the detector can be thought to</span>
+<span class="sd">    be on the north pole.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    right_ascention: float</span>
+<span class="sd">    declination: float</span>
+<span class="sd">    polarization: float</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    f_plus: float</span>
+<span class="sd">    f_cros: float   </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># convert from declination coordinate to polar (angle dropped from north axis)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">-</span> <span class="n">declination</span>
+
+    <span class="n">f_plus</span>  <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">*</span> \
+                <span class="n">cos</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">right_ascension</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">polarization</span><span class="p">)</span> <span class="o">-</span> \
+                <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">right_ascension</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">polarization</span><span class="p">)</span>
+
+    <span class="n">f_cross</span> <span class="o">=</span>   <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">*</span> \
+                <span class="n">cos</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">right_ascension</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span> <span class="p">(</span><span class="mf">2.0</span><span class="o">*</span> <span class="n">polarization</span><span class="p">)</span> <span class="o">-</span> \
+                <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">right_ascension</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">polarization</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">f_plus</span><span class="p">,</span> <span class="n">f_cross</span></div>
+
+<div class="viewcode-block" id="effective_distance"><a class="viewcode-back" href="../../pycbc.html#pycbc.detector.effective_distance">[docs]</a><span class="k">def</span> <span class="nf">effective_distance</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">inclination</span><span class="p">,</span> <span class="n">f_plus</span><span class="p">,</span> <span class="n">f_cross</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">distance</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">inclination</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">f_plus</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">inclination</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">f_cross</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

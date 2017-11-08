@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Use of PyCBC in Scientific Publications &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="index.html"/>
+        <link rel="next" title="Running PyCBC under Docker" href="docker.html"/>
+        <link rel="prev" title="PyCBC" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Use of PyCBC in Scientific Publications</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/credit.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="use-of-pycbc-in-scientific-publications">
+<h1>Use of PyCBC in Scientific Publications<a class="headerlink" href="#use-of-pycbc-in-scientific-publications" title="Permalink to this headline">¶</a></h1>
+<p>If you use any code from PyCBC in a scientific publication, then we ask that
+it is cited in the following way:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">These</span> <span class="n">results</span> <span class="n">were</span> <span class="n">generating</span> <span class="n">using</span> <span class="n">the</span> <span class="n">PyCBC</span> <span class="n">software</span> <span class="n">package</span>
+\<span class="n">cite</span><span class="p">{</span><span class="n">Canton</span><span class="p">:</span><span class="mi">2014</span><span class="n">ena</span><span class="p">,</span><span class="n">Usman</span><span class="p">:</span><span class="mi">2015</span><span class="n">kfa</span><span class="p">,</span><span class="n">pycbc</span><span class="o">-</span><span class="n">software</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>For the citation <code class="docutils literal"><span class="pre">pycbc-software</span></code>,  please use a bibtex entry and DOI for the
+appropriate release of the PyCBC software (or the latest available release).
+A bibtex key and DOI for each release is avaliable from <a class="reference external" href="http://zenodo.org/">Zenodo</a>.
+A key for the latest release is available at:</p>
+<a class="reference external image-reference" href="https://zenodo.org/badge/latestdoi/31596861"><img alt="https://zenodo.org/badge/31596861.svg" src="https://zenodo.org/badge/31596861.svg" /></a>
+<p>Bibtex keys for the citations <code class="docutils literal"><span class="pre">Canton:2014ena</span></code> and <code class="docutils literal"><span class="pre">Usman:2015kfa</span></code> are:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">Canton</span><span class="p">:</span><span class="mi">2014</span><span class="n">ena</span><span class="p">,</span>
+  <span class="n">author</span>         <span class="o">=</span> <span class="s2">&quot;Dal Canton, Tito and others&quot;</span><span class="p">,</span>
+  <span class="n">title</span>          <span class="o">=</span> <span class="s2">&quot;{Implementing a search for aligned-spin neutron</span>
+                    <span class="n">star</span><span class="o">-</span><span class="n">black</span> <span class="n">hole</span> <span class="n">systems</span> <span class="k">with</span> <span class="n">advanced</span> <span class="n">ground</span> <span class="n">based</span>
+                    <span class="n">gravitational</span> <span class="n">wave</span> <span class="n">detectors</span><span class="p">}</span><span class="s2">&quot;,</span>
+  <span class="n">journal</span>        <span class="o">=</span> <span class="s2">&quot;Phys. Rev.&quot;</span><span class="p">,</span>
+  <span class="n">volume</span>         <span class="o">=</span> <span class="s2">&quot;D90&quot;</span><span class="p">,</span>
+  <span class="n">year</span>           <span class="o">=</span> <span class="s2">&quot;2014&quot;</span><span class="p">,</span>
+  <span class="n">number</span>         <span class="o">=</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
+  <span class="n">pages</span>          <span class="o">=</span> <span class="s2">&quot;082004&quot;</span><span class="p">,</span>
+  <span class="n">doi</span>            <span class="o">=</span> <span class="s2">&quot;10.1103/PhysRevD.90.082004&quot;</span><span class="p">,</span>
+  <span class="n">eprint</span>         <span class="o">=</span> <span class="s2">&quot;1405.6731&quot;</span><span class="p">,</span>
+  <span class="n">archivePrefix</span>  <span class="o">=</span> <span class="s2">&quot;arXiv&quot;</span><span class="p">,</span>
+  <span class="n">primaryClass</span>   <span class="o">=</span> <span class="s2">&quot;gr-qc&quot;</span><span class="p">,</span>
+  <span class="n">reportNumber</span>   <span class="o">=</span> <span class="s2">&quot;LIGO-P1400053&quot;</span><span class="p">,</span>
+  <span class="n">SLACcitation</span>   <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%%</span><span class="s2">CITATION = ARXIV:1405.6731;</span><span class="si">%%</span><span class="s2">&quot;</span>
+<span class="p">}</span>
+
+<span class="nd">@article</span><span class="p">{</span><span class="n">Usman</span><span class="p">:</span><span class="mi">2015</span><span class="n">kfa</span><span class="p">,</span>
+  <span class="n">author</span>         <span class="o">=</span> <span class="s2">&quot;Usman, Samantha A. and others&quot;</span><span class="p">,</span>
+  <span class="n">title</span>          <span class="o">=</span> <span class="s2">&quot;{The PyCBC search for gravitational waves from compact</span>
+                    <span class="n">binary</span> <span class="n">coalescence</span><span class="p">}</span><span class="s2">&quot;,</span>
+  <span class="n">journal</span>        <span class="o">=</span> <span class="s2">&quot;Class. Quant. Grav.&quot;</span><span class="p">,</span>
+  <span class="n">volume</span>         <span class="o">=</span> <span class="s2">&quot;33&quot;</span><span class="p">,</span>
+  <span class="n">year</span>           <span class="o">=</span> <span class="s2">&quot;2016&quot;</span><span class="p">,</span>
+  <span class="n">number</span>         <span class="o">=</span> <span class="s2">&quot;21&quot;</span><span class="p">,</span>
+  <span class="n">pages</span>          <span class="o">=</span> <span class="s2">&quot;215004&quot;</span><span class="p">,</span>
+  <span class="n">doi</span>            <span class="o">=</span> <span class="s2">&quot;10.1088/0264-9381/33/21/215004&quot;</span><span class="p">,</span>
+  <span class="n">eprint</span>         <span class="o">=</span> <span class="s2">&quot;1508.02357&quot;</span><span class="p">,</span>
+  <span class="n">archivePrefix</span>  <span class="o">=</span> <span class="s2">&quot;arXiv&quot;</span><span class="p">,</span>
+  <span class="n">primaryClass</span>   <span class="o">=</span> <span class="s2">&quot;gr-qc&quot;</span><span class="p">,</span>
+  <span class="n">reportNumber</span>   <span class="o">=</span> <span class="s2">&quot;LIGO-P1500086&quot;</span><span class="p">,</span>
+  <span class="n">SLACcitation</span>   <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%%</span><span class="s2">CITATION = ARXIV:1508.02357;</span><span class="si">%%</span><span class="s2">&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="docker.html" class="btn btn-neutral float-right" title="Running PyCBC under Docker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="PyCBC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

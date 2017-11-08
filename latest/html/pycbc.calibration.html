@@ -1,0 +1,629 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.calibration package &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="index.html"/>
+        <link rel="up" title="pycbc package" href="pycbc.html"/>
+        <link rel="next" title="pycbc.catalog package" href="pycbc.catalog.html"/>
+        <link rel="prev" title="pycbc package" href="pycbc.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pycbc</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pycbc.html">pycbc package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pycbc.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pycbc.calibration package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.catalog.html">pycbc.catalog package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.distributions.html">pycbc.distributions package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.events.html">pycbc.events package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.fft.html">pycbc.fft package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.filter.html">pycbc.filter package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.frame.html">pycbc.frame package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.inference.html">pycbc.inference package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.inject.html">pycbc.inject package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.io.html">pycbc.io package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.noise.html">pycbc.noise package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.psd.html">pycbc.psd package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.results.html">pycbc.results package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.tmpltbank.html">pycbc.tmpltbank package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.types.html">pycbc.types package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.vetoes.html">pycbc.vetoes package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.waveform.html">pycbc.waveform package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.workflow.html">pycbc.workflow package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.bin_utils">pycbc.bin_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.conversions">pycbc.conversions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.coordinates">pycbc.coordinates module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.cosmology">pycbc.cosmology module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.detector">pycbc.detector module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.future">pycbc.future module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.gate">pycbc.gate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.libutils">pycbc.libutils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.opt">pycbc.opt module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.pnutils">pycbc.pnutils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.pool">pycbc.pool module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.rate">pycbc.rate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.scheme">pycbc.scheme module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.sensitivity">pycbc.sensitivity module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.strain">pycbc.strain module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.transforms">pycbc.transforms module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.version">pycbc.version module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.weave">pycbc.weave module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">pycbc</a> &raquo;</li>
+        
+          <li><a href="pycbc.html">pycbc package</a> &raquo;</li>
+        
+      <li>pycbc.calibration package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pycbc.calibration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pycbc-calibration-package">
+<h1>pycbc.calibration package<a class="headerlink" href="#pycbc-calibration-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pycbc.calibration.recalibrate">
+<span id="pycbc-calibration-recalibrate-module"></span><h2>pycbc.calibration.recalibrate module<a class="headerlink" href="#module-pycbc.calibration.recalibrate" title="Permalink to this headline">¶</a></h2>
+<p>Classes and functions for adjusting strain data.</p>
+<dl class="class">
+<dt id="pycbc.calibration.recalibrate.Recalibrate">
+<em class="property">class </em><code class="descclassname">pycbc.calibration.recalibrate.</code><code class="descname">Recalibrate</code><span class="sig-paren">(</span><em>freq=None</em>, <em>fc0=None</em>, <em>c0=None</em>, <em>d0=None</em>, <em>a_tst0=None</em>, <em>a_pu0=None</em>, <em>fs0=None</em>, <em>qinv0=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/calibration/recalibrate.html#Recalibrate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.calibration.recalibrate.Recalibrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Class for adjusting time-varying calibration parameters of given
+strain data.</p>
+<dl class="attribute">
+<dt id="pycbc.calibration.recalibrate.Recalibrate.name">
+<code class="descname">name</code><a class="headerlink" href="#pycbc.calibration.recalibrate.Recalibrate.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>‘physical_model’</em> – The name of this calibration model.</p>
+</dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>strain</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The strain to be adjusted.</li>
+<li><strong>freq</strong> (<a class="reference internal" href="pycbc.types.html#module-pycbc.types.array" title="pycbc.types.array"><em>array</em></a>) – The frequencies corresponding to the values of c0, d0, a0 in Hertz.</li>
+<li><strong>fc0</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Coupled-cavity (CC) pole at time t0, when c0=c(t0) and a0=a(t0) are
+measured.</li>
+<li><strong>c0</strong> (<a class="reference internal" href="pycbc.types.html#module-pycbc.types.array" title="pycbc.types.array"><em>array</em></a>) – Initial sensing function at t0 for the frequencies.</li>
+<li><strong>d0</strong> (<a class="reference internal" href="pycbc.types.html#module-pycbc.types.array" title="pycbc.types.array"><em>array</em></a>) – Digital filter for the frequencies.</li>
+<li><strong>a_tst0</strong> (<a class="reference internal" href="pycbc.types.html#module-pycbc.types.array" title="pycbc.types.array"><em>array</em></a>) – Initial actuation function for the test mass at t0 for the
+frequencies.</li>
+<li><strong>a_pu0</strong> (<a class="reference internal" href="pycbc.types.html#module-pycbc.types.array" title="pycbc.types.array"><em>array</em></a>) – Initial actuation function for the penultimate mass at t0 for the
+frequencies.</li>
+<li><strong>fs0</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Initial spring frequency at t0 for the signal recycling cavity.</li>
+<li><strong>qinv0</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Initial inverse quality factor at t0 for the signal recycling
+cavity.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycbc.calibration.recalibrate.Recalibrate.adjust_strain">
+<code class="descname">adjust_strain</code><span class="sig-paren">(</span><em>strain</em>, <em>delta_fs=None</em>, <em>delta_qinv=None</em>, <em>delta_fc=None</em>, <em>kappa_c=1.0</em>, <em>kappa_tst_re=1.0</em>, <em>kappa_tst_im=0.0</em>, <em>kappa_pu_re=1.0</em>, <em>kappa_pu_im=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/calibration/recalibrate.html#Recalibrate.adjust_strain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.calibration.recalibrate.Recalibrate.adjust_strain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjust the FrequencySeries strain by changing the time-dependent
+calibration parameters kappa_c(t), kappa_a(t), f_c(t), fs, and qinv.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>strain</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The strain data to be adjusted.</li>
+<li><strong>delta_fc</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Change in coupled-cavity (CC) pole at time t.</li>
+<li><strong>kappa_c</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Scalar correction factor for sensing function c0 at time t.</li>
+<li><strong>kappa_tst_re</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Real part of scalar correction factor for actuation function
+A_{tst0} at time t.</li>
+<li><strong>kappa_tst_im</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Imaginary part of scalar correction factor for actuation function
+A_tst0 at time t.</li>
+<li><strong>kappa_pu_re</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Real part of scalar correction factor for actuation function
+A_{pu0} at time t.</li>
+<li><strong>kappa_pu_im</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Imaginary part of scalar correction factor for actuation function
+A_{pu0} at time t.</li>
+<li><strong>fs</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Spring frequency for signal recycling cavity.</li>
+<li><strong>qinv</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Inverse quality factor for signal recycling cavity.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>strain_adjusted</strong> – The adjusted strain.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries">FrequencySeries</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.calibration.recalibrate.Recalibrate.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>ifo</em>, <em>section</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/calibration/recalibrate.html#Recalibrate.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.calibration.recalibrate.Recalibrate.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a config file to get calibration options and transfer
+functions which will be used to intialize the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<a class="reference internal" href="pycbc.workflow.html#pycbc.workflow.configuration.WorkflowConfigParser" title="pycbc.workflow.configuration.WorkflowConfigParser"><em>WorkflowConfigParser</em></a>) – An open config file.</li>
+<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) – The detector (H1, L1) for which the calibration model will
+be loaded.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) – The section name in the config file from which to retrieve
+the calibration options.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An instance of the Recalibrate class.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.calibration.recalibrate.Recalibrate.map_to_adjust">
+<code class="descname">map_to_adjust</code><span class="sig-paren">(</span><em>strain</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/calibration/recalibrate.html#Recalibrate.map_to_adjust"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.calibration.recalibrate.Recalibrate.map_to_adjust" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map an input dictionary of sampling parameters to the
+adjust_strain function by filtering the dictionary for the
+calibration parameters, then calling adjust_strain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>strain</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries"><em>FrequencySeries</em></a>) – The strain to be recalibrated.</li>
+<li><strong>params</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – Dictionary of sampling parameters which includes
+calibration parameters.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>strain_adjusted</strong> – The recalibrated strain.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="pycbc.types.html#pycbc.types.frequencyseries.FrequencySeries" title="pycbc.types.frequencyseries.FrequencySeries">FrequencySeries</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name</code><em class="property"> = 'physical_model'</em></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.calibration.recalibrate.Recalibrate.tf_from_file">
+<em class="property">classmethod </em><code class="descname">tf_from_file</code><span class="sig-paren">(</span><em>path</em>, <em>delimiter=' '</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/calibration/recalibrate.html#Recalibrate.tf_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.calibration.recalibrate.Recalibrate.tf_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the contents of a file with the columns
+[freq, real(h), imag(h)] to a numpy.array with columns
+[freq, real(h)+j*imag(h)].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) – </li>
+<li><strong>delimiter</strong> (<em>{&quot; &quot;</em><em>, </em><em>string}</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.calibration.recalibrate.Recalibrate.update_c">
+<code class="descname">update_c</code><span class="sig-paren">(</span><em>fs=None</em>, <em>qinv=None</em>, <em>fc=None</em>, <em>kappa_c=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/calibration/recalibrate.html#Recalibrate.update_c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.calibration.recalibrate.Recalibrate.update_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the sensing function c(f,t) given the new parameters
+kappa_c(t), kappa_a(t), f_c(t), fs, and qinv.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fc</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Coupled-cavity (CC) pole at time t.</li>
+<li><strong>kappa_c</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Scalar correction factor for sensing function at time t.</li>
+<li><strong>fs</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Spring frequency for signal recycling cavity.</li>
+<li><strong>qinv</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Inverse quality factor for signal recycling cavity.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c</strong> – The new sensing function c(f,t).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.calibration.recalibrate.Recalibrate.update_g">
+<code class="descname">update_g</code><span class="sig-paren">(</span><em>fs=None</em>, <em>qinv=None</em>, <em>fc=None</em>, <em>kappa_tst_re=1.0</em>, <em>kappa_tst_im=0.0</em>, <em>kappa_pu_re=1.0</em>, <em>kappa_pu_im=0.0</em>, <em>kappa_c=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/calibration/recalibrate.html#Recalibrate.update_g"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.calibration.recalibrate.Recalibrate.update_g" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the open loop gain g(f,t) given the new parameters
+kappa_c(t), kappa_a(t), f_c(t), fs, and qinv.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fc</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Coupled-cavity (CC) pole at time t.</li>
+<li><strong>kappa_c</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Scalar correction factor for sensing function c at time t.</li>
+<li><strong>kappa_tst_re</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Real part of scalar correction factor for actuation function
+a_tst0 at time t.</li>
+<li><strong>kappa_pu_re</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Real part of scalar correction factor for actuation function
+a_pu0 at time t.</li>
+<li><strong>kappa_tst_im</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Imaginary part of scalar correction factor for actuation function
+a_tst0 at time t.</li>
+<li><strong>kappa_pu_im</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Imaginary part of scalar correction factor for actuation function
+a_pu0 at time t.</li>
+<li><strong>fs</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Spring frequency for signal recycling cavity.</li>
+<li><strong>qinv</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Inverse quality factor for signal recycling cavity.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>g</strong> – The new open loop gain g(f,t).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.calibration.recalibrate.Recalibrate.update_r">
+<code class="descname">update_r</code><span class="sig-paren">(</span><em>fs=None</em>, <em>qinv=None</em>, <em>fc=None</em>, <em>kappa_c=1.0</em>, <em>kappa_tst_re=1.0</em>, <em>kappa_tst_im=0.0</em>, <em>kappa_pu_re=1.0</em>, <em>kappa_pu_im=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/calibration/recalibrate.html#Recalibrate.update_r"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.calibration.recalibrate.Recalibrate.update_r" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the response function R(f,t) given the new parameters
+kappa_c(t), kappa_a(t), f_c(t), fs, and qinv.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fc</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Coupled-cavity (CC) pole at time t.</li>
+<li><strong>kappa_c</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Scalar correction factor for sensing function c at time t.</li>
+<li><strong>kappa_tst_re</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Real part of scalar correction factor for actuation function
+a_tst0 at time t.</li>
+<li><strong>kappa_pu_re</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Real part of scalar correction factor for actuation function
+a_pu0 at time t.</li>
+<li><strong>kappa_tst_im</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Imaginary part of scalar correction factor for actuation function
+a_tst0 at time t.</li>
+<li><strong>kappa_pu_im</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Imaginary part of scalar correction factor for actuation function
+a_pu0 at time t.</li>
+<li><strong>fs</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Spring frequency for signal recycling cavity.</li>
+<li><strong>qinv</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Inverse quality factor for signal recycling cavity.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>r</strong> – The new response function r(f,t).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.calibration">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pycbc.calibration" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pycbc.calibration.read_model_from_config">
+<code class="descclassname">pycbc.calibration.</code><code class="descname">read_model_from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>ifo</em>, <em>section='calibration'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/calibration.html#read_model_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.calibration.read_model_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an instance of the calibration model specified in the
+given configuration file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>WorflowConfigParser</em>) – An open config file to read.</li>
+<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) – The detector (H1, L1)  whose model will be loaded.</li>
+<li><strong>section</strong> (<em>{&quot;calibration&quot;</em><em>, </em><em>string}</em>) – Section name from which to retrieve the model.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An instance of the calibration model class.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pycbc.catalog.html" class="btn btn-neutral float-right" title="pycbc.catalog package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pycbc.html" class="btn btn-neutral" title="pycbc package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

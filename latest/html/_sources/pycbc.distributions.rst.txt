@@ -1,0 +1,102 @@
+pycbc\.distributions package
+============================
+
+Submodules
+----------
+
+pycbc\.distributions\.angular module
+------------------------------------
+
+.. automodule:: pycbc.distributions.angular
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.distributions\.arbitrary module
+--------------------------------------
+
+.. automodule:: pycbc.distributions.arbitrary
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.distributions\.boundaries module
+---------------------------------------
+
+.. automodule:: pycbc.distributions.boundaries
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.distributions\.bounded module
+------------------------------------
+
+.. automodule:: pycbc.distributions.bounded
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.distributions\.constraints module
+----------------------------------------
+
+.. automodule:: pycbc.distributions.constraints
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.distributions\.gaussian module
+-------------------------------------
+
+.. automodule:: pycbc.distributions.gaussian
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.distributions\.power\_law module
+---------------------------------------
+
+.. automodule:: pycbc.distributions.power_law
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.distributions\.sky\_location module
+------------------------------------------
+
+.. automodule:: pycbc.distributions.sky_location
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.distributions\.spins module
+----------------------------------
+
+.. automodule:: pycbc.distributions.spins
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.distributions\.uniform module
+------------------------------------
+
+.. automodule:: pycbc.distributions.uniform
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pycbc\.distributions\.uniform\_log module
+-----------------------------------------
+
+.. automodule:: pycbc.distributions.uniform_log
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: pycbc.distributions
+    :members:
+    :undoc-members:
+    :show-inheritance:

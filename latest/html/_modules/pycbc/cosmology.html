@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.cosmology &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../index.html"/>
+        <link rel="up" title="pycbc" href="../pycbc.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.cosmology</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.cosmology</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2017  Collin Capano</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                                   Preamble</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This modules provides functions for computing cosmological quantities, such as</span>
+<span class="sd">redshift.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">lal</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">interpolate</span>
+<span class="kn">from</span> <span class="nn">pycbc.conversions</span> <span class="k">import</span> <span class="n">_ensurearray</span><span class="p">,</span> <span class="n">_formatreturn</span>
+
+<span class="k">class</span> <span class="nc">_DistToZ</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class to convert luminosity distance to redshift using the given</span>
+<span class="sd">    cosmology.</span>
+
+<span class="sd">    Cosmological constants `h, om, ol, w0, w1, w2` may optionally be provided</span>
+<span class="sd">    (see below). Otherwise, standard LambdaCDM will be used by default; see</span>
+<span class="sd">    `LALCosmologyCalculator` for details.</span>
+
+<span class="sd">    LAL provides functions to convert redshift to luminosity distance,</span>
+<span class="sd">    assuming a cosmology. This class works by setting up a dense grid of</span>
+<span class="sd">    redshifts, then using linear interpolation to find the inverse function.</span>
+<span class="sd">    The interpolation uses a grid linear in z for z &lt; 1, and log in z for z &gt;</span>
+<span class="sd">    1.  For speed, a default interpolater is setup on initialization for</span>
+<span class="sd">    redshifts out to `default_maxz`. If a requested distance is found to have</span>
+<span class="sd">    a redshift greater than `default_maxz`, a new set of grid points is</span>
+<span class="sd">    created from `0.1*default_maxz` to `1e5*default_maxz` and re-interpolated.</span>
+<span class="sd">    This continues until a redshift can be found.</span>
+<span class="sd">    </span>
+<span class="sd">    Instances of this class can be called like a function on luminosity</span>
+<span class="sd">    distances, which will return the corresponding redshifts.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    h : {None, float}</span>
+<span class="sd">        The normalized Hubble constant to use. If None, will default to</span>
+<span class="sd">        standard cosmology.</span>
+<span class="sd">    om : {None, float}</span>
+<span class="sd">        The matter energy density. If None, will default to standard cosmology.</span>
+<span class="sd">    ol : {None, float}</span>
+<span class="sd">        The cosmological-constant density. If None, will default to standard</span>
+<span class="sd">        cosmology.</span>
+<span class="sd">    w0 : {None, float}</span>
+<span class="sd">        The 0th-order dark energy equation of state parameter. If None, will</span>
+<span class="sd">        default to standard cosmology.</span>
+<span class="sd">    w1 : {None, float}</span>
+<span class="sd">        The first-order dark energy equation of state parameter. If None, will</span>
+<span class="sd">        default to standard cosmology.</span>
+<span class="sd">    w2 : {None, float}</span>
+<span class="sd">        The second-order dark energy equation of state parameter. If None, will</span>
+<span class="sd">        default to standard cosmology.</span>
+<span class="sd">    default_maxz : {2., float}</span>
+<span class="sd">        The default maximum redshift to use for the interpolation.</span>
+<span class="sd">    numpoints : {5e4, int}</span>
+<span class="sd">        The number of points to use between for the interpolation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">om</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w2</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">default_maxz</span><span class="o">=</span><span class="mf">1e5</span><span class="p">,</span> <span class="n">numpoints</span><span class="o">=</span><span class="mf">1e4</span><span class="p">):</span>
+        <span class="n">default_omega</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CreateCosmologicalParameters</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>
+                                                         <span class="mf">0.</span><span class="p">)</span>
+        <span class="n">lal</span><span class="o">.</span><span class="n">SetCosmologicalParametersDefaultValue</span><span class="p">(</span><span class="n">default_omega</span><span class="p">)</span>
+        <span class="c1"># if any cosmological parameter was specified, create a custom</span>
+        <span class="c1"># cosmology</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">om</span><span class="p">,</span> <span class="n">ol</span><span class="p">,</span> <span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">]]):</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="k">if</span> <span class="n">h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">default_omega</span><span class="o">.</span><span class="n">h</span>
+            <span class="n">om</span> <span class="o">=</span> <span class="n">om</span> <span class="k">if</span> <span class="n">om</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">default_omega</span><span class="o">.</span><span class="n">om</span>
+            <span class="n">ol</span> <span class="o">=</span> <span class="n">ol</span> <span class="k">if</span> <span class="n">ol</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">default_omega</span><span class="o">.</span><span class="n">ol</span>
+            <span class="n">w0</span> <span class="o">=</span> <span class="n">w0</span> <span class="k">if</span> <span class="n">w0</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">default_omega</span><span class="o">.</span><span class="n">w0</span>
+            <span class="n">w1</span> <span class="o">=</span> <span class="n">w1</span> <span class="k">if</span> <span class="n">w1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">default_omega</span><span class="o">.</span><span class="n">w1</span>
+            <span class="n">w2</span> <span class="o">=</span> <span class="n">w2</span> <span class="k">if</span> <span class="n">w2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">default_omega</span><span class="o">.</span><span class="n">w2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">omega</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CreateCosmologicalParameters</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">om</span><span class="p">,</span> <span class="n">ol</span><span class="p">,</span>
+                                                          <span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">omega</span> <span class="o">=</span> <span class="n">default_omega</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_maxz</span> <span class="o">=</span> <span class="n">default_maxz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numpoints</span> <span class="o">=</span> <span class="n">numpoints</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z2d</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">LuminosityDistance</span><span class="p">)</span>
+        <span class="c1"># for computing nearby (z &lt; 1) redshifts</span>
+        <span class="n">zs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">numpoints</span><span class="p">)</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">omega</span><span class="p">,</span> <span class="n">zs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nearby_d2z</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">zs</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+                                                <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># for computing far away (z &gt; 1) redshifts</span>
+        <span class="n">zs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">default_maxz</span><span class="p">),</span> <span class="n">num</span><span class="o">=</span><span class="n">numpoints</span><span class="p">)</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">omega</span><span class="p">,</span> <span class="n">zs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">faraway_d2z</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">zs</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+                                                 <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># store the default maximum distance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_maxdist</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_redshift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dist</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the redshift for the given distance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">_ensurearray</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+        <span class="n">zs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nearby_d2z</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+        <span class="c1"># if any points had red shifts beyond the nearby, will have nans;</span>
+        <span class="c1"># replace using the faraway interpolation</span>
+        <span class="n">replacemask</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">replacemask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="n">zs</span><span class="p">[</span><span class="n">replacemask</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">faraway_d2z</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">replacemask</span><span class="p">])</span>
+            <span class="n">replacemask</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+            <span class="c1"># if we still have nans, means that some distances are beyond our</span>
+            <span class="c1"># furthest default; replace</span>
+            <span class="k">if</span> <span class="n">replacemask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="c1"># well... check that the distance is positive and finite first</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">dist</span> <span class="o">&gt;</span> <span class="mf">0.</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span> <span class="ow">and</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;distance must be finite and &gt; 0&quot;</span><span class="p">)</span>
+                <span class="n">minz</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">default_maxz</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.</span>
+                <span class="n">maxz</span> <span class="o">=</span> <span class="n">minz</span> <span class="o">+</span> <span class="mi">5</span>
+                <span class="k">while</span> <span class="n">replacemask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                    <span class="n">gridzs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">minz</span><span class="p">,</span> <span class="n">maxz</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">numpoints</span><span class="p">)</span>
+                    <span class="n">ds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">z2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">omega</span><span class="p">,</span> <span class="n">gridzs</span><span class="p">)</span>
+                    <span class="n">d2z</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">gridzs</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+                                                <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="n">zs</span><span class="p">[</span><span class="n">replacemask</span><span class="p">]</span> <span class="o">=</span> <span class="n">d2z</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">replacemask</span><span class="p">])</span>
+                    <span class="n">replacemask</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+                    <span class="n">minz</span> <span class="o">=</span> <span class="n">maxz</span> <span class="o">-</span> <span class="mi">1</span>
+                    <span class="n">maxz</span> <span class="o">=</span> <span class="n">minz</span> <span class="o">+</span> <span class="mi">5</span>
+        <span class="k">return</span> <span class="n">_formatreturn</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dist</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_redshift</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+
+<span class="c1"># we&#39;ll use the default cosmology for computing red shifts.</span>
+<span class="n">_d2z</span> <span class="o">=</span> <span class="n">_DistToZ</span><span class="p">()</span>
+
+<div class="viewcode-block" id="redshift"><a class="viewcode-back" href="../../pycbc.html#pycbc.cosmology.redshift">[docs]</a><span class="k">def</span> <span class="nf">redshift</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">om</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">w2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the redshift associated with the given distance.</span>
+
+<span class="sd">    Cosmological constants `h, om, ol, w0, w1, w2` may optionally be provided</span>
+<span class="sd">    (see below). Otherwise, standard LambdaCDM will be used by default; see</span>
+<span class="sd">    `LALCosmologyCalculator` for details.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    distance : float</span>
+<span class="sd">        The luminosity distance, in Mpc.</span>
+<span class="sd">    h : {None, float}</span>
+<span class="sd">        The normalized Hubble constant to use. If None, will default to</span>
+<span class="sd">        standard cosmology.</span>
+<span class="sd">    om : {None, float}</span>
+<span class="sd">        The matter energy density. If None, will default to standard cosmology.</span>
+<span class="sd">    ol : {None, float}</span>
+<span class="sd">        The cosmological-constant density. If None, will default to standard</span>
+<span class="sd">        cosmology.</span>
+<span class="sd">    w0 : {None, float}</span>
+<span class="sd">        The 0th-order dark energy equation of state parameter. If None, will</span>
+<span class="sd">        default to standard cosmology.</span>
+<span class="sd">    w1 : {None, float}</span>
+<span class="sd">        The first-order dark energy equation of state parameter. If None, will</span>
+<span class="sd">        default to standard cosmology.</span>
+<span class="sd">    w2 : {None, float}</span>
+<span class="sd">        The second-order dark energy equation of state parameter. If None, will</span>
+<span class="sd">        default to standard cosmology.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float :</span>
+<span class="sd">        The redshift corresponding to the given distance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">p</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">om</span><span class="p">,</span> <span class="n">ol</span><span class="p">,</span> <span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">]]):</span>
+        <span class="c1"># just use the default converter</span>
+        <span class="n">d2z</span> <span class="o">=</span> <span class="n">_d2z</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">d2z</span> <span class="o">=</span> <span class="n">_DistToZ</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">om</span><span class="o">=</span><span class="n">om</span><span class="p">,</span> <span class="n">ol</span><span class="o">=</span><span class="n">ol</span><span class="p">,</span> <span class="n">w0</span><span class="o">=</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="o">=</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="o">=</span><span class="n">w2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">d2z</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;redshift&#39;</span><span class="p">]</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

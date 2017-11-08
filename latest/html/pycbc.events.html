@@ -1,0 +1,2013 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.events package &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="index.html"/>
+        <link rel="up" title="pycbc package" href="pycbc.html"/>
+        <link rel="next" title="pycbc.fft package" href="pycbc.fft.html"/>
+        <link rel="prev" title="pycbc.distributions package" href="pycbc.distributions.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pycbc</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pycbc.html">pycbc package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pycbc.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pycbc.calibration.html">pycbc.calibration package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.catalog.html">pycbc.catalog package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.distributions.html">pycbc.distributions package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pycbc.events package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.fft.html">pycbc.fft package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.filter.html">pycbc.filter package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.frame.html">pycbc.frame package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.inference.html">pycbc.inference package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.inject.html">pycbc.inject package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.io.html">pycbc.io package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.noise.html">pycbc.noise package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.psd.html">pycbc.psd package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.results.html">pycbc.results package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.tmpltbank.html">pycbc.tmpltbank package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.types.html">pycbc.types package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.vetoes.html">pycbc.vetoes package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.waveform.html">pycbc.waveform package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.workflow.html">pycbc.workflow package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.bin_utils">pycbc.bin_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.conversions">pycbc.conversions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.coordinates">pycbc.coordinates module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.cosmology">pycbc.cosmology module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.detector">pycbc.detector module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.future">pycbc.future module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.gate">pycbc.gate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.libutils">pycbc.libutils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.opt">pycbc.opt module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.pnutils">pycbc.pnutils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.pool">pycbc.pool module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.rate">pycbc.rate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.scheme">pycbc.scheme module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.sensitivity">pycbc.sensitivity module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.strain">pycbc.strain module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.transforms">pycbc.transforms module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.version">pycbc.version module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.weave">pycbc.weave module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">pycbc</a> &raquo;</li>
+        
+          <li><a href="pycbc.html">pycbc package</a> &raquo;</li>
+        
+      <li>pycbc.events package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pycbc.events.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pycbc-events-package">
+<h1>pycbc.events package<a class="headerlink" href="#pycbc-events-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pycbc.events.coinc">
+<span id="pycbc-events-coinc-module"></span><h2>pycbc.events.coinc module<a class="headerlink" href="#module-pycbc.events.coinc" title="Permalink to this headline">¶</a></h2>
+<p>This modules contains functions for calculating and manipulating
+coincident triggers.</p>
+<dl class="class">
+<dt id="pycbc.events.coinc.CoincExpireBuffer">
+<em class="property">class </em><code class="descclassname">pycbc.events.coinc.</code><code class="descname">CoincExpireBuffer</code><span class="sig-paren">(</span><em>expiration</em>, <em>ifos</em>, <em>initial_size=1048576</em>, <em>dtype=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#CoincExpireBuffer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.CoincExpireBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Unordered dynamic sized buffer that handles
+multiple expiration vectors.</p>
+<dl class="method">
+<dt id="pycbc.events.coinc.CoincExpireBuffer.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>values</em>, <em>times</em>, <em>ifos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#CoincExpireBuffer.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.CoincExpireBuffer.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add values to the internal buffer</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>values</strong> (<em>numpy.ndarray</em>) – Array of elements to add to the internal buffer.</li>
+<li><strong>times</strong> (<em>dict of arrays</em>) – The current time to use for each element being added.</li>
+<li><strong>ifos</strong> (<em>list of strs</em>) – The set of timers to be incremented.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.events.coinc.CoincExpireBuffer.data">
+<code class="descname">data</code><a class="headerlink" href="#pycbc.events.coinc.CoincExpireBuffer.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the array of elements</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.CoincExpireBuffer.increment">
+<code class="descname">increment</code><span class="sig-paren">(</span><em>ifos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#CoincExpireBuffer.increment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.CoincExpireBuffer.increment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increment without adding triggers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.CoincExpireBuffer.num_greater">
+<code class="descname">num_greater</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#CoincExpireBuffer.num_greater"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.CoincExpireBuffer.num_greater" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of elements larger than ‘value’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.CoincExpireBuffer.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>num</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#CoincExpireBuffer.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.CoincExpireBuffer.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the the last ‘num’ elements from the buffer</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator">
+<em class="property">class </em><code class="descclassname">pycbc.events.coinc.</code><code class="descname">LiveCoincTimeslideBackgroundEstimator</code><span class="sig-paren">(</span><em>num_templates</em>, <em>analysis_block</em>, <em>background_statistic</em>, <em>stat_files</em>, <em>ifos</em>, <em>ifar_limit=100</em>, <em>timeslide_interval=0.035</em>, <em>ifar_remove_threshold=100</em>, <em>coinc_threshold=0.002</em>, <em>return_background=False</em>, <em>save_background_on_interrupt=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Rolling buffer background estimation.</p>
+<dl class="method">
+<dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.add_singles">
+<code class="descname">add_singles</code><span class="sig-paren">(</span><em>results</em>, <em>data_reader</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator.add_singles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.add_singles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add singles to the bacckground estimate and find candidates</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>results</strong> (<em>dict of arrays</em>) – Dictionary of dictionaries indexed by ifo and keys such as ‘snr’,
+‘chisq’, etc. The specific format it determined by the
+LiveBatchMatchedFilter class.</li>
+<li><strong>data_reader</strong> (<em>dict of StrainBuffers</em>) – A dict of StrainBuffer instances, indexed by ifos.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>coinc_results</strong> – A dictionary of arrays containing the coincident results.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict of arrays</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.background_time">
+<code class="descname">background_time</code><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.background_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the amount of background time that the buffers contain</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.backout_last">
+<code class="descname">backout_last</code><span class="sig-paren">(</span><em>updated_singles</em>, <em>num_coincs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator.backout_last"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.backout_last" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the recently added singles and coincs</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>updated_singles</strong> (<em>dict of numpy.ndarrays</em>) – Array of indices that have been just updated in the internal
+buffers of single detector triggers.</li>
+<li><strong>num_coincs</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – The number of coincs that were just added to the internal buffer
+of coincident triggers</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.from_cli">
+<em class="property">classmethod </em><code class="descname">from_cli</code><span class="sig-paren">(</span><em>args</em>, <em>num_templates</em>, <em>analysis_chunk</em>, <em>ifos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator.from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.from_cli" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.ifar">
+<code class="descname">ifar</code><span class="sig-paren">(</span><em>coinc_stat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator.ifar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.ifar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the far that would be associated with the coincident given.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.insert_args">
+<em class="property">static </em><code class="descname">insert_args</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator.insert_args"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.insert_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.restore_state">
+<em class="property">static </em><code class="descname">restore_state</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator.restore_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.restore_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore state of the background buffers from a file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.save_state">
+<code class="descname">save_state</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator.save_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.save_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the current state of the background buffers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.set_singles_buffer">
+<code class="descname">set_singles_buffer</code><span class="sig-paren">(</span><em>results</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#LiveCoincTimeslideBackgroundEstimator.set_singles_buffer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.LiveCoincTimeslideBackgroundEstimator.set_singles_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the singles buffer</p>
+<p>This creates the singles buffer for each ifo. The dtype is determined
+by a representative sample of the single triggers in the results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>restuls</strong> (<em>dict of dict</em>) – Dict indexed by ifo and then trigger column.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.coinc.MultiRingBuffer">
+<em class="property">class </em><code class="descclassname">pycbc.events.coinc.</code><code class="descname">MultiRingBuffer</code><span class="sig-paren">(</span><em>num_rings</em>, <em>max_length</em>, <em>dtype=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Dynamic size n-dimensional ring buffer that can expire elements.</p>
+<dl class="method">
+<dt id="pycbc.events.coinc.MultiRingBuffer.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>indices</em>, <em>values</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add triggers in ‘values’ to the buffers indicated by the indices</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.MultiRingBuffer.advance_time">
+<code class="descname">advance_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer.advance_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.advance_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advance the internal time inrement by 1, expiring any triggers that
+are now too old.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.MultiRingBuffer.data">
+<code class="descname">data</code><span class="sig-paren">(</span><em>buffer_index</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer.data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the data vector for a given ring buffer</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.MultiRingBuffer.discard_last">
+<code class="descname">discard_last</code><span class="sig-paren">(</span><em>indices</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer.discard_last"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.discard_last" title="Permalink to this definition">¶</a></dt>
+<dd><p>Discard the triggers added in the latest update</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.events.coinc.MultiRingBuffer.end_time">
+<code class="descname">end_time</code><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.end_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.MultiRingBuffer.expire_vector">
+<code class="descname">expire_vector</code><span class="sig-paren">(</span><em>buffer_index</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer.expire_vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.expire_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the expiration bector of a given ring buffer</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.MultiRingBuffer.increase_buffer_size">
+<code class="descname">increase_buffer_size</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer.increase_buffer_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.increase_buffer_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increase the internal buffer size up to ‘size’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.MultiRingBuffer.num_elements">
+<code class="descname">num_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer.num_elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.num_elements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.MultiRingBuffer.ring_sizes">
+<code class="descname">ring_sizes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer.ring_sizes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.ring_sizes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.events.coinc.MultiRingBuffer.start_time">
+<code class="descname">start_time</code><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.start_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.coinc.MultiRingBuffer.straighten">
+<code class="descname">straighten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#MultiRingBuffer.straighten"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.MultiRingBuffer.straighten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets ring buffers that wrap around to the beginning to start
+at zero. This ensures they lie in contiguous memory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.coinc.background_bin_from_string">
+<code class="descclassname">pycbc.events.coinc.</code><code class="descname">background_bin_from_string</code><span class="sig-paren">(</span><em>background_bins</em>, <em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#background_bin_from_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.background_bin_from_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return template ids for each bin as defined by the format string</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bins</strong> (<em>list of strings</em>) – List of strings which define how a background bin is taken from the
+list of templates.</li>
+<li><strong>data</strong> (<em>dict of numpy.ndarrays</em>) – Dict with parameter key values and numpy.ndarray values which define
+the parameters of the template bank to bin up.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>bins</strong> – Dictionary of location indices indexed by a bin name</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.coinc.calculate_n_louder">
+<code class="descclassname">pycbc.events.coinc.</code><code class="descname">calculate_n_louder</code><span class="sig-paren">(</span><em>bstat</em>, <em>fstat</em>, <em>dec</em>, <em>skip_background=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#calculate_n_louder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.calculate_n_louder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate for each foreground event the number of background events
+that are louder than it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bstat</strong> (<em>numpy.ndarray</em>) – Array of the background statistic values</li>
+<li><strong>fstat</strong> (<em>numpy.ndarray</em>) – Array of the foreground statitsic values</li>
+<li><strong>dec</strong> (<em>numpy.ndarray</em>) – Array of the decimation factors for the background statistics</li>
+<li><strong>skip_background</strong> (<em>optional</em><em>, </em><em>{boolean</em><em>, </em><em>False}</em>) – Skip calculating cumulative numbers for background triggers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>cum_back_num</strong> (<em>numpy.ndarray</em>) – The cumulative array of background triggers. Does not return this
+argument if skip_background == True</li>
+<li><strong>fore_n_louder</strong> (<em>numpy.ndarray</em>) – The number of background triggers above each foreground trigger</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.coinc.cluster_coincs">
+<code class="descclassname">pycbc.events.coinc.</code><code class="descname">cluster_coincs</code><span class="sig-paren">(</span><em>stat</em>, <em>time1</em>, <em>time2</em>, <em>timeslide_id</em>, <em>slide</em>, <em>window</em>, <em>argmax=&lt;function argmax&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#cluster_coincs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.cluster_coincs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster coincident events for each timeslide separately, across
+templates, based on the ranking statistic</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>stat</strong> (<em>numpy.ndarray</em>) – vector of ranking values to maximize</li>
+<li><strong>time1</strong> (<em>numpy.ndarray</em>) – first time vector</li>
+<li><strong>time2</strong> (<em>numpy.ndarray</em>) – second time vector</li>
+<li><strong>timeslide_id</strong> (<em>numpy.ndarray</em>) – vector that determines the timeslide offset</li>
+<li><strong>slide</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – length of the timeslides offset interval</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – length to cluster over</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cindex</strong> – The set of indices corresponding to the surviving coincidences.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.coinc.time_coincidence">
+<code class="descclassname">pycbc.events.coinc.</code><code class="descname">time_coincidence</code><span class="sig-paren">(</span><em>t1</em>, <em>t2</em>, <em>window</em>, <em>slide_step=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#time_coincidence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.time_coincidence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find coincidences by time window</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>t1</strong> (<em>numpy.ndarray</em>) – Array of trigger times from the first detector</li>
+<li><strong>t2</strong> (<em>numpy.ndarray</em>) – Array of trigger times from the second detector</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – The coincidence window in seconds</li>
+<li><strong>slide_step</strong> (<em>optional</em><em>, </em><em>{None</em><em>, </em><em>float}</em>) – If calculating background coincidences, the interval between background
+slides in seconds.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>idx1</strong> (<em>numpy.ndarray</em>) – Array of indices into the t1 array.</li>
+<li><strong>idx2</strong> (<em>numpy.ndarray</em>) – Array of indices into the t2 array.</li>
+<li><strong>slide</strong> (<em>numpy.ndarray</em>) – Array of slide ids</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.coinc.timeslide_durations">
+<code class="descclassname">pycbc.events.coinc.</code><code class="descname">timeslide_durations</code><span class="sig-paren">(</span><em>start1</em>, <em>start2</em>, <em>end1</em>, <em>end2</em>, <em>timeslide_offsets</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/coinc.html#timeslide_durations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.coinc.timeslide_durations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the coincident time for each timeslide.</p>
+<p>Find the coincident time for each timeslide, where the first time vector
+is slid to the right by the offset in the given timeslide_offsets vector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start1</strong> (<em>numpy.ndarray</em>) – Array of the start of valid analyzed times for detector 1</li>
+<li><strong>start2</strong> (<em>numpy.ndarray</em>) – Array of the start of valid analyzed times for detector 2</li>
+<li><strong>end1</strong> (<em>numpy.ndarray</em>) – Array of the end of valid analyzed times for detector 1</li>
+<li><strong>end2</strong> (<em>numpy.ndarray</em>) – Array of the end of valid analyzed times for detector 2</li>
+<li><strong>timseslide_offset</strong> (<em>numpy.ndarray</em>) – Array of offsets (in seconds) for each timeslide</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>durations</strong> – Array of coincident time for each timeslide in the offset array</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.events.events">
+<span id="pycbc-events-events-module"></span><h2>pycbc.events.events module<a class="headerlink" href="#module-pycbc.events.events" title="Permalink to this headline">¶</a></h2>
+<p>This modules defines functions for clustering and thresholding timeseries to
+produces event triggers</p>
+<dl class="function">
+<dt id="pycbc.events.events.threshold_and_cluster">
+<code class="descclassname">pycbc.events.events.</code><code class="descname">threshold_and_cluster</code><span class="sig-paren">(</span><em>series</em>, <em>threshold</em>, <em>window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#threshold_and_cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.threshold_and_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of values and indices values over threshold in series.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.events.newsnr">
+<code class="descclassname">pycbc.events.events.</code><code class="descname">newsnr</code><span class="sig-paren">(</span><em>snr</em>, <em>reduced_x2</em>, <em>q=6.0</em>, <em>n=2.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#newsnr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.newsnr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the re-weighted SNR statistic (‘newSNR’) from given SNR and
+reduced chi-squared values. See <a class="reference external" href="http://arxiv.org/abs/1208.3491">http://arxiv.org/abs/1208.3491</a> for
+definition. Previous implementation in glue/ligolw/lsctables.py</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.events.effsnr">
+<code class="descclassname">pycbc.events.events.</code><code class="descname">effsnr</code><span class="sig-paren">(</span><em>snr</em>, <em>reduced_x2</em>, <em>fac=250.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#effsnr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.effsnr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the effective SNR statistic. See (S5y1 paper) for definition.
+Previous implementation in glue/ligolw/lsctables.py</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.events.newsnr_sgveto">
+<code class="descclassname">pycbc.events.events.</code><code class="descname">newsnr_sgveto</code><span class="sig-paren">(</span><em>snr</em>, <em>bchisq</em>, <em>sgchisq</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#newsnr_sgveto"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.newsnr_sgveto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combined SNR derived from NewSNR and Sine-Gaussian Chisq</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.events.findchirp_cluster_over_window">
+<code class="descclassname">pycbc.events.events.</code><code class="descname">findchirp_cluster_over_window</code><span class="sig-paren">(</span><em>times</em>, <em>values</em>, <em>window_length</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#findchirp_cluster_over_window"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.findchirp_cluster_over_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduce the events by clustering over a window using
+the FindChirp clustering algorithm</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a>) – The list of indices of the SNR values</li>
+<li><strong>snr</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a>) – The list of SNR value</li>
+<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – The size of the window in integer samples. Must be positive.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>indices</strong> – The reduced list of indices of the SNR values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array">Array</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.events.threshold">
+<code class="descclassname">pycbc.events.events.</code><code class="descname">threshold</code><span class="sig-paren">(</span><em>series</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#threshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of values and indices values over threshold in series.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.events.cluster_reduce">
+<code class="descclassname">pycbc.events.events.</code><code class="descname">cluster_reduce</code><span class="sig-paren">(</span><em>idx</em>, <em>snr</em>, <em>window_size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#cluster_reduce"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.cluster_reduce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reduce the events by clustering over a window</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>indices</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a>) – The list of indices of the SNR values</li>
+<li><strong>snr</strong> (<a class="reference internal" href="pycbc.types.html#pycbc.types.array.Array" title="pycbc.types.array.Array"><em>Array</em></a>) – The list of SNR value</li>
+<li><strong>window_size</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – The size of the window in integer samples.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>indices</strong> (<em>Array</em>) – The list of indices of the SNR values</li>
+<li><strong>snr</strong> (<em>Array</em>) – The list of SNR values</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.events.ThresholdCluster">
+<em class="property">class </em><code class="descclassname">pycbc.events.events.</code><code class="descname">ThresholdCluster</code><a class="reference internal" href="_modules/pycbc/events/events.html#ThresholdCluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.ThresholdCluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Create a threshold and cluster engine</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>series</strong> (<em>complex64</em>) – Input pycbc.types.Array (or subclass); it will be searched for
+points above threshold that are then clustered</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.events.threshold_real_numpy">
+<code class="descclassname">pycbc.events.events.</code><code class="descname">threshold_real_numpy</code><span class="sig-paren">(</span><em>series</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#threshold_real_numpy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.threshold_real_numpy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.events.threshold_only">
+<code class="descclassname">pycbc.events.events.</code><code class="descname">threshold_only</code><span class="sig-paren">(</span><em>series</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#threshold_only"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.threshold_only" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of values and indices whose values in series are
+larger (in absolute value) than value</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.events.EventManager">
+<em class="property">class </em><code class="descclassname">pycbc.events.events.</code><code class="descname">EventManager</code><span class="sig-paren">(</span><em>opt</em>, <em>column</em>, <em>column_types</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.add_template_events">
+<code class="descname">add_template_events</code><span class="sig-paren">(</span><em>columns</em>, <em>vectors</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.add_template_events"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.add_template_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a vector indexed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.add_template_params">
+<code class="descname">add_template_params</code><span class="sig-paren">(</span><em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.add_template_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.add_template_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.chisq_threshold">
+<code class="descname">chisq_threshold</code><span class="sig-paren">(</span><em>value</em>, <em>num_bins</em>, <em>delta=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.chisq_threshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.chisq_threshold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.cluster_template_events">
+<code class="descname">cluster_template_events</code><span class="sig-paren">(</span><em>tcolumn</em>, <em>column</em>, <em>window_size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.cluster_template_events"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.cluster_template_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster the internal events over the named column</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.finalize_template_events">
+<code class="descname">finalize_template_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.finalize_template_events"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.finalize_template_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.events.events.EventManager.from_multi_ifo_interface">
+<em class="property">classmethod </em><code class="descname">from_multi_ifo_interface</code><span class="sig-paren">(</span><em>opt</em>, <em>ifo</em>, <em>column</em>, <em>column_types</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.from_multi_ifo_interface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.from_multi_ifo_interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>To use this for a single ifo from the multi ifo interface requires
+some small fixing of the opt structure. This does that. As we edit the
+opt structure the process_params table will not be correct.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.keep_loudest_in_interval">
+<code class="descname">keep_loudest_in_interval</code><span class="sig-paren">(</span><em>window</em>, <em>num_keep</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.keep_loudest_in_interval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.keep_loudest_in_interval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.keep_near_injection">
+<code class="descname">keep_near_injection</code><span class="sig-paren">(</span><em>window</em>, <em>injections</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.keep_near_injection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.keep_near_injection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.make_output_dir">
+<code class="descname">make_output_dir</code><span class="sig-paren">(</span><em>outname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.make_output_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.make_output_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.maximize_over_bank">
+<code class="descname">maximize_over_bank</code><span class="sig-paren">(</span><em>tcolumn</em>, <em>column</em>, <em>window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.maximize_over_bank"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.maximize_over_bank" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.new_template">
+<code class="descname">new_template</code><span class="sig-paren">(</span><em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.new_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.new_template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.newsnr_threshold">
+<code class="descname">newsnr_threshold</code><span class="sig-paren">(</span><em>threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.newsnr_threshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.newsnr_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove events with newsnr smaller than given threshold</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.save_performance">
+<code class="descname">save_performance</code><span class="sig-paren">(</span><em>ncores</em>, <em>nfilters</em>, <em>ntemplates</em>, <em>run_time</em>, <em>setup_time</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.save_performance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.save_performance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls variables from pycbc_inspiral to be used in a timing calculation</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.write_events">
+<code class="descname">write_events</code><span class="sig-paren">(</span><em>outname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.write_events"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.write_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the found events to a sngl inspiral table</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManager.write_to_hdf">
+<code class="descname">write_to_hdf</code><span class="sig-paren">(</span><em>outname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManager.write_to_hdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManager.write_to_hdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.events.EventManagerMultiDet">
+<em class="property">class </em><code class="descclassname">pycbc.events.events.</code><code class="descname">EventManagerMultiDet</code><span class="sig-paren">(</span><em>opt</em>, <em>ifos</em>, <em>column</em>, <em>column_types</em>, <em>psd=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManagerMultiDet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManagerMultiDet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.events.EventManager" title="pycbc.events.events.EventManager"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.events.EventManager</span></code></a></p>
+<dl class="method">
+<dt id="pycbc.events.events.EventManagerMultiDet.add_template_events_to_ifo">
+<code class="descname">add_template_events_to_ifo</code><span class="sig-paren">(</span><em>ifo</em>, <em>columns</em>, <em>vectors</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManagerMultiDet.add_template_events_to_ifo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManagerMultiDet.add_template_events_to_ifo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a vector indexed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManagerMultiDet.cluster_template_events_single_ifo">
+<code class="descname">cluster_template_events_single_ifo</code><span class="sig-paren">(</span><em>tcolumn</em>, <em>column</em>, <em>window_size</em>, <em>ifo</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManagerMultiDet.cluster_template_events_single_ifo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManagerMultiDet.cluster_template_events_single_ifo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster the internal events over the named column</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManagerMultiDet.finalize_template_events">
+<code class="descname">finalize_template_events</code><span class="sig-paren">(</span><em>perform_coincidence=True</em>, <em>coinc_window=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManagerMultiDet.finalize_template_events"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManagerMultiDet.finalize_template_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManagerMultiDet.write_events">
+<code class="descname">write_events</code><span class="sig-paren">(</span><em>outname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManagerMultiDet.write_events"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManagerMultiDet.write_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the found events to a sngl inspiral table</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.events.EventManagerMultiDet.write_to_hdf">
+<code class="descname">write_to_hdf</code><span class="sig-paren">(</span><em>outname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/events.html#EventManagerMultiDet.write_to_hdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.events.EventManagerMultiDet.write_to_hdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.events.simd_threshold">
+<span id="pycbc-events-simd-threshold-module"></span><h2>pycbc.events.simd_threshold module<a class="headerlink" href="#module-pycbc.events.simd_threshold" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pycbc.events.simd_threshold.MaxOnlyObject">
+<em class="property">class </em><code class="descclassname">pycbc.events.simd_threshold.</code><code class="descname">MaxOnlyObject</code><span class="sig-paren">(</span><em>inarray</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/simd_threshold.html#MaxOnlyObject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.simd_threshold.MaxOnlyObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="pycbc.events.simd_threshold.MaxOnlyObject.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/simd_threshold.html#MaxOnlyObject.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.simd_threshold.MaxOnlyObject.execute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.simd_threshold.ThreshClusterObject">
+<em class="property">class </em><code class="descclassname">pycbc.events.simd_threshold.</code><code class="descname">ThreshClusterObject</code><span class="sig-paren">(</span><em>series</em>, <em>window</em>, <em>segsize=32768</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/simd_threshold.html#ThreshClusterObject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.simd_threshold.ThreshClusterObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>This class takes a complex SNR time series, a real threshold value, and a window size
+(expressed as a number of complex sample points), and optionally a segment size and
+verbosity indicator (for debugging weave).</p>
+<p>The execute method returns two numpy arrays: one giving the location of clustered
+maxima above the threshold, and the other the corresponding (complex) values of the
+SNR time series at those clustered maxima.  The expectation is that the memory of
+the SNR time series will be filled new inputs many times, and execute() called
+repeatedly.</p>
+<dl class="method">
+<dt id="pycbc.events.simd_threshold.ThreshClusterObject.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><em>thresh</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/simd_threshold.html#ThreshClusterObject.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.simd_threshold.ThreshClusterObject.execute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.simd_threshold.WindowedMaxObject">
+<em class="property">class </em><code class="descclassname">pycbc.events.simd_threshold.</code><code class="descname">WindowedMaxObject</code><span class="sig-paren">(</span><em>inarray</em>, <em>winsize</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/simd_threshold.html#WindowedMaxObject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.simd_threshold.WindowedMaxObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="pycbc.events.simd_threshold.WindowedMaxObject.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/simd_threshold.html#WindowedMaxObject.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.simd_threshold.WindowedMaxObject.execute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.events.single">
+<span id="pycbc-events-single-module"></span><h2>pycbc.events.single module<a class="headerlink" href="#module-pycbc.events.single" title="Permalink to this headline">¶</a></h2>
+<p>utilities for assigning FAR to single detector triggers</p>
+<dl class="class">
+<dt id="pycbc.events.single.LiveSingleFarThreshold">
+<em class="property">class </em><code class="descclassname">pycbc.events.single.</code><code class="descname">LiveSingleFarThreshold</code><span class="sig-paren">(</span><em>ifo</em>, <em>newsnr_threshold=10.0</em>, <em>reduced_chisq_threshold=5</em>, <em>duration_threshold=0</em>, <em>fixed_ifar=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/single.html#LiveSingleFarThreshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.single.LiveSingleFarThreshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="pycbc.events.single.LiveSingleFarThreshold.check">
+<code class="descname">check</code><span class="sig-paren">(</span><em>triggers</em>, <em>data_reader</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/single.html#LiveSingleFarThreshold.check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.single.LiveSingleFarThreshold.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Look for a single detector trigger that passes the thresholds in
+the current data.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.events.single.LiveSingleFarThreshold.from_cli">
+<em class="property">classmethod </em><code class="descname">from_cli</code><span class="sig-paren">(</span><em>args</em>, <em>ifo</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/single.html#LiveSingleFarThreshold.from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.single.LiveSingleFarThreshold.from_cli" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="pycbc.events.single.LiveSingleFarThreshold.insert_args">
+<em class="property">static </em><code class="descname">insert_args</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/single.html#LiveSingleFarThreshold.insert_args"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.single.LiveSingleFarThreshold.insert_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.events.stat">
+<span id="pycbc-events-stat-module"></span><h2>pycbc.events.stat module<a class="headerlink" href="#module-pycbc.events.stat" title="Permalink to this headline">¶</a></h2>
+<p>This modules contains functions for calculating coincident ranking
+statistic values</p>
+<dl class="class">
+<dt id="pycbc.events.stat.ExpFitCombinedSNR">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">ExpFitCombinedSNR</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitCombinedSNR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitCombinedSNR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.ExpFitStatistic" title="pycbc.events.stat.ExpFitStatistic"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.stat.ExpFitStatistic</span></code></a></p>
+<p>Reworking of ExpFitStatistic designed to resemble network SNR</p>
+<p>Use a monotonic function of the negative log noise rate density which
+approximates combined (new)snr for coincs with similar newsnr in each ifo</p>
+<dl class="method">
+<dt id="pycbc.events.stat.ExpFitCombinedSNR.coinc">
+<code class="descname">coinc</code><span class="sig-paren">(</span><em>s0</em>, <em>s1</em>, <em>slide</em>, <em>step</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitCombinedSNR.coinc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitCombinedSNR.coinc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.ExpFitCombinedSNR.single">
+<code class="descname">single</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitCombinedSNR.single"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitCombinedSNR.single" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.ExpFitCombinedSNR.use_alphamax">
+<code class="descname">use_alphamax</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitCombinedSNR.use_alphamax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitCombinedSNR.use_alphamax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.stat.ExpFitStatistic">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">ExpFitStatistic</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitStatistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitStatistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.NewSNRStatistic" title="pycbc.events.stat.NewSNRStatistic"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.stat.NewSNRStatistic</span></code></a></p>
+<p>Detection statistic using an exponential falloff noise model.</p>
+<p>Statistic approximates the negative log noise coinc rate density per
+template over single-ifo newsnr values.</p>
+<dl class="method">
+<dt id="pycbc.events.stat.ExpFitStatistic.assign_fits">
+<code class="descname">assign_fits</code><span class="sig-paren">(</span><em>ifo</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitStatistic.assign_fits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitStatistic.assign_fits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.ExpFitStatistic.coinc">
+<code class="descname">coinc</code><span class="sig-paren">(</span><em>s0</em>, <em>s1</em>, <em>slide</em>, <em>step</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitStatistic.coinc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitStatistic.coinc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the final coinc ranking statistic</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.ExpFitStatistic.find_fits">
+<code class="descname">find_fits</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitStatistic.find_fits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitStatistic.find_fits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get fit coeffs for a specific ifo and template id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.ExpFitStatistic.get_ref_vals">
+<code class="descname">get_ref_vals</code><span class="sig-paren">(</span><em>ifo</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitStatistic.get_ref_vals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitStatistic.get_ref_vals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.ExpFitStatistic.lognoiserate">
+<code class="descname">lognoiserate</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitStatistic.lognoiserate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitStatistic.lognoiserate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the log noise rate density over single-ifo newsnr</p>
+<p>Read in single trigger information, make the newsnr statistic
+and rescale by the fitted coefficients alpha and lambda</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.ExpFitStatistic.single">
+<code class="descname">single</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#ExpFitStatistic.single"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.ExpFitStatistic.single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Single-detector statistic, here just equal to the log noise rate</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.stat.MaxContTradNewSNRStatistic">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">MaxContTradNewSNRStatistic</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#MaxContTradNewSNRStatistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.MaxContTradNewSNRStatistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.NewSNRStatistic" title="pycbc.events.stat.NewSNRStatistic"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.stat.NewSNRStatistic</span></code></a></p>
+<p>Combination of NewSNR with the power chisq and auto chisq</p>
+<dl class="method">
+<dt id="pycbc.events.stat.MaxContTradNewSNRStatistic.single">
+<code class="descname">single</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#MaxContTradNewSNRStatistic.single"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.MaxContTradNewSNRStatistic.single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the single detector statistic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary of the single detector trigger information. ‘chisq_dof’,</li>
+<li><strong>'cont_chisq'</strong><strong>, </strong><strong>'cont_chisq_dof'</strong><strong>, </strong><strong>and 'chisq' are required arrays</strong> (<em>'snr'</em><em>,</em>) – </li>
+<li><strong>this statistic.</strong> (<em>for</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>stat</strong> – The array of single detector values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.stat.NetworkSNRStatistic">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">NetworkSNRStatistic</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NetworkSNRStatistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NetworkSNRStatistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.NewSNRStatistic" title="pycbc.events.stat.NewSNRStatistic"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.stat.NewSNRStatistic</span></code></a></p>
+<p>Same as the NewSNR statistic, but just sum of squares of SNRs</p>
+<dl class="method">
+<dt id="pycbc.events.stat.NetworkSNRStatistic.single">
+<code class="descname">single</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NetworkSNRStatistic.single"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NetworkSNRStatistic.single" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.stat.NewSNRCutStatistic">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">NewSNRCutStatistic</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NewSNRCutStatistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NewSNRCutStatistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.NewSNRStatistic" title="pycbc.events.stat.NewSNRStatistic"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.stat.NewSNRStatistic</span></code></a></p>
+<p>Same as the NewSNR statistic, but demonstrates a cut of the triggers</p>
+<dl class="method">
+<dt id="pycbc.events.stat.NewSNRCutStatistic.coinc">
+<code class="descname">coinc</code><span class="sig-paren">(</span><em>s0</em>, <em>s1</em>, <em>slide</em>, <em>step</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NewSNRCutStatistic.coinc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NewSNRCutStatistic.coinc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the coincident detection statistic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s0</strong> (<em>numpy.ndarray</em>) – Single detector ranking statistic for the first detector.</li>
+<li><strong>s1</strong> (<em>numpy.ndarray</em>) – Single detector ranking statistic for the second detector.</li>
+<li><strong>slide</strong> (<em>(</em><em>unused in this statistic</em><em>)</em>) – </li>
+<li><strong>step</strong> (<em>(</em><em>unused in this statistic</em><em>)</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cstat</strong> – Array of coincident ranking statistic values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.NewSNRCutStatistic.single">
+<code class="descname">single</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NewSNRCutStatistic.single"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NewSNRCutStatistic.single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the single detector statistic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary of the single detector trigger information. ‘chisq_dof’,</li>
+<li><strong>and 'chisq' are required keys</strong> (<em>'snr'</em><em>,</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>newsnr</strong> – Array of single detector values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.stat.NewSNRSGStatistic">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">NewSNRSGStatistic</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NewSNRSGStatistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NewSNRSGStatistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.NewSNRStatistic" title="pycbc.events.stat.NewSNRStatistic"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.stat.NewSNRStatistic</span></code></a></p>
+<p>Calculate the NewSNRSG coincident detection statistic</p>
+<dl class="method">
+<dt id="pycbc.events.stat.NewSNRSGStatistic.single">
+<code class="descname">single</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NewSNRSGStatistic.single"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NewSNRSGStatistic.single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the single detector statistic, here equal to newsnr</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The array of single detector values</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.stat.NewSNRStatistic">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">NewSNRStatistic</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NewSNRStatistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NewSNRStatistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.Stat" title="pycbc.events.stat.Stat"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.stat.Stat</span></code></a></p>
+<p>Calculate the NewSNR coincident detection statistic</p>
+<dl class="method">
+<dt id="pycbc.events.stat.NewSNRStatistic.coinc">
+<code class="descname">coinc</code><span class="sig-paren">(</span><em>s0</em>, <em>s1</em>, <em>slide</em>, <em>step</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NewSNRStatistic.coinc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NewSNRStatistic.coinc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the coincident detection statistic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s0</strong> (<em>numpy.ndarray</em>) – Single detector ranking statistic for the first detector.</li>
+<li><strong>s1</strong> (<em>numpy.ndarray</em>) – Single detector ranking statistic for the second detector.</li>
+<li><strong>slide</strong> (<em>(</em><em>unused in this statistic</em><em>)</em>) – </li>
+<li><strong>step</strong> (<em>(</em><em>unused in this statistic</em><em>)</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of coincident ranking statistic values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.NewSNRStatistic.single">
+<code class="descname">single</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#NewSNRStatistic.single"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.NewSNRStatistic.single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the single detector statistic, here equal to newsnr</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The array of single detector values</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.stat.PhaseTDExpFitSGStatistic">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">PhaseTDExpFitSGStatistic</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#PhaseTDExpFitSGStatistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.PhaseTDExpFitSGStatistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.PhaseTDExpFitStatistic" title="pycbc.events.stat.PhaseTDExpFitStatistic"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.stat.PhaseTDExpFitStatistic</span></code></a></p>
+<p>Statistic combining exponential noise model with signal histogram PDF
+and adding the sine-Gaussian veto to the single detector ranking</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.stat.PhaseTDExpFitStatistic">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">PhaseTDExpFitStatistic</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#PhaseTDExpFitStatistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.PhaseTDExpFitStatistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.PhaseTDStatistic" title="pycbc.events.stat.PhaseTDStatistic"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.stat.PhaseTDStatistic</span></code></a>, <a class="reference internal" href="#pycbc.events.stat.ExpFitCombinedSNR" title="pycbc.events.stat.ExpFitCombinedSNR"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.stat.ExpFitCombinedSNR</span></code></a></p>
+<p>Statistic combining exponential noise model with signal histogram PDF</p>
+<dl class="method">
+<dt id="pycbc.events.stat.PhaseTDExpFitStatistic.coinc">
+<code class="descname">coinc</code><span class="sig-paren">(</span><em>s0</em>, <em>s1</em>, <em>slide</em>, <em>step</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#PhaseTDExpFitStatistic.coinc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.PhaseTDExpFitStatistic.coinc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.PhaseTDExpFitStatistic.single">
+<code class="descname">single</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#PhaseTDExpFitStatistic.single"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.PhaseTDExpFitStatistic.single" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.stat.PhaseTDStatistic">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">PhaseTDStatistic</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#PhaseTDStatistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.PhaseTDStatistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.events.stat.NewSNRStatistic" title="pycbc.events.stat.NewSNRStatistic"><code class="xref py py-class docutils literal"><span class="pre">pycbc.events.stat.NewSNRStatistic</span></code></a></p>
+<p>Statistic that re-weights combined newsnr using coinc parameters.</p>
+<p>The weighting is based on the PDF of time delays, phase differences and
+amplitude ratios between triggers in different ifos.</p>
+<dl class="method">
+<dt id="pycbc.events.stat.PhaseTDStatistic.coinc">
+<code class="descname">coinc</code><span class="sig-paren">(</span><em>s0</em>, <em>s1</em>, <em>slide</em>, <em>step</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#PhaseTDStatistic.coinc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.PhaseTDStatistic.coinc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the coincident detection statistic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>s0</strong> (<em>numpy.ndarray</em>) – Single detector ranking statistic for the first detector.</li>
+<li><strong>s1</strong> (<em>numpy.ndarray</em>) – Single detector ranking statistic for the second detector.</li>
+<li><strong>slide</strong> (<em>numpy.ndarray</em>) – Array of ints. These represent the multiple of the timeslide</li>
+<li><strong>to bring a pair of single detector triggers into coincidence.</strong> (<em>interval</em>) – </li>
+<li><strong>step</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – The timeslide interval in seconds.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>coinc_stat</strong> – An array of the coincident ranking statistic values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.PhaseTDStatistic.logsignalrate">
+<code class="descname">logsignalrate</code><span class="sig-paren">(</span><em>s0</em>, <em>s1</em>, <em>slide</em>, <em>step</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#PhaseTDStatistic.logsignalrate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.PhaseTDStatistic.logsignalrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the normalized log rate density of signals via lookup</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.events.stat.PhaseTDStatistic.single">
+<code class="descname">single</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#PhaseTDStatistic.single"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.PhaseTDStatistic.single" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the single detector statistic and assemble other parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary holding single detector trigger information.</li>
+<li><strong>'snr'</strong><strong>, </strong><strong>'chisq'</strong><strong>, </strong><strong>'coa_phase'</strong><strong>, </strong><strong>'end_time'</strong><strong>, </strong><strong>and 'sigmasq'</strong> (<em>'chisq_dof'</em><em>,</em>) – </li>
+<li><strong>required keys.</strong> (<em>are</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of single detector parameter values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.events.stat.Stat">
+<em class="property">class </em><code class="descclassname">pycbc.events.stat.</code><code class="descname">Stat</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#Stat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.Stat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Base class which should be extended to provide a coincident statistic</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.stat.get_newsnr">
+<code class="descclassname">pycbc.events.stat.</code><code class="descname">get_newsnr</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#get_newsnr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.get_newsnr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate newsnr (‘reweighted SNR’) for a trigs object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary holding single detector trigger information.</li>
+<li><strong>'snr'</strong><strong>, </strong><strong>and 'chisq' are required keys</strong> (<em>'chisq_dof'</em><em>,</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of newsnr values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.stat.get_newsnr_sgveto">
+<code class="descclassname">pycbc.events.stat.</code><code class="descname">get_newsnr_sgveto</code><span class="sig-paren">(</span><em>trigs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#get_newsnr_sgveto"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.get_newsnr_sgveto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate newsnr re-weigthed by the sine-gaussian veto</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>trigs</strong> (<em>dict of numpy.ndarrays</em>) – Dictionary holding single detector trigger information.</li>
+<li><strong>'snr'</strong><strong>, </strong><strong>and 'chisq' are required keys</strong> (<em>'chisq_dof'</em><em>,</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Array of newsnr values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.stat.get_statistic">
+<code class="descclassname">pycbc.events.stat.</code><code class="descname">get_statistic</code><span class="sig-paren">(</span><em>stat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/stat.html#get_statistic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.stat.get_statistic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error-handling sugar around dict lookup</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stat</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) – Name of the statistic</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Subclass of Stat base class</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">class</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> – If the string is not recognized as corresponding to a Stat subclass</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.events.threshold_cpu">
+<span id="pycbc-events-threshold-cpu-module"></span><h2>pycbc.events.threshold_cpu module<a class="headerlink" href="#module-pycbc.events.threshold_cpu" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pycbc.events.threshold_cpu.CPUThresholdCluster">
+<em class="property">class </em><code class="descclassname">pycbc.events.threshold_cpu.</code><code class="descname">CPUThresholdCluster</code><span class="sig-paren">(</span><em>series</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/threshold_cpu.html#CPUThresholdCluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.threshold_cpu.CPUThresholdCluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pycbc.events.events._BaseThresholdCluster</span></code></p>
+<dl class="method">
+<dt id="pycbc.events.threshold_cpu.CPUThresholdCluster.threshold_and_cluster">
+<code class="descname">threshold_and_cluster</code><span class="sig-paren">(</span><em>threshold</em>, <em>window</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/threshold_cpu.html#CPUThresholdCluster.threshold_and_cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.threshold_cpu.CPUThresholdCluster.threshold_and_cluster" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.threshold_cpu.threshold">
+<code class="descclassname">pycbc.events.threshold_cpu.</code><code class="descname">threshold</code><span class="sig-paren">(</span><em>series</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.events.threshold_cpu.threshold" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.threshold_cpu.threshold_inline">
+<code class="descclassname">pycbc.events.threshold_cpu.</code><code class="descname">threshold_inline</code><span class="sig-paren">(</span><em>series</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/threshold_cpu.html#threshold_inline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.threshold_cpu.threshold_inline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.threshold_cpu.threshold_numpy">
+<code class="descclassname">pycbc.events.threshold_cpu.</code><code class="descname">threshold_numpy</code><span class="sig-paren">(</span><em>series</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/threshold_cpu.html#threshold_numpy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.threshold_cpu.threshold_numpy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.threshold_cpu.threshold_only">
+<code class="descclassname">pycbc.events.threshold_cpu.</code><code class="descname">threshold_only</code><span class="sig-paren">(</span><em>series</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pycbc.events.threshold_cpu.threshold_only" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.events.trigger_fits">
+<span id="pycbc-events-trigger-fits-module"></span><h2>pycbc.events.trigger_fits module<a class="headerlink" href="#module-pycbc.events.trigger_fits" title="Permalink to this headline">¶</a></h2>
+<p>Tools for maximum likelihood fits to single trigger statistic values</p>
+<p>For some set of values above a threshold, e.g. trigger SNRs, the functions
+in this module perform maximum likelihood fits with 1-sigma uncertainties
+to various simple functional forms of PDF, all normalized to 1.
+You can also obtain the fitted function and its (inverse) CDF and perform
+a Kolmogorov-Smirnov test.</p>
+<p>Usage:
+# call the fit function directly if the threshold is known
+alpha, sigma_alpha = fit_exponential(snrs, 5.5)</p>
+<p># apply a threshold explicitly
+alpha, sigma_alpha = fit_above_thresh(‘exponential’, snrs, thresh=6.25)</p>
+<p># let the code work out the threshold from the smallest value via the default thresh=None
+alpha, sigma_alpha = fit_above_thresh(‘exponential’, snrs)</p>
+<p># or only fit the largest N values, i.e. tail fitting
+thresh = tail_threshold(snrs, N=500)
+alpha, sigma_alpha = fit_above_thresh(‘exponential’, snrs, thresh)</p>
+<p># obtain the fitted function directly
+xvals = numpy.xrange(5.5, 10.5, 20)
+exponential_fit = expfit(xvals, alpha, thresh)</p>
+<p># or access function by name
+exponential_fit_1 = fit_fn(‘exponential’, xvals, alpha, thresh)</p>
+<p># get the KS test statistic and p-value - see scipy.stats.kstest
+ks_stat, ks_pval = KS_test(‘exponential’, snrs, alpha, thresh)</p>
+<dl class="function">
+<dt id="pycbc.events.trigger_fits.KS_test">
+<code class="descclassname">pycbc.events.trigger_fits.</code><code class="descname">KS_test</code><span class="sig-paren">(</span><em>distr</em>, <em>vals</em>, <em>alpha</em>, <em>thresh=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/trigger_fits.html#KS_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.trigger_fits.KS_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Kolmogorov-Smirnov test for fitted distribution</p>
+<p>Compare the given set of discrete values above a given threshold to the
+fitted distribution function.
+If no threshold is specified, the minimum sample value will be used.
+Returns the KS test statistic and its p-value: lower p means less
+probable under the hypothesis of a perfect fit</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>distr</strong> (<em>{'exponential'</em><em>, </em><em>'rayleigh'</em><em>, </em><em>'power'}</em>) – Name of distribution</li>
+<li><strong>vals</strong> (<em>sequence of floats</em>) – Values to compare to fit</li>
+<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Fitted distribution parameter</li>
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Threshold to apply before fitting; if None, use min(vals)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>D</strong> (<em>float</em>) – KS test statistic</li>
+<li><strong>p-value</strong> (<em>float</em>) – p-value, assumed to be two-tailed</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.trigger_fits.cum_fit">
+<code class="descclassname">pycbc.events.trigger_fits.</code><code class="descname">cum_fit</code><span class="sig-paren">(</span><em>distr</em>, <em>xvals</em>, <em>alpha</em>, <em>thresh</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/trigger_fits.html#cum_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.trigger_fits.cum_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integral of the fitted function above a given value (reverse CDF)</p>
+<p>The fitted function is normalized to 1 above threshold</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>xvals</strong> (<em>sequence of floats</em>) – Values where the function is to be evaluated</li>
+<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – The fitted parameter</li>
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Threshold value applied to fitted values</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cum_fit</strong> – Reverse CDF of fitted function at the requested xvals</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array of floats</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.trigger_fits.fit_above_thresh">
+<code class="descclassname">pycbc.events.trigger_fits.</code><code class="descname">fit_above_thresh</code><span class="sig-paren">(</span><em>distr</em>, <em>vals</em>, <em>thresh=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/trigger_fits.html#fit_above_thresh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.trigger_fits.fit_above_thresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum likelihood fit for the coefficient alpha</p>
+<p>Fitting a distribution of discrete values above a given threshold.
+Exponential  p(x) = alpha exp(-alpha (x-x_t))
+Rayleigh     p(x) = alpha x exp(-alpha (x**2-x_t**2)/2)
+Power        p(x) = ((alpha-1)/x_t) (x/x_t)**-alpha
+Values below threshold will be discarded.
+If no threshold is specified the minimum sample value will be used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>distr</strong> (<em>{'exponential'</em><em>, </em><em>'rayleigh'</em><em>, </em><em>'power'}</em>) – Name of distribution</li>
+<li><strong>vals</strong> (<em>sequence of floats</em>) – Values to fit</li>
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Threshold to apply before fitting; if None, use min(vals)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>alpha</strong> (<em>float</em>) – Fitted value</li>
+<li><strong>sigma_alpha</strong> (<em>float</em>) – Standard error in fitted value</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.trigger_fits.fit_fn">
+<code class="descclassname">pycbc.events.trigger_fits.</code><code class="descname">fit_fn</code><span class="sig-paren">(</span><em>distr</em>, <em>xvals</em>, <em>alpha</em>, <em>thresh</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/trigger_fits.html#fit_fn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.trigger_fits.fit_fn" title="Permalink to this definition">¶</a></dt>
+<dd><p>The fitted function normalized to 1 above threshold</p>
+<p>To normalize to a given total count multiply by the count.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>xvals</strong> (<em>sequence of floats</em>) – Values where the function is to be evaluated</li>
+<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – The fitted parameter</li>
+<li><strong>thresh</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Threshold value applied to fitted values</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fit</strong> – Fitted function at the requested xvals</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array of floats</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.trigger_fits.get_masses">
+<code class="descclassname">pycbc.events.trigger_fits.</code><code class="descname">get_masses</code><span class="sig-paren">(</span><em>bank</em>, <em>tid</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/trigger_fits.html#get_masses"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.trigger_fits.get_masses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bank</strong> (<em>h5py File object</em>) – Bank parameter file</li>
+<li><strong>tid</strong> (<em>integer</em><em> or </em><em>array of int</em>) – Indices of the entries to be returned</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>m1, m2, s1z, s2z</strong> – Parameter values of the bank entries</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple of floats or arrays of floats</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.trigger_fits.get_param">
+<code class="descclassname">pycbc.events.trigger_fits.</code><code class="descname">get_param</code><span class="sig-paren">(</span><em>par</em>, <em>args</em>, <em>m1</em>, <em>m2</em>, <em>s1z</em>, <em>s2z</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/trigger_fits.html#get_param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.trigger_fits.get_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>par</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) – Name of parameter to calculate</li>
+<li><strong>args</strong> (<em>Namespace object returned from ArgumentParser instance</em>) – Calling code command line options, used for f_lower value</li>
+<li><strong>m1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a><em> or </em><em>array of floats</em>) – First binary component mass (etc.)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>parvals</strong> – Calculated parameter values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a> or array of floats</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.trigger_fits.tail_threshold">
+<code class="descclassname">pycbc.events.trigger_fits.</code><code class="descname">tail_threshold</code><span class="sig-paren">(</span><em>vals</em>, <em>N=1000</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/trigger_fits.html#tail_threshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.trigger_fits.tail_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine a threshold above which there are N louder values</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.trigger_fits.which_bin">
+<code class="descclassname">pycbc.events.trigger_fits.</code><code class="descname">which_bin</code><span class="sig-paren">(</span><em>par</em>, <em>minpar</em>, <em>maxpar</em>, <em>nbins</em>, <em>log=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/trigger_fits.html#which_bin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.trigger_fits.which_bin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function</p>
+<p>Returns bin index where a parameter value belongs (from 0 through nbins-1)
+when dividing the range between minpar and maxpar equally into bins.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>par</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Parameter value being binned</li>
+<li><strong>minpar</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Minimum parameter value</li>
+<li><strong>maxpar</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – Maximum parameter value</li>
+<li><strong>nbins</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) – Number of bins to use</li>
+<li><strong>log</strong> (<em>boolean</em>) – If True, use log spaced bins</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>binind</strong> – Bin index</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)">int</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.events.triggers">
+<span id="pycbc-events-triggers-module"></span><h2>pycbc.events.triggers module<a class="headerlink" href="#module-pycbc.events.triggers" title="Permalink to this headline">¶</a></h2>
+<p>This modules contains functions for reading single and coincident triggers
+from the command line.</p>
+<dl class="function">
+<dt id="pycbc.events.triggers.bank_bins_from_cli">
+<code class="descclassname">pycbc.events.triggers.</code><code class="descname">bank_bins_from_cli</code><span class="sig-paren">(</span><em>opts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/triggers.html#bank_bins_from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.triggers.bank_bins_from_cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the CLI options related to binning templates in the bank.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>opts</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) – Result of parsing the CLI with OptionParser.</li>
+<li><strong>Results</strong> – </li>
+<li><strong>-------</strong> – </li>
+<li><strong>bins_idx</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A dict with bin names as key and an array of their indices as value.</li>
+<li><strong>bank</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A dict of the datasets from the bank file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.triggers.get_found_param">
+<code class="descclassname">pycbc.events.triggers.</code><code class="descname">get_found_param</code><span class="sig-paren">(</span><em>injfile</em>, <em>bankfile</em>, <em>trigfile</em>, <em>param</em>, <em>ifo</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/triggers.html#get_found_param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.triggers.get_found_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translates some popular trigger parameters into functions that calculate
+them from an hdf found injection file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>injfile</strong> (<em>hdf5 File object</em>) – Injection file of format known to ANitz (DOCUMENTME)</li>
+<li><strong>bankfile</strong> (<em>hdf5 File object</em><em> or </em><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><em>None</em></a>) – Template bank file</li>
+<li><strong>trigfile</strong> (<em>hdf5 File object</em><em> or </em><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><em>None</em></a>) – Single-detector trigger file</li>
+<li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) – Parameter to be calculated for the recovered triggers</li>
+<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a><em> or </em><a class="reference external" href="https://docs.python.org/2/library/constants.html#None" title="(in Python v2.7)"><em>None</em></a>) – Standard ifo name, ex. ‘L1’</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>[return value]</strong> – The calculated parameter values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">NumPy array of floats</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.triggers.get_inj_param">
+<code class="descclassname">pycbc.events.triggers.</code><code class="descname">get_inj_param</code><span class="sig-paren">(</span><em>injfile</em>, <em>param</em>, <em>ifo</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/triggers.html#get_inj_param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.triggers.get_inj_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translates some popular injection parameters into functions that calculate
+them from an hdf found injection file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>injfile</strong> (<em>hdf5 File object</em>) – Injection file of format known to ANitz (DOCUMENTME)</li>
+<li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) – Parameter to be calculated for the injected signals</li>
+<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) – Standard detector name, ex. ‘L1’</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>[return value]</strong> – The calculated parameter values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">NumPy array of floats</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.triggers.insert_bank_bins_option_group">
+<code class="descclassname">pycbc.events.triggers.</code><code class="descname">insert_bank_bins_option_group</code><span class="sig-paren">(</span><em>parser</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/triggers.html#insert_bank_bins_option_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.triggers.insert_bank_bins_option_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add options to the optparser object for selecting templates in bins.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) – OptionParser instance.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.triggers.insert_loudest_triggers_option_group">
+<code class="descclassname">pycbc.events.triggers.</code><code class="descname">insert_loudest_triggers_option_group</code><span class="sig-paren">(</span><em>parser</em>, <em>coinc_options=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/triggers.html#insert_loudest_triggers_option_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.triggers.insert_loudest_triggers_option_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add options to the optparser object for selecting templates in bins.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parser</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) – OptionParser instance.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.triggers.loudest_triggers_from_cli">
+<code class="descclassname">pycbc.events.triggers.</code><code class="descname">loudest_triggers_from_cli</code><span class="sig-paren">(</span><em>opts</em>, <em>coinc_parameters=None</em>, <em>sngl_parameters=None</em>, <em>bank_parameters=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/triggers.html#loudest_triggers_from_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.triggers.loudest_triggers_from_cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses the CLI options related to find the loudest coincident or
+single detector triggers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>opts</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><em>object</em></a>) – Result of parsing the CLI with OptionParser.</li>
+<li><strong>coinc_parameters</strong> (<em>list</em>) – List of datasets in statmap file to retrieve.</li>
+<li><strong>sngl_parameters</strong> (<em>list</em>) – List of datasets in single-detector trigger files to retrieve.</li>
+<li><strong>bank_parameters</strong> (<em>list</em>) – List of datasets in template bank file to retrieve.</li>
+<li><strong>Results</strong> – </li>
+<li><strong>-------</strong> – </li>
+<li><strong>bin_names</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A list of bin names.</li>
+<li><strong>bin_results</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) – A list of dict holding trigger data data.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.events.veto">
+<span id="pycbc-events-veto-module"></span><h2>pycbc.events.veto module<a class="headerlink" href="#module-pycbc.events.veto" title="Permalink to this headline">¶</a></h2>
+<p>This module contains utilities to manipulate trigger lists based on
+segment.</p>
+<dl class="function">
+<dt id="pycbc.events.veto.get_segment_definer_comments">
+<code class="descclassname">pycbc.events.veto.</code><code class="descname">get_segment_definer_comments</code><span class="sig-paren">(</span><em>xml_file</em>, <em>include_version=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/veto.html#get_segment_definer_comments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.veto.get_segment_definer_comments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dict with the comment column as the value for each segment</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.veto.indices_outside_segments">
+<code class="descclassname">pycbc.events.veto.</code><code class="descname">indices_outside_segments</code><span class="sig-paren">(</span><em>times</em>, <em>segment_files</em>, <em>ifo=None</em>, <em>segment_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/veto.html#indices_outside_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.veto.indices_outside_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of indices that are outside the segments in the
+list of segment files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>times</strong> (<em>numpy.ndarray of integer type</em>) – Array of gps start times</li>
+<li><strong>segment_files</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a><em> or </em><em>list of strings</em>) – A string or list of strings that contain the path to xml files that
+contain a segment table</li>
+<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a><em>, </em><em>optional</em>) – The ifo to retrieve segments for from the segment files</li>
+<li><strong>segment_name</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a><em>, </em><em>optional</em>) – name of segment</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>indices</strong> (<em>numpy.ndarray</em>) – The array of index values outside the segments</li>
+<li><em>segmentlist</em> – The segment list corresponding to the selected time.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.veto.indices_outside_times">
+<code class="descclassname">pycbc.events.veto.</code><code class="descname">indices_outside_times</code><span class="sig-paren">(</span><em>times</em>, <em>start</em>, <em>end</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/veto.html#indices_outside_times"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.veto.indices_outside_times" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an index array into times that like outside the durations defined by start end arrays</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>times</strong> (<em>numpy.ndarray</em>) – Array of times</li>
+<li><strong>start</strong> (<em>numpy.ndarray</em>) – Array of duration start times</li>
+<li><strong>end</strong> (<em>numpy.ndarray</em>) – Array of duration end times</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>indices</strong> – Array of indices into times</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.veto.indices_within_segments">
+<code class="descclassname">pycbc.events.veto.</code><code class="descname">indices_within_segments</code><span class="sig-paren">(</span><em>times</em>, <em>segment_files</em>, <em>ifo=None</em>, <em>segment_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/veto.html#indices_within_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.veto.indices_within_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of indices that should be vetoed by the segments in the
+list of veto_files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>times</strong> (<em>numpy.ndarray of integer type</em>) – Array of gps start times</li>
+<li><strong>segment_files</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a><em> or </em><em>list of strings</em>) – A string or list of strings that contain the path to xml files that
+contain a segment table</li>
+<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a><em>, </em><em>optional</em>) – The ifo to retrieve segments for from the segment files</li>
+<li><strong>segment_name</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a><em>, </em><em>optional</em>) – name of segment</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>indices</strong> (<em>numpy.ndarray</em>) – The array of index values within the segments</li>
+<li><em>segmentlist</em> – The segment list corresponding to the selected time.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.veto.indices_within_times">
+<code class="descclassname">pycbc.events.veto.</code><code class="descname">indices_within_times</code><span class="sig-paren">(</span><em>times</em>, <em>start</em>, <em>end</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/veto.html#indices_within_times"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.veto.indices_within_times" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an index array into times that lie within the durations defined by start end arrays</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>times</strong> (<em>numpy.ndarray</em>) – Array of times</li>
+<li><strong>start</strong> (<em>numpy.ndarray</em>) – Array of duration start times</li>
+<li><strong>end</strong> (<em>numpy.ndarray</em>) – Array of duration end times</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>indices</strong> – Array of indices into times</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.veto.segments_to_start_end">
+<code class="descclassname">pycbc.events.veto.</code><code class="descname">segments_to_start_end</code><span class="sig-paren">(</span><em>segs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/veto.html#segments_to_start_end"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.veto.segments_to_start_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.veto.select_segments_by_definer">
+<code class="descclassname">pycbc.events.veto.</code><code class="descname">select_segments_by_definer</code><span class="sig-paren">(</span><em>segment_file</em>, <em>segment_name=None</em>, <em>ifo=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/veto.html#select_segments_by_definer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.veto.select_segments_by_definer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of segments that match the segment name</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>segment_file</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – path to segment xml file</li>
+<li><strong>segment_name</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Name of segment</li>
+<li><strong>ifo</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a><em>, </em><em>optional</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>seg</strong></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list of segments</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.veto.start_end_from_segments">
+<code class="descclassname">pycbc.events.veto.</code><code class="descname">start_end_from_segments</code><span class="sig-paren">(</span><em>segment_file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/veto.html#start_end_from_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.veto.start_end_from_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the start and end time arrays from a segment file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>segment_file</strong> (<em>xml segment file</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><strong>start</strong> (<em>numpy.ndarray</em>)</li>
+<li><strong>end</strong> (<em>numpy.ndarray</em>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.events.veto.start_end_to_segments">
+<code class="descclassname">pycbc.events.veto.</code><code class="descname">start_end_to_segments</code><span class="sig-paren">(</span><em>start</em>, <em>end</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/events/veto.html#start_end_to_segments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.events.veto.start_end_to_segments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.events">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pycbc.events" title="Permalink to this headline">¶</a></h2>
+<p>This packages contains modules for clustering events</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pycbc.fft.html" class="btn btn-neutral float-right" title="pycbc.fft package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pycbc.distributions.html" class="btn btn-neutral" title="pycbc.distributions package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

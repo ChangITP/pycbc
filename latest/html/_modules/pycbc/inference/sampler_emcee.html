@@ -1,0 +1,1294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.inference.sampler_emcee &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.inference.sampler_emcee</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.inference.sampler_emcee</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2016  Collin Capano</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                                   Preamble</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This modules provides classes and functions for using the emcee sampler</span>
+<span class="sd">packages for parameter estimation.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">pycbc.inference.sampler_base</span> <span class="k">import</span> <span class="n">BaseMCMCSampler</span>
+<span class="kn">from</span> <span class="nn">pycbc.io</span> <span class="k">import</span> <span class="n">FieldArray</span>
+<span class="kn">from</span> <span class="nn">pycbc.filter</span> <span class="k">import</span> <span class="n">autocorrelation</span>
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                                   Samplers</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+
+<div class="viewcode-block" id="EmceeEnsembleSampler"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler">[docs]</a><span class="k">class</span> <span class="nc">EmceeEnsembleSampler</span><span class="p">(</span><span class="n">BaseMCMCSampler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This class is used to construct an MCMC sampler from the emcee</span>
+<span class="sd">    package&#39;s EnsembleSampler.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    likelihood_evaluator : likelihood class</span>
+<span class="sd">        An instance of the likelihood class from the</span>
+<span class="sd">        pycbc.inference.likelihood module.</span>
+<span class="sd">    nwalkers : int</span>
+<span class="sd">        Number of walkers to use in sampler.</span>
+<span class="sd">    pool : function with map, Optional</span>
+<span class="sd">        A provider of a map function that allows a function call to be run</span>
+<span class="sd">        over multiple sets of arguments and possibly maps them to</span>
+<span class="sd">        cores/nodes/etc.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;emcee&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">pool</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">likelihood_call</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">emcee</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;emcee is not installed.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">likelihood_call</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">likelihood_call</span> <span class="o">=</span> <span class="n">likelihood_evaluator</span>
+
+        <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="o">.</span><span class="n">variable_args</span><span class="p">)</span>
+        <span class="n">sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span>
+                                        <span class="n">likelihood_call</span><span class="p">,</span>
+                                        <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">)</span>
+        <span class="c1"># initialize</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">EmceeEnsembleSampler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+              <span class="n">sampler</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nwalkers</span> <span class="o">=</span> <span class="n">nwalkers</span>
+
+<div class="viewcode-block" id="EmceeEnsembleSampler.from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.from_cli">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_cli</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">pool</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">likelihood_call</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance of this sampler from the given command-line</span>
+<span class="sd">        options.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        opts : ArgumentParser options</span>
+<span class="sd">            The options to parse.</span>
+<span class="sd">        likelihood_evaluator : LikelihoodEvaluator</span>
+<span class="sd">            The likelihood evaluator to use with the sampler.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        EmceeEnsembleSampler</span>
+<span class="sd">            An emcee sampler initialized based on the given arguments.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span>
+                   <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lnpost</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the natural logarithm of the likelihood as an</span>
+<span class="sd">        nwalkers x niterations array.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># emcee returns nwalkers x niterations</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">lnprobability</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">chain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get all past samples as an nwalker x niterations x ndim array.&quot;&quot;&quot;</span>
+        <span class="c1"># emcee returns the chain as nwalker x niterations x ndim</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">chain</span>
+
+<div class="viewcode-block" id="EmceeEnsembleSampler.clear_chain"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.clear_chain">[docs]</a>    <span class="k">def</span> <span class="nf">clear_chain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clears the chain and blobs from memory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># store the iteration that the clear is occuring on</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lastclear</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">niterations</span>
+        <span class="c1"># now clear the chain</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">clear_blobs</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="EmceeEnsembleSampler.run"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">niterations</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Advance the ensemble for a number of samples.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        niterations : int</span>
+<span class="sd">            Number of samples to get from sampler.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        p : numpy.array</span>
+<span class="sd">            An array of current walker positions with shape (nwalkers, ndim).</span>
+<span class="sd">        lnpost : numpy.array</span>
+<span class="sd">            The list of log posterior probabilities for the walkers at</span>
+<span class="sd">            positions p, with shape (nwalkers, ndim).</span>
+<span class="sd">        rstate :</span>
+<span class="sd">            The current state of the random number generator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p0</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">niterations</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">rstate</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="c1"># update the positions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">rstate</span></div>
+
+    <span class="c1"># Emcee defines acceptance fraction differently, so have to override</span>
+    <span class="c1"># write functions</span>
+<div class="viewcode-block" id="EmceeEnsembleSampler.write_acceptance_fraction"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.write_acceptance_fraction">[docs]</a>    <span class="k">def</span> <span class="nf">write_acceptance_fraction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write acceptance_fraction data to file. Results are written to</span>
+<span class="sd">        `fp[acceptance_fraction]`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            A file handler to an open inference file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dataset_name</span> <span class="o">=</span> <span class="s2">&quot;acceptance_fraction&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">acceptance_fraction</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="c1"># dataset doesn&#39;t exist yet, create it</span>
+            <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">acceptance_fraction</span></div>
+
+<div class="viewcode-block" id="EmceeEnsembleSampler.read_acceptance_fraction"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.read_acceptance_fraction">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">read_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads the acceptance fraction from the given file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            An open file handler to read the samples from.</span>
+<span class="sd">        walkers : {None, (list of) int}</span>
+<span class="sd">            The walker index (or a list of indices) to retrieve. If None,</span>
+<span class="sd">            samples from all walkers will be obtained.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        array</span>
+<span class="sd">            Array of acceptance fractions with shape (requested walkers,).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;acceptance_fraction&#39;</span>
+        <span class="k">if</span> <span class="n">walkers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">wmask</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wmask</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="n">wmask</span><span class="p">[</span><span class="n">walkers</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="p">][</span><span class="n">wmask</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="EmceeEnsembleSampler.write_results"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceeEnsembleSampler.write_results">[docs]</a>    <span class="k">def</span> <span class="nf">write_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                      <span class="n">max_iterations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">metadata</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes metadata, samples, likelihood stats, and acceptance fraction</span>
+<span class="sd">        to the given file. See the write function for each of those for</span>
+<span class="sd">        details.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            A file handler to an open inference file.</span>
+<span class="sd">        start_iteration : {0, int}</span>
+<span class="sd">            Write results starting from the given iteration.</span>
+<span class="sd">        end_iteration : {None, int}</span>
+<span class="sd">            Write results up to the given iteration.</span>
+<span class="sd">        max_iterations : int, optional</span>
+<span class="sd">            Set the maximum size that the arrays in the hdf file may be resized</span>
+<span class="sd">            to. Only applies if the samples have not previously been written</span>
+<span class="sd">            to file. The default (None) is to use the maximum size allowed by</span>
+<span class="sd">            h5py.</span>
+<span class="sd">        \**metadata :</span>
+<span class="sd">            All other keyword arguments are passed to ``write_metadata``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_metadata</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="o">**</span><span class="n">metadata</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_chain</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="n">start_iteration</span><span class="p">,</span>
+                         <span class="n">end_iteration</span><span class="o">=</span><span class="n">end_iteration</span><span class="p">,</span>
+                         <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_likelihood_stats</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="n">start_iteration</span><span class="p">,</span>
+                                    <span class="n">end_iteration</span><span class="o">=</span><span class="n">end_iteration</span><span class="p">,</span>
+                                    <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span></div></div>
+
+<span class="c1"># This is needed for two reason</span>
+<span class="c1"># 1) pools freeze state when created and so classes *cannot be updated*</span>
+<span class="c1"># 2) methods cannot be pickled. </span>
+<span class="k">class</span> <span class="nc">_callprior</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calls the likelihood function&#39;s prior function, and ensures that no</span>
+<span class="sd">    metadata is returned.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callable</span> <span class="o">=</span> <span class="n">likelihood_call</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="n">prior</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">callfunc</span><span class="o">=</span><span class="s1">&#39;prior&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">prior</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="k">else</span> <span class="n">prior</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">_callloglikelihood</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calls the likelihood function&#39;s loglikelihood function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callable</span> <span class="o">=</span> <span class="n">likelihood_call</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">callable</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">callfunc</span><span class="o">=</span><span class="s1">&#39;loglikelihood&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="EmceePTSampler"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler">[docs]</a><span class="k">class</span> <span class="nc">EmceePTSampler</span><span class="p">(</span><span class="n">BaseMCMCSampler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This class is used to construct a parallel-tempered MCMC sampler from</span>
+<span class="sd">    the emcee package&#39;s PTSampler.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    likelihood_evaluator : likelihood class</span>
+<span class="sd">        An instance of the likelihood class from the</span>
+<span class="sd">        pycbc.inference.likelihood module.</span>
+<span class="sd">    ntemps : int</span>
+<span class="sd">        Number of temeratures to use in the sampler.</span>
+<span class="sd">    nwalkers : int</span>
+<span class="sd">        Number of walkers to use in sampler.</span>
+<span class="sd">    pool : function with map, Optional</span>
+<span class="sd">        A provider of a map function that allows a function call to be run</span>
+<span class="sd">        over multiple sets of arguments and possibly maps them to</span>
+<span class="sd">        cores/nodes/etc.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;emcee_pt&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">pool</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">likelihood_call</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">emcee</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;emcee is not installed.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">likelihood_call</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">likelihood_call</span> <span class="o">=</span> <span class="n">likelihood_evaluator</span>
+
+        <span class="c1"># construct the sampler: PTSampler needs the likelihood and prior</span>
+        <span class="c1"># functions separately</span>
+        <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="o">.</span><span class="n">variable_args</span><span class="p">)</span>
+        <span class="n">sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">PTSampler</span><span class="p">(</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span>
+                                  <span class="n">_callloglikelihood</span><span class="p">(</span><span class="n">likelihood_call</span><span class="p">),</span>
+                                  <span class="n">_callprior</span><span class="p">(</span><span class="n">likelihood_call</span><span class="p">),</span>
+                                  <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">)</span>
+        <span class="c1"># initialize</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">EmceePTSampler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+              <span class="n">sampler</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nwalkers</span> <span class="o">=</span> <span class="n">nwalkers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ntemps</span> <span class="o">=</span> <span class="n">ntemps</span>
+
+<div class="viewcode-block" id="EmceePTSampler.from_cli"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.from_cli">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_cli</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">pool</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">likelihood_call</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create an instance of this sampler from the given command-line</span>
+<span class="sd">        options.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        opts : ArgumentParser options</span>
+<span class="sd">            The options to parse.</span>
+<span class="sd">        likelihood_evaluator : LikelihoodEvaluator</span>
+<span class="sd">            The likelihood evaluator to use with the sampler.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        EmceePTSampler</span>
+<span class="sd">            An emcee sampler initialized based on the given arguments.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">likelihood_evaluator</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span>
+                   <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span> <span class="n">likelihood_call</span><span class="o">=</span><span class="n">likelihood_call</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ntemps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ntemps</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">chain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get all past samples as an ntemps x nwalker x niterations x ndim</span>
+<span class="sd">        array.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># emcee returns the chain as ntemps x nwalker x niterations x ndim</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">chain</span>
+
+<div class="viewcode-block" id="EmceePTSampler.clear_chain"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.clear_chain">[docs]</a>    <span class="k">def</span> <span class="nf">clear_chain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clears the chain and blobs from memory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># store the iteration that the clear is occuring on</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lastclear</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">niterations</span>
+        <span class="c1"># now clear the chain</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">likelihood_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the log likelihood ratio and log prior as a FieldArray.</span>
+<span class="sd">        The returned array has shape ntemps x nwalkers x niterations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># likelihood has shape ntemps x nwalkers x niterations</span>
+        <span class="n">logl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">lnlikelihood</span>
+        <span class="c1"># get prior from posterior</span>
+        <span class="n">logp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">lnprobability</span> <span class="o">-</span> <span class="n">logl</span>
+        <span class="c1"># compute the likelihood ratio</span>
+        <span class="n">loglr</span> <span class="o">=</span> <span class="n">logl</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">likelihood_evaluator</span><span class="o">.</span><span class="n">lognl</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;loglr&#39;</span><span class="p">:</span> <span class="n">loglr</span><span class="p">,</span> <span class="s1">&#39;prior&#39;</span><span class="p">:</span> <span class="n">logp</span><span class="p">}</span>
+        <span class="c1"># if different coordinates were used for sampling, get the jacobian</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">likelihood_evaluator</span><span class="o">.</span><span class="n">sampling_transforms</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples</span>
+            <span class="c1"># convert to dict</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span><span class="p">:</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">samples</span><span class="o">.</span><span class="n">fieldnames</span><span class="p">}</span>
+            <span class="n">logj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">likelihood_evaluator</span><span class="o">.</span><span class="n">logjacobian</span><span class="p">(</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;logjacobian&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logj</span>
+        <span class="k">return</span> <span class="n">FieldArray</span><span class="o">.</span><span class="n">from_kwargs</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lnpost</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the natural logarithm of the likelihood + the prior as an</span>
+<span class="sd">        ntemps x nwalkers x niterations array.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># emcee returns ntemps x nwalkers x niterations</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">lnprobability</span>
+
+<div class="viewcode-block" id="EmceePTSampler.set_p0"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.set_p0">[docs]</a>    <span class="k">def</span> <span class="nf">set_p0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets the initial position of the walkers.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        samples : FieldArray, optional</span>
+<span class="sd">            Use the given samples to set the initial positions. The samples</span>
+<span class="sd">            will be transformed to the likelihood evaluator&#39;s `sampling_args`</span>
+<span class="sd">            space.</span>
+<span class="sd">        prior : PriorEvaluator, optional</span>
+<span class="sd">            Use the given prior to set the initial positions rather than</span>
+<span class="sd">            `likelihood_evaultor`&#39;s prior.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        p0 : array</span>
+<span class="sd">            An ntemps x nwalkers x ndim array of the initial positions that</span>
+<span class="sd">            were set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># create a (nwalker, ndim) array for initial positions</span>
+        <span class="n">ntemps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ntemps</span>
+        <span class="n">nwalkers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nwalkers</span>
+        <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variable_args</span><span class="p">)</span>
+        <span class="n">p0</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">))</span>
+        <span class="c1"># if samples are given then use those as initial poistions</span>
+        <span class="k">if</span> <span class="n">samples</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># transform to sampling parameter space</span>
+            <span class="n">samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">likelihood_evaluator</span><span class="o">.</span><span class="n">apply_sampling_transforms</span><span class="p">(</span>
+                <span class="n">samples</span><span class="p">)</span>
+        <span class="c1"># draw random samples if samples are not provided</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">likelihood_evaluator</span><span class="o">.</span><span class="n">prior_rvs</span><span class="p">(</span>
+                <span class="n">size</span><span class="o">=</span><span class="n">nwalkers</span><span class="o">*</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="n">prior</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">))</span>
+        <span class="c1"># convert to array</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling_args</span><span class="p">):</span>
+            <span class="n">p0</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_p0</span> <span class="o">=</span> <span class="n">p0</span>
+        <span class="k">return</span> <span class="n">p0</span></div>
+
+<div class="viewcode-block" id="EmceePTSampler.run"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">niterations</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Advance the ensemble for a number of samples.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        niterations : int</span>
+<span class="sd">            Number of samples to get from sampler.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        p : numpy.array</span>
+<span class="sd">            An array of current walker positions with shape (nwalkers, ndim).</span>
+<span class="sd">        lnpost : numpy.array</span>
+<span class="sd">            The list of log posterior probabilities for the walkers at</span>
+<span class="sd">            positions p, with shape (nwalkers, ndim).</span>
+<span class="sd">        rstate :</span>
+<span class="sd">            The current state of the random number generator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p0</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">niterations</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">rstate</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="c1"># update the positions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">lnpost</span><span class="p">,</span> <span class="n">rstate</span></div>
+
+    <span class="c1"># read/write functions</span>
+
+    <span class="c1"># add ntemps and betas to metadata</span>
+<div class="viewcode-block" id="EmceePTSampler.write_metadata"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.write_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">write_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes metadata about this sampler to the given file. Metadata is</span>
+<span class="sd">        written to the file&#39;s `attrs`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            A file handler to an open inference file.</span>
+<span class="sd">        \**kwargs :</span>
+<span class="sd">            All keyword arguments are saved as separate arguments in the</span>
+<span class="sd">            file attrs. If any keyword argument is a dictionary, the keyword</span>
+<span class="sd">            will point to the list of keys in the the file&#39;s ``attrs``. Each</span>
+<span class="sd">            key is then stored as a separate attr with its corresponding value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">EmceePTSampler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">write_metadata</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;ntemps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ntemps</span>
+        <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;betas&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler</span><span class="o">.</span><span class="n">betas</span></div>
+
+<div class="viewcode-block" id="EmceePTSampler.write_acceptance_fraction"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.write_acceptance_fraction">[docs]</a>    <span class="k">def</span> <span class="nf">write_acceptance_fraction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write acceptance_fraction data to file. Results are written to</span>
+<span class="sd">        `fp[acceptance_fraction/temp{k}]` where k is the temperature.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            A file handler to an open inference file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;acceptance_fraction/temp</span><span class="si">{tk}</span><span class="s2">&quot;</span>
+        <span class="c1"># acf has shape ntemps x nwalkers</span>
+        <span class="n">acf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">acceptance_fraction</span>
+        <span class="k">for</span> <span class="n">tk</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">ntemps</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">)][:]</span> <span class="o">=</span> <span class="n">acf</span><span class="p">[</span><span class="n">tk</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="c1"># dataset doesn&#39;t exist yet, create it</span>
+                <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">)]</span> <span class="o">=</span> <span class="n">acf</span><span class="p">[</span><span class="n">tk</span><span class="p">,</span> <span class="p">:]</span></div>
+
+<div class="viewcode-block" id="EmceePTSampler.read_acceptance_fraction"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.read_acceptance_fraction">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">read_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">temps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads the acceptance fraction from the given file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            An open file handler to read the samples from.</span>
+<span class="sd">        temps : {None, (list of) int}</span>
+<span class="sd">            The temperature index (or a list of indices) to retrieve. If None,</span>
+<span class="sd">            acfs from all temperatures and all walkers will be retrieved.</span>
+<span class="sd">        walkers : {None, (list of) int}</span>
+<span class="sd">            The walker index (or a list of indices) to retrieve. If None,</span>
+<span class="sd">            samples from all walkers will be obtained.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        array</span>
+<span class="sd">            Array of acceptance fractions with shape (requested temps,</span>
+<span class="sd">            requested walkers).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;acceptance_fraction/temp</span><span class="si">{tk}</span><span class="s1">&#39;</span>
+        <span class="k">if</span> <span class="n">temps</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">temps</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">ntemps</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">walkers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">wmask</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wmask</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="n">wmask</span><span class="p">[</span><span class="n">walkers</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">arrays</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">tk</span> <span class="ow">in</span> <span class="n">temps</span><span class="p">:</span>
+            <span class="n">arrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">)][</span><span class="n">wmask</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EmceePTSampler.write_samples_group"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.write_samples_group">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">write_samples_group</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">samples_group</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span>
+                             <span class="n">start_iteration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                             <span class="n">index_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_iterations</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes samples to the given file.</span>
+
+<span class="sd">        Results are written to:</span>
+
+<span class="sd">            `fp[samples_group/{vararg}/temp{k}/walker{i}]`,</span>
+<span class="sd">            </span>
+<span class="sd">        where</span>
+<span class="sd">        `{vararg}` is the name of a variable arg, `{i}` is the index of</span>
+<span class="sd">        a walker, and `{k}` is the temperature.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            A file handler to an open inference file.</span>
+<span class="sd">        samples_group : str</span>
+<span class="sd">            Name of samples group to write.</span>
+<span class="sd">        parameters : list</span>
+<span class="sd">            The parameters to write to the file.</span>
+<span class="sd">        samples : FieldArray</span>
+<span class="sd">            The samples to write. Should be a FieldArray with fields containing</span>
+<span class="sd">            the samples to write and shape nwalkers x niterations.</span>
+<span class="sd">        start_iteration : {0, int}</span>
+<span class="sd">            Write results starting from the given iteration.</span>
+<span class="sd">        end_iteration : {None, int}</span>
+<span class="sd">            Write results up to the given iteration.</span>
+<span class="sd">        index_offset : int, optional</span>
+<span class="sd">            Write the samples to the arrays on disk starting at</span>
+<span class="sd">            `start_iteration` + `index_offset`. For example, if</span>
+<span class="sd">            `start_iteration=0`, `end_iteration=1000` and `index_offset=500`,</span>
+<span class="sd">            then `samples[0:1000]` will be written to indices `500:1500` in the</span>
+<span class="sd">            arrays on disk. This is needed if you are adding new samples to</span>
+<span class="sd">            a chain that was previously written to file, and you want to</span>
+<span class="sd">            preserve the history (e.g., after a checkpoint). Default is 0.</span>
+<span class="sd">        max_iterations : int, optional</span>
+<span class="sd">            Set the maximum size that the arrays in the hdf file may be resized</span>
+<span class="sd">            to. Only applies if the samples have not previously been written</span>
+<span class="sd">            to file. The default (None) is to use the maximum size allowed by</span>
+<span class="sd">            h5py.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">niterations</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">shape</span>
+        <span class="c1"># due to clearing memory, there can be a difference between indices in</span>
+        <span class="c1"># memory and on disk</span>
+        <span class="n">niterations</span> <span class="o">+=</span> <span class="n">index_offset</span>
+        <span class="n">fa</span> <span class="o">=</span> <span class="n">start_iteration</span> <span class="c1"># file start index</span>
+        <span class="k">if</span> <span class="n">end_iteration</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">end_iteration</span> <span class="o">=</span> <span class="n">niterations</span>
+        <span class="n">fb</span> <span class="o">=</span> <span class="n">end_iteration</span> <span class="c1"># file end index</span>
+        <span class="n">ma</span> <span class="o">=</span> <span class="n">fa</span> <span class="o">-</span> <span class="n">index_offset</span> <span class="c1"># memory start index</span>
+        <span class="n">mb</span> <span class="o">=</span> <span class="n">fb</span> <span class="o">-</span> <span class="n">index_offset</span> <span class="c1"># memory end index</span>
+
+        <span class="k">if</span> <span class="n">max_iterations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">max_iterations</span> <span class="o">&lt;</span> <span class="n">niterations</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;The provided max size is less than the &quot;</span>
+                             <span class="s2">&quot;number of iterations&quot;</span><span class="p">)</span>
+
+        <span class="n">group</span> <span class="o">=</span> <span class="n">samples_group</span> <span class="o">+</span> <span class="s1">&#39;/</span><span class="si">{name}</span><span class="s1">/temp</span><span class="si">{tk}</span><span class="s1">/walker</span><span class="si">{wi}</span><span class="s1">&#39;</span>
+
+        <span class="c1"># create indices for faster sub-looping</span>
+        <span class="n">widx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)</span>
+        <span class="n">tidx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ntemps</span><span class="p">)</span>
+
+        <span class="c1"># loop over number of dimensions</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+            <span class="c1"># loop over number of temps</span>
+            <span class="k">for</span> <span class="n">tk</span> <span class="ow">in</span> <span class="n">tidx</span><span class="p">:</span>
+                <span class="c1"># loop over number of walkers</span>
+                <span class="k">for</span> <span class="n">wi</span> <span class="ow">in</span> <span class="n">widx</span><span class="p">:</span>
+                    <span class="n">dataset_name</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">,</span> <span class="n">wi</span><span class="o">=</span><span class="n">wi</span><span class="p">)</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">fb</span> <span class="o">&gt;</span> <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+                            <span class="c1"># resize the dataset</span>
+                            <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">]</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">fb</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                        <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][</span><span class="n">fa</span><span class="p">:</span><span class="n">fb</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">][</span><span class="n">tk</span><span class="p">,</span> <span class="n">wi</span><span class="p">,</span> <span class="n">ma</span><span class="p">:</span><span class="n">mb</span><span class="p">]</span>
+                    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                        <span class="c1"># dataset doesn&#39;t exist yet</span>
+                        <span class="n">fp</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span> <span class="p">(</span><span class="n">fb</span><span class="p">,),</span>
+                                          <span class="n">maxshape</span><span class="o">=</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">,),</span>
+                                          <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+                        <span class="n">fp</span><span class="p">[</span><span class="n">dataset_name</span><span class="p">][</span><span class="n">fa</span><span class="p">:</span><span class="n">fb</span><span class="p">]</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">param</span><span class="p">][</span><span class="n">tk</span><span class="p">,</span> <span class="n">wi</span><span class="p">,</span> <span class="n">ma</span><span class="p">:</span><span class="n">mb</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="EmceePTSampler.write_results"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.write_results">[docs]</a>    <span class="k">def</span> <span class="nf">write_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                      <span class="n">max_iterations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                      <span class="o">**</span><span class="n">metadata</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes metadata, samples, likelihood stats, and acceptance fraction</span>
+<span class="sd">        to the given file. See the write function for each of those for</span>
+<span class="sd">        details.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            A file handler to an open inference file.</span>
+<span class="sd">        start_iteration : {0, int}</span>
+<span class="sd">            Write results starting from the given iteration.</span>
+<span class="sd">        end_iteration : {None, int}</span>
+<span class="sd">            Write results up to the given iteration.</span>
+<span class="sd">        max_iterations : int, optional</span>
+<span class="sd">            Set the maximum size that the arrays in the hdf file may be resized</span>
+<span class="sd">            to. Only applies if the samples have not previously been written</span>
+<span class="sd">            to file. The default (None) is to use the maximum size allowed by</span>
+<span class="sd">            h5py.</span>
+<span class="sd">        \**metadata :</span>
+<span class="sd">            All other keyword arguments are passed to ``write_metadata``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_metadata</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="o">**</span><span class="n">metadata</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_chain</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="n">start_iteration</span><span class="p">,</span>
+                         <span class="n">end_iteration</span><span class="o">=</span><span class="n">end_iteration</span><span class="p">,</span>
+                         <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_likelihood_stats</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">start_iteration</span><span class="o">=</span><span class="n">start_iteration</span><span class="p">,</span>
+                                    <span class="n">end_iteration</span><span class="o">=</span><span class="n">end_iteration</span><span class="p">,</span>
+                                    <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_acceptance_fraction</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_read_fields</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">fields_group</span><span class="p">,</span> <span class="n">fields</span><span class="p">,</span> <span class="n">array_class</span><span class="p">,</span>
+                     <span class="n">thin_start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thin_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thin_end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">temps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Base function for reading samples and likelihood stats. See</span>
+<span class="sd">        `read_samples` and `read_likelihood_stats` for details.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            An open file handler to read the samples from.</span>
+<span class="sd">        fields_group : str</span>
+<span class="sd">            The name of the group to retrieve the desired fields.</span>
+<span class="sd">        fields : list</span>
+<span class="sd">            The list of field names to retrieve. Must be names of groups in</span>
+<span class="sd">            `fp[fields_group/]`.</span>
+<span class="sd">        array_class : FieldArray or similar</span>
+<span class="sd">            The type of array to return. Must have a `from_kwargs` attribute.</span>
+
+<span class="sd">        For other details on keyword arguments, see `read_samples` and</span>
+<span class="sd">        `read_likelihood_stats`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        array_class</span>
+<span class="sd">            An instance of the given array class populated with values</span>
+<span class="sd">            retrieved from the fields.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># walkers to load</span>
+        <span class="k">if</span> <span class="n">walkers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">walkers</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">walkers</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">walkers</span> <span class="o">=</span> <span class="p">[</span><span class="n">walkers</span><span class="p">]</span>
+
+        <span class="c1"># temperatures to load</span>
+        <span class="k">if</span> <span class="n">temps</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">temps</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">temps</span> <span class="o">==</span> <span class="s1">&#39;all&#39;</span><span class="p">:</span>
+            <span class="n">temps</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">ntemps</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">temps</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">temps</span> <span class="o">=</span> <span class="p">[</span><span class="n">temps</span><span class="p">]</span>
+
+        <span class="c1"># get the slice to use</span>
+        <span class="k">if</span> <span class="n">iteration</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">get_index</span> <span class="o">=</span> <span class="p">[</span><span class="n">iteration</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">thin_end</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># use the number of current iterations</span>
+                <span class="n">thin_end</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">niterations</span>
+            <span class="n">get_index</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">thin_start</span><span class="o">=</span><span class="n">thin_start</span><span class="p">,</span> <span class="n">thin_end</span><span class="o">=</span><span class="n">thin_end</span><span class="p">,</span>
+                                     <span class="n">thin_interval</span><span class="o">=</span><span class="n">thin_interval</span><span class="p">)</span>
+
+        <span class="c1"># load</span>
+        <span class="n">arrays</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">fields_group</span> <span class="o">+</span> <span class="s1">&#39;/</span><span class="si">{name}</span><span class="s1">/temp</span><span class="si">{tk}</span><span class="s1">/walker</span><span class="si">{wi}</span><span class="s1">&#39;</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+            <span class="n">these_arrays</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+                <span class="p">[[</span><span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">wi</span><span class="o">=</span><span class="n">wi</span><span class="p">,</span> <span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">)][</span><span class="n">get_index</span><span class="p">]</span>
+                 <span class="k">for</span> <span class="n">wi</span> <span class="ow">in</span> <span class="n">walkers</span><span class="p">]</span>
+                 <span class="k">for</span> <span class="n">tk</span> <span class="ow">in</span> <span class="n">temps</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">flatten</span><span class="p">:</span>
+                <span class="n">these_arrays</span> <span class="o">=</span> <span class="n">these_arrays</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="n">arrays</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">these_arrays</span>
+        <span class="k">return</span> <span class="n">array_class</span><span class="o">.</span><span class="n">from_kwargs</span><span class="p">(</span><span class="o">**</span><span class="n">arrays</span><span class="p">)</span>
+
+<div class="viewcode-block" id="EmceePTSampler.read_samples"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.read_samples">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">read_samples</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span>
+                     <span class="n">thin_start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thin_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thin_end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">iteration</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">temps</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">samples_group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">array_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads samples for the given parameter(s).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            An open file handler to read the samples from.</span>
+<span class="sd">        parameters : (list of) strings</span>
+<span class="sd">            The parameter(s) to retrieve. A parameter can be the name of any</span>
+<span class="sd">            field in `fp[fp.samples_group]`, a virtual field or method of</span>
+<span class="sd">            `FieldArray` (as long as the file contains the necessary fields</span>
+<span class="sd">            to derive the virtual field or method), and/or a function of</span>
+<span class="sd">            these.</span>
+<span class="sd">        thin_start : int</span>
+<span class="sd">            Index of the sample to begin returning samples. Default is to read</span>
+<span class="sd">            samples after burn in. To start from the beginning set thin_start</span>
+<span class="sd">            to 0.</span>
+<span class="sd">        thin_interval : int</span>
+<span class="sd">            Interval to accept every i-th sample. Default is to use the</span>
+<span class="sd">            `fp.acl`. If `fp.acl` is not set, then use all samples</span>
+<span class="sd">            (set thin_interval to 1).</span>
+<span class="sd">        thin_end : int</span>
+<span class="sd">            Index of the last sample to read. If not given then</span>
+<span class="sd">            `fp.niterations` is used.</span>
+<span class="sd">        iteration : int</span>
+<span class="sd">            Get a single iteration. If provided, will override the</span>
+<span class="sd">            `thin_{start/interval/end}` arguments.</span>
+<span class="sd">        walkers : {None, (list of) int}</span>
+<span class="sd">            The walker index (or a list of indices) to retrieve. If None,</span>
+<span class="sd">            samples from all walkers will be obtained.</span>
+<span class="sd">        temps : {None, (list of) int, &#39;all&#39;}</span>
+<span class="sd">            The temperature index (or list of indices) to retrieve. If None,</span>
+<span class="sd">            only samples from the coldest (= 0) temperature chain will be</span>
+<span class="sd">            retrieved. To retrieve all temperates pass &#39;all&#39;, or a list of</span>
+<span class="sd">            all of the temperatures.</span>
+<span class="sd">        flatten : {True, bool}</span>
+<span class="sd">            The returned array will be one dimensional, with all desired</span>
+<span class="sd">            samples from all desired walkers concatenated together. If False,</span>
+<span class="sd">            the returned array will have dimension requested temps x requested</span>
+<span class="sd">            walkers x requested iterations.</span>
+<span class="sd">        samples_group : {None, str}</span>
+<span class="sd">            The group in `fp` from which to retrieve the parameter fields. If</span>
+<span class="sd">            None, searches in `fp.samples_group`.</span>
+<span class="sd">        array_class : {None, array class}</span>
+<span class="sd">            The type of array to return. The class must have a `from_kwargs`</span>
+<span class="sd">            class method and a `parse_parameters` method. If None, will return</span>
+<span class="sd">            a FieldArray.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        array_class</span>
+<span class="sd">            Samples for the given parameters, as an instance of a the given</span>
+<span class="sd">            `array_class` (`FieldArray` if `array_class` is None).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># get the group to load from</span>
+        <span class="k">if</span> <span class="n">samples_group</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">samples_group</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">samples_group</span>
+        <span class="c1"># get the type of array class to use</span>
+        <span class="k">if</span> <span class="n">array_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">array_class</span> <span class="o">=</span> <span class="n">FieldArray</span>
+        <span class="c1"># get the names of fields needed for the given parameters</span>
+        <span class="n">possible_fields</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">samples_group</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="n">loadfields</span> <span class="o">=</span> <span class="n">array_class</span><span class="o">.</span><span class="n">parse_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">possible_fields</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read_fields</span><span class="p">(</span>
+                <span class="n">fp</span><span class="p">,</span> <span class="n">samples_group</span><span class="p">,</span> <span class="n">loadfields</span><span class="p">,</span> <span class="n">array_class</span><span class="p">,</span>
+                <span class="n">thin_start</span><span class="o">=</span><span class="n">thin_start</span><span class="p">,</span> <span class="n">thin_interval</span><span class="o">=</span><span class="n">thin_interval</span><span class="p">,</span>
+                <span class="n">thin_end</span><span class="o">=</span><span class="n">thin_end</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=</span><span class="n">iteration</span><span class="p">,</span> <span class="n">temps</span><span class="o">=</span><span class="n">temps</span><span class="p">,</span>
+                <span class="n">walkers</span><span class="o">=</span><span class="n">walkers</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="n">flatten</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EmceePTSampler.compute_acfs"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.compute_acfs">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">compute_acfs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">per_walker</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">temps</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Computes the autocorrleation function of the variable args in the</span>
+<span class="sd">        given file.</span>
+
+<span class="sd">        By default, parameter values are averaged over all walkers at each</span>
+<span class="sd">        iteration. The ACF is then calculated over the averaged chain for each</span>
+<span class="sd">        temperature. An ACF per-walker will be returned instead if</span>
+<span class="sd">        ``per_walker=True``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            An open file handler to read the samples from.</span>
+<span class="sd">        start_index : {None, int}</span>
+<span class="sd">            The start index to compute the acl from. If None, will try to use</span>
+<span class="sd">            the number of burn-in iterations in the file; otherwise, will start</span>
+<span class="sd">            at the first sample.</span>
+<span class="sd">        end_index : {None, int}</span>
+<span class="sd">            The end index to compute the acl to. If None, will go to the end</span>
+<span class="sd">            of the current iteration.</span>
+<span class="sd">        per_walker : optional, bool</span>
+<span class="sd">            Return the ACF for each walker separately. Default is False.</span>
+<span class="sd">        walkers : optional, int or array</span>
+<span class="sd">            Calculate the ACF using only the given walkers. If None (the</span>
+<span class="sd">            default) all walkers will be used.</span>
+<span class="sd">        parameters : optional, str or array</span>
+<span class="sd">            Calculate the ACF for only the given parameters. If None (the</span>
+<span class="sd">            default) will calculate the ACF for all of the variable args.</span>
+<span class="sd">        temps : optional, (list of) int or &#39;all&#39;</span>
+<span class="sd">            The temperature index (or list of indices) to retrieve. If None</span>
+<span class="sd">            (the default), the ACF will only be computed for the coldest (= 0)</span>
+<span class="sd">            temperature chain. To compute an ACF for all temperates pass &#39;all&#39;,</span>
+<span class="sd">            or a list of all of the temperatures.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        FieldArray</span>
+<span class="sd">            A ``FieldArray`` of the ACF vs iteration for each parameter. If</span>
+<span class="sd">            `per-walker` is True, the FieldArray will have shape</span>
+<span class="sd">            ``ntemps x nwalkers x niterations``. Otherwise, the returned</span>
+<span class="sd">            array will have shape ``ntemps x niterations``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">acfs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">parameters</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">unicode</span><span class="p">):</span>
+            <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameters</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">temps</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">temps</span> <span class="o">=</span> <span class="p">[</span><span class="n">temps</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">temps</span> <span class="o">==</span> <span class="s1">&#39;all&#39;</span><span class="p">:</span>
+            <span class="n">temps</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">ntemps</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">temps</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">temps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+            <span class="n">subacfs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">tk</span> <span class="ow">in</span> <span class="n">temps</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">per_walker</span><span class="p">:</span>
+                    <span class="c1"># just call myself with a single walker</span>
+                    <span class="k">if</span> <span class="n">walkers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">walkers</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span><span class="p">)</span>
+                    <span class="n">arrays</span> <span class="o">=</span> <span class="p">[</span><span class="bp">cls</span><span class="o">.</span><span class="n">compute_acfs</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">start_index</span><span class="o">=</span><span class="n">start_index</span><span class="p">,</span>
+                                               <span class="n">end_index</span><span class="o">=</span><span class="n">end_index</span><span class="p">,</span>
+                                               <span class="n">per_walker</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">walkers</span><span class="o">=</span><span class="n">ii</span><span class="p">,</span>
+                                               <span class="n">parameters</span><span class="o">=</span><span class="n">param</span><span class="p">,</span>
+                                               <span class="n">temps</span><span class="o">=</span><span class="n">tk</span><span class="p">)[</span><span class="n">param</span><span class="p">][</span><span class="mi">0</span><span class="p">,:]</span>
+                              <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">walkers</span><span class="p">]</span>
+                    <span class="c1"># we&#39;ll stack all of the walker arrays to make a single</span>
+                    <span class="c1"># nwalkers x niterations array; when these are stacked</span>
+                    <span class="c1"># below, we&#39;ll get a ntemps x nwalkers x niterations array</span>
+                    <span class="n">subacfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">arrays</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">samples</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span>
+                                               <span class="n">thin_start</span><span class="o">=</span><span class="n">start_index</span><span class="p">,</span>
+                                               <span class="n">thin_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                               <span class="n">thin_end</span><span class="o">=</span><span class="n">end_index</span><span class="p">,</span>
+                                               <span class="n">walkers</span><span class="o">=</span><span class="n">walkers</span><span class="p">,</span> <span class="n">temps</span><span class="o">=</span><span class="n">tk</span><span class="p">,</span>
+                                               <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">param</span><span class="p">]</span>
+                    <span class="c1"># contract the walker dimension using the mean, and flatten</span>
+                    <span class="c1"># the (length 1) temp dimension</span>
+                    <span class="n">samples</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">,:]</span>
+                    <span class="n">thisacf</span> <span class="o">=</span> <span class="n">autocorrelation</span><span class="o">.</span><span class="n">calculate_acf</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+                    <span class="n">subacfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thisacf</span><span class="p">)</span>
+            <span class="c1"># stack the temperatures</span>
+            <span class="c1"># FIXME: the following if/else can be condensed to a single line</span>
+            <span class="c1"># using numpy.stack, once the version requirements are bumped to</span>
+            <span class="c1"># numpy &gt;= 1.10</span>
+            <span class="k">if</span> <span class="n">per_walker</span><span class="p">:</span>
+                <span class="n">nw</span><span class="p">,</span> <span class="n">ni</span> <span class="o">=</span> <span class="n">subacfs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+                <span class="n">acfs</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">temps</span><span class="p">),</span> <span class="n">nw</span><span class="p">,</span> <span class="n">ni</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">tk</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">temps</span><span class="p">)):</span>
+                    <span class="n">acfs</span><span class="p">[</span><span class="n">param</span><span class="p">][</span><span class="n">tk</span><span class="p">,</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">subacfs</span><span class="p">[</span><span class="n">tk</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">acfs</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">subacfs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">FieldArray</span><span class="o">.</span><span class="n">from_kwargs</span><span class="p">(</span><span class="o">**</span><span class="n">acfs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EmceePTSampler.compute_acls"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.compute_acls">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">compute_acls</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">start_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_index</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Computes the autocorrleation length for all variable args and</span>
+<span class="sd">        temperatures in the given file.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameter values are averaged over all walkers at each iteration and</span>
+<span class="sd">        temperature.  The ACL is then calculated over the averaged chain. If</span>
+<span class="sd">        the returned ACL is `inf`,  will default to the number of current</span>
+<span class="sd">        iterations.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            An open file handler to read the samples from.</span>
+<span class="sd">        start_index : {None, int}</span>
+<span class="sd">            The start index to compute the acl from. If None, will try to use</span>
+<span class="sd">            the number of burn-in iterations in the file; otherwise, will start</span>
+<span class="sd">            at the first sample.</span>
+<span class="sd">        end_index : {None, int}</span>
+<span class="sd">            The end index to compute the acl to. If None, will go to the end</span>
+<span class="sd">            of the current iteration.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        FieldArray</span>
+<span class="sd">            An ntemps-long `FieldArray` containing the ACL for each temperature</span>
+<span class="sd">            and for each variable argument, with the variable arguments as</span>
+<span class="sd">            fields.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">acls</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">end_index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">end_index</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">niterations</span>
+        <span class="n">tidx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">ntemps</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">:</span>
+            <span class="n">these_acls</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">tk</span> <span class="ow">in</span> <span class="n">tidx</span><span class="p">:</span>
+                <span class="n">samples</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">thin_start</span><span class="o">=</span><span class="n">start_index</span><span class="p">,</span>
+                                           <span class="n">thin_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thin_end</span><span class="o">=</span><span class="n">end_index</span><span class="p">,</span>
+                                           <span class="n">temps</span><span class="o">=</span><span class="n">tk</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="n">param</span><span class="p">]</span>
+                <span class="c1"># contract the walker dimension using the mean, and flatten</span>
+                <span class="c1"># the (length 1) temp dimension</span>
+                <span class="n">samples</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">,:]</span>
+                <span class="n">acl</span> <span class="o">=</span> <span class="n">autocorrelation</span><span class="o">.</span><span class="n">calculate_acl</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">acl</span><span class="p">):</span>
+                    <span class="n">acl</span> <span class="o">=</span> <span class="n">samples</span><span class="o">.</span><span class="n">size</span>
+                <span class="n">these_acls</span><span class="p">[</span><span class="n">tk</span><span class="p">]</span> <span class="o">=</span> <span class="n">acl</span>
+            <span class="n">acls</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">these_acls</span>
+        <span class="k">return</span> <span class="n">FieldArray</span><span class="o">.</span><span class="n">from_kwargs</span><span class="p">(</span><span class="o">**</span><span class="n">acls</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EmceePTSampler.write_acls"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.write_acls">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">write_acls</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">acls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Writes the given autocorrelation lengths to the given file.</span>
+<span class="sd">        </span>
+<span class="sd">        The acl of each parameter at each temperature is saved to</span>
+<span class="sd">        ``fp[fp.samples_group/{param}/temp{k}].attrs[&#39;acl&#39;]``; the maximum over</span>
+<span class="sd">        all temperatures is saved to</span>
+<span class="sd">        ``fp[fp.samples_group/{param}].attrs[&#39;acl&#39;]``; the maximum over all the</span>
+<span class="sd">        parameters and temperatures is saved to the file&#39;s &#39;acl&#39; attribute.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            An open file handler to write the samples to.</span>
+<span class="sd">        acls : FieldArray</span>
+<span class="sd">            An array of autocorrelation lengths (the sort of thing returned by</span>
+<span class="sd">            `compute_acls`).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        acl</span>
+<span class="sd">            The maximum of the acls that was written to the file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># write the individual acls</span>
+        <span class="n">pgroup</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">samples_group</span> <span class="o">+</span> <span class="s1">&#39;/</span><span class="si">{param}</span><span class="s1">&#39;</span>
+        <span class="n">tgroup</span> <span class="o">=</span> <span class="n">pgroup</span> <span class="o">+</span> <span class="s1">&#39;/temp</span><span class="si">{tk}</span><span class="s1">&#39;</span>
+        <span class="n">tidx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">ntemps</span><span class="p">)</span>
+        <span class="n">overall_max</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">param_acls</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">acls</span><span class="o">.</span><span class="n">fieldnames</span><span class="p">:</span>
+            <span class="n">max_acls</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">aclp</span> <span class="o">=</span> <span class="n">acls</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">tk</span> <span class="ow">in</span> <span class="n">tidx</span><span class="p">:</span>
+                <span class="c1"># write the acl for this temperature</span>
+                <span class="n">fp</span><span class="p">[</span><span class="n">tgroup</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;acl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">aclp</span><span class="p">[</span><span class="n">tidx</span><span class="p">]</span>
+            <span class="c1"># save the maximum</span>
+            <span class="n">param_acls</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">aclp</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="c1"># use the parent class to write the acls overs the temps</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">EmceePTSampler</span><span class="p">,</span> <span class="n">EmceePTSampler</span><span class="p">)</span><span class="o">.</span><span class="n">write_acls</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">param_acls</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EmceePTSampler.read_acls"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.read_acls">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">read_acls</span><span class="p">(</span><span class="n">fp</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reads the acls of all the walker chains saved in the given file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            An open file handler to read the acls from.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        FieldArray</span>
+<span class="sd">            An ntemps-long ``FieldArray`` containing the acls for every</span>
+<span class="sd">            temperature, with the variable arguments as fields.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">samples_group</span> <span class="o">+</span> <span class="s1">&#39;/</span><span class="si">{param}</span><span class="s1">/temp</span><span class="si">{tk}</span><span class="s1">&#39;</span>
+        <span class="n">tidx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">ntemps</span><span class="p">)</span>
+        <span class="n">arrays</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">:</span>
+            <span class="n">arrays</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+                <span class="n">fp</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span> <span class="n">tk</span><span class="o">=</span><span class="n">tk</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;acl&#39;</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">tk</span> <span class="ow">in</span> <span class="n">tidx</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">FieldArray</span><span class="o">.</span><span class="n">from_kwargs</span><span class="p">(</span><span class="o">**</span><span class="n">arrays</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EmceePTSampler.calculate_logevidence"><a class="viewcode-back" href="../../../pycbc.inference.html#pycbc.inference.sampler_emcee.EmceePTSampler.calculate_logevidence">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">calculate_logevidence</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">thin_start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thin_end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                              <span class="n">thin_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculates the log evidence from the given file using emcee&#39;s</span>
+<span class="sd">        thermodynamic integration.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fp : InferenceFile</span>
+<span class="sd">            An open file handler to read the stats from.</span>
+<span class="sd">        thin_start : int</span>
+<span class="sd">            Index of the sample to begin returning stats. Default is to read</span>
+<span class="sd">            stats after burn in. To start from the beginning set thin_start</span>
+<span class="sd">            to 0.</span>
+<span class="sd">        thin_interval : int</span>
+<span class="sd">            Interval to accept every i-th sample. Default is to use the</span>
+<span class="sd">            `fp.acl`. If `fp.acl` is not set, then use all stats</span>
+<span class="sd">            (set thin_interval to 1).</span>
+<span class="sd">        thin_end : int</span>
+<span class="sd">            Index of the last sample to read. If not given then</span>
+<span class="sd">            `fp.niterations` is used.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        lnZ : float</span>
+<span class="sd">            The estimate of log of the evidence.</span>
+<span class="sd">        dlnZ : float</span>
+<span class="sd">            The error on the estimate.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">emcee</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;emcee is not installed.&quot;</span><span class="p">)</span>
+
+        <span class="n">stats_group</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">stats_group</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="n">fp</span><span class="p">[</span><span class="n">stats_group</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="n">logstats</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">read_samples</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">samples_group</span><span class="o">=</span><span class="n">stats_group</span><span class="p">,</span>
+                                    <span class="n">thin_start</span><span class="o">=</span><span class="n">thin_start</span><span class="p">,</span>  <span class="n">thin_end</span><span class="o">=</span><span class="n">thin_end</span><span class="p">,</span>
+                                    <span class="n">thin_interval</span><span class="o">=</span><span class="n">thin_interval</span><span class="p">,</span>
+                                    <span class="n">temps</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># get the likelihoods</span>
+        <span class="n">logls</span> <span class="o">=</span> <span class="n">logstats</span><span class="p">[</span><span class="s1">&#39;loglr&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">fp</span><span class="o">.</span><span class="n">lognl</span>
+        <span class="c1"># we need the betas that were used</span>
+        <span class="n">betas</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;betas&#39;</span><span class="p">]</span>
+        <span class="c1"># annoyingly, theromdynaimc integration in PTSampler is an instance</span>
+        <span class="c1"># method, so we&#39;ll implement a dummy one</span>
+        <span class="n">ntemps</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">ntemps</span>
+        <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">nwalkers</span>
+        <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">variable_args</span><span class="p">)</span>
+        <span class="n">dummy_sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">PTSampler</span><span class="p">(</span><span class="n">ntemps</span><span class="p">,</span> <span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>
+                                        <span class="kc">None</span><span class="p">,</span> <span class="n">betas</span><span class="o">=</span><span class="n">betas</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dummy_sampler</span><span class="o">.</span><span class="n">thermodynamic_integration_log_evidence</span><span class="p">(</span>
+            <span class="n">logls</span><span class="o">=</span><span class="n">logls</span><span class="p">,</span> <span class="n">fburnin</span><span class="o">=</span><span class="mf">0.</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

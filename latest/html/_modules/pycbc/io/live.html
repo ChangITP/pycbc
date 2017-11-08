@@ -1,0 +1,645 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.io.live &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.io.live</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.io.live</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pycbc</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">lal</span>
+<span class="kn">from</span> <span class="nn">pycbc_glue.ligolw</span> <span class="k">import</span> <span class="n">ligolw</span>
+<span class="kn">from</span> <span class="nn">pycbc_glue.ligolw</span> <span class="k">import</span> <span class="n">lsctables</span>
+<span class="kn">from</span> <span class="nn">pycbc_glue.ligolw</span> <span class="k">import</span> <span class="n">utils</span> <span class="k">as</span> <span class="n">ligolw_utils</span>
+<span class="kn">from</span> <span class="nn">pycbc_glue.ligolw.utils</span> <span class="k">import</span> <span class="n">process</span> <span class="k">as</span> <span class="n">ligolw_process</span>
+<span class="kn">from</span> <span class="nn">pycbc_glue.ligolw</span> <span class="k">import</span> <span class="n">param</span> <span class="k">as</span> <span class="n">ligolw_param</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">version</span> <span class="k">as</span> <span class="n">pycbc_version</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">pnutils</span>
+<span class="kn">from</span> <span class="nn">pycbc.tmpltbank</span> <span class="k">import</span> <span class="n">return_empty_sngl</span>
+<span class="kn">from</span> <span class="nn">pycbc.filter</span> <span class="k">import</span> <span class="n">compute_followup_snr_series</span>
+
+<span class="c1">#FIXME Legacy build PSD xml helpers, delete me when we move away entirely from</span>
+<span class="c1"># xml formats</span>
+<span class="k">def</span> <span class="nf">_build_series</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">dim_names</span><span class="p">,</span> <span class="n">comment</span><span class="p">,</span> <span class="n">delta_name</span><span class="p">,</span> <span class="n">delta_unit</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">pycbc_glue.ligolw</span> <span class="k">import</span> <span class="n">array</span> <span class="k">as</span> <span class="n">ligolw_array</span>
+    <span class="n">Attributes</span> <span class="o">=</span> <span class="n">ligolw</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span>
+    <span class="n">elem</span> <span class="o">=</span> <span class="n">ligolw</span><span class="o">.</span><span class="n">LIGO_LW</span><span class="p">(</span><span class="n">Attributes</span><span class="p">({</span><span class="sa">u</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="n">unicode</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)}))</span>
+    <span class="k">if</span> <span class="n">comment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">elem</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">Comment</span><span class="p">())</span><span class="o">.</span><span class="n">pcdata</span> <span class="o">=</span> <span class="n">comment</span>
+    <span class="n">elem</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">from_gps</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">epoch</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;epoch&quot;</span><span class="p">))</span>
+    <span class="n">elem</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw_param</span><span class="o">.</span><span class="n">from_pyvalue</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;f0&quot;</span><span class="p">,</span> <span class="n">series</span><span class="o">.</span><span class="n">f0</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;s^-1&quot;</span><span class="p">))</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">delta_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">row_stack</span><span class="p">((</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">))</span> <span class="o">*</span> <span class="n">delta</span><span class="p">,</span>
+                             <span class="n">series</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">series</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">row_stack</span><span class="p">((</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">))</span> <span class="o">*</span> <span class="n">delta</span><span class="p">,</span> <span class="n">series</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">ligolw_array</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">dim_names</span><span class="o">=</span><span class="n">dim_names</span><span class="p">)</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">Unit</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">sampleUnits</span><span class="p">)</span>
+    <span class="n">dim0</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">Dim</span><span class="o">.</span><span class="n">tagName</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">dim0</span><span class="o">.</span><span class="n">Unit</span> <span class="o">=</span> <span class="n">delta_unit</span>
+    <span class="n">dim0</span><span class="o">.</span><span class="n">Start</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">f0</span>
+    <span class="n">dim0</span><span class="o">.</span><span class="n">Scale</span> <span class="o">=</span> <span class="n">delta</span>
+    <span class="n">elem</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">elem</span>
+
+<div class="viewcode-block" id="snr_series_to_xml"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.live.snr_series_to_xml">[docs]</a><span class="k">def</span> <span class="nf">snr_series_to_xml</span><span class="p">(</span><span class="n">snr_series</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">sngl_inspiral_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Save an SNR time series into an XML document, in a format compatible</span>
+<span class="sd">    with BAYESTAR.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">snr_lal</span> <span class="o">=</span> <span class="n">snr_series</span><span class="o">.</span><span class="n">lal</span><span class="p">()</span>
+    <span class="n">snr_lal</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;snr&#39;</span>
+    <span class="n">snr_lal</span><span class="o">.</span><span class="n">sampleUnits</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">snr_xml</span> <span class="o">=</span> <span class="n">_build_series</span><span class="p">(</span><span class="n">snr_lal</span><span class="p">,</span> <span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Time,Real,Imaginary&#39;</span><span class="p">),</span> <span class="kc">None</span><span class="p">,</span>
+                            <span class="s1">&#39;deltaT&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span>
+    <span class="n">snr_node</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">snr_xml</span><span class="p">)</span>
+    <span class="n">eid_param</span> <span class="o">=</span> <span class="n">ligolw_param</span><span class="o">.</span><span class="n">new_param</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;event_id&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ilwd:char&#39;</span><span class="p">,</span>
+                                       <span class="n">unicode</span><span class="p">(</span><span class="n">sngl_inspiral_id</span><span class="p">))</span>
+    <span class="n">snr_node</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">eid_param</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="make_psd_xmldoc"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.live.make_psd_xmldoc">[docs]</a><span class="k">def</span> <span class="nf">make_psd_xmldoc</span><span class="p">(</span><span class="n">psddict</span><span class="p">):</span>
+    <span class="n">Attributes</span> <span class="o">=</span> <span class="n">ligolw</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">xmlreader</span><span class="o">.</span><span class="n">AttributesImpl</span>
+    <span class="n">xmldoc</span> <span class="o">=</span> <span class="n">ligolw</span><span class="o">.</span><span class="n">Document</span><span class="p">()</span>
+    <span class="n">root_name</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;psd&quot;</span>
+    <span class="n">lw</span> <span class="o">=</span> <span class="n">xmldoc</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">LIGO_LW</span><span class="p">(</span><span class="n">Attributes</span><span class="p">({</span><span class="sa">u</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="n">root_name</span><span class="p">})))</span>
+    <span class="k">for</span> <span class="n">instrument</span><span class="p">,</span> <span class="n">psd</span> <span class="ow">in</span> <span class="n">psddict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">xmlseries</span> <span class="o">=</span> <span class="n">_build_series</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Frequency,Real&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;Frequency&quot;</span><span class="p">),</span>
+                                  <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;deltaF&#39;</span><span class="p">,</span> <span class="s1">&#39;s^-1&#39;</span><span class="p">)</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="n">lw</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">xmlseries</span><span class="p">)</span>
+        <span class="n">fs</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw_param</span><span class="o">.</span><span class="n">from_pyvalue</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;instrument&quot;</span><span class="p">,</span> <span class="n">instrument</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">xmldoc</span></div>
+
+<div class="viewcode-block" id="SingleCoincForGraceDB"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.live.SingleCoincForGraceDB">[docs]</a><span class="k">class</span> <span class="nc">SingleCoincForGraceDB</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create xml files and submit them to gracedb from PyCBC Live&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ifos</span><span class="p">,</span> <span class="n">coinc_results</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a ligolw xml representation of a zerolag trigger</span>
+<span class="sd">        for upload from pycbc live to gracedb.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ifos: list of strs</span>
+<span class="sd">            A list of the ifos pariticipating in this trigger</span>
+<span class="sd">        coinc_results: dict of values</span>
+<span class="sd">            A dictionary of values. The format is defined in</span>
+<span class="sd">            pycbc/events/coinc.py and matches the on disk representation</span>
+<span class="sd">            in the hdf file for this time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">followup_ifos</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;followup_ifos&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">template_id</span> <span class="o">=</span> <span class="n">coinc_results</span><span class="p">[</span><span class="s1">&#39;foreground/</span><span class="si">%s</span><span class="s1">/template_id&#39;</span> <span class="o">%</span> <span class="n">ifos</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+        <span class="c1"># remember if this should be marked as HWINJ</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_hardware_injection</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;HWINJ&#39;</span> <span class="ow">in</span> <span class="n">coinc_results</span><span class="p">)</span>
+
+        <span class="c1"># remember if we want to use a non-standard gracedb server</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gracedb_server</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gracedb_server&#39;</span><span class="p">)</span>
+
+        <span class="c1"># compute SNR time series if needed, and figure out which of</span>
+        <span class="c1"># the followup detectors are usable</span>
+        <span class="n">subthreshold_sngl_time</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">coinc_results</span><span class="p">[</span><span class="s1">&#39;foreground/</span><span class="si">%s</span><span class="s1">/end_time&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">]</span>
+                 <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">upload_snr_series</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;upload_snr_series&#39;</span><span class="p">)</span>
+        <span class="n">usable_ifos</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">upload_snr_series</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">snr_series</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">snr_series_psd</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">htilde</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;bank&#39;</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">template_id</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span> <span class="o">+</span> <span class="n">followup_ifos</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">ifos</span><span class="p">:</span>
+                    <span class="n">trig_time</span> <span class="o">=</span> <span class="n">coinc_results</span><span class="p">[</span><span class="s1">&#39;foreground/</span><span class="si">%s</span><span class="s1">/end_time&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">trig_time</span> <span class="o">=</span> <span class="n">subthreshold_sngl_time</span>
+                <span class="c1"># NOTE we only check the state/DQ of followup IFOs here.</span>
+                <span class="c1"># IFOs producing the coincidence are assumed to also</span>
+                <span class="c1"># produce valid SNR series.</span>
+                <span class="n">snr_series</span><span class="p">,</span> <span class="n">snr_series_psd</span> <span class="o">=</span> <span class="n">compute_followup_snr_series</span><span class="p">(</span>
+                        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;data_readers&#39;</span><span class="p">][</span><span class="n">ifo</span><span class="p">],</span> <span class="n">htilde</span><span class="p">,</span> <span class="n">trig_time</span><span class="p">,</span>
+                        <span class="n">check_state</span><span class="o">=</span><span class="p">(</span><span class="n">ifo</span> <span class="ow">in</span> <span class="n">followup_ifos</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">snr_series</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">snr_series</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">snr_series</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">snr_series_psd</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">snr_series_psd</span>
+                    <span class="n">usable_ifos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ifo</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">usable_ifos</span> <span class="o">=</span> <span class="n">ifos</span>
+
+        <span class="c1"># Set up the bare structure of the xml document</span>
+        <span class="n">outdoc</span> <span class="o">=</span> <span class="n">ligolw</span><span class="o">.</span><span class="n">Document</span><span class="p">()</span>
+        <span class="n">outdoc</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">ligolw</span><span class="o">.</span><span class="n">LIGO_LW</span><span class="p">())</span>
+
+        <span class="n">proc_id</span> <span class="o">=</span> <span class="n">ligolw_process</span><span class="o">.</span><span class="n">register_to_xmldoc</span><span class="p">(</span>
+            <span class="n">outdoc</span><span class="p">,</span> <span class="s1">&#39;pycbc&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="n">ifos</span><span class="o">=</span><span class="n">usable_ifos</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+            <span class="n">version</span><span class="o">=</span><span class="n">pycbc_version</span><span class="o">.</span><span class="n">git_hash</span><span class="p">,</span>
+            <span class="n">cvs_repository</span><span class="o">=</span><span class="s1">&#39;pycbc/&#39;</span><span class="o">+</span><span class="n">pycbc_version</span><span class="o">.</span><span class="n">git_branch</span><span class="p">,</span>
+            <span class="n">cvs_entry_time</span><span class="o">=</span><span class="n">pycbc_version</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">process_id</span>
+
+        <span class="c1"># Set up coinc_definer table</span>
+        <span class="n">coinc_def_table</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">lsctables</span><span class="o">.</span><span class="n">CoincDefTable</span><span class="p">)</span>
+        <span class="n">coinc_def_id</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">CoincDefID</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">coinc_def_row</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">CoincDef</span><span class="p">()</span>
+        <span class="n">coinc_def_row</span><span class="o">.</span><span class="n">search</span> <span class="o">=</span> <span class="s2">&quot;inspiral&quot;</span>
+        <span class="n">coinc_def_row</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;sngl_inspiral&lt;--&gt;sngl_inspiral coincs&quot;</span>
+        <span class="n">coinc_def_row</span><span class="o">.</span><span class="n">coinc_def_id</span> <span class="o">=</span> <span class="n">coinc_def_id</span>
+        <span class="n">coinc_def_row</span><span class="o">.</span><span class="n">search_coinc_type</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">coinc_def_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coinc_def_row</span><span class="p">)</span>
+        <span class="n">outdoc</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">coinc_def_table</span><span class="p">)</span>
+
+        <span class="c1"># Set up coinc inspiral and coinc event tables</span>
+        <span class="n">coinc_id</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">CoincID</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">coinc_event_table</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">lsctables</span><span class="o">.</span><span class="n">CoincTable</span><span class="p">)</span>
+        <span class="n">coinc_event_row</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">Coinc</span><span class="p">()</span>
+        <span class="n">coinc_event_row</span><span class="o">.</span><span class="n">coinc_def_id</span> <span class="o">=</span> <span class="n">coinc_def_id</span>
+        <span class="n">coinc_event_row</span><span class="o">.</span><span class="n">nevents</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">usable_ifos</span><span class="p">)</span>
+        <span class="n">coinc_event_row</span><span class="o">.</span><span class="n">instruments</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">usable_ifos</span><span class="p">)</span>
+        <span class="n">coinc_event_row</span><span class="o">.</span><span class="n">time_slide_id</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">TimeSlideID</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">coinc_event_row</span><span class="o">.</span><span class="n">process_id</span> <span class="o">=</span> <span class="n">proc_id</span>
+        <span class="n">coinc_event_row</span><span class="o">.</span><span class="n">coinc_event_id</span> <span class="o">=</span> <span class="n">coinc_id</span>
+        <span class="n">coinc_event_row</span><span class="o">.</span><span class="n">likelihood</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">coinc_event_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coinc_event_row</span><span class="p">)</span>
+        <span class="n">outdoc</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">coinc_event_table</span><span class="p">)</span>
+
+        <span class="c1"># Set up sngls</span>
+        <span class="n">sngl_inspiral_table</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">lsctables</span><span class="o">.</span><span class="n">SnglInspiralTable</span><span class="p">)</span>
+        <span class="n">coinc_event_map_table</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">lsctables</span><span class="o">.</span><span class="n">CoincMapTable</span><span class="p">)</span>
+
+        <span class="n">sngl_populated</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">sngl_id</span><span class="p">,</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">usable_ifos</span><span class="p">):</span>
+            <span class="n">sngl</span> <span class="o">=</span> <span class="n">return_empty_sngl</span><span class="p">(</span><span class="n">nones</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">sngl</span><span class="o">.</span><span class="n">event_id</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">SnglInspiralID</span><span class="p">(</span><span class="n">sngl_id</span><span class="p">)</span>
+            <span class="n">sngl</span><span class="o">.</span><span class="n">process_id</span> <span class="o">=</span> <span class="n">proc_id</span>
+            <span class="n">sngl</span><span class="o">.</span><span class="n">ifo</span> <span class="o">=</span> <span class="n">ifo</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">coinc_results</span>
+                     <span class="k">if</span> <span class="s1">&#39;foreground/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">n</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">coinc_results</span><span class="p">[</span><span class="s1">&#39;foreground/</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">name</span><span class="p">)]</span>
+                <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;end_time&#39;</span><span class="p">:</span>
+                    <span class="n">sngl</span><span class="o">.</span><span class="n">set_end</span><span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="nb">setattr</span><span class="p">(</span><span class="n">sngl</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                        <span class="k">pass</span>
+            <span class="k">if</span> <span class="n">sngl</span><span class="o">.</span><span class="n">mass1</span> <span class="ow">and</span> <span class="n">sngl</span><span class="o">.</span><span class="n">mass2</span><span class="p">:</span>
+                <span class="n">sngl</span><span class="o">.</span><span class="n">mtotal</span><span class="p">,</span> <span class="n">sngl</span><span class="o">.</span><span class="n">eta</span> <span class="o">=</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">mass1_mass2_to_mtotal_eta</span><span class="p">(</span>
+                        <span class="n">sngl</span><span class="o">.</span><span class="n">mass1</span><span class="p">,</span> <span class="n">sngl</span><span class="o">.</span><span class="n">mass2</span><span class="p">)</span>
+                <span class="n">sngl</span><span class="o">.</span><span class="n">mchirp</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">pnutils</span><span class="o">.</span><span class="n">mass1_mass2_to_mchirp_eta</span><span class="p">(</span>
+                        <span class="n">sngl</span><span class="o">.</span><span class="n">mass1</span><span class="p">,</span> <span class="n">sngl</span><span class="o">.</span><span class="n">mass2</span><span class="p">)</span>
+                <span class="n">sngl_populated</span> <span class="o">=</span> <span class="n">sngl</span>
+            <span class="k">if</span> <span class="n">sngl</span><span class="o">.</span><span class="n">snr</span><span class="p">:</span>
+                <span class="n">sngl</span><span class="o">.</span><span class="n">eff_distance</span> <span class="o">=</span> <span class="p">(</span><span class="n">sngl</span><span class="o">.</span><span class="n">sigmasq</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">/</span> <span class="n">sngl</span><span class="o">.</span><span class="n">snr</span>
+            <span class="n">sngl_inspiral_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sngl</span><span class="p">)</span>
+
+            <span class="c1"># Set up coinc_map entry</span>
+            <span class="n">coinc_map_row</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">CoincMap</span><span class="p">()</span>
+            <span class="n">coinc_map_row</span><span class="o">.</span><span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;sngl_inspiral&#39;</span>
+            <span class="n">coinc_map_row</span><span class="o">.</span><span class="n">coinc_event_id</span> <span class="o">=</span> <span class="n">coinc_id</span>
+            <span class="n">coinc_map_row</span><span class="o">.</span><span class="n">event_id</span> <span class="o">=</span> <span class="n">sngl</span><span class="o">.</span><span class="n">event_id</span>
+            <span class="n">coinc_event_map_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coinc_map_row</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">upload_snr_series</span><span class="p">:</span>
+                <span class="n">snr_series_to_xml</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">snr_series</span><span class="p">[</span><span class="n">ifo</span><span class="p">],</span> <span class="n">outdoc</span><span class="p">,</span> <span class="n">sngl</span><span class="o">.</span><span class="n">event_id</span><span class="p">)</span>
+
+        <span class="c1"># for subthreshold detectors, respect BAYESTAR&#39;s assumptions and checks</span>
+        <span class="n">bayestar_check_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;mass1 mass2 mtotal mchirp eta spin1x &#39;</span>
+                                 <span class="s1">&#39;spin1y spin1z spin2x spin2y spin2z&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">sngl</span> <span class="ow">in</span> <span class="n">sngl_inspiral_table</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sngl</span><span class="o">.</span><span class="n">ifo</span> <span class="ow">in</span> <span class="n">followup_ifos</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">bcf</span> <span class="ow">in</span> <span class="n">bayestar_check_fields</span><span class="p">:</span>
+                    <span class="nb">setattr</span><span class="p">(</span><span class="n">sngl</span><span class="p">,</span> <span class="n">bcf</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sngl_populated</span><span class="p">,</span> <span class="n">bcf</span><span class="p">))</span>
+                <span class="n">sngl</span><span class="o">.</span><span class="n">set_end</span><span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">LIGOTimeGPS</span><span class="p">(</span><span class="n">subthreshold_sngl_time</span><span class="p">))</span>
+
+        <span class="n">outdoc</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">coinc_event_map_table</span><span class="p">)</span>
+        <span class="n">outdoc</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">sngl_inspiral_table</span><span class="p">)</span>
+
+        <span class="c1"># Set up the coinc inspiral table</span>
+        <span class="n">coinc_inspiral_table</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="n">lsctables</span><span class="o">.</span><span class="n">CoincInspiralTable</span><span class="p">)</span>
+        <span class="n">coinc_inspiral_row</span> <span class="o">=</span> <span class="n">lsctables</span><span class="o">.</span><span class="n">CoincInspiral</span><span class="p">()</span>
+        <span class="c1"># This seems to be used as FAP, which should not be in gracedb</span>
+        <span class="n">coinc_inspiral_row</span><span class="o">.</span><span class="n">false_alarm_rate</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">coinc_inspiral_row</span><span class="o">.</span><span class="n">minimum_duration</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">coinc_inspiral_row</span><span class="o">.</span><span class="n">set_ifos</span><span class="p">(</span><span class="n">usable_ifos</span><span class="p">)</span>
+        <span class="n">coinc_inspiral_row</span><span class="o">.</span><span class="n">coinc_event_id</span> <span class="o">=</span> <span class="n">coinc_id</span>
+        <span class="n">coinc_inspiral_row</span><span class="o">.</span><span class="n">mchirp</span> <span class="o">=</span> <span class="n">sngl_populated</span><span class="o">.</span><span class="n">mchirp</span>
+        <span class="n">coinc_inspiral_row</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="n">sngl_populated</span><span class="o">.</span><span class="n">mtotal</span>
+        <span class="n">coinc_inspiral_row</span><span class="o">.</span><span class="n">end_time</span> <span class="o">=</span> <span class="n">sngl_populated</span><span class="o">.</span><span class="n">end_time</span>
+        <span class="n">coinc_inspiral_row</span><span class="o">.</span><span class="n">end_time_ns</span> <span class="o">=</span> <span class="n">sngl_populated</span><span class="o">.</span><span class="n">end_time_ns</span>
+        <span class="n">coinc_inspiral_row</span><span class="o">.</span><span class="n">snr</span> <span class="o">=</span> <span class="n">coinc_results</span><span class="p">[</span><span class="s1">&#39;foreground/stat&#39;</span><span class="p">]</span>
+        <span class="n">far</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">lal</span><span class="o">.</span><span class="n">YRJUL_SI</span> <span class="o">*</span> <span class="n">coinc_results</span><span class="p">[</span><span class="s1">&#39;foreground/ifar&#39;</span><span class="p">])</span>
+        <span class="n">coinc_inspiral_row</span><span class="o">.</span><span class="n">combined_far</span> <span class="o">=</span> <span class="n">far</span>
+        <span class="n">coinc_inspiral_table</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coinc_inspiral_row</span><span class="p">)</span>
+        <span class="n">outdoc</span><span class="o">.</span><span class="n">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">coinc_inspiral_table</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outdoc</span> <span class="o">=</span> <span class="n">outdoc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">sngl_populated</span><span class="o">.</span><span class="n">get_end</span><span class="p">()</span>
+
+<div class="viewcode-block" id="SingleCoincForGraceDB.save"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.live.SingleCoincForGraceDB.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write this trigger to gracedb compatible xml format</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        filename: str</span>
+<span class="sd">            Name of file to write to disk.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ligolw_utils</span><span class="o">.</span><span class="n">write_filename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outdoc</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SingleCoincForGraceDB.upload"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.live.SingleCoincForGraceDB.upload">[docs]</a>    <span class="k">def</span> <span class="nf">upload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">psds</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="p">,</span>
+               <span class="n">testing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">extra_strings</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+               <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Upload this trigger to gracedb</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fname: str</span>
+<span class="sd">            The name to give the xml file associated with this trigger</span>
+<span class="sd">        pds: dict of pybc.types.FrequencySeries</span>
+<span class="sd">            A ifo keyed dictionary of psds to be uploaded in association</span>
+<span class="sd">        with this trigger.</span>
+<span class="sd">        low_frequency_cutoff: float</span>
+<span class="sd">            The low frequency cutoff of the psds.</span>
+<span class="sd">        testing: bool</span>
+<span class="sd">            Switch to determine if the upload should be sent to gracedb as a</span>
+<span class="sd">        test trigger (True) or a production trigger (False)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">ligo.gracedb.rest</span> <span class="k">import</span> <span class="n">GraceDb</span>
+
+        <span class="c1"># first of all, make sure the event and PSDs are saved on disk</span>
+        <span class="c1"># as GraceDB operations can fail later</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+
+        <span class="n">psds_lal</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="n">psds</span><span class="p">:</span>
+            <span class="n">psd</span> <span class="o">=</span> <span class="n">psds</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span>
+            <span class="n">kmin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">low_frequency_cutoff</span> <span class="o">/</span> <span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">)</span>
+            <span class="n">fseries</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CreateREAL8FrequencySeries</span><span class="p">(</span>
+                <span class="s2">&quot;psd&quot;</span><span class="p">,</span> <span class="n">psd</span><span class="o">.</span><span class="n">epoch</span><span class="p">,</span> <span class="n">low_frequency_cutoff</span><span class="p">,</span> <span class="n">psd</span><span class="o">.</span><span class="n">delta_f</span><span class="p">,</span>
+                <span class="n">lal</span><span class="o">.</span><span class="n">StrainUnit</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">lal</span><span class="o">.</span><span class="n">HertzUnit</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">psd</span><span class="p">)</span> <span class="o">-</span> <span class="n">kmin</span><span class="p">)</span>
+            <span class="n">fseries</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">psd</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="n">kmin</span><span class="p">:]</span> <span class="o">/</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">DYN_RANGE_FAC</span> <span class="o">**</span> <span class="mf">2.0</span>
+            <span class="n">psds_lal</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span> <span class="o">=</span> <span class="n">fseries</span>
+        <span class="n">psd_xmldoc</span> <span class="o">=</span> <span class="n">make_psd_xmldoc</span><span class="p">(</span><span class="n">psds_lal</span><span class="p">)</span>
+        <span class="n">psd_xml_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fname</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;-psd.xml.gz&#39;</span>
+        <span class="n">ligolw_utils</span><span class="o">.</span><span class="n">write_filename</span><span class="p">(</span><span class="n">psd_xmldoc</span><span class="p">,</span> <span class="n">psd_xml_path</span><span class="p">,</span> <span class="n">gz</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">upload_snr_series</span><span class="p">:</span>
+            <span class="n">snr_series_fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fname</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.hdf&#39;</span>
+            <span class="k">for</span> <span class="n">ifo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">snr_series</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">snr_series</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">snr_series_fname</span><span class="p">,</span>
+                                          <span class="n">group</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/snr&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">snr_series_psd</span><span class="p">[</span><span class="n">ifo</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">snr_series_fname</span><span class="p">,</span>
+                                              <span class="n">group</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/psd&#39;</span> <span class="o">%</span> <span class="n">ifo</span><span class="p">)</span>
+
+        <span class="c1"># try connecting to GraceDB</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">gracedb</span> <span class="o">=</span> <span class="n">GraceDb</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gracedb_server</span><span class="p">)</span> \
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gracedb_server</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">GraceDb</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Cannot connect to GraceDB&#39;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Carrying on, but event </span><span class="si">%s</span><span class="s1"> will NOT be uploaded!&#39;</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="c1"># create GraceDB event</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;Test&#39;</span> <span class="k">if</span> <span class="n">testing</span> <span class="k">else</span> <span class="s1">&#39;CBC&#39;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">gracedb</span><span class="o">.</span><span class="n">createEvent</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="s2">&quot;pycbc&quot;</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;AllSky&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Cannot create GraceDB event&#39;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Carrying on, but event </span><span class="si">%s</span><span class="s1"> will NOT be uploaded!&#39;</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Uploaded event </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;graceid&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_hardware_injection</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">gracedb</span><span class="o">.</span><span class="n">writeLabel</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;graceid&#39;</span><span class="p">],</span> <span class="s1">&#39;INJ&#39;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Cannot tag event </span><span class="si">%s</span><span class="s2"> as an injection&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;graceid&quot;</span><span class="p">])</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Tagging event </span><span class="si">%s</span><span class="s2"> as an injection&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;graceid&quot;</span><span class="p">])</span>
+
+        <span class="c1"># upload PSDs</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">gracedb</span><span class="o">.</span><span class="n">writeLog</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;graceid&quot;</span><span class="p">],</span>
+                             <span class="s2">&quot;PyCBC PSD estimate from the time of event&quot;</span><span class="p">,</span>
+                             <span class="s2">&quot;psd.xml.gz&quot;</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">psd_xml_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span>
+                             <span class="s2">&quot;psd&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Cannot upload PSDs for event </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;graceid&quot;</span><span class="p">])</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Uploaded PSDs for event </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;graceid&quot;</span><span class="p">])</span>
+
+        <span class="c1"># add other tags and comments</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">gracedb</span><span class="o">.</span><span class="n">writeLog</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;graceid&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;Using PyCBC code hash </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pycbc_version</span><span class="o">.</span><span class="n">git_hash</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="n">extra_strings</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">extra_strings</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">extra_strings</span>
+            <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">extra_strings</span><span class="p">:</span>
+                <span class="n">gracedb</span><span class="o">.</span><span class="n">writeLog</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;graceid&quot;</span><span class="p">],</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Cannot write comments for event </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">[</span><span class="s2">&quot;graceid&quot;</span><span class="p">])</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
+
+        <span class="c1"># upload SNR series in HDF format</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">upload_snr_series</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">gracedb</span><span class="o">.</span><span class="n">writeFile</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;graceid&#39;</span><span class="p">],</span> <span class="n">snr_series_fname</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Cannot upload HDF SNR series for event </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                              <span class="n">r</span><span class="p">[</span><span class="s2">&quot;graceid&quot;</span><span class="p">])</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;graceid&#39;</span><span class="p">]</span></div></div>
+
+<div class="viewcode-block" id="SingleForGraceDB"><a class="viewcode-back" href="../../../pycbc.io.html#pycbc.io.live.SingleForGraceDB">[docs]</a><span class="k">class</span> <span class="nc">SingleForGraceDB</span><span class="p">(</span><span class="n">SingleCoincForGraceDB</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create xml files and submit them to gracedb from PyCBC Live&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ifo</span><span class="p">,</span> <span class="n">sngls_dict</span><span class="p">,</span> <span class="n">hardware_injection</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a ligolw xml representation of this single trigger for</span>
+<span class="sd">        upload to gracedb</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ifo: str</span>
+<span class="sd">            The IFO that the trigger came from.</span>
+<span class="sd">        sngls_dict: dict</span>
+<span class="sd">            Dictionary of singles parameters. Must include template parameters</span>
+<span class="sd">        and both &#39;ifar&#39; and &#39;stat&#39; values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fake_coinc</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">fake_coinc</span><span class="p">[</span><span class="s1">&#39;foreground/stat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sngls_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;stat&#39;</span><span class="p">)</span>
+        <span class="n">fake_coinc</span><span class="p">[</span><span class="s1">&#39;foreground/ifar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sngls_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;ifar&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">sngls_dict</span><span class="p">:</span>
+            <span class="n">fake_coinc</span><span class="p">[</span><span class="s1">&#39;foreground/</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ifo</span><span class="p">,</span> <span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">sngls_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">hardware_injection</span><span class="p">:</span>
+            <span class="n">fake_coinc</span><span class="p">[</span><span class="s1">&#39;HWINJ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">SingleCoincForGraceDB</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="n">ifo</span><span class="p">],</span> <span class="n">fake_coinc</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span></div>
+ 
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

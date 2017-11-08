@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.filter.simd_correlate &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.filter.simd_correlate</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.filter.simd_correlate</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2014 Josh Willis</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">float32</span>
+<span class="kn">from</span> <span class="nn">weave</span> <span class="k">import</span> <span class="n">inline</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">WEAVE_FLAGS</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">_np</span>
+<span class="kn">import</span> <span class="nn">pycbc.opt</span>
+<span class="kn">from</span> <span class="nn">pycbc.opt</span> <span class="k">import</span> <span class="n">omp_support</span><span class="p">,</span> <span class="n">omp_libs</span><span class="p">,</span> <span class="n">omp_flags</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains C functions (to be compiled by weave) for multiplying</span>
+<span class="sd">the complex conjugate of one vector by a second vector, writing the output</span>
+<span class="sd">to a third vector. They do this multi-threaded and with SIMD vectorization.</span>
+
+<span class="sd">The long string of code defined here, and the other calling that function,</span>
+<span class="sd">are imported and used in the CPUCorrelator class defined in</span>
+<span class="sd">matchedfilter_cpu.py.</span>
+
+<span class="sd">Two functions are defined in the &#39;support&#39; long code string:</span>
+
+<span class="sd">ccorrf_simd: Runs on a single core, but vectorized</span>
+<span class="sd">ccorrf_parallel: Runs multicore, but not explicitly vectorized.</span>
+<span class="sd">                 Parallelized using OpenMP, and calls ccorrf_simd</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Common support, so defined here</span>
+
+
+<span class="n">corr_common_support</span> <span class="o">=</span> <span class="n">omp_support</span> <span class="o">+</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">simd_intel_intrin_support</span> <span class="o">+</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#include &lt;stdint.h&gt; // For uint32_t, int64_t</span>
+<span class="s2">#include &lt;errno.h&gt;</span>
+<span class="s2">#include &lt;stdio.h&gt;</span>
+<span class="s2">#include &lt;stdlib.h&gt;</span>
+<span class="s2">#include &lt;complex&gt; // Must use C++ header with weave</span>
+
+<span class="s2">/* Rough approx of GCC&#39;s error function. */</span>
+<span class="s2">void error(int status, int errnum, const char *format) {</span>
+<span class="s2">  fprintf(stderr, format);</span>
+<span class="s2">  if (status != 0) {</span>
+<span class="s2">    exit(status);</span>
+<span class="s2">  }</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">corr_support</span> <span class="o">=</span> <span class="n">corr_common_support</span> <span class="o">+</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">void ccorrf_simd(float * __restrict inconj, float * __restrict innoconj,</span>
+<span class="s2">                 float * __restrict out, const int64_t len){</span>
+
+<span class="s2">  /*</span>
+<span class="s2">   This function takes two input vectors, and puts in the third argument the output</span>
+<span class="s2">   vector that is the elementwise product of the conjugate of the first input and</span>
+<span class="s2">   the second input.  All vectors are of type float, but are interpreted as complex</span>
+<span class="s2">   vectors; the length should be the length of the *real* vectors (which must be</span>
+<span class="s2">   the same). The last argument is the common length of all three vectors.</span>
+
+<span class="s2">   The vectors do not have to be aligned on any particular SIMD boundary, but the</span>
+<span class="s2">   *relative* misalignment of all three vectors must be the same.  In practice this</span>
+<span class="s2">   means that the vectors will often be allocated as the same index range of three</span>
+<span class="s2">   vectors that *are* aligned.</span>
+<span class="s2">  */</span>
+
+<span class="s2">  int64_t i;</span>
+<span class="s2">  float ar, ai, br, bi, cr, ci;</span>
+<span class="s2">  float *aptr, *bptr, *cptr;</span>
+
+<span class="s2">  aptr = inconj;</span>
+<span class="s2">  bptr = innoconj;</span>
+<span class="s2">  cptr = out;</span>
+
+<span class="s2">  /*</span>
+
+<span class="s2">   Note that at most one of _HAVE_AVX ad _HAVE_SSE3 will be defined (in</span>
+<span class="s2">   &#39;pycbc.opt.simd_intel_intrin_support&#39; prepended above); if neither is,</span>
+<span class="s2">   then a non-vectorized code path will be executed.</span>
+
+<span class="s2">   As of this writing, documentation on the SIMD instrinsic functions may</span>
+<span class="s2">   be found at:</span>
+
+<span class="s2">      https://software.intel.com/sites/landingpage/IntrinsicsGuide/</span>
+
+<span class="s2">   though Intel websites change frequently.</span>
+
+<span class="s2">  */</span>
+
+<span class="s2">#if _HAVE_AVX</span>
+<span class="s2">  __m256 ymm0, ymm1, ymm2, ymm3, ymm4, ymm5, signed_zero;</span>
+<span class="s2">  int64_t peel, misalgna, misalgnb, misalgnc;</span>
+
+<span class="s2">  // We calculate size of our various pointers modulo our alignment size</span>
+
+<span class="s2">  misalgna = (int64_t) (((uintptr_t) aptr) % ALGN);</span>
+<span class="s2">  misalgnb = (int64_t) (((uintptr_t) bptr) % ALGN);</span>
+<span class="s2">  misalgnc = (int64_t) (((uintptr_t) cptr) % ALGN);</span>
+
+<span class="s2">  // Some kinds of misalignment are impossible to handle</span>
+
+<span class="s2">  if ((misalgna != misalgnb) || (misalgnb != misalgnc)){</span>
+<span class="s2">    error(EXIT_FAILURE, 0, &quot;Arrays given to ccorrf_simd must all three have same alignment</span><span class="se">\\</span><span class="s2">n&quot;);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  if (misalgna % 2*sizeof(float)) {</span>
+<span class="s2">    error(EXIT_FAILURE, 0, &quot;Arrays given to ccorrf_simd must be aligned on a least a complex float boundary</span><span class="se">\\</span><span class="s2">n&quot;);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // If we were not aligned, we must loop through a few iterations</span>
+<span class="s2">  // before we may use SIMD functions.</span>
+
+<span class="s2">  peel = ( misalgna ? ((ALGN - misalgna) / (sizeof(float))) : 0 );</span>
+<span class="s2">  peel = (peel &gt; len ? len : peel);</span>
+
+<span class="s2">  // Below is the only place i gets initialized! It should never be initialized</span>
+<span class="s2">  // in the &#39;for&#39; loops.</span>
+<span class="s2">  i = 0;</span>
+
+<span class="s2">  // Peel off any unaligned beginning for the array.</span>
+<span class="s2">  for ( ; i &lt; peel; i += 2){</span>
+<span class="s2">    ar = *aptr;</span>
+<span class="s2">    ai = *(aptr+1);</span>
+<span class="s2">    br = *bptr;</span>
+<span class="s2">    bi = *(bptr+1);</span>
+
+<span class="s2">    // Note that &#39;a&#39; is the input we conjugate</span>
+
+<span class="s2">    cr = ar*br + ai*bi;</span>
+<span class="s2">    ci = ar*bi - ai*br;</span>
+
+<span class="s2">    // Store output and increment pointers</span>
+
+<span class="s2">    *cptr = cr;</span>
+<span class="s2">    *(cptr+1) = ci;</span>
+
+<span class="s2">    aptr += 2;</span>
+<span class="s2">    bptr += 2;</span>
+<span class="s2">    cptr += 2;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  _mm256_zeroupper();</span>
+
+<span class="s2">  // We use the following to flip sign bits of imaginary parts</span>
+<span class="s2">  // of the first vector.</span>
+<span class="s2">  signed_zero = _mm256_castsi256_ps( _mm256_set1_epi32(0x80000000) );</span>
+
+<span class="s2">  // Main loop using AVX; unrolled once.</span>
+<span class="s2">  for (; i &lt;= len - 2*ALGN_FLT ; i += 2*ALGN_FLT){</span>
+
+<span class="s2">      // Load everything into registers</span>
+<span class="s2">      ymm1 = _mm256_load_ps(aptr);</span>
+<span class="s2">      ymm4 = _mm256_load_ps(aptr+ALGN_FLT);</span>
+<span class="s2">      ymm0 = _mm256_load_ps(bptr);</span>
+<span class="s2">      ymm3 = _mm256_load_ps(bptr+ALGN_FLT);</span>
+
+<span class="s2">      // First iteration</span>
+<span class="s2">      ymm2 = _mm256_movehdup_ps(ymm1);  // only imag parts (duplicated) of inconj</span>
+<span class="s2">      ymm1 = _mm256_moveldup_ps(ymm1);  // only real parts (duplicated) of inconj</span>
+<span class="s2">      ymm1 = _mm256_mul_ps(ymm1, ymm0); // 4 x [inconj_re * innoconj_re, inconj_re * innoconj_im]</span>
+<span class="s2">      ymm0 = _mm256_shuffle_ps(ymm0, ymm0, 0xB1); // Swap re and im in innoconj</span>
+<span class="s2">      ymm2 = _mm256_xor_ps(ymm2, signed_zero);    // Change sign of inconj imag</span>
+<span class="s2">      ymm2 = _mm256_mul_ps(ymm2, ymm0);    // 4 x [-inconj_im * innoconj_im, -inconj_im * innoconj_re]</span>
+<span class="s2">      ymm0 = _mm256_addsub_ps(ymm1, ymm2); // 4 x [inconj_re * innoconj_re + inconj_im * innoconj_im,</span>
+<span class="s2">                                           //      inconj_re * innoconj_im - inconj_im * innoconj_re]</span>
+
+<span class="s2">      // Second iteration</span>
+<span class="s2">      ymm5 = _mm256_movehdup_ps(ymm4);  // only imag parts (duplicated) of inconj</span>
+<span class="s2">      ymm4 = _mm256_moveldup_ps(ymm4);  // only real parts (duplicated) of inconj</span>
+<span class="s2">      ymm4 = _mm256_mul_ps(ymm4, ymm3); // 4 x [inconj_re * innoconj_re, inconj_re * innoconj_im]</span>
+<span class="s2">      ymm3 = _mm256_shuffle_ps(ymm3, ymm3, 0xB1); // Swap re and im in innoconj</span>
+<span class="s2">      ymm5 = _mm256_xor_ps(ymm5, signed_zero);    // Change sign of inconj imag</span>
+<span class="s2">      ymm5 = _mm256_mul_ps(ymm5, ymm3);    // 4 x [-inconj_im * innoconj_im, -inconj_im * innoconj_re]</span>
+<span class="s2">      ymm3 = _mm256_addsub_ps(ymm4, ymm5); // 4 x [inconj_re * innoconj_re + inconj_im * innoconj_im,</span>
+<span class="s2">                                           //      inconj_re * innoconj_im - inconj_im * innoconj_re]</span>
+
+<span class="s2">      // Write out results</span>
+<span class="s2">      _mm256_store_ps(cptr, ymm0);</span>
+<span class="s2">      _mm256_store_ps(cptr+ALGN_FLT, ymm3);</span>
+
+<span class="s2">      aptr += 2*ALGN_FLT;</span>
+<span class="s2">      bptr += 2*ALGN_FLT;</span>
+<span class="s2">      cptr += 2*ALGN_FLT;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // One last SIMD loop, not unrolled (which we may not always be able to do)</span>
+<span class="s2">  for (; i &lt;= len - ALGN_FLT; i += ALGN_FLT){</span>
+<span class="s2">      // Load everything into registers</span>
+<span class="s2">      ymm1 = _mm256_load_ps(aptr);</span>
+<span class="s2">      ymm0 = _mm256_load_ps(bptr);</span>
+
+<span class="s2">      // Do the work</span>
+<span class="s2">      ymm2 = _mm256_movehdup_ps(ymm1);  // only imag parts (duplicated) of inconj</span>
+<span class="s2">      ymm1 = _mm256_moveldup_ps(ymm1);  // only real parts (duplicated) of inconj</span>
+<span class="s2">      ymm1 = _mm256_mul_ps(ymm1, ymm0); // 4 x [inconj_re * innoconj_re, inconj_re * innoconj_im]</span>
+<span class="s2">      ymm0 = _mm256_shuffle_ps(ymm0, ymm0, 0xB1); // Swap re and im in innoconj</span>
+<span class="s2">      ymm2 = _mm256_xor_ps(ymm2, signed_zero);    // Change sign of inconj imag</span>
+<span class="s2">      ymm2 = _mm256_mul_ps(ymm2, ymm0);    // 4 x [-inconj_im * innoconj_im, -inconj_im * innoconj_re]</span>
+<span class="s2">      ymm0 = _mm256_addsub_ps(ymm1, ymm2); // 4 x [inconj_re * innoconj_re + inconj_im * innoconj_im,</span>
+<span class="s2">                                           //      inconj_re * innoconj_im - inconj_im * innoconj_re]</span>
+
+<span class="s2">      // Write out results</span>
+<span class="s2">      _mm256_store_ps(cptr, ymm0);</span>
+
+<span class="s2">      aptr += ALGN_FLT;</span>
+<span class="s2">      bptr += ALGN_FLT;</span>
+<span class="s2">      cptr += ALGN_FLT;</span>
+<span class="s2">  }</span>
+<span class="s2">  _mm256_zeroupper();</span>
+
+<span class="s2">#elif _HAVE_SSE3  // Need at least SSE3 for move{h,l}dup and addsub instructions</span>
+
+<span class="s2">  __m128 ymm0, ymm1, ymm2, ymm3, ymm4, ymm5, signed_zero;</span>
+<span class="s2">  int64_t peel, misalgna, misalgnb, misalgnc;</span>
+
+<span class="s2">  // We calculate size of our various pointers modulo our alignment size</span>
+
+<span class="s2">  misalgna = (int64_t) (((uintptr_t) aptr) % ALGN);</span>
+<span class="s2">  misalgnb = (int64_t) (((uintptr_t) bptr) % ALGN);</span>
+<span class="s2">  misalgnc = (int64_t) (((uintptr_t) cptr) % ALGN);</span>
+
+<span class="s2">  // Some kinds of misalignment are impossible to handle</span>
+
+<span class="s2">  if ((misalgna != misalgnb) || (misalgnb != misalgnc)){</span>
+<span class="s2">    error(EXIT_FAILURE, 0, &quot;Arrays given to ccorrf_simd must all three have same alignment</span><span class="se">\\</span><span class="s2">n&quot;);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  if (misalgna % 2*sizeof(float)) {</span>
+<span class="s2">    error(EXIT_FAILURE, 0, &quot;Arrays given to ccorrf_simd must be aligned on a least a complex float boundary</span><span class="se">\\</span><span class="s2">n&quot;);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // If we were not aligned, we must loop through a few iterations</span>
+<span class="s2">  // before we may use SIMD functions.</span>
+
+<span class="s2">  peel = ( misalgna ? ((ALGN - misalgna) / (sizeof(float))) : 0 );</span>
+<span class="s2">  peel = (peel &gt; len ? len : peel);</span>
+
+<span class="s2">  // Below is the only place i gets initialized! It should never be initialized</span>
+<span class="s2">  // in the &#39;for&#39; loops.</span>
+<span class="s2">  i = 0;</span>
+
+<span class="s2">  // Peel off any unaligned beginning for the array.</span>
+<span class="s2">  for ( ; i &lt; peel; i += 2){</span>
+<span class="s2">    ar = *aptr;</span>
+<span class="s2">    ai = *(aptr+1);</span>
+<span class="s2">    br = *bptr;</span>
+<span class="s2">    bi = *(bptr+1);</span>
+
+<span class="s2">    // Note that &#39;a&#39; is the input we conjugate</span>
+
+<span class="s2">    cr = ar*br + ai*bi;</span>
+<span class="s2">    ci = ar*bi - ai*br;</span>
+
+<span class="s2">    // Store output and increment pointers</span>
+
+<span class="s2">    *cptr = cr;</span>
+<span class="s2">    *(cptr+1) = ci;</span>
+
+<span class="s2">    aptr += 2;</span>
+<span class="s2">    bptr += 2;</span>
+<span class="s2">    cptr += 2;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // We use the following to flip sign bits of imaginary parts</span>
+<span class="s2">  // of the first vector.</span>
+<span class="s2">  signed_zero = _mm_castsi128_ps( _mm_set1_epi32(0x80000000) );</span>
+
+<span class="s2">  // Main loop using SSE; unrolled once.</span>
+<span class="s2">  for (; i &lt;= len - 2*ALGN_FLT ; i += 2*ALGN_FLT){</span>
+
+<span class="s2">      // Load everything into registers</span>
+<span class="s2">      ymm1 = _mm_load_ps(aptr);</span>
+<span class="s2">      ymm4 = _mm_load_ps(aptr+ALGN_FLT);</span>
+<span class="s2">      ymm0 = _mm_load_ps(bptr);</span>
+<span class="s2">      ymm3 = _mm_load_ps(bptr+ALGN_FLT);</span>
+
+<span class="s2">      // First iteration</span>
+<span class="s2">      ymm2 = _mm_movehdup_ps(ymm1);  // only imag parts (duplicated) of inconj</span>
+<span class="s2">      ymm1 = _mm_moveldup_ps(ymm1);  // only real parts (duplicated) of inconj</span>
+<span class="s2">      ymm1 = _mm_mul_ps(ymm1, ymm0); // 4 x [inconj_re * innoconj_re, inconj_re * innoconj_im]</span>
+<span class="s2">      ymm0 = _mm_shuffle_ps(ymm0, ymm0, 0xB1); // Swap re and im in innoconj</span>
+<span class="s2">      ymm2 = _mm_xor_ps(ymm2, signed_zero);    // Change sign of inconj imag</span>
+<span class="s2">      ymm2 = _mm_mul_ps(ymm2, ymm0);    // 4 x [-inconj_im * innoconj_im, -inconj_im * innoconj_re]</span>
+<span class="s2">      ymm0 = _mm_addsub_ps(ymm1, ymm2); // 4 x [inconj_re * innoconj_re + inconj_im * innoconj_im,</span>
+<span class="s2">                                        //      inconj_re * innoconj_im - inconj_im * innoconj_re]</span>
+
+<span class="s2">      // Second iteration</span>
+<span class="s2">      ymm5 = _mm_movehdup_ps(ymm4);  // only imag parts (dupl) of inconj</span>
+<span class="s2">      ymm4 = _mm_moveldup_ps(ymm4);  // only real parts (dupl) of inconj</span>
+<span class="s2">      ymm4 = _mm_mul_ps(ymm4, ymm3); // 4 x [inconj_re * innoconj_re, inconj_re * innoconj_im]</span>
+<span class="s2">      ymm3 = _mm_shuffle_ps(ymm3, ymm3, 0xB1); // Swap re and im in innoconj</span>
+<span class="s2">      ymm5 = _mm_xor_ps(ymm5, signed_zero);    // Change sign of inconj imag</span>
+<span class="s2">      ymm5 = _mm_mul_ps(ymm5, ymm3);    // 4 x [-inconj_im * innoconj_im, -inconj_im * innoconj_re]</span>
+<span class="s2">      ymm3 = _mm_addsub_ps(ymm4, ymm5); // 4 x [inconj_re * innoconj_re + inconj_im * innoconj_im,</span>
+<span class="s2">                                        //      inconj_re * innoconj_im - inconj_im * innoconj_re]</span>
+
+<span class="s2">      // Write out results</span>
+<span class="s2">      _mm_store_ps(cptr, ymm0);</span>
+<span class="s2">      _mm_store_ps(cptr+ALGN_FLT, ymm3);</span>
+
+<span class="s2">      aptr += 2*ALGN_FLT;</span>
+<span class="s2">      bptr += 2*ALGN_FLT;</span>
+<span class="s2">      cptr += 2*ALGN_FLT;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // One last SIMD loop, not unrolled (which we may not always be able to do)</span>
+<span class="s2">  for (; i &lt;= len - ALGN_FLT; i += ALGN_FLT){</span>
+<span class="s2">      // Load everything into registers</span>
+<span class="s2">      ymm1 = _mm_load_ps(aptr);</span>
+<span class="s2">      ymm0 = _mm_load_ps(bptr);</span>
+
+<span class="s2">      // Do the work</span>
+<span class="s2">      ymm2 = _mm_movehdup_ps(ymm1);  // only imag parts (duplicated) of inconj</span>
+<span class="s2">      ymm1 = _mm_moveldup_ps(ymm1);  // only real parts (duplicated) of inconj</span>
+<span class="s2">      ymm1 = _mm_mul_ps(ymm1, ymm0); // 4 x [inconj_re * innoconj_re, inconj_re * innoconj_im]</span>
+<span class="s2">      ymm0 = _mm_shuffle_ps(ymm0, ymm0, 0xB1); // Swap re and im in innoconj</span>
+<span class="s2">      ymm2 = _mm_xor_ps(ymm2, signed_zero);    // Change sign of inconj imag</span>
+<span class="s2">      ymm2 = _mm_mul_ps(ymm2, ymm0);    // 4 x [-inconj_im * innoconj_im, -inconj_im * innoconj_re]</span>
+<span class="s2">      ymm0 = _mm_addsub_ps(ymm1, ymm2); // 4 x [inconj_re * innoconj_re + inconj_im * innoconj_im,</span>
+<span class="s2">                                        //      inconj_re * innoconj_im - inconj_im * innoconj_re]</span>
+
+<span class="s2">      // Write out results</span>
+<span class="s2">      _mm_store_ps(cptr, ymm0);</span>
+
+<span class="s2">      aptr += ALGN_FLT;</span>
+<span class="s2">      bptr += ALGN_FLT;</span>
+<span class="s2">      cptr += ALGN_FLT;</span>
+<span class="s2">  }</span>
+
+<span class="s2">#else</span>
+<span class="s2"> // If we have no SSE, all we have to do is initialize</span>
+<span class="s2"> // our loop counter, and the last &quot;cleanup&quot; loop</span>
+<span class="s2"> // will in fact do all the work.</span>
+
+<span class="s2"> i = 0;</span>
+
+<span class="s2">#endif</span>
+
+<span class="s2">  for ( ; i &lt; len; i += 2){</span>
+<span class="s2">    ar = *aptr;</span>
+<span class="s2">    ai = *(aptr+1);</span>
+<span class="s2">    br = *bptr;</span>
+<span class="s2">    bi = *(bptr+1);</span>
+
+<span class="s2">    // Note that &#39;a&#39; is the input we conjugate</span>
+
+<span class="s2">    cr = ar*br + ai*bi;</span>
+<span class="s2">    ci = ar*bi - ai*br;</span>
+
+<span class="s2">    // Store output and increment pointers</span>
+
+<span class="s2">    *cptr = cr;</span>
+<span class="s2">    *(cptr+1) = ci;</span>
+
+<span class="s2">    aptr += 2;</span>
+<span class="s2">    bptr += 2;</span>
+<span class="s2">    cptr += 2;</span>
+<span class="s2">  }</span>
+
+<span class="s2"> return;</span>
+
+<span class="s2">}</span>
+
+<span class="s2">void ccorrf_parallel(std::complex&lt;float&gt; * __restrict inconj,</span>
+<span class="s2">                     std::complex&lt;float&gt; * __restrict innoconj,</span>
+<span class="s2">                     std::complex&lt;float&gt; * __restrict out,</span>
+<span class="s2">                     const int64_t arrlen, const int64_t segsize){</span>
+
+<span class="s2">  /*</span>
+
+<span class="s2">   This function takes three complex vectors: the complex conjugate of</span>
+<span class="s2">   the first is elementwise multiplied by the second with the output</span>
+<span class="s2">   written into the third. The fourth argument is the common length of</span>
+<span class="s2">   all three vectors, and the fifth argument is  the &#39;segment&#39; size. It</span>
+<span class="s2">   is the length of a vector that should be handled by a single thread,</span>
+<span class="s2">   and should generally be such that three vectors of that length will</span>
+<span class="s2">   fit in the cache local to a single CPU core (not shared).</span>
+
+<span class="s2">  */</span>
+
+
+<span class="s2">  int64_t i, *seglens;</span>
+<span class="s2">  int nsegs;</span>
+
+<span class="s2">  // We will always give &#39;segsize&#39; length arrays. If segsize does not</span>
+<span class="s2">  // divide arrlen evenly, the last triple of arrays will be shorter.</span>
+<span class="s2">  // The next lines enforce that logic: if segsize divides arrlen</span>
+<span class="s2">  // evenly, the number of segments is their ratio; if not, the number</span>
+<span class="s2">  // of segments is one more than the floor of that ratio, and the</span>
+<span class="s2">  // last segment has a shorter length than the others.</span>
+
+<span class="s2">  nsegs = ( (arrlen </span><span class="si">% s</span><span class="s2">egsize) ? (arrlen/segsize) + 1 : (arrlen/segsize) );</span>
+
+<span class="s2">  seglens = (int64_t *) malloc(nsegs * sizeof(int64_t));</span>
+<span class="s2">  if (seglens == NULL){</span>
+<span class="s2">    error(EXIT_FAILURE, ENOMEM, &quot;ccorrf_parallel: could not allocate temporary memory&quot;);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // Setup the segment lengths; only the last might be different.</span>
+<span class="s2">  // The factor of two is because our inputs and outputs are complex</span>
+<span class="s2">  // arrays, but ccorrf_simd needs float array arguments.</span>
+<span class="s2">  for (i = 0; i &lt; nsegs-1; i++){</span>
+<span class="s2">    seglens[i] = 2*segsize;</span>
+<span class="s2">  }</span>
+<span class="s2">  seglens[i] = 2*(arrlen - i*segsize);</span>
+
+<span class="s2">#pragma omp parallel for schedule(dynamic,1)</span>
+<span class="s2">  for (i = 0; i &lt; nsegs; i++){</span>
+<span class="s2">    ccorrf_simd( (float *) &amp;inconj[i*segsize], (float *) &amp;innoconj[i*segsize],</span>
+<span class="s2">                 (float *) &amp;out[i*segsize], seglens[i]);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  free(seglens);</span>
+<span class="s2">  return;</span>
+<span class="s2">}</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">corr_simd_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">ccorrf_simd(htilde, stilde, qtilde, (int64_t) arrlen);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="correlate_simd"><a class="viewcode-back" href="../../../pycbc.filter.html#pycbc.filter.simd_correlate.correlate_simd">[docs]</a><span class="k">def</span> <span class="nf">correlate_simd</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">qt</span><span class="p">):</span>
+    <span class="n">htilde</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ht</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">float32</span><span class="p">)</span>
+    <span class="n">stilde</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">float32</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
+    <span class="n">qtilde</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">qt</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">float32</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
+    <span class="n">arrlen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">htilde</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
+    <span class="n">inline</span><span class="p">(</span><span class="n">corr_simd_code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;htilde&#39;</span><span class="p">,</span> <span class="s1">&#39;stilde&#39;</span><span class="p">,</span> <span class="s1">&#39;qtilde&#39;</span><span class="p">,</span> <span class="s1">&#39;arrlen&#39;</span><span class="p">],</span>
+           <span class="n">extra_compile_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">],</span>
+           <span class="c1">#extra_compile_args = [&#39;-mno-avx -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2 -mno-sse4a -O2 -w&#39;],</span>
+           <span class="c1">#extra_compile_args = [&#39;-msse3 -O3 -w&#39;],</span>
+           <span class="n">support_code</span> <span class="o">=</span> <span class="n">corr_support</span><span class="p">,</span> <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span></div>
+
+<span class="n">corr_parallel_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">ccorrf_parallel(htilde, stilde, qtilde, (int64_t) arrlen, (int64_t) segsize);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="c1"># We need a segment size (number of complex elements) such that *three* segments</span>
+<span class="c1"># of that size will fit in the L2 cache. We also want it to be a power of two.</span>
+<span class="c1"># We are dealing with single-precision complex numbers, which each require 8 bytes.</span>
+
+<span class="c1"># Our kernel is written to assume a complex correlation of single-precision vectors,</span>
+<span class="c1"># so that&#39;s all we support here.  Note that we are assuming that the correct target</span>
+<span class="c1"># is that the vectors should fit in L2 cache.  Figuring out cache topology dynamically</span>
+<span class="c1"># is a harder problem than we attempt to solve here.</span>
+
+<span class="k">if</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">HAVE_GETCONF</span><span class="p">:</span>
+    <span class="c1"># Since we need 3 vectors fitting in L2 cache, divide by 3</span>
+    <span class="c1"># We find the nearest power-of-two that fits, and the length</span>
+    <span class="c1"># of the single-precision complex array that fits into that size.</span>
+    <span class="n">pow2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">_np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">LEVEL2_CACHE_SIZE</span><span class="o">/</span><span class="mf">3.0</span> <span class="p">)</span><span class="o">/</span><span class="n">_np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">default_segsize</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">pow2</span><span class="p">)</span><span class="o">/</span> <span class="n">_np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span> <span class="n">_np</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Seems to work for Sandy Bridge/Ivy Bridge/Haswell, for now?</span>
+    <span class="n">default_segsize</span> <span class="o">=</span> <span class="mi">8192</span>
+
+<div class="viewcode-block" id="correlate_parallel"><a class="viewcode-back" href="../../../pycbc.filter.html#pycbc.filter.simd_correlate.correlate_parallel">[docs]</a><span class="k">def</span> <span class="nf">correlate_parallel</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">qt</span><span class="p">):</span>
+    <span class="n">htilde</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ht</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">stilde</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
+    <span class="n">qtilde</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">qt</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
+    <span class="n">arrlen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">htilde</span><span class="p">)</span> <span class="c1"># pylint:disable=unused-variable</span>
+    <span class="n">segsize</span> <span class="o">=</span> <span class="n">default_segsize</span> <span class="c1"># pylint:disable=unused-variable</span>
+    <span class="n">inline</span><span class="p">(</span><span class="n">corr_parallel_code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;htilde&#39;</span><span class="p">,</span> <span class="s1">&#39;stilde&#39;</span><span class="p">,</span> <span class="s1">&#39;qtilde&#39;</span><span class="p">,</span> <span class="s1">&#39;arrlen&#39;</span><span class="p">,</span> <span class="s1">&#39;segsize&#39;</span><span class="p">],</span>
+           <span class="n">extra_compile_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span> <span class="n">libraries</span> <span class="o">=</span> <span class="n">omp_libs</span><span class="p">,</span>
+           <span class="c1">#extra_compile_args = [&#39;-mno-avx -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2 -mno-sse4a -O2 -w&#39;],</span>
+           <span class="c1">#extra_compile_args = [&#39;-msse3 -O3 -w&#39;],</span>
+           <span class="n">support_code</span> <span class="o">=</span> <span class="n">corr_support</span><span class="p">,</span> <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span></div>
+
+
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,1369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.waveform.ringdown &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.waveform.ringdown</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.waveform.ringdown</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2016 Miriam Cabero Mueller</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="c1">#                                   Preamble</span>
+<span class="c1">#</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1">#</span>
+<span class="sd">&quot;&quot;&quot;Generate ringdown templates in the frequency domain.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span><span class="o">,</span> <span class="nn">lal</span>
+<span class="kn">import</span> <span class="nn">lalsimulation</span> <span class="k">as</span> <span class="nn">lalsim</span>
+<span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">TimeSeries</span><span class="p">,</span> <span class="n">FrequencySeries</span><span class="p">,</span> <span class="n">float64</span><span class="p">,</span> <span class="n">complex128</span><span class="p">,</span> <span class="n">zeros</span>
+<span class="kn">from</span> <span class="nn">pycbc.waveform.waveform</span> <span class="k">import</span> <span class="n">get_obj_attrs</span>
+
+<span class="n">default_qnm_args</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;t_0&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+<span class="n">qnm_required_args</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;f_0&#39;</span><span class="p">,</span> <span class="s1">&#39;tau&#39;</span><span class="p">,</span> <span class="s1">&#39;amp&#39;</span><span class="p">,</span> <span class="s1">&#39;phi&#39;</span><span class="p">]</span>
+<span class="n">lm_required_args</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;freqs&#39;</span><span class="p">,</span><span class="s1">&#39;taus&#39;</span><span class="p">,</span><span class="s1">&#39;l&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;nmodes&#39;</span><span class="p">]</span>
+<span class="n">mass_spin_required_args</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;final_mass&#39;</span><span class="p">,</span><span class="s1">&#39;final_spin&#39;</span><span class="p">,</span> <span class="s1">&#39;lmns&#39;</span><span class="p">]</span>
+<span class="n">freqtau_required_args</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lmns&#39;</span><span class="p">]</span>
+
+<span class="n">max_freq</span> <span class="o">=</span> <span class="mf">16384.</span>
+<span class="n">min_dt</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">max_freq</span><span class="p">)</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">two_pi</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">pi_sq</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span>
+
+<span class="c1"># Input parameters ############################################################</span>
+
+<div class="viewcode-block" id="props"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.props">[docs]</a><span class="k">def</span> <span class="nf">props</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">required</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return a dictionary built from the combination of defaults, kwargs,</span>
+<span class="sd">    and the attributes of the given object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Get the attributes of the template object</span>
+    <span class="n">pr</span> <span class="o">=</span> <span class="n">get_obj_attrs</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+
+    <span class="c1"># Get the parameters to generate the waveform</span>
+    <span class="c1"># Note that keyword arguments override values in the template object</span>
+    <span class="n">input_params</span> <span class="o">=</span> <span class="n">default_qnm_args</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">input_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">pr</span><span class="p">)</span>
+    <span class="n">input_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Check if the required arguments are given</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">required</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">arg</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">input_params</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Please provide &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">input_params</span></div>
+
+<div class="viewcode-block" id="lm_amps_phases"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.lm_amps_phases">[docs]</a><span class="k">def</span> <span class="nf">lm_amps_phases</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Take input_params and return dictionaries with amplitudes and phases </span>
+<span class="sd">    of each overtone of a specific lm mode, checking that all of them are given.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">l</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span>
+    <span class="n">amps</span><span class="p">,</span> <span class="n">phis</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+    <span class="c1"># amp220 is always required, because the amplitudes of subdominant modes </span>
+    <span class="c1"># are given as fractions of amp220.</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">amps</span><span class="p">[</span><span class="s1">&#39;220&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;amp220&#39;</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;amp220 is always required&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Get amplitudes of subdominant modes and all phases</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;nmodes&#39;</span><span class="p">]):</span>
+        <span class="c1"># If it is the 22 mode, skip 220</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">amps</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;amp</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">*</span> <span class="n">amps</span><span class="p">[</span><span class="s1">&#39;220&#39;</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;amp</span><span class="si">%d%d%d</span><span class="s1"> is required&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">phis</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;phi</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;phi</span><span class="si">%d%d%d</span><span class="s1"> is required&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">amps</span><span class="p">,</span> <span class="n">phis</span></div>
+
+<div class="viewcode-block" id="lm_freqs_taus"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.lm_freqs_taus">[docs]</a><span class="k">def</span> <span class="nf">lm_freqs_taus</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Take input_params and return dictionaries with frequencies and damping</span>
+<span class="sd">    times of each overtone of a specific lm mode, checking that all of them</span>
+<span class="sd">    are given.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lmns</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;lmns&#39;</span><span class="p">]</span>
+    <span class="n">freqs</span><span class="p">,</span> <span class="n">taus</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">lmns</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">freqs</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;f_</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;f_</span><span class="si">%d%d%d</span><span class="s1"> is required&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">taus</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tau_</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;tau_</span><span class="si">%d%d%d</span><span class="s1"> is required&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">taus</span></div>
+
+<span class="c1"># Functions to obtain f_0 and tau from mass and spin #########################</span>
+
+<div class="viewcode-block" id="get_lm_f0tau"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_lm_f0tau">[docs]</a><span class="k">def</span> <span class="nf">get_lm_f0tau</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the f_0 and the tau of each overtone for a given lm mode </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">qnmfreq</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">CreateCOMPLEX16Vector</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)</span>
+    <span class="n">lalsim</span><span class="o">.</span><span class="n">SimIMREOBGenerateQNMFreqV2fromFinal</span><span class="p">(</span><span class="n">qnmfreq</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)</span>
+
+    <span class="n">f_0</span> <span class="o">=</span> <span class="p">[</span><span class="n">qnmfreq</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">real</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)]</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">qnmfreq</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span></div>
+
+<div class="viewcode-block" id="get_lm_f0tau_allmodes"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_lm_f0tau_allmodes">[docs]</a><span class="k">def</span> <span class="nf">get_lm_f0tau_allmodes</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">modes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a dictionary with the f_0 and tau for all the modes</span>
+<span class="sd">    in the list lmns (list of strings)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">tmp_f0</span><span class="p">,</span> <span class="n">tmp_tau</span> <span class="o">=</span> <span class="n">get_lm_f0tau</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">spin</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">):</span>
+            <span class="n">f_0</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">tmp_f0</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+            <span class="n">tau</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">tmp_tau</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span></div>
+
+<span class="c1"># Functions to obtain t_final and f_final #####################################</span>
+
+<div class="viewcode-block" id="qnm_time_decay"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.qnm_time_decay">[docs]</a><span class="k">def</span> <span class="nf">qnm_time_decay</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">decay</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the time at which the amplitude of the </span>
+<span class="sd">    ringdown falls to decay of the peak amplitude.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tau : float</span>
+<span class="sd">        The damping time of the sinusoid.</span>
+<span class="sd">    decay: float</span>
+<span class="sd">        The fraction of the peak amplitude.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    t_decay: float</span>
+<span class="sd">        The time at which the amplitude of the time-domain</span>
+<span class="sd">        ringdown falls to decay of the peak amplitude.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="o">-</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">decay</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="qnm_freq_decay"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.qnm_freq_decay">[docs]</a><span class="k">def</span> <span class="nf">qnm_freq_decay</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">decay</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the frequency at which the amplitude of the </span>
+<span class="sd">    ringdown falls to decay of the peak amplitude.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f_0 : float</span>
+<span class="sd">        The ringdown-frequency, which gives the peak amplitude.</span>
+<span class="sd">    tau : float</span>
+<span class="sd">        The damping time of the sinusoid.</span>
+<span class="sd">    decay: float</span>
+<span class="sd">        The fraction of the peak amplitude.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    f_decay: float</span>
+<span class="sd">        The frequency at which the amplitude of the frequency-domain</span>
+<span class="sd">        ringdown falls to decay of the peak amplitude.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">q_0</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">f_0</span> <span class="o">*</span> <span class="n">tau</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">decay</span>
+    <span class="n">alpha_sq</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">decay</span> <span class="o">/</span> <span class="n">decay</span>
+
+    <span class="c1"># Expression obtained analytically under the assumption</span>
+    <span class="c1"># that 1./alpha_sq, q_0^2 &gt;&gt; 1</span>
+    <span class="n">q_sq</span> <span class="o">=</span> <span class="p">(</span><span class="n">alpha_sq</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">q_0</span><span class="o">*</span><span class="n">q_0</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">alpha_sq</span> <span class="o">+</span> <span class="mi">16</span><span class="o">*</span><span class="n">q_0</span><span class="o">*</span><span class="n">q_0</span><span class="p">))</span> <span class="o">/</span> <span class="mf">4.</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">q_sq</span><span class="p">)</span> <span class="o">/</span> <span class="n">pi</span> <span class="o">/</span> <span class="n">tau</span></div>
+
+<div class="viewcode-block" id="lm_tfinal"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.lm_tfinal">[docs]</a><span class="k">def</span> <span class="nf">lm_tfinal</span><span class="p">(</span><span class="n">damping_times</span><span class="p">,</span> <span class="n">modes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the maximum t_final of the modes given, with t_final the time</span>
+<span class="sd">    at which the amplitude falls to 1/1000 of the peak amplitude</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">t_max</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">):</span>
+            <span class="n">t_max</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> \
+            <span class="n">qnm_time_decay</span><span class="p">(</span><span class="n">damping_times</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">t_max</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="lm_deltat"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.lm_deltat">[docs]</a><span class="k">def</span> <span class="nf">lm_deltat</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">damping_times</span><span class="p">,</span> <span class="n">modes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the minimum delta_t of all the modes given, with delta_t given by</span>
+<span class="sd">    the inverse of the frequency at which the amplitude of the ringdown falls to</span>
+<span class="sd">    1/1000 of the peak amplitude.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dt</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">):</span>
+            <span class="n">dt</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">qnm_freq_decay</span><span class="p">(</span><span class="n">freqs</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
+                                       <span class="n">damping_times</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+
+    <span class="n">delta_t</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">delta_t</span> <span class="o">&lt;</span> <span class="n">min_dt</span><span class="p">:</span>
+        <span class="n">delta_t</span> <span class="o">=</span> <span class="n">min_dt</span>
+
+    <span class="k">return</span> <span class="n">delta_t</span></div>
+
+<div class="viewcode-block" id="lm_ffinal"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.lm_ffinal">[docs]</a><span class="k">def</span> <span class="nf">lm_ffinal</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">damping_times</span><span class="p">,</span> <span class="n">modes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the maximum f_final of the modes given, with f_final the frequency</span>
+<span class="sd">    at which the amplitude falls to 1/1000 of the peak amplitude</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">f_max</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">):</span>
+            <span class="n">f_max</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">qnm_freq_decay</span><span class="p">(</span><span class="n">freqs</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
+                                      <span class="n">damping_times</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+
+    <span class="n">f_final</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f_max</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">f_final</span> <span class="o">&gt;</span> <span class="n">max_freq</span><span class="p">:</span>
+        <span class="n">f_final</span> <span class="o">=</span> <span class="n">max_freq</span>
+    
+    <span class="k">return</span> <span class="n">f_final</span></div>
+
+<div class="viewcode-block" id="lm_deltaf"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.lm_deltaf">[docs]</a><span class="k">def</span> <span class="nf">lm_deltaf</span><span class="p">(</span><span class="n">damping_times</span><span class="p">,</span> <span class="n">modes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the minimum delta_f of all the modes given, with delta_f given by</span>
+<span class="sd">    the inverse of the time at which the amplitude of the ringdown falls to</span>
+<span class="sd">    1/1000 of the peak amplitude.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">modes</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">):</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> \
+                <span class="mf">1.</span> <span class="o">/</span> <span class="n">qnm_time_decay</span><span class="p">(</span><span class="n">damping_times</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+
+<span class="c1"># Spherical harmonics #########################################################</span>
+
+<div class="viewcode-block" id="spher_harms"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.spher_harms">[docs]</a><span class="k">def</span> <span class="nf">spher_harms</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">inclination</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return spherical harmonic polarizations</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># FIXME: we are using spin -2 weighted spherical harmonics for now,</span>
+    <span class="c1"># when possible switch to spheroidal harmonics.</span>
+    <span class="n">Y_lm</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">SpinWeightedSphericalHarmonic</span><span class="p">(</span><span class="n">inclination</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">Y_lminusm</span> <span class="o">=</span> <span class="n">lal</span><span class="o">.</span><span class="n">SpinWeightedSphericalHarmonic</span><span class="p">(</span><span class="n">inclination</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="o">-</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">Y_plus</span> <span class="o">=</span> <span class="n">Y_lm</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">l</span> <span class="o">*</span> <span class="n">Y_lminusm</span>
+    <span class="n">Y_cross</span> <span class="o">=</span> <span class="n">Y_lm</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">l</span> <span class="o">*</span> <span class="n">Y_lminusm</span>
+
+    <span class="k">return</span> <span class="n">Y_plus</span><span class="p">,</span> <span class="n">Y_cross</span></div>
+
+<span class="c1"># Functions for tapering ######################################################</span>
+
+<div class="viewcode-block" id="apply_taper"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.apply_taper">[docs]</a><span class="k">def</span> <span class="nf">apply_taper</span><span class="p">(</span><span class="n">delta_t</span><span class="p">,</span> <span class="n">taper</span><span class="p">,</span> <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">amp</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">inclination</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return tapering window.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Times of tapering do not include t=0</span>
+    <span class="n">taper_times</span> <span class="o">=</span> <span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">taper</span><span class="o">*</span><span class="n">tau</span><span class="o">/</span><span class="n">delta_t</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">delta_t</span>
+    <span class="n">Y_plus</span><span class="p">,</span> <span class="n">Y_cross</span> <span class="o">=</span> <span class="n">spher_harms</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">inclination</span><span class="p">)</span>
+    <span class="n">taper_hp</span> <span class="o">=</span> <span class="n">amp</span> <span class="o">*</span> <span class="n">Y_plus</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">taper_times</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span> <span class="o">*</span> \
+                     <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">two_pi</span><span class="o">*</span><span class="n">f_0</span><span class="o">*</span><span class="n">taper_times</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
+    <span class="n">taper_hc</span> <span class="o">=</span> <span class="n">amp</span> <span class="o">*</span> <span class="n">Y_cross</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">taper_times</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span> <span class="o">*</span> \
+                     <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">two_pi</span><span class="o">*</span><span class="n">f_0</span><span class="o">*</span><span class="n">taper_times</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">taper_hp</span><span class="p">,</span> <span class="n">taper_hc</span></div>
+
+<div class="viewcode-block" id="taper_shift"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.taper_shift">[docs]</a><span class="k">def</span> <span class="nf">taper_shift</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add waveform to output with waveform shifted accordingly (for tapering</span>
+<span class="sd">    multi-mode ringdowns)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">waveform</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">waveform</span><span class="o">.</span><span class="n">data</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">waveform</span><span class="p">):]</span> <span class="o">+=</span> <span class="n">waveform</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="k">return</span> <span class="n">output</span></div>
+
+<span class="c1"># Functions to generate ringdown waveforms ####################################</span>
+
+<span class="c1">######################################################</span>
+<span class="c1">#### Basic functions to generate damped sinusoid</span>
+<span class="c1">######################################################</span>
+
+<div class="viewcode-block" id="get_td_qnm"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_td_qnm">[docs]</a><span class="k">def</span> <span class="nf">get_td_qnm</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a time domain damped sinusoid.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    template: object</span>
+<span class="sd">        An object that has attached properties. This can be used to substitute</span>
+<span class="sd">        for keyword arguments. A common example would be a row in an xml table.</span>
+<span class="sd">    taper: {None, float}, optional</span>
+<span class="sd">        Tapering at the beginning of the waveform with duration taper * tau.</span>
+<span class="sd">        This option is recommended with timescales taper=1./2 or 1. for</span>
+<span class="sd">        time-domain ringdown-only injections.</span>
+<span class="sd">        The abrupt turn on of the ringdown can cause issues on the waveform</span>
+<span class="sd">        when doing the fourier transform to the frequency domain. Setting</span>
+<span class="sd">        taper will add a rapid ringup with timescale tau/10.</span>
+<span class="sd">    f_0 : float</span>
+<span class="sd">        The ringdown-frequency.</span>
+<span class="sd">    tau : float</span>
+<span class="sd">        The damping time of the sinusoid.</span>
+<span class="sd">    amp : float</span>
+<span class="sd">        The amplitude of the ringdown (constant for now).</span>
+<span class="sd">    phi : float</span>
+<span class="sd">        The initial phase of the ringdown. Should also include the information</span>
+<span class="sd">        from the azimuthal angle (phi_0 + m*Phi)</span>
+<span class="sd">    inclination : {0., float}, optional</span>
+<span class="sd">        Inclination of the system in radians. Default is 0 (face on).</span>
+<span class="sd">    l : {2, int}, optional</span>
+<span class="sd">        l mode for the spherical harmonics. Default is l=2.</span>
+<span class="sd">    m : {2, int}, optional</span>
+<span class="sd">        m mode for the spherical harmonics. Default is m=2.</span>
+<span class="sd">    delta_t : {None, float}, optional</span>
+<span class="sd">        The time step used to generate the ringdown.</span>
+<span class="sd">        If None, it will be set to the inverse of the frequency at which the</span>
+<span class="sd">        amplitude is 1/1000 of the peak amplitude.</span>
+<span class="sd">    t_final : {None, float}, optional</span>
+<span class="sd">        The ending time of the output time series.</span>
+<span class="sd">        If None, it will be set to the time at which the amplitude is </span>
+<span class="sd">        1/1000 of the peak amplitude.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    hplus: TimeSeries</span>
+<span class="sd">        The plus phase of the ringdown in time domain.</span>
+<span class="sd">    hcross: TimeSeries</span>
+<span class="sd">        The cross phase of the ringdown in time domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">input_params</span> <span class="o">=</span> <span class="n">props</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">qnm_required_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    
+    <span class="n">f_0</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;f_0&#39;</span><span class="p">)</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;tau&#39;</span><span class="p">)</span>
+    <span class="n">amp</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;amp&#39;</span><span class="p">)</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">)</span>
+    <span class="c1"># the following may not be in input_params</span>
+    <span class="n">inc</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;inclination&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">delta_t</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;delta_t&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">t_final</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;t_final&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">delta_t</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">delta_t</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">qnm_freq_decay</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">delta_t</span> <span class="o">&lt;</span> <span class="n">min_dt</span><span class="p">:</span>
+            <span class="n">delta_t</span> <span class="o">=</span> <span class="n">min_dt</span>
+    <span class="k">if</span> <span class="n">t_final</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">t_final</span> <span class="o">=</span> <span class="n">qnm_time_decay</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+
+    <span class="n">kmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_final</span> <span class="o">/</span> <span class="n">delta_t</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">kmax</span><span class="p">)</span> <span class="o">*</span> <span class="n">delta_t</span>
+    <span class="n">Y_plus</span><span class="p">,</span> <span class="n">Y_cross</span> <span class="o">=</span> <span class="n">spher_harms</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">inc</span><span class="p">)</span>
+
+    <span class="n">hplus</span> <span class="o">=</span> <span class="n">amp</span> <span class="o">*</span> <span class="n">Y_plus</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">times</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span> <span class="o">*</span> \
+                                <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">two_pi</span><span class="o">*</span><span class="n">f_0</span><span class="o">*</span><span class="n">times</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
+    <span class="n">hcross</span> <span class="o">=</span> <span class="n">amp</span> <span class="o">*</span> <span class="n">Y_cross</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">times</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span> <span class="o">*</span> \
+                                <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">two_pi</span><span class="o">*</span><span class="n">f_0</span><span class="o">*</span><span class="n">times</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">taper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">delta_t</span> <span class="o">&lt;</span> <span class="n">taper</span><span class="o">*</span><span class="n">tau</span><span class="p">:</span>
+        <span class="n">taper_window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">taper</span><span class="o">*</span><span class="n">tau</span><span class="o">/</span><span class="n">delta_t</span><span class="p">)</span>
+        <span class="n">kmax</span> <span class="o">+=</span> <span class="n">taper_window</span>
+
+    <span class="n">outplus</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">),</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span>
+    <span class="n">outcross</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">),</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span>
+
+    <span class="c1"># If size of tapering window is less than delta_t, do not apply taper.</span>
+    <span class="k">if</span> <span class="n">taper</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">delta_t</span> <span class="o">&gt;</span> <span class="n">taper</span><span class="o">*</span><span class="n">tau</span><span class="p">:</span>
+        <span class="n">outplus</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">=</span> <span class="n">hplus</span>
+        <span class="n">outcross</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">=</span> <span class="n">hcross</span>
+
+        <span class="k">return</span> <span class="n">outplus</span><span class="p">,</span> <span class="n">outcross</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">taper_hp</span><span class="p">,</span> <span class="n">taper_hc</span> <span class="o">=</span> <span class="n">apply_taper</span><span class="p">(</span><span class="n">delta_t</span><span class="p">,</span> <span class="n">taper</span><span class="p">,</span> <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">amp</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span>
+                                                                    <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">inc</span><span class="p">)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="o">-</span> <span class="n">taper</span> <span class="o">*</span> <span class="n">tau</span>
+        <span class="n">outplus</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">taper_window</span><span class="p">]</span> <span class="o">=</span> <span class="n">taper_hp</span>
+        <span class="n">outplus</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">taper_window</span><span class="p">:]</span> <span class="o">=</span> <span class="n">hplus</span>
+        <span class="n">outcross</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">taper_window</span><span class="p">]</span> <span class="o">=</span> <span class="n">taper_hc</span>
+        <span class="n">outcross</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">taper_window</span><span class="p">:]</span> <span class="o">=</span> <span class="n">hcross</span>
+        <span class="n">outplus</span><span class="o">.</span><span class="n">_epoch</span><span class="p">,</span> <span class="n">outcross</span><span class="o">.</span><span class="n">_epoch</span> <span class="o">=</span> <span class="n">start</span><span class="p">,</span> <span class="n">start</span>
+
+        <span class="k">return</span> <span class="n">outplus</span><span class="p">,</span> <span class="n">outcross</span></div>
+
+<div class="viewcode-block" id="get_fd_qnm"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_fd_qnm">[docs]</a><span class="k">def</span> <span class="nf">get_fd_qnm</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a frequency domain damped sinusoid.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    template: object</span>
+<span class="sd">        An object that has attached properties. This can be used to substitute</span>
+<span class="sd">        for keyword arguments. A common example would be a row in an xml table.</span>
+<span class="sd">    f_0 : float</span>
+<span class="sd">        The ringdown-frequency.</span>
+<span class="sd">    tau : float</span>
+<span class="sd">        The damping time of the sinusoid.</span>
+<span class="sd">    amp : float</span>
+<span class="sd">        The amplitude of the ringdown (constant for now).</span>
+<span class="sd">    phi : float</span>
+<span class="sd">        The initial phase of the ringdown. Should also include the information</span>
+<span class="sd">        from the azimuthal angle (phi_0 + m*Phi).</span>
+<span class="sd">    inclination : {0., float}, optional</span>
+<span class="sd">        Inclination of the system in radians. Default is 0 (face on).</span>
+<span class="sd">    l : {2, int}, optional</span>
+<span class="sd">        l mode for the spherical harmonics. Default is l=2.</span>
+<span class="sd">    m : {2, int}, optional</span>
+<span class="sd">        m mode for the spherical harmonics. Default is m=2.</span>
+<span class="sd">    t_0 :  {0, float}, optional</span>
+<span class="sd">        The starting time of the ringdown.</span>
+<span class="sd">    delta_f : {None, float}, optional</span>
+<span class="sd">        The frequency step used to generate the ringdown.</span>
+<span class="sd">        If None, it will be set to the inverse of the time at which the</span>
+<span class="sd">        amplitude is 1/1000 of the peak amplitude.</span>
+<span class="sd">    f_lower: {None, float}, optional</span>
+<span class="sd">        The starting frequency of the output frequency series.</span>
+<span class="sd">        If None, it will be set to delta_f.</span>
+<span class="sd">    f_final : {None, float}, optional</span>
+<span class="sd">        The ending frequency of the output frequency series.</span>
+<span class="sd">        If None, it will be set to the frequency at which the amplitude is </span>
+<span class="sd">        1/1000 of the peak amplitude.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    hplustilde: FrequencySeries</span>
+<span class="sd">        The plus phase of the ringdown in frequency domain.</span>
+<span class="sd">    hcrosstilde: FrequencySeries</span>
+<span class="sd">        The cross phase of the ringdown in frequency domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">input_params</span> <span class="o">=</span> <span class="n">props</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">qnm_required_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="n">f_0</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;f_0&#39;</span><span class="p">)</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;tau&#39;</span><span class="p">)</span>
+    <span class="n">amp</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;amp&#39;</span><span class="p">)</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">)</span>
+    <span class="c1"># the following have defaults, and so will be populated</span>
+    <span class="n">t_0</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;t_0&#39;</span><span class="p">)</span>
+    <span class="c1"># the following may not be in input_params</span>
+    <span class="n">inc</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;inclination&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">delta_f</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;delta_f&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">f_lower</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;f_lower&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">f_final</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;f_final&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">delta_f</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">delta_f</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">qnm_time_decay</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f_lower</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">f_lower</span> <span class="o">=</span> <span class="n">delta_f</span>
+        <span class="n">kmin</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">kmin</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">f_lower</span> <span class="o">/</span> <span class="n">delta_f</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f_final</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">f_final</span> <span class="o">=</span> <span class="n">qnm_freq_decay</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f_final</span> <span class="o">&gt;</span> <span class="n">max_freq</span><span class="p">:</span>
+            <span class="n">f_final</span> <span class="o">=</span> <span class="n">max_freq</span>
+    <span class="n">kmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">f_final</span> <span class="o">/</span> <span class="n">delta_f</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">kmin</span><span class="p">,</span> <span class="n">kmax</span><span class="p">)</span><span class="o">*</span><span class="n">delta_f</span>
+    <span class="n">Y_plus</span><span class="p">,</span> <span class="n">Y_cross</span> <span class="o">=</span> <span class="n">spher_harms</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">inc</span><span class="p">)</span>
+
+    <span class="n">denominator</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">4</span><span class="n">j</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">freqs</span> <span class="o">*</span> <span class="n">tau</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">pi_sq</span> <span class="o">*</span> <span class="p">(</span> <span class="n">freqs</span><span class="o">*</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">f_0</span><span class="o">*</span><span class="n">f_0</span><span class="p">)</span> <span class="o">*</span> <span class="n">tau</span><span class="o">*</span><span class="n">tau</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">amp</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">/</span> <span class="n">denominator</span>
+    <span class="k">if</span> <span class="n">t_0</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">time_shift</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">two_pi</span> <span class="o">*</span> <span class="n">freqs</span> <span class="o">*</span> <span class="n">t_0</span><span class="p">)</span> 
+        <span class="n">norm</span> <span class="o">*=</span> <span class="n">time_shift</span>
+
+    <span class="c1"># Analytical expression for the Fourier transform of the ringdown (damped sinusoid)</span>
+    <span class="n">hp_tilde</span> <span class="o">=</span> <span class="n">norm</span> <span class="o">*</span> <span class="n">Y_plus</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="n">j</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">freqs</span> <span class="o">*</span> <span class="n">tau</span><span class="p">)</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+                                        <span class="o">-</span> <span class="n">two_pi</span> <span class="o">*</span> <span class="n">f_0</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">hc_tilde</span> <span class="o">=</span> <span class="n">norm</span> <span class="o">*</span> <span class="n">Y_cross</span> <span class="o">*</span> <span class="p">(</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="n">j</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">freqs</span> <span class="o">*</span> <span class="n">tau</span><span class="p">)</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+                                        <span class="o">+</span> <span class="n">two_pi</span> <span class="o">*</span> <span class="n">f_0</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="p">)</span>
+
+    <span class="n">outplus</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">complex128</span><span class="p">),</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">)</span>
+    <span class="n">outcross</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">complex128</span><span class="p">),</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">)</span>
+    <span class="n">outplus</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">=</span> <span class="n">hp_tilde</span>
+    <span class="n">outcross</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">kmin</span><span class="p">:</span><span class="n">kmax</span><span class="p">]</span> <span class="o">=</span> <span class="n">hc_tilde</span>
+
+    <span class="k">return</span> <span class="n">outplus</span><span class="p">,</span> <span class="n">outcross</span></div>
+
+<span class="c1">######################################################</span>
+<span class="c1">#### Single lm mode with overtones</span>
+<span class="c1">######################################################</span>
+
+<div class="viewcode-block" id="get_td_lm"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_td_lm">[docs]</a><span class="k">def</span> <span class="nf">get_td_lm</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return time domain lm mode with the given number of overtones.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    template: object</span>
+<span class="sd">        An object that has attached properties. This can be used to substitute</span>
+<span class="sd">        for keyword arguments. A common example would be a row in an xml table.</span>
+<span class="sd">    taper: {None, float}, optional</span>
+<span class="sd">        Tapering at the beginning of the waveform with duration taper * tau.</span>
+<span class="sd">        This option is recommended with timescales taper=1./2 or 1. for</span>
+<span class="sd">        time-domain ringdown-only injections.</span>
+<span class="sd">        The abrupt turn on of the ringdown can cause issues on the waveform</span>
+<span class="sd">        when doing the fourier transform to the frequency domain. Setting</span>
+<span class="sd">        taper will add a rapid ringup with timescale tau/10.</span>
+<span class="sd">        Each overtone will have a different taper depending on its tau, the</span>
+<span class="sd">        final taper being the superposition of all the tapers.</span>
+<span class="sd">    freqs : dict</span>
+<span class="sd">        {lmn:f_lmn} Dictionary of the central frequencies for each overtone,</span>
+<span class="sd">        as many as number of modes. </span>
+<span class="sd">    taus : dict</span>
+<span class="sd">        {lmn:tau_lmn} Dictionary of the damping times for each overtone,</span>
+<span class="sd">        as many as number of modes.</span>
+<span class="sd">    l : int</span>
+<span class="sd">        l mode (lm modes available: 22, 21, 33, 44, 55).</span>
+<span class="sd">    m : int</span>
+<span class="sd">        m mode (lm modes available: 22, 21, 33, 44, 55).</span>
+<span class="sd">    nmodes: int</span>
+<span class="sd">        Number of overtones desired (maximum n=8)</span>
+<span class="sd">    amp220 : float</span>
+<span class="sd">        Amplitude of the fundamental 220 mode, needed for any lm.</span>
+<span class="sd">    amplmn : float</span>
+<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the </span>
+<span class="sd">        fundamental mode, as many as the number of subdominant modes.</span>
+<span class="sd">    philmn : float</span>
+<span class="sd">        Phase of the lmn overtone, as many as the number of modes. Should also</span>
+<span class="sd">        include the information from the azimuthal angle (phi + m*Phi).</span>
+<span class="sd">    inclination : {0., float}, optional</span>
+<span class="sd">        Inclination of the system in radians. Default is 0 (face on).</span>
+<span class="sd">    delta_t : {None, float}, optional</span>
+<span class="sd">        The time step used to generate the ringdown.</span>
+<span class="sd">        If None, it will be set to the inverse of the frequency at which the</span>
+<span class="sd">        amplitude is 1/1000 of the peak amplitude (the minimum of all modes).</span>
+<span class="sd">    t_final : {None, float}, optional</span>
+<span class="sd">        The ending time of the output time series.</span>
+<span class="sd">        If None, it will be set to the time at which the amplitude is </span>
+<span class="sd">        1/1000 of the peak amplitude (the maximum of all modes).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    hplus: TimeSeries</span>
+<span class="sd">        The plus phase of a lm mode with overtones (n) in time domain.</span>
+<span class="sd">    hcross: TimeSeries</span>
+<span class="sd">        The cross phase of a lm mode with overtones (n) in time domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">input_params</span> <span class="o">=</span> <span class="n">props</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">lm_required_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Get required args</span>
+    <span class="n">amps</span><span class="p">,</span> <span class="n">phis</span> <span class="o">=</span> <span class="n">lm_amps_phases</span><span class="p">(</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
+    <span class="n">f_0</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;freqs&#39;</span><span class="p">)</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;taus&#39;</span><span class="p">)</span>
+    <span class="n">inc</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;inclination&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="n">l</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">),</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">nmodes</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;nmodes&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of overtones (nmodes) must be greater &#39;</span>
+                         <span class="s1">&#39;than zero.&#39;</span><span class="p">)</span>
+    <span class="c1"># The following may not be in input_params</span>
+    <span class="n">delta_t</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;delta_t&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">t_final</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;t_final&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">delta_t</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">delta_t</span> <span class="o">=</span> <span class="n">lm_deltat</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">nmodes</span><span class="p">)])</span> 
+    <span class="k">if</span> <span class="n">t_final</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">t_final</span> <span class="o">=</span> <span class="n">lm_tfinal</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)])</span>
+
+    <span class="n">kmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_final</span> <span class="o">/</span> <span class="n">delta_t</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># Different overtones will have different tapering window-size</span>
+    <span class="c1"># Find maximum window size to create long enough output vector</span>
+    <span class="k">if</span> <span class="n">taper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">taper_window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">taper</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="n">tau</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">/</span><span class="n">delta_t</span><span class="p">)</span>
+        <span class="n">kmax</span> <span class="o">+=</span> <span class="n">taper_window</span>
+
+    <span class="n">outplus</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float64</span><span class="p">),</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span>
+    <span class="n">outcross</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float64</span><span class="p">),</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">taper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="o">-</span> <span class="n">taper</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">tau</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="n">outplus</span><span class="o">.</span><span class="n">_epoch</span><span class="p">,</span> <span class="n">outcross</span><span class="o">.</span><span class="n">_epoch</span> <span class="o">=</span> <span class="n">start</span><span class="p">,</span> <span class="n">start</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">):</span>
+        <span class="n">hplus</span><span class="p">,</span> <span class="n">hcross</span> <span class="o">=</span> <span class="n">get_td_qnm</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="n">taper</span><span class="p">,</span>
+                            <span class="n">f_0</span><span class="o">=</span><span class="n">f_0</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
+                            <span class="n">tau</span><span class="o">=</span><span class="n">tau</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
+                            <span class="n">phi</span><span class="o">=</span><span class="n">phis</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
+                            <span class="n">amp</span><span class="o">=</span><span class="n">amps</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
+                            <span class="n">inclination</span><span class="o">=</span><span class="n">inc</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span>
+                            <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">,</span> <span class="n">t_final</span><span class="o">=</span><span class="n">t_final</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">taper</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">outplus</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hplus</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">outcross</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hcross</span><span class="o">.</span><span class="n">data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">outplus</span> <span class="o">=</span> <span class="n">taper_shift</span><span class="p">(</span><span class="n">hplus</span><span class="p">,</span> <span class="n">outplus</span><span class="p">)</span>
+            <span class="n">outcross</span> <span class="o">=</span> <span class="n">taper_shift</span><span class="p">(</span><span class="n">hcross</span><span class="p">,</span> <span class="n">outcross</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">outplus</span><span class="p">,</span> <span class="n">outcross</span></div>
+
+<div class="viewcode-block" id="get_fd_lm"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_fd_lm">[docs]</a><span class="k">def</span> <span class="nf">get_fd_lm</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return frequency domain lm mode with a given number of overtones.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    template: object</span>
+<span class="sd">        An object that has attached properties. This can be used to substitute</span>
+<span class="sd">        for keyword arguments. A common example would be a row in an xml table.</span>
+<span class="sd">    freqs : dict</span>
+<span class="sd">        {lmn:f_lmn} Dictionary of the central frequencies for each overtone,</span>
+<span class="sd">        as many as number of modes.</span>
+<span class="sd">    taus : dict</span>
+<span class="sd">        {lmn:tau_lmn} Dictionary of the damping times for each overtone,</span>
+<span class="sd">        as many as number of modes.</span>
+<span class="sd">    l : int</span>
+<span class="sd">        l mode (lm modes available: 22, 21, 33, 44, 55).</span>
+<span class="sd">    m : int</span>
+<span class="sd">        m mode (lm modes available: 22, 21, 33, 44, 55).</span>
+<span class="sd">    nmodes: int</span>
+<span class="sd">        Number of overtones desired (maximum n=8)</span>
+<span class="sd">    amplmn : float</span>
+<span class="sd">        Amplitude of the lmn overtone, as many as the number of nmodes.</span>
+<span class="sd">    philmn : float</span>
+<span class="sd">        Phase of the lmn overtone, as many as the number of modes. Should also</span>
+<span class="sd">        include the information from the azimuthal angle (phi + m*Phi).</span>
+<span class="sd">    inclination : {0., float}, optional</span>
+<span class="sd">        Inclination of the system in radians. Default is 0 (face on).</span>
+<span class="sd">    delta_f : {None, float}, optional</span>
+<span class="sd">        The frequency step used to generate the ringdown.</span>
+<span class="sd">        If None, it will be set to the inverse of the time at which the</span>
+<span class="sd">        amplitude is 1/1000 of the peak amplitude (the minimum of all modes).</span>
+<span class="sd">    f_lower: {None, float}, optional</span>
+<span class="sd">        The starting frequency of the output frequency series.</span>
+<span class="sd">        If None, it will be set to delta_f.</span>
+<span class="sd">    f_final : {None, float}, optional</span>
+<span class="sd">        The ending frequency of the output frequency series.</span>
+<span class="sd">        If None, it will be set to the frequency at which the amplitude</span>
+<span class="sd">        is 1/1000 of the peak amplitude (the maximum of all modes).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    hplustilde: FrequencySeries</span>
+<span class="sd">        The plus phase of a lm mode with n overtones in frequency domain.</span>
+<span class="sd">    hcrosstilde: FrequencySeries</span>
+<span class="sd">        The cross phase of a lm mode with n overtones in frequency domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">input_params</span> <span class="o">=</span> <span class="n">props</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">lm_required_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Get required args</span>
+    <span class="n">amps</span><span class="p">,</span> <span class="n">phis</span> <span class="o">=</span> <span class="n">lm_amps_phases</span><span class="p">(</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
+    <span class="n">f_0</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;freqs&#39;</span><span class="p">)</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;taus&#39;</span><span class="p">)</span>
+    <span class="n">l</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">),</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="n">inc</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;inclination&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="n">nmodes</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;nmodes&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">nmodes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of overtones (nmodes) must be greater &#39;</span>
+                         <span class="s1">&#39;than zero.&#39;</span><span class="p">)</span>
+    <span class="c1"># The following may not be in input_params</span>
+    <span class="n">delta_f</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;delta_f&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">f_lower</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;f_lower&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">f_final</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;f_final&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">delta_f</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">delta_f</span> <span class="o">=</span> <span class="n">lm_deltaf</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">nmodes</span><span class="p">)])</span>
+    <span class="k">if</span> <span class="n">f_final</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">f_final</span> <span class="o">=</span> <span class="n">lm_ffinal</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="p">)])</span>
+    <span class="n">kmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">f_final</span> <span class="o">/</span> <span class="n">delta_f</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">outplus</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">complex128</span><span class="p">),</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">)</span>
+    <span class="n">outcross</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">complex128</span><span class="p">),</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nmodes</span><span class="p">):</span>
+        <span class="n">hplus</span><span class="p">,</span> <span class="n">hcross</span> <span class="o">=</span> <span class="n">get_fd_qnm</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">f_0</span><span class="o">=</span><span class="n">f_0</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
+                            <span class="n">tau</span><span class="o">=</span><span class="n">tau</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span> 
+                            <span class="n">amp</span><span class="o">=</span><span class="n">amps</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
+                            <span class="n">phi</span><span class="o">=</span><span class="n">phis</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%d%d%d</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)],</span>
+                            <span class="n">inclination</span><span class="o">=</span><span class="n">inc</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">,</span>
+                            <span class="n">f_lower</span><span class="o">=</span><span class="n">f_lower</span><span class="p">,</span> <span class="n">f_final</span><span class="o">=</span><span class="n">f_final</span><span class="p">)</span>
+        <span class="n">outplus</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hplus</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">outcross</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hcross</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="k">return</span> <span class="n">outplus</span><span class="p">,</span> <span class="n">outcross</span></div>
+
+<span class="c1">######################################################</span>
+<span class="c1">#### Approximants</span>
+<span class="c1">######################################################</span>
+
+<div class="viewcode-block" id="get_td_from_final_mass_spin"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_td_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">get_td_from_final_mass_spin</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return time domain ringdown with all the modes specified.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    template: object</span>
+<span class="sd">        An object that has attached properties. This can be used to substitute</span>
+<span class="sd">        for keyword arguments. A common example would be a row in an xml table.</span>
+<span class="sd">    taper: {None, float}, optional</span>
+<span class="sd">        Tapering at the beginning of the waveform with duration taper * tau.</span>
+<span class="sd">        This option is recommended with timescales taper=1./2 or 1. for</span>
+<span class="sd">        time-domain ringdown-only injections.</span>
+<span class="sd">        The abrupt turn on of the ringdown can cause issues on the waveform</span>
+<span class="sd">        when doing the fourier transform to the frequency domain. Setting</span>
+<span class="sd">        taper will add a rapid ringup with timescale tau/10.</span>
+<span class="sd">        Each mode and overtone will have a different taper depending on its tau,</span>
+<span class="sd">        the final taper being the superposition of all the tapers.</span>
+<span class="sd">    final_mass : float</span>
+<span class="sd">        Mass of the final black hole.</span>
+<span class="sd">    final_spin : float</span>
+<span class="sd">        Spin of the final black hole.</span>
+<span class="sd">    lmns : list</span>
+<span class="sd">        Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).</span>
+<span class="sd">        The n specifies the number of overtones desired for the corresponding</span>
+<span class="sd">        lm pair (maximum n=8).</span>
+<span class="sd">        Example: lmns = [&#39;223&#39;,&#39;331&#39;] are the modes 220, 221, 222, and 330</span>
+<span class="sd">    amp220 : float</span>
+<span class="sd">        Amplitude of the fundamental 220 mode.</span>
+<span class="sd">    amplmn : float</span>
+<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the </span>
+<span class="sd">        fundamental mode, as many as the number of subdominant modes.</span>
+<span class="sd">    philmn : float</span>
+<span class="sd">        Phase of the lmn overtone, as many as the number of modes. Should also</span>
+<span class="sd">        include the information from the azimuthal angle (phi + m*Phi).</span>
+<span class="sd">    inclination : {0., float}, optional</span>
+<span class="sd">        Inclination of the system in radians. Default is 0 (face on).</span>
+<span class="sd">    delta_t : {None, float}, optional</span>
+<span class="sd">        The time step used to generate the ringdown.</span>
+<span class="sd">        If None, it will be set to the inverse of the frequency at which the</span>
+<span class="sd">        amplitude is 1/1000 of the peak amplitude (the minimum of all modes).</span>
+<span class="sd">    t_final : {None, float}, optional</span>
+<span class="sd">        The ending time of the output frequency series.</span>
+<span class="sd">        If None, it will be set to the time at which the amplitude</span>
+<span class="sd">        is 1/1000 of the peak amplitude (the maximum of all modes).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    hplustilde: FrequencySeries</span>
+<span class="sd">        The plus phase of a ringdown with the lm modes specified and</span>
+<span class="sd">        n overtones in frequency domain.</span>
+<span class="sd">    hcrosstilde: FrequencySeries</span>
+<span class="sd">        The cross phase of a ringdown with the lm modes specified and</span>
+<span class="sd">        n overtones in frequency domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">input_params</span> <span class="o">=</span> <span class="n">props</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">mass_spin_required_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Get required args</span>
+    <span class="n">final_mass</span> <span class="o">=</span> <span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;final_mass&#39;</span><span class="p">]</span>
+    <span class="n">final_spin</span> <span class="o">=</span> <span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;final_spin&#39;</span><span class="p">]</span>
+    <span class="n">inc</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;inclination&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="n">lmns</span> <span class="o">=</span> <span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;lmns&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">lmns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of overtones (nmodes) must be greater &#39;</span>
+                             <span class="s1">&#39;than zero.&#39;</span><span class="p">)</span>
+    <span class="c1"># following may not be in input_params</span>
+    <span class="n">delta_t</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;delta_t&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">t_final</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;t_final&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="n">get_lm_f0tau_allmodes</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">lmns</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">delta_t</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">delta_t</span> <span class="o">=</span> <span class="n">lm_deltat</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">lmns</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">t_final</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">t_final</span> <span class="o">=</span> <span class="n">lm_tfinal</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">lmns</span><span class="p">)</span>
+
+    <span class="n">kmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_final</span> <span class="o">/</span> <span class="n">delta_t</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># Different overtones will have different tapering window-size</span>
+    <span class="c1"># Find maximum window size to create long enough output vector</span>
+    <span class="k">if</span> <span class="n">taper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">taper_window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">taper</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="n">tau</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">/</span><span class="n">delta_t</span><span class="p">)</span>
+        <span class="n">kmax</span> <span class="o">+=</span> <span class="n">taper_window</span>
+
+    <span class="n">outplus</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float64</span><span class="p">),</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span>
+    <span class="n">outcross</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float64</span><span class="p">),</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">taper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="o">-</span> <span class="n">taper</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">tau</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="n">outplus</span><span class="o">.</span><span class="n">_epoch</span><span class="p">,</span> <span class="n">outcross</span><span class="o">.</span><span class="n">_epoch</span> <span class="o">=</span> <span class="n">start</span><span class="p">,</span> <span class="n">start</span>
+
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">lmns</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">hplus</span><span class="p">,</span> <span class="n">hcross</span> <span class="o">=</span> <span class="n">get_td_lm</span><span class="p">(</span><span class="n">taper</span><span class="o">=</span><span class="n">taper</span><span class="p">,</span> <span class="n">freqs</span><span class="o">=</span><span class="n">f_0</span><span class="p">,</span> <span class="n">taus</span><span class="o">=</span><span class="n">tau</span><span class="p">,</span>
+                             <span class="n">inclination</span><span class="o">=</span><span class="n">inc</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="o">=</span><span class="n">nmodes</span><span class="p">,</span>
+                             <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">,</span> <span class="n">t_final</span><span class="o">=</span><span class="n">t_final</span><span class="p">,</span>
+                             <span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">taper</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">outplus</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hplus</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">outcross</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hcross</span><span class="o">.</span><span class="n">data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">outplus</span> <span class="o">=</span> <span class="n">taper_shift</span><span class="p">(</span><span class="n">hplus</span><span class="p">,</span> <span class="n">outplus</span><span class="p">)</span>
+            <span class="n">outcross</span> <span class="o">=</span> <span class="n">taper_shift</span><span class="p">(</span><span class="n">hcross</span><span class="p">,</span> <span class="n">outcross</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">outplus</span><span class="p">,</span> <span class="n">outcross</span></div>
+
+<div class="viewcode-block" id="get_fd_from_final_mass_spin"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_fd_from_final_mass_spin">[docs]</a><span class="k">def</span> <span class="nf">get_fd_from_final_mass_spin</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return frequency domain ringdown with all the modes specified.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    template: object</span>
+<span class="sd">        An object that has attached properties. This can be used to substitute</span>
+<span class="sd">        for keyword arguments. A common example would be a row in an xml table.</span>
+<span class="sd">    final_mass : float</span>
+<span class="sd">        Mass of the final black hole.</span>
+<span class="sd">    final_spin : float</span>
+<span class="sd">        Spin of the final black hole.</span>
+<span class="sd">    lmns : list</span>
+<span class="sd">        Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).</span>
+<span class="sd">        The n specifies the number of overtones desired for the corresponding</span>
+<span class="sd">        lm pair (maximum n=8).</span>
+<span class="sd">        Example: lmns = [&#39;223&#39;,&#39;331&#39;] are the modes 220, 221, 222, and 330</span>
+<span class="sd">    amp220 : float</span>
+<span class="sd">        Amplitude of the fundamental 220 mode.</span>
+<span class="sd">    amplmn : float</span>
+<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the </span>
+<span class="sd">        fundamental mode, as many as the number of subdominant modes.</span>
+<span class="sd">    philmn : float</span>
+<span class="sd">        Phase of the lmn overtone, as many as the number of modes. Should also</span>
+<span class="sd">        include the information from the azimuthal angle (phi + m*Phi).</span>
+<span class="sd">    inclination : {0., float}, optional</span>
+<span class="sd">        Inclination of the system in radians. Default is 0 (face on).</span>
+<span class="sd">    delta_f : {None, float}, optional</span>
+<span class="sd">        The frequency step used to generate the ringdown.</span>
+<span class="sd">        If None, it will be set to the inverse of the time at which the</span>
+<span class="sd">        amplitude is 1/1000 of the peak amplitude (the minimum of all modes).</span>
+<span class="sd">    f_lower: {None, float}, optional</span>
+<span class="sd">        The starting frequency of the output frequency series.</span>
+<span class="sd">        If None, it will be set to delta_f.</span>
+<span class="sd">    f_final : {None, float}, optional</span>
+<span class="sd">        The ending frequency of the output frequency series.</span>
+<span class="sd">        If None, it will be set to the frequency at which the amplitude</span>
+<span class="sd">        is 1/1000 of the peak amplitude (the maximum of all modes).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    hplustilde: FrequencySeries</span>
+<span class="sd">        The plus phase of a ringdown with the lm modes specified and</span>
+<span class="sd">        n overtones in frequency domain.</span>
+<span class="sd">    hcrosstilde: FrequencySeries</span>
+<span class="sd">        The cross phase of a ringdown with the lm modes specified and</span>
+<span class="sd">        n overtones in frequency domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">input_params</span> <span class="o">=</span> <span class="n">props</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">mass_spin_required_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Get required args</span>
+    <span class="n">final_mass</span> <span class="o">=</span> <span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;final_mass&#39;</span><span class="p">]</span>
+    <span class="n">final_spin</span> <span class="o">=</span> <span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;final_spin&#39;</span><span class="p">]</span>
+    <span class="n">inc</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;inclination&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="n">lmns</span> <span class="o">=</span> <span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;lmns&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">lmns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of overtones (nmodes) must be greater &#39;</span>
+                             <span class="s1">&#39;than zero.&#39;</span><span class="p">)</span>
+    <span class="c1"># The following may not be in input_params</span>
+    <span class="n">delta_f</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;delta_f&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">f_lower</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;f_lower&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">f_final</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;f_final&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="n">get_lm_f0tau_allmodes</span><span class="p">(</span><span class="n">final_mass</span><span class="p">,</span> <span class="n">final_spin</span><span class="p">,</span> <span class="n">lmns</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">delta_f</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">delta_f</span> <span class="o">=</span> <span class="n">lm_deltaf</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">lmns</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f_final</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">f_final</span> <span class="o">=</span> <span class="n">lm_ffinal</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">lmns</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f_lower</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">f_lower</span> <span class="o">=</span> <span class="n">delta_f</span>
+    <span class="n">kmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">f_final</span> <span class="o">/</span> <span class="n">delta_f</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">outplustilde</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">complex128</span><span class="p">),</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">)</span>
+    <span class="n">outcrosstilde</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">complex128</span><span class="p">),</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">lmns</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">hplustilde</span><span class="p">,</span> <span class="n">hcrosstilde</span> <span class="o">=</span> <span class="n">get_fd_lm</span><span class="p">(</span><span class="n">freqs</span><span class="o">=</span><span class="n">f_0</span><span class="p">,</span> <span class="n">taus</span><span class="o">=</span><span class="n">tau</span><span class="p">,</span>
+                                        <span class="n">inclination</span><span class="o">=</span><span class="n">inc</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="o">=</span><span class="n">nmodes</span><span class="p">,</span>
+                                        <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">,</span> <span class="n">f_lower</span><span class="o">=</span><span class="n">f_lower</span><span class="p">,</span>
+                                        <span class="n">f_final</span><span class="o">=</span><span class="n">f_final</span><span class="p">,</span> <span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
+        <span class="n">outplustilde</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hplustilde</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">outcrosstilde</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hcrosstilde</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="k">return</span> <span class="n">outplustilde</span><span class="p">,</span> <span class="n">outcrosstilde</span></div>
+
+<div class="viewcode-block" id="get_td_from_freqtau"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_td_from_freqtau">[docs]</a><span class="k">def</span> <span class="nf">get_td_from_freqtau</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">taper</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return time domain ringdown with all the modes specified.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    template: object</span>
+<span class="sd">        An object that has attached properties. This can be used to substitute</span>
+<span class="sd">        for keyword arguments. A common example would be a row in an xml table.</span>
+<span class="sd">    taper: {None, float}, optional</span>
+<span class="sd">        Tapering at the beginning of the waveform with duration taper * tau.</span>
+<span class="sd">        This option is recommended with timescales taper=1./2 or 1. for</span>
+<span class="sd">        time-domain ringdown-only injections.</span>
+<span class="sd">        The abrupt turn on of the ringdown can cause issues on the waveform</span>
+<span class="sd">        when doing the fourier transform to the frequency domain. Setting</span>
+<span class="sd">        taper will add a rapid ringup with timescale tau/10.</span>
+<span class="sd">        Each mode and overtone will have a different taper depending on its tau,</span>
+<span class="sd">        the final taper being the superposition of all the tapers.</span>
+<span class="sd">    lmns : list</span>
+<span class="sd">        Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).</span>
+<span class="sd">        The n specifies the number of overtones desired for the corresponding</span>
+<span class="sd">        lm pair (maximum n=8).</span>
+<span class="sd">        Example: lmns = [&#39;223&#39;,&#39;331&#39;] are the modes 220, 221, 222, and 330</span>
+<span class="sd">    f_lmn: float</span>
+<span class="sd">        Central frequency of the lmn overtone, as many as number of modes.</span>
+<span class="sd">    tau_lmn: float</span>
+<span class="sd">        Damping time of the lmn overtone, as many as number of modes.</span>
+<span class="sd">    amp220 : float</span>
+<span class="sd">        Amplitude of the fundamental 220 mode.</span>
+<span class="sd">    amplmn : float</span>
+<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the </span>
+<span class="sd">        fundamental mode, as many as the number of subdominant modes.</span>
+<span class="sd">    philmn : float</span>
+<span class="sd">        Phase of the lmn overtone, as many as the number of modes. Should also</span>
+<span class="sd">        include the information from the azimuthal angle (phi + m*Phi).</span>
+<span class="sd">    inclination : {0., float}, optional</span>
+<span class="sd">        Inclination of the system in radians. Default is 0 (face on).</span>
+<span class="sd">    delta_t : {None, float}, optional</span>
+<span class="sd">        The time step used to generate the ringdown.</span>
+<span class="sd">        If None, it will be set to the inverse of the frequency at which the</span>
+<span class="sd">        amplitude is 1/1000 of the peak amplitude (the minimum of all modes).</span>
+<span class="sd">    t_final : {None, float}, optional</span>
+<span class="sd">        The ending time of the output frequency series.</span>
+<span class="sd">        If None, it will be set to the time at which the amplitude</span>
+<span class="sd">        is 1/1000 of the peak amplitude (the maximum of all modes).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    hplustilde: FrequencySeries</span>
+<span class="sd">        The plus phase of a ringdown with the lm modes specified and</span>
+<span class="sd">        n overtones in frequency domain.</span>
+<span class="sd">    hcrosstilde: FrequencySeries</span>
+<span class="sd">        The cross phase of a ringdown with the lm modes specified and</span>
+<span class="sd">        n overtones in frequency domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">input_params</span> <span class="o">=</span> <span class="n">props</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">freqtau_required_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Get required args</span>
+    <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="n">lm_freqs_taus</span><span class="p">(</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
+    <span class="n">lmns</span> <span class="o">=</span> <span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;lmns&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">lmns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of overtones (nmodes) must be greater &#39;</span>
+                             <span class="s1">&#39;than zero.&#39;</span><span class="p">)</span>
+    <span class="c1"># following may not be in input_params</span>
+    <span class="n">inc</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;inclination&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="n">delta_t</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;delta_t&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">t_final</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;t_final&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">delta_t</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">delta_t</span> <span class="o">=</span> <span class="n">lm_deltat</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">lmns</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">t_final</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">t_final</span> <span class="o">=</span> <span class="n">lm_tfinal</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">lmns</span><span class="p">)</span>
+
+    <span class="n">kmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_final</span> <span class="o">/</span> <span class="n">delta_t</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># Different overtones will have different tapering window-size</span>
+    <span class="c1"># Find maximum window size to create long enough output vector</span>
+    <span class="k">if</span> <span class="n">taper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">taper_window</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">taper</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="n">tau</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="o">/</span><span class="n">delta_t</span><span class="p">)</span>
+        <span class="n">kmax</span> <span class="o">+=</span> <span class="n">taper_window</span>
+
+    <span class="n">outplus</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float64</span><span class="p">),</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span>
+    <span class="n">outcross</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float64</span><span class="p">),</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">taper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="o">-</span> <span class="n">taper</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">tau</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="n">outplus</span><span class="o">.</span><span class="n">_epoch</span><span class="p">,</span> <span class="n">outcross</span><span class="o">.</span><span class="n">_epoch</span> <span class="o">=</span> <span class="n">start</span><span class="p">,</span> <span class="n">start</span>
+
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">lmns</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">hplus</span><span class="p">,</span> <span class="n">hcross</span> <span class="o">=</span> <span class="n">get_td_lm</span><span class="p">(</span><span class="n">freqs</span><span class="o">=</span><span class="n">f_0</span><span class="p">,</span> <span class="n">taus</span><span class="o">=</span><span class="n">tau</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="o">=</span><span class="n">nmodes</span><span class="p">,</span>
+                             <span class="n">taper</span><span class="o">=</span><span class="n">taper</span><span class="p">,</span> <span class="n">inclination</span><span class="o">=</span><span class="n">inc</span><span class="p">,</span> <span class="n">delta_t</span><span class="o">=</span><span class="n">delta_t</span><span class="p">,</span>
+                             <span class="n">t_final</span><span class="o">=</span><span class="n">t_final</span><span class="p">,</span> <span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">taper</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">outplus</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hplus</span><span class="o">.</span><span class="n">data</span>
+            <span class="n">outcross</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hcross</span><span class="o">.</span><span class="n">data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">outplus</span> <span class="o">=</span> <span class="n">taper_shift</span><span class="p">(</span><span class="n">hplus</span><span class="p">,</span> <span class="n">outplus</span><span class="p">)</span>
+            <span class="n">outcross</span> <span class="o">=</span> <span class="n">taper_shift</span><span class="p">(</span><span class="n">hcross</span><span class="p">,</span> <span class="n">outcross</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">outplus</span><span class="p">,</span> <span class="n">outcross</span></div>
+
+<div class="viewcode-block" id="get_fd_from_freqtau"><a class="viewcode-back" href="../../../pycbc.waveform.html#pycbc.waveform.ringdown.get_fd_from_freqtau">[docs]</a><span class="k">def</span> <span class="nf">get_fd_from_freqtau</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return frequency domain ringdown with all the modes specified.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    template: object</span>
+<span class="sd">        An object that has attached properties. This can be used to substitute</span>
+<span class="sd">        for keyword arguments. A common example would be a row in an xml table.</span>
+<span class="sd">    lmns : list</span>
+<span class="sd">        Desired lmn modes as strings (lm modes available: 22, 21, 33, 44, 55).</span>
+<span class="sd">        The n specifies the number of overtones desired for the corresponding</span>
+<span class="sd">        lm pair (maximum n=8).</span>
+<span class="sd">        Example: lmns = [&#39;223&#39;,&#39;331&#39;] are the modes 220, 221, 222, and 330</span>
+<span class="sd">    f_lmn: float</span>
+<span class="sd">        Central frequency of the lmn overtone, as many as number of modes.</span>
+<span class="sd">    tau_lmn: float</span>
+<span class="sd">        Damping time of the lmn overtone, as many as number of modes.</span>
+<span class="sd">    amp220 : float</span>
+<span class="sd">        Amplitude of the fundamental 220 mode.</span>
+<span class="sd">    amplmn : float</span>
+<span class="sd">        Fraction of the amplitude of the lmn overtone relative to the </span>
+<span class="sd">        fundamental mode, as many as the number of subdominant modes.</span>
+<span class="sd">    philmn : float</span>
+<span class="sd">        Phase of the lmn overtone, as many as the number of modes. Should also</span>
+<span class="sd">        include the information from the azimuthal angle (phi + m*Phi).</span>
+<span class="sd">    inclination : {0., float}, optional</span>
+<span class="sd">        Inclination of the system in radians. Default is 0 (face on).</span>
+<span class="sd">    delta_f : {None, float}, optional</span>
+<span class="sd">        The frequency step used to generate the ringdown.</span>
+<span class="sd">        If None, it will be set to the inverse of the time at which the</span>
+<span class="sd">        amplitude is 1/1000 of the peak amplitude (the minimum of all modes).</span>
+<span class="sd">    f_lower: {None, float}, optional</span>
+<span class="sd">        The starting frequency of the output frequency series.</span>
+<span class="sd">        If None, it will be set to delta_f.</span>
+<span class="sd">    f_final : {None, float}, optional</span>
+<span class="sd">        The ending frequency of the output frequency series.</span>
+<span class="sd">        If None, it will be set to the frequency at which the amplitude</span>
+<span class="sd">        is 1/1000 of the peak amplitude (the maximum of all modes).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    hplustilde: FrequencySeries</span>
+<span class="sd">        The plus phase of a ringdown with the lm modes specified and</span>
+<span class="sd">        n overtones in frequency domain.</span>
+<span class="sd">    hcrosstilde: FrequencySeries</span>
+<span class="sd">        The cross phase of a ringdown with the lm modes specified and</span>
+<span class="sd">        n overtones in frequency domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">input_params</span> <span class="o">=</span> <span class="n">props</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">freqtau_required_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Get required args</span>
+    <span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span> <span class="o">=</span> <span class="n">lm_freqs_taus</span><span class="p">(</span><span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
+    <span class="n">lmns</span> <span class="o">=</span> <span class="n">input_params</span><span class="p">[</span><span class="s1">&#39;lmns&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">lmns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Number of overtones (nmodes) must be greater &#39;</span>
+                             <span class="s1">&#39;than zero.&#39;</span><span class="p">)</span>
+    <span class="c1"># The following may not be in input_params</span>
+    <span class="n">inc</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;inclination&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="n">delta_f</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;delta_f&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">f_lower</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;f_lower&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">f_final</span> <span class="o">=</span> <span class="n">input_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;f_final&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">delta_f</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">delta_f</span> <span class="o">=</span> <span class="n">lm_deltaf</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">lmns</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f_final</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">f_final</span> <span class="o">=</span> <span class="n">lm_ffinal</span><span class="p">(</span><span class="n">f_0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">lmns</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f_lower</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">f_lower</span> <span class="o">=</span> <span class="n">delta_f</span>
+    <span class="n">kmax</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">f_final</span> <span class="o">/</span> <span class="n">delta_f</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">outplustilde</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">complex128</span><span class="p">),</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">)</span>
+    <span class="n">outcrosstilde</span> <span class="o">=</span> <span class="n">FrequencySeries</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">kmax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">complex128</span><span class="p">),</span> <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">lmn</span> <span class="ow">in</span> <span class="n">lmns</span><span class="p">:</span>
+        <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">lmn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">hplustilde</span><span class="p">,</span> <span class="n">hcrosstilde</span> <span class="o">=</span> <span class="n">get_fd_lm</span><span class="p">(</span><span class="n">freqs</span><span class="o">=</span><span class="n">f_0</span><span class="p">,</span> <span class="n">taus</span><span class="o">=</span><span class="n">tau</span><span class="p">,</span>
+                                        <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">nmodes</span><span class="o">=</span><span class="n">nmodes</span><span class="p">,</span>
+                                        <span class="n">inclination</span><span class="o">=</span><span class="n">inc</span><span class="p">,</span>
+                                        <span class="n">delta_f</span><span class="o">=</span><span class="n">delta_f</span><span class="p">,</span> <span class="n">f_lower</span><span class="o">=</span><span class="n">f_lower</span><span class="p">,</span>
+                                        <span class="n">f_final</span><span class="o">=</span><span class="n">f_final</span><span class="p">,</span> <span class="o">**</span><span class="n">input_params</span><span class="p">)</span>
+        <span class="n">outplustilde</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hplustilde</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">outcrosstilde</span><span class="o">.</span><span class="n">data</span> <span class="o">+=</span> <span class="n">hcrosstilde</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="k">return</span> <span class="n">outplustilde</span><span class="p">,</span> <span class="n">outcrosstilde</span></div>
+
+<span class="c1"># Approximant names ###########################################################</span>
+<span class="n">ringdown_fd_approximants</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;FdQNMfromFinalMassSpin&#39;</span><span class="p">:</span> <span class="n">get_fd_from_final_mass_spin</span><span class="p">,</span>
+                            <span class="s1">&#39;FdQNMfromFreqTau&#39;</span><span class="p">:</span> <span class="n">get_fd_from_freqtau</span><span class="p">}</span>
+<span class="n">ringdown_td_approximants</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;TdQNMfromFinalMassSpin&#39;</span><span class="p">:</span> <span class="n">get_td_from_final_mass_spin</span><span class="p">,</span>
+                            <span class="s1">&#39;TdQNMfromFreqTau&#39;</span><span class="p">:</span> <span class="n">get_td_from_freqtau</span><span class="p">}</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

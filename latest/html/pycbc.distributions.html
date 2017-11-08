@@ -1,0 +1,2373 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.distributions package &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="index.html"/>
+        <link rel="up" title="pycbc package" href="pycbc.html"/>
+        <link rel="next" title="pycbc.events package" href="pycbc.events.html"/>
+        <link rel="prev" title="pycbc.catalog package" href="pycbc.catalog.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pycbc</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pycbc.html">pycbc package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pycbc.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pycbc.calibration.html">pycbc.calibration package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.catalog.html">pycbc.catalog package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pycbc.distributions package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.events.html">pycbc.events package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.fft.html">pycbc.fft package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.filter.html">pycbc.filter package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.frame.html">pycbc.frame package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.inference.html">pycbc.inference package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.inject.html">pycbc.inject package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.io.html">pycbc.io package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.noise.html">pycbc.noise package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.psd.html">pycbc.psd package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.results.html">pycbc.results package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.tmpltbank.html">pycbc.tmpltbank package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.types.html">pycbc.types package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.vetoes.html">pycbc.vetoes package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.waveform.html">pycbc.waveform package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pycbc.workflow.html">pycbc.workflow package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.bin_utils">pycbc.bin_utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.conversions">pycbc.conversions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.coordinates">pycbc.coordinates module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.cosmology">pycbc.cosmology module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.detector">pycbc.detector module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.future">pycbc.future module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.gate">pycbc.gate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.libutils">pycbc.libutils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.opt">pycbc.opt module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.pnutils">pycbc.pnutils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.pool">pycbc.pool module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.rate">pycbc.rate module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.scheme">pycbc.scheme module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.sensitivity">pycbc.sensitivity module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.strain">pycbc.strain module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.transforms">pycbc.transforms module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.version">pycbc.version module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc.weave">pycbc.weave module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pycbc.html#module-pycbc">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">pycbc</a> &raquo;</li>
+        
+          <li><a href="pycbc.html">pycbc package</a> &raquo;</li>
+        
+      <li>pycbc.distributions package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pycbc.distributions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pycbc-distributions-package">
+<h1>pycbc.distributions package<a class="headerlink" href="#pycbc-distributions-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pycbc.distributions.angular">
+<span id="pycbc-distributions-angular-module"></span><h2>pycbc.distributions.angular module<a class="headerlink" href="#module-pycbc.distributions.angular" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides classes for evaluating angular distributions.</p>
+<dl class="class">
+<dt id="pycbc.distributions.angular.UniformAngle">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.angular.</code><code class="descname">UniformAngle</code><span class="sig-paren">(</span><em>cyclic_domain=False</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/angular.html#UniformAngle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.angular.UniformAngle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.uniform.Uniform" title="pycbc.distributions.uniform.Uniform"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.uniform.Uniform</span></code></a></p>
+<p>A uniform distribution in which the dependent variable is between
+<cite>[0,2pi)</cite>.</p>
+<p>The domain of the distribution may optionally be made cyclic using the
+<cite>cyclic_domain</cite> parameter.</p>
+<p>Bounds may be provided to limit the range for which the pdf has support.
+If provided, the parameter bounds are initialized as multiples of pi,
+while the stored bounds are in radians.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>cyclic_domain</strong> (<em>{False</em><em>, </em><em>bool}</em>) – If True, cyclic bounds on [0, 2pi) are applied to all values when
+evaluating the pdf. This is done prior to any additional bounds
+specified for a parameter are applied. Default is False.</li>
+<li><strong>**params</strong> – The keyword arguments should provide the names of parameters and
+(optionally) their corresponding bounds, as either
+<cite>boundaries.Bounds</cite> instances or tuples. The bounds must be
+in [0,2). These are converted to radians for storage. None may also
+be passed; in that case, the domain bounds will be used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.UniformAngle.name">
+<code class="descname">name</code><a class="headerlink" href="#pycbc.distributions.angular.UniformAngle.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>‘uniform_angle’</em> – The name of this distribution.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.UniformAngle.params">
+<code class="descname">params</code><a class="headerlink" href="#pycbc.distributions.angular.UniformAngle.params" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of strings</em> – The list of parameter names.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.UniformAngle.bounds">
+<code class="descname">bounds</code><a class="headerlink" href="#pycbc.distributions.angular.UniformAngle.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – A dictionary of the parameter names and their bounds, in radians.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.UniformAngle.domain">
+<code class="descname">domain</code><a class="headerlink" href="#pycbc.distributions.angular.UniformAngle.domain" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>boundaries.Bounds</em> – The domain of the distribution.</p>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>For more information, see Uniform.</p>
+<dl class="method">
+<dt id="pycbc.distributions.angular.UniformAngle.apply_boundary_conditions">
+<code class="descname">apply_boundary_conditions</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/angular.html#UniformAngle.apply_boundary_conditions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.angular.UniformAngle.apply_boundary_conditions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maps values to be in [0, 2pi) (the domain) first, before applying
+any additional boundary conditions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**kwargs</strong> – The keyword args should be the name of a parameter and value to
+apply its boundary conditions to. The arguments need not include
+all of the parameters in self.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of the parameter names and the conditioned values.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">domain</code></dt>
+<dd><p>Returns the domain of the distribution.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.distributions.angular.UniformAngle.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em>, <em>variable_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/angular.html#UniformAngle.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.angular.UniformAngle.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a distribution based on a configuration file.</p>
+<p>The parameters for the distribution are retrieved from the section
+titled “[<cite>section</cite>-<cite>variable_args</cite>]” in the config file. By default,
+only the name of the distribution (<cite>uniform_angle</cite>) needs to be
+specified. This will results in a uniform prior on <cite>[0, 2pi)</cite>. To
+make the domain cyclic, add <cite>cyclic_domain =</cite>. To specify boundaries
+that are not <cite>[0, 2pi)</cite>, add <cite>(min|max)-var</cite> arguments, where <cite>var</cite>
+is the name of the variable.</p>
+<p>For example, this will initialize a variable called <cite>theta</cite> with a
+uniform distribution on <cite>[0, 2pi)</cite> without cyclic boundaries:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[{section}-theta]</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">uniform_angle</span>
+</pre></div>
+</div>
+<p>This will make the domain cyclic on <cite>[0, 2pi)</cite>:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[{section}-theta]</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">uniform_angle</span>
+<span class="na">cyclic_domain</span> <span class="o">=</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
+options.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
+of the section header.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A distribution instance from the pycbc.inference.prior module.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#pycbc.distributions.angular.UniformAngle" title="pycbc.distributions.angular.UniformAngle">UniformAngle</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name</code><em class="property"> = 'uniform_angle'</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.distributions.angular.SinAngle">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.angular.</code><code class="descname">SinAngle</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/angular.html#SinAngle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.angular.SinAngle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.angular.UniformAngle" title="pycbc.distributions.angular.UniformAngle"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.angular.UniformAngle</span></code></a></p>
+<p>A sine distribution; the pdf of each parameter <cite>theta</cite> is given by:</p>
+<dl class="docutils">
+<dt>..math::</dt>
+<dd>p(theta) = frac{sin theta}{costheta_0 - costheta_1}, theta_0 leq theta &lt; theta_1,</dd>
+</dl>
+<p>and 0 otherwise. Here, <span class="math">\(\theta_0, \theta_1\)</span> are the bounds of the
+parameter.</p>
+<p>The domain of this distribution is <cite>[0, pi]</cite>. This is accomplished by
+putting hard boundaries at <cite>[0, pi]</cite>. Bounds may be provided to further
+limit the range for which the pdf has support.  As with <cite>UniformAngle</cite>,
+these are initizliaed as multiples of pi, while the stored bounds are in
+radians.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**params</strong> – The keyword arguments should provide the names of parameters and
+(optionally) their corresponding bounds, as either
+<cite>boundaries.Bounds</cite> instances or tuples. The bounds must be
+in [0,1]. These are converted to radians for storage. None may also
+be passed; in that case, the domain bounds will be used.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.SinAngle.name">
+<code class="descname">name</code><a class="headerlink" href="#pycbc.distributions.angular.SinAngle.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>‘sin_angle’</em> – The name of this distribution.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.SinAngle.params">
+<code class="descname">params</code><a class="headerlink" href="#pycbc.distributions.angular.SinAngle.params" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of strings</em> – The list of parameter names.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.SinAngle.bounds">
+<code class="descname">bounds</code><a class="headerlink" href="#pycbc.distributions.angular.SinAngle.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – A dictionary of the parameter names and their bounds, in radians.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name</code><em class="property"> = 'sin_angle'</em></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.angular.SinAngle.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>size=1</em>, <em>param=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/angular.html#SinAngle.rvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.angular.SinAngle.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a set of random values drawn from this distribution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<em>{1</em><em>, </em><em>int}</em>) – The number of values to generate; default is 1.</li>
+<li><strong>param</strong> (<em>{None</em><em>, </em><em>string}</em>) – If provided, will just return values for the given parameter.
+Otherwise, returns random values for each parameter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The random values in a numpy structured array. If a param was
+specified, the array will only have an element corresponding to the
+given parameter. Otherwise, the array will have an element for each
+parameter in self’s params.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">structured array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.distributions.angular.CosAngle">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.angular.</code><code class="descname">CosAngle</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/angular.html#CosAngle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.angular.CosAngle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.angular.SinAngle" title="pycbc.distributions.angular.SinAngle"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.angular.SinAngle</span></code></a></p>
+<p>A cosine distribution. This is the same thing as a sine distribution,
+but with the domain shifted to <cite>[-pi/2, pi/2]</cite>. See SinAngle for more
+details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**params</strong> – The keyword arguments should provide the names of parameters and
+(optionally) their corresponding bounds, as either
+<cite>boundaries.Bounds</cite> instances or tuples. The bounds must be
+in [-0.5, 0.5]. These are converted to radians for storage.
+None may also be passed; in that case, the domain bounds will be used.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.CosAngle.name">
+<code class="descname">name</code><a class="headerlink" href="#pycbc.distributions.angular.CosAngle.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>‘cos_angle’</em> – The name of this distribution.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.CosAngle.params">
+<code class="descname">params</code><a class="headerlink" href="#pycbc.distributions.angular.CosAngle.params" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of strings</em> – The list of parameter names.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.CosAngle.bounds">
+<code class="descname">bounds</code><a class="headerlink" href="#pycbc.distributions.angular.CosAngle.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – A dictionary of the parameter names and their bounds, in radians.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name</code><em class="property"> = 'cos_angle'</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.distributions.angular.UniformSolidAngle">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.angular.</code><code class="descname">UniformSolidAngle</code><span class="sig-paren">(</span><em>polar_angle=None</em>, <em>azimuthal_angle=None</em>, <em>polar_bounds=None</em>, <em>azimuthal_bounds=None</em>, <em>azimuthal_cyclic_domain=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/angular.html#UniformSolidAngle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.angular.UniformSolidAngle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.bounded.BoundedDist</span></code></a></p>
+<p>A distribution that is uniform in the solid angle of a sphere. The names
+of the two angluar parameters can be specified on initalization.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>polar_angle</strong> (<em>{'theta'</em><em>, </em><em>str}</em>) – The name of the polar angle.</li>
+<li><strong>azimuthal_angle</strong> (<em>{'phi'</em><em>, </em><em>str}</em>) – The name of the azimuthal angle.</li>
+<li><strong>polar_bounds</strong> (<em>{None</em><em>, </em><em>tuple}</em>) – Limit the polar angle to the given bounds. If None provided, the polar
+angle will vary from 0 (the north pole) to pi (the south pole). The
+bounds should be specified as factors of pi. For example, to limit
+the distribution to the northern hemisphere, set
+<cite>polar_bounds=(0,0.5)</cite>.</li>
+<li><strong>azimuthal_bounds</strong> (<em>{None</em><em>, </em><em>tuple}</em>) – Limit the azimuthal angle to the given bounds. If None provided, the
+azimuthal angle will vary from 0 to 2pi. The
+bounds should be specified as factors of pi. For example, to limit
+the distribution to the one hemisphere, set <cite>azimuthal_bounds=(0,1)</cite>.</li>
+<li><strong>azimuthal_cyclic_domain</strong> (<em>{False</em><em>, </em><em>bool}</em>) – Make the domain of the azimuthal angle be cyclic; i.e., azimuthal
+values are constrained to be in [0, 2pi) using cyclic boundaries prior
+to applying any other boundary conditions and prior to evaluating the
+pdf. Default is False.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.UniformSolidAngle.name">
+<code class="descname">name</code><a class="headerlink" href="#pycbc.distributions.angular.UniformSolidAngle.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>‘uniform_solidangle’</em> – The name of the distribution.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.UniformSolidAngle.bounds">
+<code class="descname">bounds</code><a class="headerlink" href="#pycbc.distributions.angular.UniformSolidAngle.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – The bounds on each angle. The keys are the names of the polar and
+azimuthal angles, the values are the minimum and maximum of each, in
+radians. For example, if the distribution was initialized with
+<cite>polar_angle=’theta’, polar_bounds=(0,0.5)</cite> then the bounds will have
+<cite>‘theta’: 0, 1.5707963267948966</cite> as an entry.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.UniformSolidAngle.params">
+<code class="descname">params</code><a class="headerlink" href="#pycbc.distributions.angular.UniformSolidAngle.params" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – The names of the polar and azimuthal angles.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.UniformSolidAngle.polar_angle">
+<code class="descname">polar_angle</code><a class="headerlink" href="#pycbc.distributions.angular.UniformSolidAngle.polar_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The name of the polar angle.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.angular.UniformSolidAngle.azimuthal_angle">
+<code class="descname">azimuthal_angle</code><a class="headerlink" href="#pycbc.distributions.angular.UniformSolidAngle.azimuthal_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The name of the azimuthal angle.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.angular.UniformSolidAngle.apply_boundary_conditions">
+<code class="descname">apply_boundary_conditions</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/angular.html#UniformSolidAngle.apply_boundary_conditions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.angular.UniformSolidAngle.apply_boundary_conditions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maps the given values to be within the domain of the azimuthal and
+polar angles, before applying any other boundary conditions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**kwargs</strong> – The keyword args must include values for both the azimuthal and
+polar angle, using the names they were initilialized with. For
+example, if <cite>polar_angle=’theta’</cite> and <cite>azimuthal_angle=`phi</cite>, then
+the keyword args must be <cite>theta={val1}, phi={val2}</cite>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of the parameter names and the conditioned values.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">azimuthal_angle</code></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.distributions.angular.UniformSolidAngle.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em>, <em>variable_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/angular.html#UniformSolidAngle.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.angular.UniformSolidAngle.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a distribution based on a configuration file.</p>
+<p>The section must have the names of the polar and azimuthal angles in
+the tag part of the section header. For example:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[prior-theta+phi]</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">uniform_solidangle</span>
+</pre></div>
+</div>
+<p>If nothing else is provided, the default names and bounds of the polar
+and azimuthal angles will be used. To specify a different name for
+each angle, set the <cite>polar-angle</cite> and <cite>azimuthal-angle</cite> attributes. For
+example:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[prior-foo+bar]</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">uniform_solidangle</span>
+<span class="na">polar-angle</span> <span class="o">=</span> <span class="s">foo</span>
+<span class="na">azimuthal-angle</span> <span class="o">=</span> <span class="s">bar</span>
+</pre></div>
+</div>
+<p>Note that the names of the variable args in the tag part of the section
+name must match the names of the polar and azimuthal angles.</p>
+<p>Bounds may also be specified for each angle, as factors of pi. For
+example:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[prior-theta+phi]</span>
+<span class="na">polar-angle</span> <span class="o">=</span> <span class="s">theta</span>
+<span class="na">azimuthal-angle</span> <span class="o">=</span> <span class="s">phi</span>
+<span class="na">min-theta</span> <span class="o">=</span> <span class="s">0</span>
+<span class="na">max-theta</span> <span class="o">=</span> <span class="s">0.5</span>
+</pre></div>
+</div>
+<p>This will return a distribution that is uniform in the upper
+hemisphere.</p>
+<p>By default, the domain of the azimuthal angle is <cite>[0, 2pi)</cite>. To make
+this domain cyclic, add <cite>azimuthal_cyclic_domain =</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>ConfigParser instance</em>) – The config file.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The name of the section.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
+of the section header.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A distribution instance from the pycbc.inference.prior module.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#pycbc.distributions.angular.UniformSolidAngle" title="pycbc.distributions.angular.UniformSolidAngle">UniformSolidAngle</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name</code><em class="property"> = 'uniform_solidangle'</em></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">polar_angle</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.angular.UniformSolidAngle.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>size=1</em>, <em>param=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/angular.html#UniformSolidAngle.rvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.angular.UniformSolidAngle.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a set of random values drawn from this distribution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<em>{1</em><em>, </em><em>int}</em>) – The number of values to generate; default is 1.</li>
+<li><strong>param</strong> (<em>{None</em><em>, </em><em>string}</em>) – If provided, will just return values for the given parameter.
+Otherwise, returns random values for each parameter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The random values in a numpy structured array. If a param was
+specified, the array will only have an element corresponding to the
+given parameter. Otherwise, the array will have an element for each
+parameter in self’s params.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">structured array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.distributions.arbitrary">
+<span id="pycbc-distributions-arbitrary-module"></span><h2>pycbc.distributions.arbitrary module<a class="headerlink" href="#module-pycbc.distributions.arbitrary" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides classes for evaluating arbitrary distributions from
+a file.</p>
+<dl class="class">
+<dt id="pycbc.distributions.arbitrary.Arbitrary">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.arbitrary.</code><code class="descname">Arbitrary</code><span class="sig-paren">(</span><em>bounds=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#Arbitrary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.bounded.BoundedDist</span></code></a></p>
+<p>A distribution constructed from a set of parameter values using a kde.
+Bounds may be optionally provided to limit the range.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>bounds</strong> (<em>{None</em><em>, </em><em>dict}</em>) – Independent bounds on one or more parameters may be provided to limit
+the range of the kde.</li>
+<li><strong>**params</strong> – The keyword arguments should provide the names of the parameters and
+a list of their parameter values. If multiple parameters are provided,
+a single kde will be produced with dimension equal to the number of
+parameters.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="pycbc.distributions.arbitrary.Arbitrary.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em>, <em>variable_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#Arbitrary.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises a NotImplementedError; to load from a config file, use
+<cite>FromFile</cite>.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pycbc.distributions.arbitrary.Arbitrary.get_kde_from_arrays">
+<em class="property">static </em><code class="descname">get_kde_from_arrays</code><span class="sig-paren">(</span><em>*arrays</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#Arbitrary.get_kde_from_arrays"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary.get_kde_from_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a KDE from the given arrays.</p>
+<dl class="docutils">
+<dt>*arrays :</dt>
+<dd>Each argument should be a 1D numpy array to construct the kde from.
+The resulting KDE will have dimension given by the number of
+parameters.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.arbitrary.Arbitrary.kde">
+<code class="descname">kde</code><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary.kde" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.arbitrary.Arbitrary.name">
+<code class="descname">name</code><em class="property"> = 'arbitrary'</em><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.arbitrary.Arbitrary.params">
+<code class="descname">params</code><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary.params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.arbitrary.Arbitrary.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>size=1</em>, <em>param=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#Arbitrary.rvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.Arbitrary.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a set of random values drawn from the kde.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<em>{1</em><em>, </em><em>int}</em>) – The number of values to generate; default is 1.</li>
+<li><strong>param</strong> (<em>{None</em><em>, </em><em>string}</em>) – If provided, will just return values for the given parameter.
+Otherwise, returns random values for each parameter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The random values in a numpy structured array. If a param was
+specified, the array will only have an element corresponding to the
+given parameter. Otherwise, the array will have an element for each
+parameter in self’s params.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">structured array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.distributions.arbitrary.FromFile">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.arbitrary.</code><code class="descname">FromFile</code><span class="sig-paren">(</span><em>filename=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#FromFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.FromFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.arbitrary.Arbitrary" title="pycbc.distributions.arbitrary.Arbitrary"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.arbitrary.Arbitrary</span></code></a></p>
+<p>A distribution that reads the values of the parameter(s) from an hdf
+file, computes the kde to construct the pdf, and draws random variables
+from it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The path to an hdf file containing the values of the parameters that
+want to be used to construct the distribution. Each parameter should
+be a separate dataset in the hdf file, and all datasets should have
+the same size. For example, to give a prior for mass1 and mass2 from
+file f, f[‘mass1’] and f[‘mass2’] contain the n values for each
+parameter.</li>
+<li><strong>**params</strong> – The keyword arguments should provide the names of the parameters to be
+read from the file and (optionally) their bounds. If no parameters are
+provided, it will use all the parameters found in the file. To provide
+bounds, specify e.g. mass1=[10,100]. Otherwise, mass1=None.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.distributions.arbitrary.FromFile.name">
+<code class="descname">name</code><a class="headerlink" href="#pycbc.distributions.arbitrary.FromFile.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>‘fromfile’</em> – The name of the distribution.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.arbitrary.FromFile.filename">
+<code class="descname">filename</code><a class="headerlink" href="#pycbc.distributions.arbitrary.FromFile.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – The path to the file containing values for the parameter(s).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.arbitrary.FromFile.params">
+<code class="descname">params</code><a class="headerlink" href="#pycbc.distributions.arbitrary.FromFile.params" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – Parameters to read from file.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.arbitrary.FromFile.norm">
+<code class="descname">norm</code><a class="headerlink" href="#pycbc.distributions.arbitrary.FromFile.norm" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – The normalization of the multi-dimensional pdf.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.arbitrary.FromFile.lognorm">
+<code class="descname">lognorm</code><a class="headerlink" href="#pycbc.distributions.arbitrary.FromFile.lognorm" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – The log of the normalization.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.arbitrary.FromFile.kde">
+<code class="descname">kde</code><a class="headerlink" href="#pycbc.distributions.arbitrary.FromFile.kde" title="Permalink to this definition">¶</a></dt>
+<dd><p>The kde obtained from the values in the file.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">filename</code></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.distributions.arbitrary.FromFile.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em>, <em>variable_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#FromFile.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.FromFile.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a distribution based on a configuration file.</p>
+<p>The parameters
+for the distribution are retrieved from the section titled
+“[<cite>section</cite>-<cite>variable_args</cite>]” in the config file.</p>
+<p>The file to construct the distribution from must be provided by setting
+<cite>filename</cite>. Boundary arguments can be provided in the same way as
+described in <cite>get_param_bounds_from_config</cite>.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[{section}-{tag}]</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">fromfile</span>
+<span class="na">filename</span> <span class="o">=</span> <span class="s">ra_prior.hdf</span>
+<span class="na">min-ra</span> <span class="o">=</span> <span class="s">0</span>
+<span class="na">max-ra</span> <span class="o">=</span> <span class="s">6.28</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
+options.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
+of the section header.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A distribution instance from the pycbc.inference.prior module.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist">BoundedDist</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pycbc.distributions.arbitrary.FromFile.get_arrays_from_file">
+<em class="property">static </em><code class="descname">get_arrays_from_file</code><span class="sig-paren">(</span><em>params_file</em>, <em>params=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/arbitrary.html#FromFile.get_arrays_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.arbitrary.FromFile.get_arrays_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the values of one or more parameters from an hdf file and
+returns as a dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>params_file</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The hdf file that contains the values of the parameters.</li>
+<li><strong>params</strong> (<em>{None</em><em>, </em><em>list}</em>) – If provided, will just retrieve the given parameter names.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary of the parameters mapping <cite>param_name -&gt; array</cite>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name</code><em class="property"> = 'fromfile'</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.distributions.boundaries">
+<span id="pycbc-distributions-boundaries-module"></span><h2>pycbc.distributions.boundaries module<a class="headerlink" href="#module-pycbc.distributions.boundaries" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides utilities for manipulating parameter boundaries. Namely,
+classes are offered that will map values to a specified domain using either
+cyclic boundaries or reflected boundaries.</p>
+<dl class="class">
+<dt id="pycbc.distributions.boundaries.Bounds">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.boundaries.</code><code class="descname">Bounds</code><span class="sig-paren">(</span><em>min_bound=-inf</em>, <em>max_bound=inf</em>, <em>btype_min='closed'</em>, <em>btype_max='open'</em>, <em>cyclic=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#Bounds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.Bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Creates and stores bounds using the given values.</p>
+<p>The type of boundaries used can be set using the <cite>btype_(min|max)</cite>
+parameters. These arguments set what kind of boundary is used at the
+minimum and maximum bounds. Specifically, if <cite>btype_min</cite> (<cite>btype_max</cite>) is
+set to:</p>
+<blockquote>
+<div><ul class="simple">
+<li>“open”: the minimum (maximum) boundary will be an instance of
+<cite>OpenBound</cite>. This means that a value must be <cite>&gt;</cite> (<cite>&lt;</cite>) the bound
+for it to be considered within the bounds.</li>
+<li>“closed”: the minimum (maximum) boundary will be an instance of
+<cite>ClosedBound</cite>. This means that a value must be <cite>&gt;=</cite> (<cite>&lt;=</cite>) the bound
+for it to be considered within the bounds.</li>
+<li>“reflected”: the minimum (maximum) boundary will be an isntance of
+<cite>ReflectedBound</cite>. This means that a value will be reflected to the
+right (left) if <cite>apply_conditions</cite> is used on the value. For more
+details see <cite>apply_conditions</cite>.</li>
+</ul>
+</div></blockquote>
+<p>If the <cite>cyclic</cite> keyword is set to True, then <cite>apply_conditions</cite> will cause
+values to be wrapped around to the minimum (maximum) bound if the value
+is &gt; (&lt;=) the maximum (minimum) bound. For more details see
+<cite>apply_conditions</cite>.</p>
+<p>Values can be checked whether or not they occur within the bounds using
+<cite>in</cite>; e.g., <cite>6 in bounds</cite>. This is done without applying any boundary
+conditions. To apply conditions, then check whether the value is in
+bounds, use the <cite>contains_conditioned</cite> method.</p>
+<p>The default is for the minimum bound to be “closed” and the maximum bound
+to be “open”, i.e., a right-open interval.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>min_bound</strong> (<em>{-numpy.inf</em><em>, </em><em>float}</em>) – The value of the lower bound. Default is <cite>-inf</cite>.</li>
+<li><strong>max_bound</strong> (<em>{numpy.inf</em><em>, </em><em>float}</em>) – The value of the upper bound. Default is <cite>inf</cite>.</li>
+<li><strong>btype_min</strong> (<em>{'open'</em><em>, </em><em>string}</em>) – The type of the lower bound; options are “closed”, “open”, or
+“reflected”. Default is “closed”.</li>
+<li><strong>btype_min</strong> – The type of the lower bound; options are “closed”, “open”, or
+“reflected”. Default is “open”.</li>
+<li><strong>cyclic</strong> (<em>{False</em><em>, </em><em>bool}</em>) – Whether or not to make the bounds cyclic; default is False. If True,
+both the minimum and maximum bounds must be finite.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.distributions.boundaries.Bounds.min">
+<code class="descname">min</code><a class="headerlink" href="#pycbc.distributions.boundaries.Bounds.min" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>_Bound instance</em> – The minimum bound.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.boundaries.Bounds.max">
+<code class="descname">max</code><a class="headerlink" href="#pycbc.distributions.boundaries.Bounds.max" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>_Bound instance</em> – The maximum bound.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.boundaries.Bounds.cyclic">
+<code class="descname">cyclic</code><a class="headerlink" href="#pycbc.distributions.boundaries.Bounds.cyclic" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> – Whether the bounds are cyclic or not.</p>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<p>Create a right-open interval between -1 and 1 and test whether various
+values are within them:
+&gt;&gt;&gt; bounds = Bounds(-1., 1.)
+&gt;&gt;&gt; -1 in bounds
+True
+&gt;&gt;&gt; 0 in bounds
+True
+&gt;&gt;&gt; 1 in bounds
+False</p>
+<p>Create an open interval between -1 and 1 and test the same values:
+&gt;&gt;&gt; bounds = Bounds(-1, 1, btype_min=”open”)
+&gt;&gt;&gt; -1 in bounds
+False
+&gt;&gt;&gt; 0 in bounds
+True
+&gt;&gt;&gt; 1 in bounds
+False</p>
+<p>Create cyclic bounds between -1 and 1 and plot the effect of conditioning
+on points between -10 and 10:
+&gt;&gt;&gt; bounds = Bounds(-1, 1, cyclic=True)
+&gt;&gt;&gt; x = numpy.linspace(-10, 10, num=1000)
+&gt;&gt;&gt; conditioned_x = bounds.apply_conditions(x)
+&gt;&gt;&gt; fig = pyplot.figure()
+&gt;&gt;&gt; ax = fig.add_subplot(111)
+&gt;&gt;&gt; ax.plot(x, x, c=’b’, lw=2, label=’input’)
+&gt;&gt;&gt; ax.plot(conditioned_x, x, c=’r’, lw=1)
+&gt;&gt;&gt; ax.vlines([-1., 1.], x.min(), x.max(), color=’k’, linestyle=’–’)
+&gt;&gt;&gt; ax.set_title(‘cyclic bounds between x=-1,1’)
+&gt;&gt;&gt; fig.show()</p>
+<p>Create a reflected bound at -1 and plot the effect of conditioning:
+&gt;&gt;&gt; bounds = Bounds(-1, 1, btype_min=’reflected’)
+&gt;&gt;&gt; x = numpy.linspace(-10, 10, num=1000)
+&gt;&gt;&gt; conditioned_x = bounds.apply_conditions(x)
+&gt;&gt;&gt; fig = pyplot.figure()
+&gt;&gt;&gt; ax = fig.add_subplot(111)
+&gt;&gt;&gt; ax.plot(x, x, c=’b’, lw=2, label=’input’)
+&gt;&gt;&gt; ax.plot(conditioned_x, x, c=’r’, lw=1)
+&gt;&gt;&gt; ax.vlines([-1., 1.], x.min(), x.max(), color=’k’, linestyle=’–’)
+&gt;&gt;&gt; ax.set_title(‘reflected right at x=-1’)
+&gt;&gt;&gt; fig.show()</p>
+<p>Create a reflected bound at 1 and plot the effect of conditioning:
+&gt;&gt;&gt; bounds = Bounds(-1, 1, btype_max=’reflected’)
+&gt;&gt;&gt; x = numpy.linspace(-10, 10, num=1000)
+&gt;&gt;&gt; conditioned_x = bounds.apply_conditions(x)
+&gt;&gt;&gt; fig = pyplot.figure()
+&gt;&gt;&gt; ax = fig.add_subplot(111)
+&gt;&gt;&gt; ax.plot(x, x, c=’b’, lw=2, label=’input’)
+&gt;&gt;&gt; ax.plot(conditioned_x, x, c=’r’, lw=1)
+&gt;&gt;&gt; ax.vlines([-1., 1.], x.min(), x.max(), color=’k’, linestyle=’–’)
+&gt;&gt;&gt; ax.set_title(‘reflected left at x=1’)
+&gt;&gt;&gt; fig.show()</p>
+<p>Create reflected bounds at -1 and 1 and plot the effect of conditioning:
+&gt;&gt;&gt; bounds = Bounds(-1, 1, btype_min=’reflected’, btype_max=’reflected’)
+&gt;&gt;&gt; x = numpy.linspace(-10, 10, num=1000)
+&gt;&gt;&gt; conditioned_x = bounds.apply_conditions(x)
+&gt;&gt;&gt; fig = pyplot.figure()
+&gt;&gt;&gt; ax = fig.add_subplot(111)
+&gt;&gt;&gt; ax.plot(x, x, c=’b’, lw=2, label=’input’)
+&gt;&gt;&gt; ax.plot(conditioned_x, x, c=’r’, lw=1)
+&gt;&gt;&gt; ax.vlines([-1., 1.], x.min(), x.max(), color=’k’, linestyle=’–’)
+&gt;&gt;&gt; ax.set_title(‘reflected betewen x=-1,1’)
+&gt;&gt;&gt; fig.show()</p>
+<dl class="method">
+<dt id="pycbc.distributions.boundaries.Bounds.apply_conditions">
+<code class="descname">apply_conditions</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#Bounds.apply_conditions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.Bounds.apply_conditions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies any boundary conditions to the given value.</p>
+<p>The value is manipulated according based on the following conditions:</p>
+<blockquote>
+<div><ul class="simple">
+<li>If <cite>self.cyclic</cite> is True then <cite>value</cite> is wrapped around to the
+minimum (maximum) bound if <cite>value</cite> is <cite>&gt;= self.max</cite> (<cite>&lt; self.min</cite>)
+bound. For example, if the minimum and maximum bounds are <cite>0, 2*pi</cite>
+and <cite>value = 5*pi</cite>, then the returned value will be <cite>pi</cite>.</li>
+<li>If <cite>self.min</cite> is a reflected boundary then <cite>value</cite> will be
+reflected to the right if it is <cite>&lt; self.min</cite>. For example, if
+<cite>self.min = 10</cite> and <cite>value = 3</cite>, then the returned value will be
+17.</li>
+<li>If <cite>self.max</cite> is a reflected boundary then <cite>value</cite> will be
+reflected to the left if it is <cite>&gt; self.max</cite>. For example, if
+<cite>self.max = 20</cite> and <cite>value = 27</cite>, then the returned value will be
+13.</li>
+<li>If <cite>self.min</cite> and <cite>self.max</cite> are both reflected boundaries, then
+<cite>value</cite> will be reflected between the two boundaries until it
+falls within the bounds. The first reflection occurs off of the
+maximum boundary. For example, if <cite>self.min = 10</cite>, <cite>self.max =
+20</cite>, and <cite>value = 42</cite>, the returned value will be 18 ( the first
+reflection yields -2, the second 22, and the last 18).</li>
+<li>If neither bounds are reflected and cyclic is False, then the
+value is just returned as-is.</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – The value to apply the conditions to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value after the conditions are applied; see above for details.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.boundaries.Bounds.contains_conditioned">
+<code class="descname">contains_conditioned</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#Bounds.contains_conditioned"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.Bounds.contains_conditioned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs <cite>apply_conditions</cite> on the given value before testing whether it
+is in bounds. Note that if <cite>cyclic</cite> is True, or both bounds
+are reflected, than this will always return True.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – The value to test.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Whether or not the value is within the bounds after the boundary
+conditions are applied.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">cyclic</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">max</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">min</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.distributions.boundaries.ClosedBound">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.boundaries.</code><code class="descname">ClosedBound</code><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#ClosedBound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.ClosedBound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.boundaries._Bound</span></code></p>
+<p>Sets larger and smaller functions to be <cite>&gt;=</cite> and <cite>&lt;=</cite>, respectively.</p>
+<dl class="method">
+<dt id="pycbc.distributions.boundaries.ClosedBound.larger">
+<code class="descname">larger</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#ClosedBound.larger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.ClosedBound.larger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.boundaries.ClosedBound.name">
+<code class="descname">name</code><em class="property"> = 'closed'</em><a class="headerlink" href="#pycbc.distributions.boundaries.ClosedBound.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.boundaries.ClosedBound.smaller">
+<code class="descname">smaller</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#ClosedBound.smaller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.ClosedBound.smaller" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.distributions.boundaries.OpenBound">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.boundaries.</code><code class="descname">OpenBound</code><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#OpenBound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.OpenBound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.boundaries._Bound</span></code></p>
+<p>Sets larger and smaller functions to be <cite>&gt;</cite> and <cite>&lt;</cite>, respectively.</p>
+<dl class="method">
+<dt id="pycbc.distributions.boundaries.OpenBound.larger">
+<code class="descname">larger</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#OpenBound.larger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.OpenBound.larger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if <cite>other</cite> is <cite>&gt;</cite>, False otherwise</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.boundaries.OpenBound.name">
+<code class="descname">name</code><em class="property"> = 'open'</em><a class="headerlink" href="#pycbc.distributions.boundaries.OpenBound.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.boundaries.OpenBound.smaller">
+<code class="descname">smaller</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#OpenBound.smaller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.OpenBound.smaller" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if <cite>other</cite> is <cite>&lt;</cite>, False otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.distributions.boundaries.ReflectedBound">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.boundaries.</code><code class="descname">ReflectedBound</code><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#ReflectedBound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.ReflectedBound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.boundaries.ClosedBound" title="pycbc.distributions.boundaries.ClosedBound"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.boundaries.ClosedBound</span></code></a></p>
+<p>Inherits from <cite>ClosedBound</cite>, adding reflection functions.</p>
+<dl class="attribute">
+<dt id="pycbc.distributions.boundaries.ReflectedBound.name">
+<code class="descname">name</code><em class="property"> = 'reflected'</em><a class="headerlink" href="#pycbc.distributions.boundaries.ReflectedBound.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.boundaries.ReflectedBound.reflect">
+<code class="descname">reflect</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#ReflectedBound.reflect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.ReflectedBound.reflect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.boundaries.ReflectedBound.reflect_left">
+<code class="descname">reflect_left</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#ReflectedBound.reflect_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.ReflectedBound.reflect_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only reflects the value if is &gt; self.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.boundaries.ReflectedBound.reflect_right">
+<code class="descname">reflect_right</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#ReflectedBound.reflect_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.ReflectedBound.reflect_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only reflects the value if is &lt; self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.distributions.boundaries.apply_cyclic">
+<code class="descclassname">pycbc.distributions.boundaries.</code><code class="descname">apply_cyclic</code><span class="sig-paren">(</span><em>value</em>, <em>bounds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#apply_cyclic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.apply_cyclic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a value, applies cyclic boundary conditions between the minimum
+and maximum bounds.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – The value to apply the cyclic conditions to.</li>
+<li><strong>bounds</strong> (<em>Bounds instance</em>) – Boundaries to use for applying cyclic conditions.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The value after the cyclic bounds are applied.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.distributions.boundaries.reflect_well">
+<code class="descclassname">pycbc.distributions.boundaries.</code><code class="descname">reflect_well</code><span class="sig-paren">(</span><em>value</em>, <em>bounds</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/boundaries.html#reflect_well"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.boundaries.reflect_well" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given some boundaries, reflects the value until it falls within both
+boundaries. This is done iteratively, reflecting left off of the
+<cite>boundaries.max</cite>, then right off of the <cite>boundaries.min</cite>, etc.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) – The value to apply the reflected boundaries to.</li>
+<li><strong>bounds</strong> (<em>Bounds instance</em>) – Boundaries to reflect between. Both <cite>bounds.min</cite> and <cite>bounds.max</cite> must
+be instances of <cite>ReflectedBound</cite>, otherwise an AttributeError is
+raised.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The value after being reflected between the two bounds.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.distributions.bounded">
+<span id="pycbc-distributions-bounded-module"></span><h2>pycbc.distributions.bounded module<a class="headerlink" href="#module-pycbc.distributions.bounded" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides classes for evaluating distributions with bounds.</p>
+<dl class="class">
+<dt id="pycbc.distributions.bounded.BoundedDist">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.bounded.</code><code class="descname">BoundedDist</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/bounded.html#BoundedDist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.bounded.BoundedDist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>A generic class for storing common properties of distributions in which
+each parameter has a minimum and maximum value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**params</strong> – The keyword arguments should provide the names of parameters and their
+corresponding bounds, as either tuples or a <cite>boundaries.Bounds</cite>
+instance.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.distributions.bounded.BoundedDist.params">
+<code class="descname">params</code><a class="headerlink" href="#pycbc.distributions.bounded.BoundedDist.params" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of strings</em> – The list of parameter names.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.bounded.BoundedDist.bounds">
+<code class="descname">bounds</code><a class="headerlink" href="#pycbc.distributions.bounded.BoundedDist.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – A dictionary of the parameter names and their bounds.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.bounded.BoundedDist.apply_boundary_conditions">
+<code class="descname">apply_boundary_conditions</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/bounded.html#BoundedDist.apply_boundary_conditions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.bounded.BoundedDist.apply_boundary_conditions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies any boundary conditions to the given values (e.g., applying
+cyclic conditions, and/or reflecting values off of boundaries). This
+is done by running <cite>apply_conditions</cite> of each bounds in self on the
+corresponding value. See <cite>boundaries.Bounds.apply_conditions</cite> for
+details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**kwargs</strong> – The keyword args should be the name of a parameter and value to
+apply its boundary conditions to. The arguments need not include
+all of the parameters in self. Any unrecognized arguments are
+ignored.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of the parameter names and the conditioned values.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">bounds</code></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.distributions.bounded.BoundedDist.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em>, <em>variable_args</em>, <em>bounds_required=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/bounded.html#BoundedDist.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.bounded.BoundedDist.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a distribution based on a configuration file. The parameters
+for the distribution are retrieved from the section titled
+“[<cite>section</cite>-<cite>variable_args</cite>]” in the config file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
+options.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
+of the section header.</li>
+<li><strong>bounds_required</strong> (<em>{False</em><em>, </em><em>bool}</em>) – If True, raise a ValueError if a min and max are not provided for
+every parameter. Otherwise, the prior will be initialized with the
+parameter set to None. Even if bounds are not required, a
+ValueError will be raised if only one bound is provided; i.e.,
+either both bounds need to provided or no bounds.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A distribution instance from the pycbc.distribution subpackage.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist">BoundedDist</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.bounded.BoundedDist.logpdf">
+<code class="descname">logpdf</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/bounded.html#BoundedDist.logpdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.bounded.BoundedDist.logpdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the log of the pdf at the given values. The keyword
+arguments must contain all of parameters in self’s params.
+Unrecognized arguments are ignored. Any boundary conditions are
+applied to the values before the pdf is evaluated.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">params</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.bounded.BoundedDist.pdf">
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/bounded.html#BoundedDist.pdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.bounded.BoundedDist.pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the pdf at the given values. The keyword arguments must
+contain all of parameters in self’s params. Unrecognized arguments are
+ignored. Any boundary conditions are applied to the values before the
+pdf is evaluated.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.distributions.bounded.bounded_from_config">
+<code class="descclassname">pycbc.distributions.bounded.</code><code class="descname">bounded_from_config</code><span class="sig-paren">(</span><em>cls</em>, <em>cp</em>, <em>section</em>, <em>variable_args</em>, <em>bounds_required=False</em>, <em>additional_opts=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/bounded.html#bounded_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.bounded.bounded_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a bounded distribution based on a configuration file. The
+parameters for the distribution are retrieved from the section titled
+“[<cite>section</cite>-<cite>variable_args</cite>]” in the config file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cls</strong> (<em>pycbc.prior class</em>) – The class to initialize with.</li>
+<li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
+options.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
+of the section header.</li>
+<li><strong>bounds_required</strong> (<em>{False</em><em>, </em><em>bool}</em>) – If True, raise a ValueError if a min and max are not provided for
+every parameter. Otherwise, the prior will be initialized with the
+parameter set to None. Even if bounds are not required, a
+ValueError will be raised if only one bound is provided; i.e.,
+either both bounds need to provided or no bounds.</li>
+<li><strong>additional_opts</strong> (<em>{None</em><em>, </em><em>dict}</em>) – Provide additional options to be passed to the distribution class;
+should be a dictionary specifying option -&gt; value. If an option is
+provided that also exists in the config file, the value provided will
+be used instead of being read from the file.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An instance of the given class.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">cls</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pycbc.distributions.bounded.get_param_bounds_from_config">
+<code class="descclassname">pycbc.distributions.bounded.</code><code class="descname">get_param_bounds_from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em>, <em>tag</em>, <em>param</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/bounded.html#get_param_bounds_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.bounded.get_param_bounds_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets bounds for the given parameter from a section in a config file.</p>
+<p>Minimum and maximum values for bounds are specified by adding
+<cite>min-{param}</cite> and <cite>max-{param}</cite> options, where <cite>{param}</cite> is the name of
+the parameter. The types of boundary (open, closed, or reflected) to create
+may also be specified by adding options <cite>btype-min-{param}</cite> and
+<cite>btype-max-{param}</cite>. Cyclic conditions can be adding option
+<cite>cyclic-{param}</cite>. If no <cite>btype</cite> arguments are provided, the
+left bound will be closed and the right open.</p>
+<p>For example, the following will create right-open bounds for parameter
+<cite>foo</cite>:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[{section}-{tag}]</span>
+<span class="na">min-foo</span> <span class="o">=</span> <span class="s">-1</span>
+<span class="na">max-foo</span> <span class="o">=</span> <span class="s">1</span>
+</pre></div>
+</div>
+<p>This would make the boundaries cyclic:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[{section}-{tag}]</span>
+<span class="na">min-foo</span> <span class="o">=</span> <span class="s">-1</span>
+<span class="na">max-foo</span> <span class="o">=</span> <span class="s">1</span>
+<span class="na">cyclic-foo</span> <span class="o">=</span>
+</pre></div>
+</div>
+<p>For more details on boundary types and their meaning, see
+<cite>boundaries.Bounds</cite>.</p>
+<p>If the parameter is not found in the section will just return None (in
+this case, all <cite>btype</cite> and <cite>cyclic</cite> arguments are ignored for that
+parameter).  If bounds are specified, both a minimum and maximum must be
+provided, else a Value or Type Error will be raised.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>ConfigParser instance</em>) – The config file.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The name of the section.</li>
+<li><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Any tag in the section name. The full section name searched for in
+the config file is <cite>{section}(-{tag})</cite>.</li>
+<li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The name of the parameter to retrieve bounds for.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>bounds</strong> – If bounds were provided, a <cite>boundaries.Bounds</cite> instance
+representing the bounds. Otherwise, <cite>None</cite>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">{Bounds instance | None}</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.distributions.constraints">
+<span id="pycbc-distributions-constraints-module"></span><h2>pycbc.distributions.constraints module<a class="headerlink" href="#module-pycbc.distributions.constraints" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides classes for evaluating multi-dimensional constraints.</p>
+<dl class="class">
+<dt id="pycbc.distributions.constraints.CartesianSpinSpace">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">CartesianSpinSpace</code><span class="sig-paren">(</span><em>variable_args</em>, <em>constraint_arg</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#CartesianSpinSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.CartesianSpinSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.constraints.Constraint" title="pycbc.distributions.constraints.Constraint"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.constraints.Constraint</span></code></a></p>
+<p>Pre-defined constraint that check if Cartesian parameters
+are within acceptable values.</p>
+<dl class="attribute">
+<dt id="pycbc.distributions.constraints.CartesianSpinSpace.name">
+<code class="descname">name</code><em class="property"> = 'cartesian_spin_space'</em><a class="headerlink" href="#pycbc.distributions.constraints.CartesianSpinSpace.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.constraints.CartesianSpinSpace.required_parameters">
+<code class="descname">required_parameters</code><em class="property"> = ['mass1', 'mass2', 'spin1x', 'spin1y', 'spin1z', 'spin2x', 'spin2y', 'spin2z']</em><a class="headerlink" href="#pycbc.distributions.constraints.CartesianSpinSpace.required_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.distributions.constraints.Constraint">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">Constraint</code><span class="sig-paren">(</span><em>variable_args</em>, <em>constraint_arg</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#Constraint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.Constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Creates a constraint that evaluates to True if parameters obey
+the constraint and False if they do not.</p>
+<dl class="attribute">
+<dt id="pycbc.distributions.constraints.Constraint.name">
+<code class="descname">name</code><em class="property"> = 'custom'</em><a class="headerlink" href="#pycbc.distributions.constraints.Constraint.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.constraints.Constraint.required_parameters">
+<code class="descname">required_parameters</code><em class="property"> = []</em><a class="headerlink" href="#pycbc.distributions.constraints.Constraint.required_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.distributions.constraints.EffectiveSpinSpace">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">EffectiveSpinSpace</code><span class="sig-paren">(</span><em>variable_args</em>, <em>constraint_arg</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#EffectiveSpinSpace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.EffectiveSpinSpace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.constraints.Constraint" title="pycbc.distributions.constraints.Constraint"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.constraints.Constraint</span></code></a></p>
+<p>Pre-defined constraint that check if effective spin parameters
+are within acceptable values.</p>
+<dl class="attribute">
+<dt id="pycbc.distributions.constraints.EffectiveSpinSpace.name">
+<code class="descname">name</code><em class="property"> = 'effective_spin_space'</em><a class="headerlink" href="#pycbc.distributions.constraints.EffectiveSpinSpace.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.constraints.EffectiveSpinSpace.required_parameters">
+<code class="descname">required_parameters</code><em class="property"> = ['mass1', 'mass2', 'q', 'xi1', 'xi2', 'chi_eff', 'chi_a']</em><a class="headerlink" href="#pycbc.distributions.constraints.EffectiveSpinSpace.required_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.distributions.constraints.MtotalLT">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.constraints.</code><code class="descname">MtotalLT</code><span class="sig-paren">(</span><em>variable_args</em>, <em>constraint_arg</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/constraints.html#MtotalLT"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.constraints.MtotalLT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.constraints.Constraint" title="pycbc.distributions.constraints.Constraint"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.constraints.Constraint</span></code></a></p>
+<p>Pre-defined constraint that check if total mass is less than a value.</p>
+<dl class="attribute">
+<dt id="pycbc.distributions.constraints.MtotalLT.name">
+<code class="descname">name</code><em class="property"> = 'mtotal_lt'</em><a class="headerlink" href="#pycbc.distributions.constraints.MtotalLT.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.constraints.MtotalLT.required_parameters">
+<code class="descname">required_parameters</code><em class="property"> = ['mass1', 'mass2']</em><a class="headerlink" href="#pycbc.distributions.constraints.MtotalLT.required_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.distributions.gaussian">
+<span id="pycbc-distributions-gaussian-module"></span><h2>pycbc.distributions.gaussian module<a class="headerlink" href="#module-pycbc.distributions.gaussian" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides classes for evaluating Gaussian distributions.</p>
+<dl class="class">
+<dt id="pycbc.distributions.gaussian.Gaussian">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.gaussian.</code><code class="descname">Gaussian</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/gaussian.html#Gaussian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.gaussian.Gaussian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.bounded.BoundedDist</span></code></a></p>
+<p>A Gaussian distribution on the given parameters; the parameters are
+independent of each other.</p>
+<p>Bounds can be provided on each parameter, in which case the distribution
+will be a truncated Gaussian distribution.  The PDF of a truncated
+Gaussian distribution is given by:</p>
+<div class="math">
+\[p(x|a, b, \mu,\sigma) = \frac{1}{\sqrt{2 \pi \sigma^2}}\frac{e^{- \frac{\left( x - \mu \right)^2}{2 \sigma^2}}}{\Phi(b|\mu, \sigma) - \Phi(a|\mu, \sigma)},\]</div>
+<p>where <span class="math">\(\mu\)</span> is the mean, <span class="math">\(\sigma^2\)</span> is the variance,
+<span class="math">\(a,b\)</span> are the bounds, and <span class="math">\(\Phi\)</span> is the cumulative distribution
+of an unbounded normal distribution, given by:</p>
+<div class="math">
+\[\Phi(x|\mu, \sigma) = \frac{1}{2}\left[1 + \mathrm{erf}\left(\frac{x-\mu}{\sigma \sqrt{2}}\right)\right].\]</div>
+<p>Note that if <span class="math">\([a,b) = [-\infty, \infty)\)</span>, this reduces to a standard
+Gaussian distribution.</p>
+<p>Instances of this class can be called like a function. By default, logpdf
+will be called, but this can be changed by setting the class’s __call__
+method to its pdf method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**params</strong> – The keyword arguments should provide the names of parameters and
+(optionally) some bounds, as either a tuple or a
+<cite>boundaries.Bounds</cite> instance. The mean and variance of each
+parameter can be provided by additional keyword arguments that have
+<cite>_mean</cite> and <cite>_var</cite> adding to the parameter name. For example,
+<cite>foo=(-2,10), foo_mean=3, foo_var=2</cite> would create a truncated Gaussian
+with mean 3 and variance 2, bounded between <span class="math">\([-2, 10)\)</span>. If no
+mean or variance is provided, the distribution will have 0 mean and
+unit variance. If None is provided for the bounds, the distribution
+will be a normal, unbounded Gaussian (equivalent to setting the bounds
+to <cite>[-inf, inf)</cite>).</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.distributions.gaussian.Gaussian.name">
+<code class="descname">name</code><a class="headerlink" href="#pycbc.distributions.gaussian.Gaussian.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>‘guassian’</em> – The name of this distribution.</p>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<p>Create an unbounded Gaussian distribution with zero mean and unit variance:
+&gt;&gt;&gt; dist = distributions.Gaussian(mass1=None)</p>
+<p>Create a bounded Gaussian distribution on <span class="math">\([1,10)\)</span> with a mean of 3
+and a variance of 2:
+&gt;&gt;&gt; dist = distributions.Gaussian(mass1=(1,10), mass1_mean=3, mass1_var=2)</p>
+<p>Create a bounded Gaussian distribution with the same parameters, but with
+cyclic boundary conditions:
+&gt;&gt;&gt; dist = distributions.Gaussian(mass1=Bounds(1,10, cyclic=True), mass1_mean=3, mass1_var=2)</p>
+<dl class="classmethod">
+<dt id="pycbc.distributions.gaussian.Gaussian.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em>, <em>variable_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/gaussian.html#Gaussian.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.gaussian.Gaussian.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Gaussian distribution based on a configuration file. The
+parameters for the distribution are retrieved from the section titled
+“[<cite>section</cite>-<cite>variable_args</cite>]” in the config file.</p>
+<p>Boundary arguments should be provided in the same way as described in
+<cite>get_param_bounds_from_config</cite>. In addition, the mean and variance of
+each parameter can be specified by setting <cite>{param}_mean</cite> and
+<cite>{param}_var</cite>, respectively. For example, the following would create a
+truncated Gaussian distribution between 0 and 6.28 for a parameter
+called <cite>phi</cite> with mean 3.14 and variance 0.5 that is cyclic:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[{section}-{tag}]</span>
+<span class="na">min-phi</span> <span class="o">=</span> <span class="s">0</span>
+<span class="na">max-phi</span> <span class="o">=</span> <span class="s">6.28</span>
+<span class="na">phi_mean</span> <span class="o">=</span> <span class="s">3.14</span>
+<span class="na">phi_var</span> <span class="o">=</span> <span class="s">0.5</span>
+<span class="na">cyclic</span> <span class="o">=</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
+options.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
+of the section header.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A distribution instance from the pycbc.inference.prior module.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Gaussain</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.gaussian.Gaussian.mean">
+<code class="descname">mean</code><a class="headerlink" href="#pycbc.distributions.gaussian.Gaussian.mean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name</code><em class="property"> = 'gaussian'</em></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.gaussian.Gaussian.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>size=1</em>, <em>param=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/gaussian.html#Gaussian.rvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.gaussian.Gaussian.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a set of random values drawn from this distribution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<em>{1</em><em>, </em><em>int}</em>) – The number of values to generate; default is 1.</li>
+<li><strong>param</strong> (<em>{None</em><em>, </em><em>string}</em>) – If provided, will just return values for the given parameter.
+Otherwise, returns random values for each parameter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The random values in a numpy structured array. If a param was
+specified, the array will only have an element corresponding to the
+given parameter. Otherwise, the array will have an element for each
+parameter in self’s params.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">structured array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.gaussian.Gaussian.var">
+<code class="descname">var</code><a class="headerlink" href="#pycbc.distributions.gaussian.Gaussian.var" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.distributions.power_law">
+<span id="pycbc-distributions-power-law-module"></span><h2>pycbc.distributions.power_law module<a class="headerlink" href="#module-pycbc.distributions.power_law" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides classes for evaluating distributions where the
+probability density function is a power law.</p>
+<dl class="class">
+<dt id="pycbc.distributions.power_law.UniformPowerLaw">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.power_law.</code><code class="descname">UniformPowerLaw</code><span class="sig-paren">(</span><em>dim=None</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/power_law.html#UniformPowerLaw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.power_law.UniformPowerLaw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.bounded.BoundedDist</span></code></a></p>
+<p>For a uniform distribution in power law. The parameters are
+independent of each other. Instances of this class can be called like
+a function. By default, logpdf will be called, but this can be changed
+by setting the class’s __call__ method to its pdf method.</p>
+<p>The cumulative distribution function (CDF) will be the ratio of volumes:</p>
+<div class="math">
+\[F(r) = \frac{V(r)}{V(R)}\]</div>
+<p>Where <span class="math">\(R\)</span> is the radius of the sphere. So we can write our
+probability density function (PDF) as:</p>
+<div class="math">
+\[f(r) = c r^n\]</div>
+<p>For generality we use <span class="math">\(n\)</span> for the dimension of the volume element,
+eg. <span class="math">\(n=2\)</span> for a 3-dimensional sphere. And use
+<span class="math">\(c\)</span> as a general constant.</p>
+<p>So now we calculate the CDF in general for this type of PDF:</p>
+<div class="math">
+\[F(r) = \int f(r) dr = \int c r^n dr = \frac{1}{n + 1} c r^{n + 1} + k\]</div>
+<p>Now with the definition of the CDF at radius <span class="math">\(r_{l}\)</span> is equal to 0
+and at radius <span class="math">\(r_{h}\)</span> is equal to 1 we find that the constant from
+integration from this system of equations:</p>
+<div class="math">
+\[1 = \frac{1}{n + 1} c ((r_{h})^{n + 1} - (r_{l})^{n + 1}) + k\]</div>
+<p>Can see that <span class="math">\(c = (n + 1) / ((r_{h})^{n + 1} - (r_{l})^{n + 1}))\)</span>.
+And <span class="math">\(k\)</span> is:</p>
+<div class="math">
+\[k = - \frac{r_{l}^{n + 1}}{(r_{h})^{n + 1} - (r_{l})^{n + 1}}\]</div>
+<p>Can see that <span class="math">\(c= \frac{n + 1}{R^{n + 1}}\)</span>. So can see that the CDF is:</p>
+<div class="math">
+\[F(r) = \frac{1}{(r_{h})^{n + 1} - (r_{l})^{n + 1}} r^{n + 1} - \frac{r_{l}^{n + 1}}{(r_{h})^{n + 1} - (r_{l})^{n + 1}}\]</div>
+<p>And the PDF is the derivative of the CDF:</p>
+<div class="math">
+\[f(r) = \frac{(n + 1)}{(r_{h})^{n + 1} - (r_{l})^{n + 1}} (r)^n\]</div>
+<p>Now we use the probabilty integral transform method to get sampling on
+uniform numbers from a continuous random variable. To do this we find
+the inverse of the CDF evaluated for uniform numbers:</p>
+<div class="math">
+\[F(r) = u = \frac{1}{(r_{h})^{n + 1} - (r_{l})^{n + 1}} r^{n + 1} - \frac{r_{l}^{n + 1}}{(r_{h})^{n + 1} - (r_{l})^{n + 1}}\]</div>
+<p>And find <span class="math">\(F^{-1}(u)\)</span> gives:</p>
+<div class="math">
+\[u = \frac{1}{n + 1} \frac{(r_{h})^{n + 1} - (r_{l})^{n + 1}} - \frac{r_{l}^{n + 1}}{(r_{h})^{n + 1} - (r_{l})^{n + 1}}\]</div>
+<p>And solving for <span class="math">\(r\)</span> gives:</p>
+<div class="math">
+\[r = ( ((r_{h})^{n + 1} - (r_{l})^{n + 1}) u + (r_{l})^{n + 1})^{\frac{1}{n + 1}}\]</div>
+<p>Therefore the radius can be sampled by taking the n-th root of uniform
+numbers and multiplying by the radius offset by the lower bound radius.</p>
+<dl class="docutils">
+<dt>**params :</dt>
+<dd>The keyword arguments should provide the names of parameters and their
+corresponding bounds, as either tuples or a <cite>boundaries.Bounds</cite>
+instance.</dd>
+</dl>
+<dl class="attribute">
+<dt id="pycbc.distributions.power_law.UniformPowerLaw.name">
+<code class="descname">name</code><a class="headerlink" href="#pycbc.distributions.power_law.UniformPowerLaw.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>‘uniform_radius’</em> – The name of this distribution.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.power_law.UniformPowerLaw.dim">
+<code class="descname">dim</code><a class="headerlink" href="#pycbc.distributions.power_law.UniformPowerLaw.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – The dimension of volume space. In the notation above <cite>dim</cite>
+is <span class="math">\(n+1\)</span>. For a 3-dimensional sphere this is 3.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.power_law.UniformPowerLaw.params">
+<code class="descname">params</code><a class="headerlink" href="#pycbc.distributions.power_law.UniformPowerLaw.params" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of strings</em> – The list of parameter names.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.power_law.UniformPowerLaw.bounds">
+<code class="descname">bounds</code><a class="headerlink" href="#pycbc.distributions.power_law.UniformPowerLaw.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – A dictionary of the parameter names and their bounds.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.power_law.UniformPowerLaw.norm">
+<code class="descname">norm</code><a class="headerlink" href="#pycbc.distributions.power_law.UniformPowerLaw.norm" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – The normalization of the multi-dimensional pdf.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.power_law.UniformPowerLaw.lognorm">
+<code class="descname">lognorm</code><a class="headerlink" href="#pycbc.distributions.power_law.UniformPowerLaw.lognorm" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – The log of the normalization.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.distributions.power_law.UniformPowerLaw.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em>, <em>variable_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/power_law.html#UniformPowerLaw.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.power_law.UniformPowerLaw.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a distribution based on a configuration file. The parameters
+for the distribution are retrieved from the section titled
+“[<cite>section</cite>-<cite>variable_args</cite>]” in the config file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
+options.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
+of the section header.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A distribution instance from the pycbc.inference.prior module.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#pycbc.distributions.uniform.Uniform" title="pycbc.distributions.uniform.Uniform">Uniform</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">lognorm</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name</code><em class="property"> = 'uniform_power_law'</em></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">norm</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.power_law.UniformPowerLaw.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>size=1</em>, <em>param=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/power_law.html#UniformPowerLaw.rvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.power_law.UniformPowerLaw.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a set of random values drawn from this distribution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<em>{1</em><em>, </em><em>int}</em>) – The number of values to generate; default is 1.</li>
+<li><strong>param</strong> (<em>{None</em><em>, </em><em>string}</em>) – If provided, will just return values for the given parameter.
+Otherwise, returns random values for each parameter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The random values in a numpy structured array. If a param was
+specified, the array will only have an element corresponding to the
+given parameter. Otherwise, the array will have an element for each
+parameter in self’s params.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">structured array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycbc.distributions.power_law.UniformRadius">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.power_law.</code><code class="descname">UniformRadius</code><span class="sig-paren">(</span><em>dim=3</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/power_law.html#UniformRadius"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.power_law.UniformRadius" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.power_law.UniformPowerLaw" title="pycbc.distributions.power_law.UniformPowerLaw"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.power_law.UniformPowerLaw</span></code></a></p>
+<p>For a uniform distribution in volume using spherical coordinates, this
+-   is the distriubtion to use for the radius.</p>
+<blockquote>
+<div>For more details see UniformPowerLaw.</div></blockquote>
+<dl class="attribute">
+<dt id="pycbc.distributions.power_law.UniformRadius.name">
+<code class="descname">name</code><em class="property"> = 'uniform_radius'</em><a class="headerlink" href="#pycbc.distributions.power_law.UniformRadius.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.distributions.sky_location">
+<span id="pycbc-distributions-sky-location-module"></span><h2>pycbc.distributions.sky_location module<a class="headerlink" href="#module-pycbc.distributions.sky_location" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides classes for evaluating sky distributions in
+right acension and declination.</p>
+<dl class="class">
+<dt id="pycbc.distributions.sky_location.UniformSky">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.sky_location.</code><code class="descname">UniformSky</code><span class="sig-paren">(</span><em>polar_angle=None</em>, <em>azimuthal_angle=None</em>, <em>polar_bounds=None</em>, <em>azimuthal_bounds=None</em>, <em>azimuthal_cyclic_domain=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/sky_location.html#UniformSky"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.sky_location.UniformSky" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.angular.UniformSolidAngle" title="pycbc.distributions.angular.UniformSolidAngle"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.angular.UniformSolidAngle</span></code></a></p>
+<p>A distribution that is uniform on the sky. This is the same as
+UniformSolidAngle, except that the polar angle varies from pi/2 (the north
+pole) to -pi/2 (the south pole) instead of 0 to pi. Also, the default
+names are “dec” (declination) for the polar angle and “ra” (right
+ascension) for the azimuthal angle, instead of “theta” and “phi”.</p>
+<dl class="attribute">
+<dt id="pycbc.distributions.sky_location.UniformSky.name">
+<code class="descname">name</code><em class="property"> = 'uniform_sky'</em><a class="headerlink" href="#pycbc.distributions.sky_location.UniformSky.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.distributions.spins">
+<span id="pycbc-distributions-spins-module"></span><h2>pycbc.distributions.spins module<a class="headerlink" href="#module-pycbc.distributions.spins" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides spin distributions of CBCs.</p>
+<dl class="class">
+<dt id="pycbc.distributions.spins.IndependentChiPChiEff">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.spins.</code><code class="descname">IndependentChiPChiEff</code><span class="sig-paren">(</span><em>mass1=None</em>, <em>mass2=None</em>, <em>chi_eff=None</em>, <em>chi_a=None</em>, <em>xi_bounds=None</em>, <em>nsamples=None</em>, <em>seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/spins.html#IndependentChiPChiEff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.spins.IndependentChiPChiEff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.arbitrary.Arbitrary" title="pycbc.distributions.arbitrary.Arbitrary"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.arbitrary.Arbitrary</span></code></a></p>
+<p>A distribution such that <span class="math">\(\chi_{\mathrm{eff}}\)</span> and
+<span class="math">\(\chi_p\)</span> are uniform and independent of each other.</p>
+<p>To ensure constraints are applied correctly, this distribution produces all
+three components of both spins as well as the component masses.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mass1</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="#pycbc.distributions.boundaries.Bounds" title="pycbc.distributions.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><em>tuple</em></a>) – The distribution or bounds to use for mass1. Must be either a
+BoundedDist giving the distribution on mass1, or bounds (as
+either a Bounds instance or a tuple) giving the minimum and maximum
+values to use for mass1. If the latter, a Uniform distribution will
+be used.</li>
+<li><strong>mass2</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="#pycbc.distributions.boundaries.Bounds" title="pycbc.distributions.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><em>tuple</em></a>) – The distribution or bounds to use for mass2. Syntax is the same as
+mass1.</li>
+<li><strong>chi_eff</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="#pycbc.distributions.boundaries.Bounds" title="pycbc.distributions.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><em>tuple; optional</em>) – The distribution or bounds to use for <span class="math">\(chi_eff\)</span>. Syntax is the
+same as mass1, except that None may also be passed. In that case,
+<cite>(-1, 1)</cite> will be used for the bounds. Default is None.</li>
+<li><strong>chi_a</strong> (<a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><em>BoundedDist</em></a><em>, </em><a class="reference internal" href="#pycbc.distributions.boundaries.Bounds" title="pycbc.distributions.boundaries.Bounds"><em>Bounds</em></a><em>, or </em><em>tuple; optional</em>) – The distribution or bounds to use for <span class="math">\(chi_a\)</span>. Syntax is the
+same as mass1, except that None may also be passed. In that case,
+<cite>(-1, 1)</cite> will be used for the bounds. Default is None.</li>
+<li><strong>xi_bounds</strong> (<a class="reference internal" href="#pycbc.distributions.boundaries.Bounds" title="pycbc.distributions.boundaries.Bounds"><em>Bounds</em></a><em> or </em><a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><em>tuple</em></a><em>, </em><em>optional</em>) – The bounds to use for <span class="math">\(\xi_1\)</span> and <span class="math">\(\xi_2\)</span>. Must be
+<span class="math">\(\in (0, 1)\)</span>. If None (the default), will be <cite>(0, 1)</cite>.</li>
+<li><strong>nsamples</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a><em>, </em><em>optional</em>) – The number of samples to use for the internal kde. The larger the
+number of samples, the more accurate the pdf will be, but the longer
+it will take to evaluate. Default is 10000.</li>
+<li><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a><em>, </em><em>optional</em>) – Seed value to use for the number generator for the kde. The current
+random state of numpy will be saved prior to setting the seed. After
+the samples are generated, the state will be set back to what it was.
+If None provided, will use 0.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pycbc.distributions.spins.IndependentChiPChiEff.apply_boundary_conditions">
+<code class="descname">apply_boundary_conditions</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/spins.html#IndependentChiPChiEff.apply_boundary_conditions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.spins.IndependentChiPChiEff.apply_boundary_conditions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="pycbc.distributions.spins.IndependentChiPChiEff.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em>, <em>variable_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/spins.html#IndependentChiPChiEff.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.spins.IndependentChiPChiEff.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a distribution based on a configuration file. The parameters
+for the distribution are retrieved from the section titled
+“[<cite>section</cite>-<cite>variable_args</cite>]” in the config file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
+options.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
+of the section header.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A distribution instance.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#pycbc.distributions.spins.IndependentChiPChiEff" title="pycbc.distributions.spins.IndependentChiPChiEff">IndependentChiPChiEff</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.spins.IndependentChiPChiEff.name">
+<code class="descname">name</code><em class="property"> = 'independent_chip_chieff'</em><a class="headerlink" href="#pycbc.distributions.spins.IndependentChiPChiEff.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.spins.IndependentChiPChiEff.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>size=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/spins.html#IndependentChiPChiEff.rvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.spins.IndependentChiPChiEff.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns random values for all of the parameters.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.distributions.uniform">
+<span id="pycbc-distributions-uniform-module"></span><h2>pycbc.distributions.uniform module<a class="headerlink" href="#module-pycbc.distributions.uniform" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides classes for evaluating uniform distributions.</p>
+<dl class="class">
+<dt id="pycbc.distributions.uniform.Uniform">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.uniform.</code><code class="descname">Uniform</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/uniform.html#Uniform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.uniform.Uniform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.bounded.BoundedDist" title="pycbc.distributions.bounded.BoundedDist"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.bounded.BoundedDist</span></code></a></p>
+<p>A uniform distribution on the given parameters. The parameters are
+independent of each other. Instances of this class can be called like
+a function. By default, logpdf will be called, but this can be changed
+by setting the class’s __call__ method to its pdf method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**params</strong> – The keyword arguments should provide the names of parameters and their
+corresponding bounds, as either tuples or a <cite>boundaries.Bounds</cite>
+instance.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.distributions.uniform.Uniform.name">
+<code class="descname">name</code><a class="headerlink" href="#pycbc.distributions.uniform.Uniform.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>‘uniform’</em> – The name of this distribution.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.uniform.Uniform.params">
+<code class="descname">params</code><a class="headerlink" href="#pycbc.distributions.uniform.Uniform.params" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of strings</em> – The list of parameter names.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.uniform.Uniform.bounds">
+<code class="descname">bounds</code><a class="headerlink" href="#pycbc.distributions.uniform.Uniform.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – A dictionary of the parameter names and their bounds.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.uniform.Uniform.norm">
+<code class="descname">norm</code><a class="headerlink" href="#pycbc.distributions.uniform.Uniform.norm" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – The normalization of the multi-dimensional pdf.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycbc.distributions.uniform.Uniform.lognorm">
+<code class="descname">lognorm</code><a class="headerlink" href="#pycbc.distributions.uniform.Uniform.lognorm" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – The log of the normalization.</p>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<p>Create a 2 dimensional uniform distribution:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="n">mass1</span><span class="o">=</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span><span class="mf">50.</span><span class="p">),</span> <span class="n">mass2</span><span class="o">=</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span><span class="mf">50.</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Get the log of the pdf at a particular value:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="n">mass1</span><span class="o">=</span><span class="mf">25.</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="mf">10.</span><span class="p">)</span>
+<span class="go">    -7.3777589082278725</span>
+</pre></div>
+</div>
+<p>Do the same by calling the distribution:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="p">(</span><span class="n">mass1</span><span class="o">=</span><span class="mf">25.</span><span class="p">,</span> <span class="n">mass2</span><span class="o">=</span><span class="mf">10.</span><span class="p">)</span>
+<span class="go">    -7.3777589082278725</span>
+</pre></div>
+</div>
+<p>Generate some random values:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">    array([(36.90885758394699, 51.294212757995254),</span>
+<span class="go">           (39.109058546060346, 13.36220145743631),</span>
+<span class="go">           (34.49594465315212, 47.531953033719454)],</span>
+<span class="go">          dtype=[(&#39;mass1&#39;, &#39;&lt;f8&#39;), (&#39;mass2&#39;, &#39;&lt;f8&#39;)])</span>
+</pre></div>
+</div>
+<p>Initialize a uniform distribution using a boundaries.Bounds instance,
+with cyclic bounds:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span> <span class="o">=</span> <span class="n">distributions</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="n">phi</span><span class="o">=</span><span class="n">Bounds</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">cyclic</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Apply boundary conditions to a value:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="o">.</span><span class="n">apply_boundary_conditions</span><span class="p">(</span><span class="n">phi</span><span class="o">=</span><span class="mf">60.</span><span class="p">)</span>
+<span class="go">    {&#39;mass1&#39;: array(20.0)}</span>
+</pre></div>
+</div>
+<p>The boundary conditions are applied to the value before evaluating the pdf;
+note that the following returns a non-zero pdf. If the bounds were not
+cyclic, the following would return 0:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">phi</span><span class="o">=</span><span class="mf">60.</span><span class="p">)</span>
+<span class="go">    0.025</span>
+</pre></div>
+</div>
+<dl class="classmethod">
+<dt id="pycbc.distributions.uniform.Uniform.from_config">
+<em class="property">classmethod </em><code class="descname">from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section</em>, <em>variable_args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/uniform.html#Uniform.from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.uniform.Uniform.from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a distribution based on a configuration file. The parameters
+for the distribution are retrieved from the section titled
+“[<cite>section</cite>-<cite>variable_args</cite>]” in the config file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>pycbc.workflow.WorkflowConfigParser</em>) – A parsed configuration file that contains the distribution
+options.</li>
+<li><strong>section</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – Name of the section in the configuration file.</li>
+<li><strong>variable_args</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) – The names of the parameters for this distribution, separated by
+<cite>prior.VARARGS_DELIM</cite>. These must appear in the “tag” part
+of the section header.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A distribution instance from the pycbc.inference.prior module.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#pycbc.distributions.uniform.Uniform" title="pycbc.distributions.uniform.Uniform">Uniform</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">lognorm</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name</code><em class="property"> = 'uniform'</em></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">norm</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.uniform.Uniform.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>size=1</em>, <em>param=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/uniform.html#Uniform.rvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.uniform.Uniform.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a set of random values drawn from this distribution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<em>{1</em><em>, </em><em>int}</em>) – The number of values to generate; default is 1.</li>
+<li><strong>param</strong> (<em>{None</em><em>, </em><em>string}</em>) – If provided, will just return values for the given parameter.
+Otherwise, returns random values for each parameter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The random values in a numpy structured array. If a param was
+specified, the array will only have an element corresponding to the
+given parameter. Otherwise, the array will have an element for each
+parameter in self’s params.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">structured array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.distributions.uniform_log">
+<span id="pycbc-distributions-uniform-log-module"></span><h2>pycbc.distributions.uniform_log module<a class="headerlink" href="#module-pycbc.distributions.uniform_log" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides classes for evaluating distributions whose logarithm
+are uniform.</p>
+<dl class="class">
+<dt id="pycbc.distributions.uniform_log.UniformLog10">
+<em class="property">class </em><code class="descclassname">pycbc.distributions.uniform_log.</code><code class="descname">UniformLog10</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/uniform_log.html#UniformLog10"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.uniform_log.UniformLog10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycbc.distributions.uniform.Uniform" title="pycbc.distributions.uniform.Uniform"><code class="xref py py-class docutils literal"><span class="pre">pycbc.distributions.uniform.Uniform</span></code></a></p>
+<p>A uniform distribution on the log base 10 of the given parameters.
+The parameters are independent of each other. Instances of this class can
+be called like a function. By default, logpdf will be called.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**params</strong> – The keyword arguments should provide the names of parameters and their
+corresponding bounds, as either tuples or a <cite>boundaries.Bounds</cite>
+instance.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycbc.distributions.uniform_log.UniformLog10.name">
+<code class="descname">name</code><a class="headerlink" href="#pycbc.distributions.uniform_log.UniformLog10.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>“uniform_log10”</em> – The name of this distribution.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">name</code><em class="property"> = 'uniform_log10'</em></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycbc.distributions.uniform_log.UniformLog10.rvs">
+<code class="descname">rvs</code><span class="sig-paren">(</span><em>size=1</em>, <em>param=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions/uniform_log.html#UniformLog10.rvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.uniform_log.UniformLog10.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives a set of random values drawn from this distribution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<em>{1</em><em>, </em><em>int}</em>) – The number of values to generate; default is 1.</li>
+<li><strong>param</strong> (<em>{None</em><em>, </em><em>string}</em>) – If provided, will just return values for the given parameter.
+Otherwise, returns random values for each parameter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The random values in a numpy structured array. If a param was
+specified, the array will only have an element corresponding to the
+given parameter. Otherwise, the array will have an element for each
+parameter in self’s params.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">structured array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pycbc.distributions">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pycbc.distributions" title="Permalink to this headline">¶</a></h2>
+<p>This modules provides classes and functions for drawing and calculating the
+probability density function of distributions.</p>
+<dl class="function">
+<dt id="pycbc.distributions.read_distributions_from_config">
+<code class="descclassname">pycbc.distributions.</code><code class="descname">read_distributions_from_config</code><span class="sig-paren">(</span><em>cp</em>, <em>section='prior'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pycbc/distributions.html#read_distributions_from_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycbc.distributions.read_distributions_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of PyCBC distribution instances for a section in the
+given configuration file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> (<em>WorflowConfigParser</em>) – An open config file to read.</li>
+<li><strong>section</strong> (<em>{&quot;prior&quot;</em><em>, </em><em>string}</em>) – Prefix on section names from which to retrieve the distributions.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of the parsed distributions.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pycbc.events.html" class="btn btn-neutral float-right" title="pycbc.events package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pycbc.catalog.html" class="btn btn-neutral" title="pycbc.catalog package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

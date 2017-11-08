@@ -1,0 +1,1096 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pycbc.events.simd_threshold &mdash; PyCBC 4e69fd documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/terminal.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PyCBC 4e69fd documentation" href="../../../index.html"/>
+        <link rel="up" title="pycbc" href="../../pycbc.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PyCBC
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                None
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../credit.html">Use of PyCBC in Scientific Publications</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Running PyCBC under Docker</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installing PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_psd_estimation_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_psd_estimation_workflow</span></code>: A workflow generator for noise estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_coinc_search_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_coinc_search_workflow</span></code>: A workflow to search for gravitational waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pygrb.html"><code class="docutils literal"><span class="pre">pycbc_make_offline_grb_workflow</span></code>: A GRB triggered CBC analysis workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow/pycbc_make_inference_workflow.html"><code class="docutils literal"><span class="pre">pycbc_make_inference_workflow</span></code>: A parameter estimation workflow generator</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tmpltbank.html">PyCBC template bank generation documentation (<code class="docutils literal"><span class="pre">pycbc.tmpltbank</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../inference.html">PyCBC inference documentation (<code class="docutils literal"><span class="pre">pycbc.inference</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hwinj.html">Hardware injection waveform generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../banksim.html">Calculating the Effectualness (Fitting Factor) of Template Banks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faithsim.html">Dag Generator for Doing Faithfulness Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../upload_to_gracedb.html">Uploading triggers to gracedb</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gw150914.html">Signal Processing with GW150914</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frame.html">Reading Gravitational-wave Frames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../psd.html">Handling PSDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../noise.html">Generating Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../waveform.html">Waveforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filter.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributions.html">Using PyCBC Distributions from PyCBC Inference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../building_bundled_executables.html">Building Bundled Executables</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation.html">Documenting PyCBC code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release.html">Creating Releases of PyCBC</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../formats/hdf_format.html">HDF files within the PyCBC workflow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../workflow.html">Workflow: the inspiral analysis workflow generator (<code class="docutils literal"><span class="pre">pycbc.workflow</span></code>)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">pycbc</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyCBC</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+          <li><a href="../../pycbc.html">pycbc</a> &raquo;</li>
+        
+      <li>pycbc.events.simd_threshold</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pycbc.events.simd_threshold</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (C) 2014 Josh Willis</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by the</span>
+<span class="c1"># Free Software Foundation; either version 3 of the License, or (at your</span>
+<span class="c1"># option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful, but</span>
+<span class="c1"># WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General</span>
+<span class="c1"># Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License along</span>
+<span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+<span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">pycbc</span> <span class="k">import</span> <span class="n">WEAVE_FLAGS</span>
+<span class="kn">from</span> <span class="nn">pycbc.types</span> <span class="k">import</span> <span class="n">zeros</span><span class="p">,</span> <span class="n">complex64</span><span class="p">,</span> <span class="n">float32</span>
+<span class="kn">from</span> <span class="nn">weave</span> <span class="k">import</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">_np</span>
+<span class="kn">import</span> <span class="nn">pycbc.opt</span>
+<span class="kn">from</span> <span class="nn">pycbc.opt</span> <span class="k">import</span> <span class="n">omp_support</span><span class="p">,</span> <span class="n">omp_libs</span><span class="p">,</span> <span class="n">omp_flags</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module defines several C functions that are weave compiled and compute</span>
+<span class="sd">a combined thresholding and time clustering of a complex array using a</span>
+<span class="sd">multithreaded, SIMD vectoried code.</span>
+
+<span class="sd">There are four C functions defined:</span>
+
+<span class="sd">max_simd: A single-threaded function that uses SIMD vectorization to compute</span>
+<span class="sd">          the maximum of a complex time series over a given window.</span>
+
+<span class="sd">max_simple: A single-threaded function that does NOT use explicit SIMD vectorization,</span>
+<span class="sd">            to compute the maximum of a complex time series over a given</span>
+<span class="sd">            window.</span>
+
+<span class="sd">windowed_max: A single threaded (but not vectorized) function that finds the</span>
+<span class="sd">              locations, norms, and complex values of the maxima in each of</span>
+<span class="sd">              a set of predefined windows in a given complex array. It does</span>
+<span class="sd">              this by calling max_simd or max_simple on each window with the</span>
+<span class="sd">              appropriate parameters.</span>
+
+<span class="sd">              At present, this function calls max_simple rather than max_simd because</span>
+<span class="sd">              of bugs in certain versions of gcc on LDG clusters that can cause</span>
+<span class="sd">              max_simd to be mis-compiled.</span>
+
+<span class="sd">parallel_thresh_cluster: A multithreaded function that finds the maxima in</span>
+<span class="sd">                         each of a set of contiguous, fixed-length windows</span>
+<span class="sd">                         by calling windowed_max in parallel. It then sweeps</span>
+<span class="sd">                         through the results of that (single-threaded) and</span>
+<span class="sd">                         tests for above threshold, and time-clusters the</span>
+<span class="sd">                         surviving triggers.</span>
+
+<span class="sd">A user calls only the last function; the other three exist to conveniently</span>
+<span class="sd">compartmentalize SIMD code from OpenMP code.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">tc_common_support</span> <span class="o">=</span> <span class="n">omp_support</span> <span class="o">+</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">simd_intel_intrin_support</span> <span class="o">+</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#include &lt;stdint.h&gt; // For uint32_t, int64_t</span>
+<span class="s2">#include &lt;complex&gt; // Must use C++ header with weave</span>
+<span class="s2">#include &lt;math.h&gt; // For M_SQRT2</span>
+
+<span class="s2">/* Rough approx of GCC&#39;s error function. */</span>
+<span class="s2">void error(int status, int errnum, const char *format) {</span>
+<span class="s2">  fprintf(stderr, format);</span>
+<span class="s2">  if (status != 0) {</span>
+<span class="s2">    exit(status);</span>
+<span class="s2">  }</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># The following maximizes over an interval that can be no longer than</span>
+<span class="c1"># the clustering window.  We do *not* assume alignment, because the window length</span>
+<span class="c1"># itself may not be a multiple of the alignment.</span>
+
+<span class="n">thresh_cluster_support</span> <span class="o">=</span> <span class="n">tc_common_support</span> <span class="o">+</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">void max_simd(float * __restrict inarr, float * __restrict mval,</span>
+<span class="s2">              float * __restrict norm, int64_t *mloc,</span>
+<span class="s2">              int64_t nstart, int64_t howmany){</span>
+
+<span class="s2">  /*</span>
+
+<span class="s2">   This function, using SIMD vectorization, takes an input float</span>
+<span class="s2">   array (which consists of alternating real and imaginary parts</span>
+<span class="s2">   of a complex array) and writes the two-float value of the maximum</span>
+<span class="s2">   into &#39;mval&#39;, the single-float norm of the maximum into &#39;norm&#39;, and</span>
+<span class="s2">   the location of the maximum (as an index into a *complex* array)</span>
+<span class="s2">   into &#39;mloc&#39;. The number &#39;nstart&#39; is added to whatever location is</span>
+<span class="s2">   found for the maximum (returned in mloc), and &#39;howmany&#39; is the length</span>
+<span class="s2">   of inarr (as a *real* array).</span>
+
+<span class="s2">  */</span>
+
+<span class="s2">  int64_t i, curr_mloc;</span>
+<span class="s2">  float re, im, curr_norm, curr, curr_mval[2], *arrptr;</span>
+
+<span class="s2">  // Set everything up.  Doesn&#39;t depend on any SIMD.</span>
+<span class="s2">  curr_norm = 0.0;</span>
+<span class="s2">  curr_mval[0] = 0.0;</span>
+<span class="s2">  curr_mval[1] = 0.0;</span>
+<span class="s2">  curr_mloc = 0;</span>
+<span class="s2">  arrptr = inarr;</span>
+
+<span class="s2">  /*</span>
+
+<span class="s2">   Note that at most one of _HAVE_AVX and _HAVE_SSE4_1 will be defined (in</span>
+<span class="s2">   &#39;pycbc.opt.simd_intel_intrin_support&#39; prepended above); if neither is,</span>
+<span class="s2">   then a non-vectorized code path will be executed.</span>
+
+<span class="s2">   As of this writing, documentation on the SIMD instrinsic functions may</span>
+<span class="s2">   be found at:</span>
+
+<span class="s2">      https://software.intel.com/sites/landingpage/IntrinsicsGuide/</span>
+
+<span class="s2">   though Intel websites change frequently.</span>
+
+<span class="s2">  */</span>
+
+<span class="s2">  /*</span>
+
+<span class="s2">   The basic vectorized algorithm is to read in complex elements of the input</span>
+<span class="s2">   array several at a time, using vectorized reads. We then compute the norm</span>
+<span class="s2">   of the array on an SIMD vector chunk, and compare to the current maximum,</span>
+<span class="s2">   obtaining a mask for where this vector is larger. Iterating give us the maximum</span>
+<span class="s2">   over elements 0, V, 2V, 3V, etc; 1, V+1, 2V+1, 3V+1, etc; and so forth, where</span>
+<span class="s2">   V is the vector length (or a multiple of it, when we are able to unroll the loop).</span>
+<span class="s2">   After this vectorized maximum, a non-vectorized comparison takes the max over the</span>
+<span class="s2">   V distinct elements that are the respective maxima for the different array elements</span>
+<span class="s2">   modulo V.</span>
+
+<span class="s2">  */</span>
+
+<span class="s2">#if _HAVE_AVX</span>
+
+<span class="s2">  __m256 norm_lo, cval_lo, arr_lo, reg0_lo, reg1_lo;</span>
+<span class="s2">  __m256d mloc_lo, count_lo, incr_lo;</span>
+<span class="s2">  __m256 norm_hi, cval_hi, arr_hi, reg0_hi, reg1_hi;</span>
+<span class="s2">  __m256d mloc_hi, count_hi, incr_hi;</span>
+<span class="s2">  float output_vals[2*ALGN_FLT] __attribute__ ((aligned(ALGN)));</span>
+<span class="s2">  float output_norms[2*ALGN_FLT] __attribute__ ((aligned(ALGN)));</span>
+<span class="s2">  double output_locs[2*ALGN_DBL] __attribute__ ((aligned(ALGN)));</span>
+<span class="s2">  double curr_mloc_dbl;</span>
+<span class="s2">  int64_t peel, misalgn, j;</span>
+
+<span class="s2">  // We calculate size of our various pointers modulo our alignment size</span>
+
+<span class="s2">  misalgn = (int64_t)  (((uintptr_t) inarr) % ALGN);</span>
+
+<span class="s2">  // Some kinds of misalignment are impossible to handle</span>
+
+<span class="s2">  if (misalgn % 2*sizeof(float)) {</span>
+<span class="s2">    error(EXIT_FAILURE, 0, &quot;Array given to max_simd must be aligned on a least a complex float boundary</span><span class="se">\\</span><span class="s2">n&quot;);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // &#39;peel&#39; is how many elements must be handled before we get to</span>
+<span class="s2">  // something aligned on an SIMD boundary.</span>
+<span class="s2">  peel = ( misalgn ? ((ALGN - misalgn) / (sizeof(float))) : 0 );</span>
+<span class="s2">  peel = (peel &gt; howmany ? howmany : peel);</span>
+
+<span class="s2">  // Below is the only place i gets initialized! It should never be initialized</span>
+<span class="s2">  // in the &#39;for&#39; loops.</span>
+<span class="s2">  i = 0;</span>
+
+<span class="s2">  // Peel off any unaligned beginning for the array.</span>
+<span class="s2">  for ( ; i &lt; peel; i += 2){</span>
+<span class="s2">    re = *arrptr;</span>
+<span class="s2">    im = *(arrptr+1);</span>
+<span class="s2">    curr = re*re + im*im;</span>
+<span class="s2">    if (curr &gt; curr_norm){</span>
+<span class="s2">        curr_mval[0] = re;</span>
+<span class="s2">        curr_mval[1] = im;</span>
+<span class="s2">        curr_mloc = i;</span>
+<span class="s2">        curr_norm = curr;</span>
+<span class="s2">    }</span>
+<span class="s2">    arrptr += 2;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // Now a loop, unrolled once (which is all the AVX registers we can use)</span>
+
+<span class="s2">  // AVX---as opposed to AVX2---has very little support for packed</span>
+<span class="s2">  // integer types.  For instance, one cannot add two packed int</span>
+<span class="s2">  // SIMD vectors.  So we compromise by storing the array indices</span>
+<span class="s2">  // as doubles, which should be more than enough to exactly represent</span>
+<span class="s2">  // a 32 bit integer.</span>
+
+<span class="s2">  _mm256_zeroupper();</span>
+
+<span class="s2">  // Note that the &quot;set_p{s,d}&quot; functions take their arguments from</span>
+<span class="s2">  // most-significant value to least.</span>
+
+<span class="s2">  incr_lo = _mm256_set_pd(6.0, 4.0, 2.0, 0.0); // incr_lo = [0, 2, 4, 6]</span>
+<span class="s2">  count_lo = _mm256_set1_pd( (double) i);      // count_lo = [i, i, i, i]</span>
+<span class="s2">  count_lo = _mm256_add_pd(count_lo, incr_lo); // count_lo = [i, i+2, i+4, i+6]</span>
+<span class="s2">  incr_lo = _mm256_set_pd(1.0*ALGN_FLT, 1.0*ALGN_FLT, 1.0*ALGN_FLT, 1.0*ALGN_FLT);</span>
+<span class="s2">                                               // incr_lo = [8, 8, 8, 8]</span>
+<span class="s2">  count_hi = _mm256_add_pd(count_lo, incr_lo); // count_hi = [i+8, i+10, i+12, i+14]</span>
+<span class="s2">  incr_lo = _mm256_set_pd(2.0*ALGN_FLT, 2.0*ALGN_FLT, 2.0*ALGN_FLT, 2.0*ALGN_FLT);</span>
+<span class="s2">                                               // incr_lo = [16, 16, 16, 16]</span>
+<span class="s2">  incr_hi = _mm256_set_pd(2.0*ALGN_FLT, 2.0*ALGN_FLT, 2.0*ALGN_FLT, 2.0*ALGN_FLT);</span>
+<span class="s2">                                               // incr_hi = [16, 16, 16, 16]</span>
+<span class="s2">  // Now count_lo and count_hi have the current indices into the array</span>
+
+<span class="s2">  // We don&#39;t need to initialize to what we found in the peel-off loop,</span>
+<span class="s2">  // since we&#39;ll store the results of the high and low SIMD loops into</span>
+<span class="s2">  // an array that we then loop over comparing with the peel-off values.</span>
+<span class="s2">  mloc_lo = _mm256_setzero_pd();</span>
+<span class="s2">  norm_lo = _mm256_setzero_ps();</span>
+<span class="s2">  cval_lo = _mm256_setzero_ps();</span>
+
+<span class="s2">  mloc_hi = _mm256_setzero_pd();</span>
+<span class="s2">  norm_hi = _mm256_setzero_ps();</span>
+<span class="s2">  cval_hi = _mm256_setzero_ps();</span>
+
+<span class="s2">  for (; i &lt;= howmany - 2*ALGN_FLT; i += 2*ALGN_FLT){</span>
+<span class="s2">      // Load everything into a register</span>
+<span class="s2">      arr_lo =  _mm256_load_ps(arrptr);</span>
+<span class="s2">      arr_hi = _mm256_load_ps(arrptr + ALGN_FLT);</span>
+
+<span class="s2">      reg0_lo = _mm256_mul_ps(arr_lo, arr_lo);               // 4 x [re*re, im*im]</span>
+<span class="s2">      reg1_lo = _mm256_shuffle_ps(reg0_lo, reg0_lo, 0xB1);   // 4 x [im*im, re*re]</span>
+<span class="s2">      reg0_lo = _mm256_add_ps(reg0_lo, reg1_lo);             // 4 x [re^2 +im^2, re^2 +im^2]</span>
+<span class="s2">      reg1_lo = _mm256_cmp_ps(reg0_lo, norm_lo, _CMP_GT_OQ); // Now a mask for where &gt; curr_norm</span>
+
+<span class="s2">      // Now use the mask to selectively update complex value, norm, and location</span>
+<span class="s2">      mloc_lo = _mm256_blendv_pd(mloc_lo, count_lo, _mm256_castps_pd(reg1_lo) );</span>
+<span class="s2">      norm_lo = _mm256_blendv_ps(norm_lo, reg0_lo, reg1_lo);</span>
+<span class="s2">      cval_lo = _mm256_blendv_ps(cval_lo, arr_lo, reg1_lo);</span>
+
+<span class="s2">      reg0_hi = _mm256_mul_ps(arr_hi, arr_hi);               // 4 x [re*re, im*im]</span>
+<span class="s2">      reg1_hi = _mm256_shuffle_ps(reg0_hi, reg0_hi, 0xB1);   // 4 x [im*im, re*re]</span>
+<span class="s2">      reg0_hi = _mm256_add_ps(reg0_hi, reg1_hi);             // 4 x [re^2 +im^2, re^2 +im^2]</span>
+<span class="s2">      reg1_hi = _mm256_cmp_ps(reg0_hi, norm_hi, _CMP_GT_OQ); // Now a mask for where &gt; curr_norm</span>
+
+<span class="s2">      // Now use the mask to selectively update complex value, norm, and location</span>
+<span class="s2">      mloc_hi = _mm256_blendv_pd(mloc_hi, count_hi, _mm256_castps_pd(reg1_hi) );</span>
+<span class="s2">      norm_hi = _mm256_blendv_ps(norm_hi, reg0_hi, reg1_hi);</span>
+<span class="s2">      cval_hi = _mm256_blendv_ps(cval_hi, arr_hi, reg1_hi);</span>
+
+<span class="s2">      count_lo = _mm256_add_pd(count_lo, incr_lo); // count_lo += [16, 16, 16, 16]</span>
+<span class="s2">      count_hi = _mm256_add_pd(count_hi, incr_hi); // count_hi += [16, 16, 16, 16]</span>
+<span class="s2">      arrptr += 2*ALGN_FLT;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // Finally, one last SIMD loop that is not unrolled, just in case we can.</span>
+<span class="s2">  // We don&#39;t reset increments because we won&#39;t use them after this loop, and</span>
+<span class="s2">  // this loop executes at most once.</span>
+
+<span class="s2">  for (; i &lt;= howmany - ALGN_FLT; i += ALGN_FLT){</span>
+<span class="s2">      // Load everything into a register</span>
+<span class="s2">      arr_lo = _mm256_load_ps(arrptr);</span>
+
+<span class="s2">      reg0_lo = _mm256_mul_ps(arr_lo, arr_lo);               // 4 x [re*re, im*im]</span>
+<span class="s2">      reg1_lo = _mm256_shuffle_ps(reg0_lo, reg0_lo, 0xB1);   // 4 x [im*im, re*re]</span>
+<span class="s2">      reg0_lo = _mm256_add_ps(reg0_lo, reg1_lo);             // 4 x [re^2 +im^2, re^2 +im^2]</span>
+<span class="s2">      reg1_lo = _mm256_cmp_ps(reg0_lo, norm_lo, _CMP_GT_OQ); // Now a mask for where &gt; curr_norm</span>
+
+<span class="s2">      // Now use the mask to selectively update complex value, norm, and location</span>
+<span class="s2">      mloc_lo = _mm256_blendv_pd(mloc_lo, count_lo, _mm256_castps_pd(reg1_lo) );</span>
+<span class="s2">      norm_lo = _mm256_blendv_ps(norm_lo, reg0_lo, reg1_lo);</span>
+<span class="s2">      cval_lo = _mm256_blendv_ps(cval_lo, arr_lo, reg1_lo);</span>
+
+<span class="s2">      arrptr += ALGN_FLT;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // Now write out the results to our temporary tables:</span>
+<span class="s2">  _mm256_store_ps(output_vals, cval_lo);</span>
+<span class="s2">  _mm256_store_ps(output_vals + ALGN_FLT, cval_hi);</span>
+<span class="s2">  _mm256_store_ps(output_norms, norm_lo);</span>
+<span class="s2">  _mm256_store_ps(output_norms + ALGN_FLT, norm_hi);</span>
+<span class="s2">  _mm256_store_pd(output_locs, mloc_lo);</span>
+<span class="s2">  _mm256_store_pd(output_locs + ALGN_DBL, mloc_hi);</span>
+
+<span class="s2">  _mm256_zeroupper();</span>
+
+<span class="s2">  // Now loop over our output arrays</span>
+<span class="s2">  // When we start, curr_norm, curr_mloc, and</span>
+<span class="s2">  // curr_mval all have the values they had at</span>
+<span class="s2">  // the end of the *first* peeling loop</span>
+
+<span class="s2">  curr_mloc_dbl = (double) curr_mloc;</span>
+
+<span class="s2">  for (j = 0; j &lt; 2*ALGN_FLT; j += 2){</span>
+<span class="s2">    if (output_norms[j] &gt; curr_norm) {</span>
+<span class="s2">      curr_norm = output_norms[j];</span>
+<span class="s2">      curr_mloc_dbl = output_locs[j/2];</span>
+<span class="s2">      curr_mval[0] = output_vals[j];</span>
+<span class="s2">      curr_mval[1] = output_vals[j+1];</span>
+<span class="s2">    }</span>
+<span class="s2">  }</span>
+
+<span class="s2">  curr_mloc = (int64_t) curr_mloc_dbl;</span>
+
+<span class="s2">#elif _HAVE_SSE4_1</span>
+
+<span class="s2">  __m128 norm_lo, cval_lo, arr_lo, reg0_lo, reg1_lo;</span>
+<span class="s2">  __m128d mloc_lo, count_lo, incr_lo;</span>
+<span class="s2">  float output_vals[ALGN_FLT] __attribute__ ((aligned(ALGN)));</span>
+<span class="s2">  float output_norms[ALGN_FLT] __attribute__ ((aligned(ALGN)));</span>
+<span class="s2">  double output_locs[ALGN_DBL] __attribute__ ((aligned(ALGN)));</span>
+<span class="s2">  double curr_mloc_dbl;</span>
+<span class="s2">  int64_t peel, misalgn, j;</span>
+
+<span class="s2">  // We calculate size of our various pointers modulo our alignment size</span>
+
+<span class="s2">  misalgn = (int64_t)  (((uintptr_t) inarr) % ALGN);</span>
+
+<span class="s2">  // Some kinds of misalignment are impossible to handle</span>
+
+<span class="s2">  if (misalgn % 2*sizeof(float)) {</span>
+<span class="s2">    error(EXIT_FAILURE, 0, &quot;Array given to max_simd must be aligned on a least a complex float boundary&quot;);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // &#39;peel&#39; is how many elements must be handled before we get to</span>
+<span class="s2">  // something aligned on an SIMD boundary.</span>
+<span class="s2">  peel = ( misalgn ? ((ALGN - misalgn) / (sizeof(float))) : 0 );</span>
+<span class="s2">  peel = (peel &gt; howmany ? howmany : peel);</span>
+
+<span class="s2">  // Below is the only place i gets initialized! It should never be initialized</span>
+<span class="s2">  // in the for loops.</span>
+<span class="s2">  i = 0;</span>
+
+<span class="s2">  // Peel off any unaligned beginning for the array.</span>
+<span class="s2">  for ( ; i &lt; peel; i += 2){</span>
+<span class="s2">    re = *arrptr;</span>
+<span class="s2">    im = *(arrptr+1);</span>
+<span class="s2">    curr = re*re + im*im;</span>
+<span class="s2">    if (curr &gt; curr_norm){</span>
+<span class="s2">        curr_mval[0] = re;</span>
+<span class="s2">        curr_mval[1] = im;</span>
+<span class="s2">        curr_mloc = i;</span>
+<span class="s2">        curr_norm = curr;</span>
+<span class="s2">    }</span>
+<span class="s2">    arrptr += 2;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // Note that the &quot;set_p{s,d}&quot; functions take their arguments from</span>
+<span class="s2">  // most-significant value to least.</span>
+
+<span class="s2">  incr_lo = _mm_set_pd(2.0, 0.0);                   // incr_lo = [0, 2]</span>
+<span class="s2">  count_lo = _mm_set1_pd( (double) i);              // count_lo = [i, i]</span>
+<span class="s2">  count_lo = _mm_add_pd(count_lo, incr_lo);         // count_lo = [i, i+2]</span>
+<span class="s2">  incr_lo = _mm_set_pd(1.0*ALGN_FLT, 1.0*ALGN_FLT); // incr_lo = [4, 4]</span>
+
+<span class="s2">  // Now count_lo has the current indices into the array</span>
+
+<span class="s2">  // We don&#39;t need to initialize to what we found in the peel-off loop,</span>
+<span class="s2">  // since we&#39;ll store the results of the high and low SIMD loops into</span>
+<span class="s2">  // an array that we then loop over comparing with the peel-off values.</span>
+<span class="s2">  mloc_lo = _mm_setzero_pd();</span>
+<span class="s2">  norm_lo = _mm_setzero_ps();</span>
+<span class="s2">  cval_lo = _mm_setzero_ps();</span>
+
+<span class="s2">  for (; i &lt;= howmany - ALGN_FLT; i += ALGN_FLT){</span>
+<span class="s2">      // Load everything into a register</span>
+<span class="s2">      arr_lo =  _mm_load_ps(arrptr);</span>
+
+<span class="s2">      reg0_lo = _mm_mul_ps(arr_lo, arr_lo);               // 2 x [re*re, im*im]</span>
+<span class="s2">      reg1_lo = _mm_shuffle_ps(reg0_lo, reg0_lo, 0xB1);   // 2 x [im*im, re*re]</span>
+<span class="s2">      reg0_lo = _mm_add_ps(reg0_lo, reg1_lo);             // 2 x [re^2 +im^2, re^2 +im^2]</span>
+<span class="s2">      reg1_lo = _mm_cmpgt_ps(reg0_lo, norm_lo);           // Now a mask for where &gt; curr_norm</span>
+
+<span class="s2">      // Now use the mask to selectively update complex value, norm, and location</span>
+<span class="s2">      mloc_lo = _mm_blendv_pd(mloc_lo, count_lo, _mm_castps_pd(reg1_lo) );</span>
+<span class="s2">      norm_lo = _mm_blendv_ps(norm_lo, reg0_lo, reg1_lo);</span>
+<span class="s2">      cval_lo = _mm_blendv_ps(cval_lo, arr_lo, reg1_lo);</span>
+
+<span class="s2">      count_lo = _mm_add_pd(count_lo, incr_lo); // count_lo += [4, 4]</span>
+<span class="s2">      arrptr += ALGN_FLT;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // Now write out the results to our temporary tables:</span>
+<span class="s2">  _mm_store_ps(output_vals, cval_lo);</span>
+<span class="s2">  _mm_store_ps(output_norms, norm_lo);</span>
+<span class="s2">  _mm_store_pd(output_locs, mloc_lo);</span>
+
+<span class="s2">  // Now loop over our output arrays</span>
+<span class="s2">  // When we start, curr_norm, curr_mloc, and</span>
+<span class="s2">  // curr_mval all have the values they had at</span>
+<span class="s2">  // the end of the *first* peeling loop</span>
+
+<span class="s2">  curr_mloc_dbl = (double) curr_mloc;</span>
+
+<span class="s2">  for (j = 0; j &lt; ALGN_FLT; j += 2){</span>
+<span class="s2">    if (output_norms[j] &gt; curr_norm) {</span>
+<span class="s2">      curr_norm = output_norms[j];</span>
+<span class="s2">      curr_mloc_dbl = output_locs[j/2];</span>
+<span class="s2">      curr_mval[0] = output_vals[j];</span>
+<span class="s2">      curr_mval[1] = output_vals[j+1];</span>
+<span class="s2">    }</span>
+<span class="s2">  }</span>
+
+<span class="s2">  curr_mloc = (int64_t) curr_mloc_dbl;</span>
+
+<span class="s2">#else</span>
+<span class="s2"> // If we have no SSE, all we have to do is initialize</span>
+<span class="s2"> // our loop counter, and the last &quot;cleanup&quot; loop</span>
+<span class="s2"> // will in fact do all the work.</span>
+
+<span class="s2"> i = 0;</span>
+
+<span class="s2">#endif</span>
+
+<span class="s2">  for ( ; i &lt; howmany; i += 2){</span>
+<span class="s2">    re = *arrptr;</span>
+<span class="s2">    im = *(arrptr+1);</span>
+<span class="s2">    curr = re*re + im*im;</span>
+<span class="s2">    if (curr &gt; curr_norm){</span>
+<span class="s2">        curr_mval[0] = re;</span>
+<span class="s2">        curr_mval[1] = im;</span>
+<span class="s2">        curr_mloc = i;</span>
+<span class="s2">        curr_norm = curr;</span>
+<span class="s2">    }</span>
+<span class="s2">    arrptr += 2;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // Store our answers and return</span>
+<span class="s2">  *mval = curr_mval[0];</span>
+<span class="s2">  *(mval+1) = curr_mval[1];</span>
+<span class="s2">  *norm = curr_norm;</span>
+
+<span class="s2">  // Note that curr_mloc is a real array index, but we</span>
+<span class="s2">  // must return the index into the complex array.</span>
+<span class="s2">  *mloc = (curr_mloc/2) + nstart;</span>
+
+<span class="s2">  return;</span>
+
+<span class="s2">}</span>
+
+<span class="s2">void max_simple(float * __restrict inarr, float * __restrict mval,</span>
+<span class="s2">                float * __restrict norm, int64_t *mloc,</span>
+<span class="s2">                int64_t nstart, int64_t howmany){</span>
+
+<span class="s2">  /*</span>
+
+<span class="s2">   This function does *NOT* use explicit SIMD vectorization, and</span>
+<span class="s2">   takes an input float array (which consists of alternating real and</span>
+<span class="s2">   imaginary parts of a complex array) and writes the two-float value</span>
+<span class="s2">   of the maximum into &#39;mval&#39;, the single-float norm of the maximum into</span>
+<span class="s2">   &#39;norm&#39;, and the location of the maximum (as an index into a *complex* array)</span>
+<span class="s2">   into &#39;mloc&#39;. The number &#39;nstart&#39; is added to whatever location is</span>
+<span class="s2">   found for the maximum (returned in mloc), and &#39;howmany&#39; is the length</span>
+<span class="s2">   of inarr (as a *real* array).</span>
+
+<span class="s2">  */</span>
+
+<span class="s2">  int64_t i, curr_mloc;</span>
+<span class="s2">  float re, im, curr_norm, curr, curr_mval[2], *arrptr;</span>
+
+<span class="s2">  // Set everything up.</span>
+<span class="s2">  curr_norm = 0.0;</span>
+<span class="s2">  curr_mval[0] = 0.0;</span>
+<span class="s2">  curr_mval[1] = 0.0;</span>
+<span class="s2">  curr_mloc = 0;</span>
+<span class="s2">  arrptr = inarr;</span>
+
+<span class="s2">  for (i = 0; i &lt; howmany; i += 2){</span>
+<span class="s2">    re = *arrptr;</span>
+<span class="s2">    im = *(arrptr+1);</span>
+<span class="s2">    curr = re*re + im*im;</span>
+<span class="s2">    if (curr &gt; curr_norm){</span>
+<span class="s2">        curr_mval[0] = re;</span>
+<span class="s2">        curr_mval[1] = im;</span>
+<span class="s2">        curr_mloc = i;</span>
+<span class="s2">        curr_norm = curr;</span>
+<span class="s2">    }</span>
+<span class="s2">    arrptr += 2;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // Store our answers and return</span>
+<span class="s2">  *mval = curr_mval[0];</span>
+<span class="s2">  *(mval+1) = curr_mval[1];</span>
+<span class="s2">  *norm = curr_norm;</span>
+
+<span class="s2">  // Note that curr_mloc is a real array index, but we</span>
+<span class="s2">  // must return the index into the complex array.</span>
+<span class="s2">  *mloc = (curr_mloc/2) + nstart;</span>
+
+<span class="s2">  return;</span>
+
+<span class="s2">}</span>
+
+
+<span class="s2">void windowed_max(std::complex&lt;float&gt; * __restrict inarr, const int64_t arrlen,</span>
+<span class="s2">                  std::complex&lt;float&gt; * __restrict cvals, float * __restrict norms,</span>
+<span class="s2">                  int64_t * __restrict locs, const int64_t winsize,</span>
+<span class="s2">                  const int64_t startoffset){</span>
+
+
+<span class="s2">  /*</span>
+
+<span class="s2">   This function fills in the arrays cvals, norms, and locs, with the max (as</span>
+<span class="s2">   complex value, norm, and location, resp.) of the array inarr.  The length of</span>
+<span class="s2">   inarr is arrlen, and the function assumes that it computes the max over successive</span>
+<span class="s2">   windows of length winsize, starting at the beginning of the array and continuing</span>
+<span class="s2">   to the end.  If winsize does not evenly divide arrlen, then the last partial window</span>
+<span class="s2">   will be maximized over as well.  If winsize is greater than arrlen, then just one</span>
+<span class="s2">   maximization will be performed over the (partial) array inarr.</span>
+
+<span class="s2">   Thus, in all cases, the length of cvals, norms, and locs should be:</span>
+<span class="s2">      nwindows = ( (arrlen % winsize) ? (arrlen/winsize) + 1 : (arrlen/winsize) )</span>
+
+<span class="s2">   Note that all input sizes are for *complex* arrays; the function this function calls</span>
+<span class="s2">   requires *real* arrays, and lengths will be converted where appropriate.</span>
+
+<span class="s2">  */</span>
+
+<span class="s2">  int64_t i, nwindows;</span>
+
+<span class="s2">  nwindows = ( (arrlen % winsize) ? (arrlen/winsize) + 1 : (arrlen/winsize) );</span>
+
+<span class="s2">  // Everything but the last window, which may not be full length</span>
+
+<span class="s2">  for (i = 0; i &lt; nwindows-1; i++){</span>
+<span class="s2">    // The factor of 2 multiplying lengths[i] is because max_simd needs its length as a real</span>
+<span class="s2">    // length, not complex.  But startpts and startoffset are complex values.</span>
+<span class="s2">    max_simple((float *) &amp;inarr[i*winsize], (float *) &amp;cvals[i],</span>
+<span class="s2">               &amp;norms[i], &amp;locs[i], startoffset + i*winsize, 2*winsize);</span>
+<span class="s2">  }</span>
+<span class="s2">  // Now the last window (which will be the only window if arrlen &lt;= winzise)</span>
+<span class="s2">  max_simple((float *) &amp;inarr[i*winsize], (float *) &amp;cvals[i],</span>
+<span class="s2">              &amp;norms[i], &amp;locs[i], startoffset + i*winsize, 2*(arrlen - i*winsize));</span>
+
+<span class="s2">  return;</span>
+<span class="s2">}</span>
+
+<span class="s2">int parallel_thresh_cluster(std::complex&lt;float&gt; * __restrict inarr, const uint32_t arrlen,</span>
+<span class="s2">                            std::complex&lt;float&gt; * __restrict values, uint32_t * __restrict locs,</span>
+<span class="s2">                            const float thresh, const uint32_t winsize, const uint32_t segsize){</span>
+
+<span class="s2">  /*</span>
+
+<span class="s2">  This function takes a complex input array &#39;inarr&#39;, of length &#39;arrlen&#39;, and returns</span>
+<span class="s2">  in the complex array &#39;values&#39; the time-clustered values of all maxima within a window</span>
+<span class="s2">  of size &#39;winsize&#39;. The locations (as indices into the original array) are returned in</span>
+<span class="s2">  the array &#39;locs&#39;. Both &#39;values&#39; and &#39;locs&#39; must be pre-allocated. The time-clustered</span>
+<span class="s2">  triggers are only returned when their norm is above the value &#39;thresh&#39;. The last argument,</span>
+<span class="s2">  &#39;segsize&#39;, specifies in what size chunks the array should be processed, and should be no</span>
+<span class="s2">  larger than what can fit in the cache local to a single processor core (the parallelization</span>
+<span class="s2">  will call &#39;windowed_max&#39; in parallel on chunks of this size).</span>
+
+<span class="s2">  */</span>
+
+<span class="s2">  int64_t i, nsegs, nwins_ps, last_arrlen, last_nwins_ps, outlen, true_segsize;</span>
+<span class="s2">  int64_t *seglens, *mlocs, cnt, s_segsize, s_arrlen, s_winsize;</span>
+<span class="s2">  float *norms, thr_sqr;</span>
+<span class="s2">  std::complex&lt;float&gt; *cvals;</span>
+
+<span class="s2">  thr_sqr = (thresh * thresh);</span>
+
+<span class="s2">  // Signed versions of all our array length inputs, so loop</span>
+<span class="s2">  // logic and calls to other functions are safe.</span>
+
+<span class="s2">  s_segsize = (int64_t) segsize; </span>
+<span class="s2">  s_arrlen = (int64_t) arrlen;</span>
+<span class="s2">  s_winsize = (int64_t) winsize;</span>
+
+<span class="s2">  // If the length of a window is less than the length of a segment, then the </span>
+<span class="s2">  // number of windows per segment is segsize/winsize (which rounds *down* if</span>
+<span class="s2">  // it does not divide evenly). If not, then the number of windows per segment</span>
+<span class="s2">  // is one, since we will then always give a window-sized chunks to each core,</span>
+<span class="s2">  // regardless of segsize.</span>
+
+<span class="s2">  if (s_winsize &lt; s_segsize) {</span>
+<span class="s2">    nwins_ps =  s_segsize / s_winsize;</span>
+<span class="s2">  } else {</span>
+<span class="s2">    nwins_ps = 1;</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // Now the actual segment size that we will use is the number of windows per</span>
+<span class="s2">  // segment times the window size; this formula is true whether winsize is</span>
+<span class="s2">  // larger or smaller than segsize.</span>
+
+<span class="s2">  true_segsize = nwins_ps * s_winsize;</span>
+
+<span class="s2">  // We need to allocate our temporary arrays that hold the results of clustering</span>
+<span class="s2">  // over each window. So we just divide the array length by the window size, and</span>
+<span class="s2">  // if this does not divide evenly, then the last window can be shorter.</span>
+
+<span class="s2">  outlen = ( (s_arrlen </span><span class="si">% s</span><span class="s2">_winsize) ? (s_arrlen/s_winsize) + 1 : (s_arrlen/s_winsize) );</span>
+
+<span class="s2">  // If true_segsize divides arrlen evenly, then the number of segments &#39;nsegs&#39; is that</span>
+<span class="s2">  // ratio; if not, it is one more than the floor of that ratio and the last segment</span>
+<span class="s2">  // will be shorter than all of the others.</span>
+
+<span class="s2">  nsegs = ( (s_arrlen % true_segsize) ? (s_arrlen/true_segsize) + 1 : (s_arrlen/true_segsize) );</span>
+
+<span class="s2">  // The amount of the initial array left over for the last segment could be different</span>
+
+<span class="s2">  last_arrlen = s_arrlen - true_segsize * (nsegs -1);</span>
+
+<span class="s2">  // Now dynamic allocation.  No reason really to align this memory; it will be parceled</span>
+<span class="s2">  // out to different cores anyway.</span>
+
+<span class="s2">  cvals = (std::complex&lt;float&gt; *) malloc(outlen * sizeof(std::complex&lt;float&gt;) );</span>
+<span class="s2">  norms = (float *) malloc(outlen * sizeof(float) );</span>
+<span class="s2">  mlocs = (int64_t *) malloc(outlen * sizeof(int64_t) );</span>
+
+<span class="s2">  // The next array allows us to dynamically communicate possibly changed sizes to the</span>
+<span class="s2">  // many parallel calls to windowed_max:</span>
+
+<span class="s2">  seglens = (int64_t *) malloc(nsegs * sizeof(int64_t) );</span>
+
+<span class="s2">  // check to see if anything failed</span>
+<span class="s2">  if ( (cvals == NULL) || (norms == NULL) || (mlocs == NULL) || (seglens == NULL) ){</span>
+<span class="s2">    error(EXIT_FAILURE, ENOMEM, &quot;Could not allocate temporary memory needed by parallel_thresh_cluster&quot;);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  for (i = 0; i &lt; (nsegs-1); i++){</span>
+<span class="s2">    seglens[i] = true_segsize;</span>
+<span class="s2">  }</span>
+<span class="s2">  seglens[i] = last_arrlen;</span>
+
+<span class="s2">  // Now the real work, in an OpenMP parallel for loop:</span>
+<span class="s2">#pragma omp parallel for schedule(dynamic,1)</span>
+<span class="s2">  for (i = 0; i &lt; nsegs; i++){</span>
+<span class="s2">    windowed_max(&amp;inarr[i*true_segsize], seglens[i], &amp;cvals[i*nwins_ps],</span>
+<span class="s2">                 &amp;norms[i*nwins_ps], &amp;mlocs[i*nwins_ps],</span>
+<span class="s2">                 s_winsize, i*true_segsize);</span>
+<span class="s2">  }</span>
+
+<span class="s2">  /*</span>
+
+<span class="s2">  We have now the requisite maxima over our windows in cvals,</span>
+<span class="s2">  norms, and mlocs. We want to apply the threshold and cluster over</span>
+<span class="s2">  time.</span>
+
+<span class="s2">  To do this we compare each element to the one before and after it,</span>
+<span class="s2">  taking special care for the first and last elements.</span>
+
+<span class="s2">  */</span>
+
+<span class="s2">  cnt = 0;</span>
+
+<span class="s2">  // Handle the first element, including the case that</span>
+<span class="s2">  // the whole array might consist of just one window.</span>
+
+<span class="s2">  if (outlen &gt; 1) {</span>
+<span class="s2">    if ( (norms[0] &gt; norms[1]) &amp;&amp; (norms[0] &gt; thr_sqr) ) {</span>
+<span class="s2">      cnt++;</span>
+<span class="s2">      values[cnt-1] = cvals[0];</span>
+<span class="s2">      locs[cnt-1] = (uint32_t) mlocs[0];</span>
+<span class="s2">    }</span>
+<span class="s2">  } else {</span>
+<span class="s2">    if ( norms[0] &gt; thr_sqr ) {</span>
+<span class="s2">      cnt++;</span>
+<span class="s2">      values[cnt-1] = cvals[0];</span>
+<span class="s2">      locs[cnt-1] = (uint32_t) mlocs[0];</span>
+<span class="s2">    }</span>
+<span class="s2">  }</span>
+
+<span class="s2">  // Now loop through the second through next to last</span>
+<span class="s2">  // elements, comparing to the elements before and after,</span>
+<span class="s2">  // and to the threshold.</span>
+
+<span class="s2">  for (i = 1; i &lt; (outlen-1); i++) {</span>
+<span class="s2">    if ( (norms[i] &gt; thr_sqr) &amp;&amp; (norms[i] &gt; norms[i-1]) &amp;&amp; (norms[i] &gt;= norms[i+1]) ) {</span>
+<span class="s2">      cnt++;</span>
+<span class="s2">      values[cnt-1] = cvals[i];</span>
+<span class="s2">      locs[cnt-1] = (uint32_t) mlocs[i];</span>
+<span class="s2">    }    </span>
+<span class="s2">  }</span>
+
+<span class="s2">  // Finally, handle the last element. We test for whether</span>
+<span class="s2">  // (outlen &gt; 1), but unlike the first element, we do nothing</span>
+<span class="s2">  // if (outlen == 1), because that will have been already</span>
+<span class="s2">  // handled when we looked at the first element.</span>
+
+<span class="s2">  if (outlen &gt; 1) {</span>
+<span class="s2">    if ( (norms[outlen-1] &gt; norms[outlen-2]) &amp;&amp; (norms[outlen-1] &gt; thr_sqr) ) {</span>
+<span class="s2">      cnt++;</span>
+<span class="s2">      values[cnt-1] = cvals[outlen-1];</span>
+<span class="s2">      locs[cnt-1] = (uint32_t) mlocs[outlen-1];</span>
+<span class="s2">    }</span>
+<span class="s2">  }</span>
+
+<span class="s2">  free(cvals);</span>
+<span class="s2">  free(norms);</span>
+<span class="s2">  free(mlocs);</span>
+<span class="s2">  free(seglens);</span>
+
+<span class="s2">  return cnt;</span>
+<span class="s2">}</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1">### Now some actual code that just implements the different</span>
+<span class="c1">### correlations in a parallelized fashion.</span>
+
+<span class="c1"># First, a simple thing, that just does the max...</span>
+
+<span class="n">max_only_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">max_simd(inarr, mval, norm, (int64_t *) mloc, (int64_t) nstart[0], (int64_t) howmany[0]);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="MaxOnlyObject"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.simd_threshold.MaxOnlyObject">[docs]</a><span class="k">class</span> <span class="nc">MaxOnlyObject</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inarray</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inarr</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inarray</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">howmany</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">howmany</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inarr</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nstart</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nstart</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmplx_mval</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">complex64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mval</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmplx_mval</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mloc</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">max_only_code</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">support</span> <span class="o">=</span> <span class="n">thresh_cluster_support</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+
+<div class="viewcode-block" id="MaxOnlyObject.execute"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.simd_threshold.MaxOnlyObject.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">inarr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inarr</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">mval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mval</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">mloc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mloc</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">nstart</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nstart</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">howmany</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">howmany</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">inline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;inarr&#39;</span><span class="p">,</span> <span class="s1">&#39;mval&#39;</span><span class="p">,</span> <span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="s1">&#39;mloc&#39;</span><span class="p">,</span> <span class="s1">&#39;nstart&#39;</span><span class="p">,</span> <span class="s1">&#39;howmany&#39;</span><span class="p">],</span>
+               <span class="n">extra_compile_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">],</span>
+               <span class="c1">#extra_compile_args = [&#39;-mno-avx -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2 -mno-sse4a -O2 -w&#39;],</span>
+               <span class="c1">#extra_compile_args = [&#39;-msse4.1 -O3 -w&#39;],</span>
+               <span class="n">support_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">support</span><span class="p">,</span> <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span></div></div>
+
+<span class="n">windowed_max_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">windowed_max(inarr, (int64_t) arrlen[0], cvals, norms, (int64_t *) locs, (int64_t ) winsize[0],</span>
+<span class="s2">             (int64_t) startoffset[0]);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="WindowedMaxObject"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.simd_threshold.WindowedMaxObject">[docs]</a><span class="k">class</span> <span class="nc">WindowedMaxObject</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inarray</span><span class="p">,</span> <span class="n">winsize</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inarr</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inarray</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arrlen</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arrlen</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inarr</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_win</span> <span class="o">=</span> <span class="n">winsize</span>
+        <span class="n">nwindows</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inarr</span><span class="p">)</span> <span class="o">/</span> <span class="n">winsize</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nwindows</span> <span class="o">*</span> <span class="n">winsize</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inarr</span><span class="p">)):</span>
+            <span class="n">nwindows</span> <span class="o">=</span> <span class="n">nwindows</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nwindows</span> <span class="o">=</span> <span class="n">nwindows</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cvals</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nwindows</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">complex64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">norms</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nwindows</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locs</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nwindows</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">winsize</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">winsize</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_win</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">startoffset</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">windowed_max_code</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">support</span> <span class="o">=</span> <span class="n">thresh_cluster_support</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+
+<div class="viewcode-block" id="WindowedMaxObject.execute"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.simd_threshold.WindowedMaxObject.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">inarr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inarr</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">arrlen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">arrlen</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">cvals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cvals</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">norms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">norms</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">locs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">locs</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">winsize</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">winsize</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">startoffset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">startoffset</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">inline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;inarr&#39;</span><span class="p">,</span> <span class="s1">&#39;arrlen&#39;</span><span class="p">,</span> <span class="s1">&#39;cvals&#39;</span><span class="p">,</span> <span class="s1">&#39;norms&#39;</span><span class="p">,</span> <span class="s1">&#39;locs&#39;</span><span class="p">,</span> <span class="s1">&#39;winsize&#39;</span><span class="p">,</span> <span class="s1">&#39;startoffset&#39;</span><span class="p">],</span>
+               <span class="n">extra_compile_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">],</span>
+               <span class="c1">#extra_compile_args = [&#39;-mno-avx -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2 -mno-sse4a -O2 -w&#39;],</span>
+               <span class="c1">#extra_compile_args = [&#39;-msse4.1 -O3 -w&#39;],</span>
+               <span class="n">support_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">support</span><span class="p">,</span> <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span></div></div>
+
+
+
+<span class="n">thresh_cluster_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">return_val = parallel_thresh_cluster(series, (uint32_t) slen, values, locs,</span>
+<span class="s2">                                     (float) thresh, (uint32_t) window, (uint32_t) segsize);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">if</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">HAVE_GETCONF</span><span class="p">:</span>
+    <span class="n">default_segsize</span> <span class="o">=</span> <span class="n">pycbc</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">LEVEL2_CACHE_SIZE</span> <span class="o">/</span> <span class="n">_np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span> <span class="n">_np</span><span class="o">.</span><span class="n">complex64</span><span class="p">)</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Seems to work for Sandy Bridge/Ivy Bridge/Haswell, for now?</span>
+    <span class="n">default_segsize</span> <span class="o">=</span> <span class="mi">32768</span>
+
+<div class="viewcode-block" id="ThreshClusterObject"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.simd_threshold.ThreshClusterObject">[docs]</a><span class="k">class</span> <span class="nc">ThreshClusterObject</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class takes a complex SNR time series, a real threshold value, and a window size</span>
+<span class="sd">    (expressed as a number of complex sample points), and optionally a segment size and</span>
+<span class="sd">    verbosity indicator (for debugging weave).</span>
+
+<span class="sd">    The execute method returns two numpy arrays: one giving the location of clustered</span>
+<span class="sd">    maxima above the threshold, and the other the corresponding (complex) values of the</span>
+<span class="sd">    SNR time series at those clustered maxima.  The expectation is that the memory of</span>
+<span class="sd">    the SNR time series will be filled new inputs many times, and execute() called</span>
+<span class="sd">    repeatedly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">segsize</span> <span class="o">=</span> <span class="n">default_segsize</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">series</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">series</span><span class="p">)</span>
+        <span class="n">nwindows</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">slen</span> <span class="o">/</span> <span class="n">window</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nwindows</span> <span class="o">*</span> <span class="n">window</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">slen</span><span class="p">):</span>
+            <span class="n">nwindows</span> <span class="o">=</span> <span class="n">nwindows</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nwindows</span> <span class="o">=</span> <span class="n">nwindows</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nwindows</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">complex64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locs</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nwindows</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">window</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">segsize</span> <span class="o">=</span> <span class="n">segsize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">thresh_cluster_code</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">support</span> <span class="o">=</span> <span class="n">thresh_cluster_support</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+
+<div class="viewcode-block" id="ThreshClusterObject.execute"><a class="viewcode-back" href="../../../pycbc.events.html#pycbc.events.simd_threshold.ThreshClusterObject.execute">[docs]</a>    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thresh</span><span class="p">):</span>
+        <span class="n">series</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">series</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">slen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slen</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">locs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">locs</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">segsize</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">segsize</span> <span class="c1"># pylint:disable=unused-variable</span>
+        <span class="n">nthr</span> <span class="o">=</span> <span class="n">inline</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;series&#39;</span><span class="p">,</span> <span class="s1">&#39;slen&#39;</span><span class="p">,</span> <span class="s1">&#39;values&#39;</span><span class="p">,</span> <span class="s1">&#39;locs&#39;</span><span class="p">,</span> <span class="s1">&#39;thresh&#39;</span><span class="p">,</span> <span class="s1">&#39;window&#39;</span><span class="p">,</span> <span class="s1">&#39;segsize&#39;</span><span class="p">],</span>
+                      <span class="n">extra_compile_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">WEAVE_FLAGS</span><span class="p">]</span> <span class="o">+</span> <span class="n">omp_flags</span><span class="p">,</span>
+                      <span class="c1">#extra_compile_args = [&#39;-mno-avx -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4 -mno-sse4.1 -mno-sse4.2 -mno-sse4a -O2 -w&#39;],</span>
+                      <span class="c1">#extra_compile_args = [&#39;-msse4.1 -O3 -w&#39;],</span>
+                      <span class="n">support_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">support</span><span class="p">,</span> <span class="n">libraries</span> <span class="o">=</span> <span class="n">omp_libs</span><span class="p">,</span>
+                      <span class="n">auto_downcast</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nthr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nthr</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">locs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nthr</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">complex64</span><span class="p">),</span> <span class="n">_np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span></div></div>
+
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, 2016, 2017, Alexander Nitz, Ian Harry, Christopher M. Biwer, Duncan A.  Brown, Josh Willis, and Tito Dal Canton.
+      Last updated on Nov 08, 2017.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'4e69fd',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/typed.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
