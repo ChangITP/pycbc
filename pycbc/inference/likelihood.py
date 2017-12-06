@@ -545,7 +545,112 @@ class TestNormal(BaseLikelihoodEvaluator):
         """
         return self._dist.logpdf([params[p] for p in self.variable_args])
 
+class TestEggbox(BaseLikelihoodEvaluator):
+    r"""The test distribution is an 'eggbox' function:
 
+    .. math::
+
+        \log \mathcal{L}(\Theta) = \left[2+\prod_{i=1}^{n}\cos\left(\frac{\theta_{i}}{2}\right)\right]^{5}
+
+    The number of dimensions is set by the number of ``variable_args`` that are
+    passed.
+
+    Parameters
+    ----------
+    variable_args : (tuple of) string(s)
+        A tuple of parameter names that will be varied.
+    \**kwargs :
+        All other keyword arguments are passed to ``BaseLikelihoodEvaluator``.
+
+    """
+    name = "test_eggbox"
+
+    def __init__(self, variable_args, **kwargs):
+        # set up base likelihood parameters
+        super(TestEggbox, self).__init__(variable_args, **kwargs)
+
+        # set the lognl to 0 since there is no data
+        self.set_lognl(0.)
+
+    def loglikelihood(self, **params):
+        """Returns the log pdf of the eggbox function.
+        """
+        return (2 + numpy.prod(numpy.cos([params[p]/2. for p in
+                                          self.variable_args])))**5
+
+class TestRosenbrock(BaseLikelihoodEvaluator):
+    r"""The test distribution is the Rosenbrock function:
+
+    .. math::
+
+        \log \mathcal{L}(\Theta) = -\sum_{i=1}^{n-1}[(1-\theta_{i})^{2}+100(\theta_{i+1} - \theta_{i}^{2})^{2}]
+
+    The number of dimensions is set by the number of ``variable_args`` that are
+    passed.
+
+    Parameters
+    ----------
+    variable_args : (tuple of) string(s)
+        A tuple of parameter names that will be varied.
+    \**kwargs :
+        All other keyword arguments are passed to ``BaseLikelihoodEvaluator``.
+
+    """
+    name = "test_rosenbrock"
+
+    def __init__(self, variable_args, **kwargs):
+        # set up base likelihood parameters
+        super(TestRosenbrock, self).__init__(variable_args, **kwargs)
+
+        # set the lognl to 0 since there is no data
+        self.set_lognl(0.)
+
+    def loglikelihood(self, **params):
+        """Returns the log pdf of the Rosenbrock function.
+        """
+        l = 0
+        p = [params[p] for p in self.variable_args]
+        for i in range(len(p) - 1):
+            l -= ((1 - p[i])**2 + 100 * (p[i+1] - p[i]**2)**2)
+        return l
+
+class TestVolcano(BaseLikelihoodEvaluator):
+    r"""The test distribution is a two-dimensional 'volcano' function:
+
+    .. math::
+        \Theta = \sqrt{\theta_{1}^{2} + \theta_{2}^{2}}
+        \log \mathcal{L}(\Theta) = 5(e^{-\Theta} + \frac{50}{2\sqrt{2\pi}} e^{-\frac{(\Theta-5)^{2}}{8}})
+
+    Parameters
+    ----------
+    variable_args : (tuple of) string(s)
+        A tuple of parameter names that will be varied. Must have length 2.
+    \**kwargs :
+        All other keyword arguments are passed to ``BaseLikelihoodEvaluator``.
+
+    """
+    name = "test_volcano"
+
+    def __init__(self, variable_args, **kwargs):
+        # set up base likelihood parameters
+        super(TestVolcano, self).__init__(variable_args, **kwargs)
+
+        # make sure there are exactly two variable args
+        if len(self.variable_args) != 2:
+            raise ValueError("TestVolcano distribution requires exactly "
+                             "two variable args")
+
+        # set the lognl to 0 since there is no data
+        self.set_lognl(0.)
+
+    def loglikelihood(self, **params):
+        """Returns the log pdf of the 2D volcano function.
+        """
+        p = [params[p] for p in self.variable_args]
+        r = numpy.sqrt(p[0]**2 + p[1]**2)
+        mu, sigma = 5.0, 2.0
+        return 5 * (numpy.exp(-r) + 50. / (sigma * numpy.sqrt(2 * numpy.pi)) * \
+                   numpy.exp(-0.5 * ((r - mu) / sigma) ** 2))
 
 #
 # =============================================================================
@@ -857,8 +962,11 @@ class GaussianLikelihood(BaseLikelihoodEvaluator):
                                   logjacobian=lj)
 
 
-likelihood_evaluators = {TestNormal.name: TestNormal,
+likelihood_evaluators = {TestEggbox.name: TestEggbox,
+                         TestNormal.name: TestNormal,
+                         TestRosenbrock.name: TestRosenbrock,
+                         TestVolcano.name: TestVolcano,
                          GaussianLikelihood.name: GaussianLikelihood}
 
-__all__ = ['BaseLikelihoodEvaluator', 'TestNormal', 'GaussianLikelihood',
-           'likelihood_evaluators']
+__all__ = ['BaseLikelihoodEvaluator', 'TestNormal', 'TestEggbox', 'TestVolcano',
+           'TestRosenbrock', 'GaussianLikelihood', 'likelihood_evaluators']

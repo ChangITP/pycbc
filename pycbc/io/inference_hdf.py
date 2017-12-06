@@ -399,7 +399,7 @@ class InferenceFile(h5py.File):
         """
         subgroup = "{ifo}/strain"
         if group is None:
-            group = subgroup 
+            group = subgroup
         else:
             group = '/'.join([group, subgroup])
         for ifo,strain in strain_dict.items():
@@ -421,7 +421,7 @@ class InferenceFile(h5py.File):
         """
         subgroup = "{ifo}/stilde"
         if group is None:
-            group = subgroup 
+            group = subgroup
         else:
             group = '/'.join([group, subgroup])
         for ifo,stilde in stilde_dict.items():
@@ -445,7 +445,7 @@ class InferenceFile(h5py.File):
         """
         subgroup = "{ifo}/psds/0"
         if group is None:
-            group = subgroup 
+            group = subgroup
         else:
             group = '/'.join([group, subgroup])
         self.attrs["low_frequency_cutoff"] = min(low_frequency_cutoff.values())
@@ -465,7 +465,7 @@ class InferenceFile(h5py.File):
         stilde_dict : {None, dict}
             A dictionary of stilde. If None, no stilde will be written.
         psd_dict : {None, dict}
-            A dictionary of psds. If None, psds will be written.
+            A dictionary of psds. If None, no psds will be written.
         low_freuency_cutoff_dict : {None, dict}
             A dictionary of low frequency cutoffs used for each detector in
             `psd_dict`; must be provided if `psd_dict` is not None.
@@ -496,6 +496,26 @@ class InferenceFile(h5py.File):
         if strain_dict is not None:
             self.write_strain(strain_dict, group=group)
 
+    def write_injections(self, injection_file, ifo):
+        """ Writes injection parameters for an IFO to file.
+
+        Parameters
+        ----------
+        injection_file : str
+            Path to HDF injection file.
+        ifo : str
+            IFO name.
+        """
+        subgroup = "{ifo}/injections"
+        self.create_group(subgroup.format(ifo=ifo))
+        try:
+            with h5py.File(injection_file, "r") as fp:
+                for param in fp.keys():
+                    self[subgroup.format(ifo=ifo)][param] = fp[param][:]
+                for key in fp.attrs.keys():
+                    self[subgroup.format(ifo=ifo)].attrs[key] = fp.attrs[key]
+        except IOError:
+            logging.warn("Could not read %s as an HDF file", injection_file)
 
     def write_command_line(self):
         """Writes command line to attributes.
@@ -507,17 +527,22 @@ class InferenceFile(h5py.File):
         """
         self.attrs["cmd"] = " ".join(sys.argv)
 
-    def write_random_state(self, group=None):
+    def write_random_state(self, group=None, state=None):
         """ Writes the state of the random number generator from the file.
 
         Parameters
         ----------
         group : str
             Name of group to read random state to.
+        state : tuple, optional
+            Specify the random state to write. If None, will use
+            ``numpy.random.get_state()``.
         """
         group = self.sampler_group if group is None else group
         dataset_name = "/".join([group, "random_state"])
-        s, arr, pos, has_gauss, cached_gauss = numpy.random.get_state()
+        if state is None:
+            state = numpy.random.get_state()
+        s, arr, pos, has_gauss, cached_gauss = state
         if group in self:
             self[dataset_name][:] = arr
         else:
@@ -573,7 +598,7 @@ class InferenceFile(h5py.File):
 
     def copy_metadata(self, other):
         """Copies all metadata from this file to the other file.
-        
+
         Metadata is defined as all data that is not in either the samples or
         stats group.
 

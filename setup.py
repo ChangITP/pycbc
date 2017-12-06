@@ -23,7 +23,12 @@ from __future__ import print_function
 
 import os, fnmatch, sys, subprocess, shutil
 
-from trace import fullmodname
+# FIXME: trace.fullmodname was undocumented in Python 2 and actually became an
+# internal function in Python 3. We should not depend on it.
+try:
+    from trace import fullmodname
+except ImportError:
+    from trace import _fullmodname as fullmodname
 
 try:
     from setuptools.command.install import install as _install
@@ -70,7 +75,7 @@ install_requires =  setup_requires + ['Mako>=1.0.1',
                       'pyRXP>=2.1.0',
                       'pycbc-glue-obsolete==1.1.0',
                       'kombine>=0.8.2',
-                      'emcee>=2.2.0',
+                      'emcee==2.2.1',
                       'corner>=2.0.1',
                       'requests>=1.2.1',
                       'beautifulsoup4>=4.6.0',
@@ -458,7 +463,9 @@ setup (
                'bin/inference/pycbc_inference_plot_acl',
                'bin/inference/pycbc_inference_plot_geweke',
                'bin/inference/pycbc_inference_plot_gelman_rubin',
+               'bin/inference/pycbc_inference_plot_inj_recovery',
                'bin/inference/pycbc_inference_plot_movie',
+               'bin/inference/pycbc_inference_plot_inj_intervals',
                'bin/inference/pycbc_inference_plot_posterior',
                'bin/inference/pycbc_inference_plot_prior',
                'bin/inference/pycbc_inference_plot_samples',

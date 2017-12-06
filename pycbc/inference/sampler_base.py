@@ -29,6 +29,73 @@ packages for parameter estimation.
 import numpy
 from pycbc.io import FieldArray
 from pycbc.filter import autocorrelation
+import h5py
+import logging
+
+
+# decorator to provide backward compatability with old file formats
+def _check_fileformat(read_function):
+    """Decorator function for determing which read function to call."""
+    def read_wrapper(cls, fp, *args, **kwargs):
+        # check for old style
+        check_group = '{}/{}'.format(fp.samples_group, fp.variable_args[0])
+        if not isinstance(fp[check_group], h5py.Dataset):
+            convert_cmd = ("pycbc_inference_extract_samples --input-file {} "
+                           "--thin-start 0 --thin-interval 1 --output-file "
+                           "FILE.hdf".format(fp.filename))
+            logging.warning("\n\nDEPRECATION WARNING: The file {} appears to  "
+                            "have been written using an older style file "
+                            "format. Support for this format will be removed "
+                            "in a future update. To convert this file, run: "
+                            "\n\n{}\n\n"
+                            "where FILE.hdf is the name of the file to "
+                            "convert to. (Ignore this warning if you are "
+                            "doing that now.)\n\n".format(fp.filename,
+                            convert_cmd))
+            # we'll replace cls._read_fields with _read_oldstyle_fields, so
+            # that when the read_function calls cls._read_fields, it points
+            # to the oldstyle function. First we'll keep a backup copy of
+            # _read_fields, so that oldstyle and new style files can be loaded
+            # in the same environment
+            cls._bkup_read_fields = cls._read_fields
+            cls._read_fields = staticmethod(cls._read_oldstyle_fields)
+        else:
+            # if an oldstyle file was loaded previously, _read_fields will
+            # point to _read_oldstyle_fields; restore _read_fields
+            try:
+                cls._read_fields = staticmethod(cls._bkup_read_fields.im_func)
+            except AttributeError:
+                pass
+        return read_function(cls, fp, *args, **kwargs)
+    return read_wrapper
+
+
+def _check_aclfileformat(read_function):
+    """Decorator function for determing which read acl function to call."""
+    def read_wrapper(fp):
+        # check for old style
+        check_group = '{}/{}'.format(fp.samples_group, fp.variable_args[0])
+        if 'acls' not in fp.keys() and not isinstance(fp[check_group],
+                                                      h5py.Dataset):
+            convert_cmd = ("pycbc_inference_extract_samples --input-file {} "
+                           "--thin-start 0 --thin-interval 1 --output-file "
+                           "FILE.hdf".format(fp.filename))
+            logging.warning("\n\n"
+                            "DEPRECATION WARNING: The acls in file {} appear "
+                            "to have been written using an older style file "
+                            "format. Support for this format will be removed "
+                            "in a future update. To convert this file, run: "
+                            "\n\n{}\n\n"
+                            "where FILE.hdf is the name of the file to "
+                            "convert to. (Ignore this warning if you are "
+                            "doing that now.)\n\n".format(fp.filename,
+                            convert_cmd))
+            # call oldstyle function instead
+            return fp.sampler_class._oldstyle_read_acls(fp)
+        else:
+            return read_function(fp)
+    return read_wrapper
+
 
 #
 # =============================================================================
@@ -220,6 +287,19 @@ class _BaseSampler(object):
                 fp['is_burned_in'] = is_burned_in
             fp.attrs['is_burned_in'] = is_burned_in.all()
 
+    @staticmethod
+    def write_state(fp):
+        """Saves the state of the sampler in a file.
+        """
+        fp.write_random_state()
+
+    @staticmethod
+    def set_state_from_file(fp):
+        """Sets the state of the sampler back to the instance saved in a file.
+        """
+        numpy.random.set_state(fp.read_random_state())
+
+
 class BaseMCMCSampler(_BaseSampler):
     """This class is used to construct the MCMC sampler from the kombine-like
     packages.
@@ -263,16 +343,14 @@ class BaseMCMCSampler(_BaseSampler):
     def pos(self):
         return self._pos
 
-    def set_p0(self, samples=None, prior=None):
-        """Sets the initial position of the walkers. Must be supplied a
-        FieldArray of values or a list of Distributions or a PriorEvaluator.
+    def set_p0(self, samples_file=None, prior=None):
+        """Sets the initial position of the walkers.
 
         Parameters
         ----------
-        samples : FieldArray, optional
-            Use the given samples to set the initial positions. The samples
-            will be transformed to the likelihood evaluator's `sampling_args`
-            space.
+        samples_file : InferenceFile, optional
+            If provided, use the last iteration in the given file for the
+            starting positions.
         prior : PriorEvaluator, optional
             Use the given prior to set the initial positions rather than
             `likelihood_evaultor`'s prior.
@@ -287,7 +365,9 @@ class BaseMCMCSampler(_BaseSampler):
         ndim = len(self.variable_args)
         p0 = numpy.ones((nwalkers, ndim))
         # if samples are given then use those as initial positions
-        if samples is not None:
+        if samples_file is not None:
+            samples = self.read_samples(samples_file, self.variable_args,
+                iteration=-1)
             # transform to sampling parameter space
             samples = self.likelihood_evaluator.apply_sampling_transforms(
                 samples)
@@ -380,16 +460,15 @@ class BaseMCMCSampler(_BaseSampler):
 
     @staticmethod
     def write_samples_group(fp, samples_group, parameters, samples,
-                            start_iteration=0, end_iteration=None,
-                            index_offset=0, max_iterations=None):
+                            start_iteration=None, max_iterations=None):
         """Writes samples to the given file.
 
         Results are written to:
         
-            `fp[samples_group/{vararg}/walker{i}]`,
+            ``fp[samples_group/{vararg}]``,
             
-        where `{vararg}` is the name of a variable arg, and `{i}` is the
-        index of a walker.
+        where ``{vararg}`` is the name of a variable arg. The samples are
+        written as an ``nwalkers x niterations`` array.
 
         Parameters
         -----------
@@ -402,61 +481,46 @@ class BaseMCMCSampler(_BaseSampler):
         samples : FieldArray
             The samples to write. Should be a FieldArray with fields containing
             the samples to write and shape nwalkers x niterations.
-        start_iteration : {0, int}
-            Write results starting from the given iteration.
-        end_iteration : {None, int}
-            Write results up to the given iteration.
-        index_offset : int, optional
-            Write the samples to the arrays on disk starting at
-            `start_iteration` + `index_offset`. For example, if
-            `start_iteration=0`, `end_iteration=1000` and `index_offset=500`,
-            then `samples[0:1000]` will be written to indices `500:1500` in the
-            arrays on disk. This is needed if you are adding new samples to
-            a chain that was previously written to file, and you want to
-            preserve the history (e.g., after a checkpoint). Default is 0.
+        start_iteration : int, optional
+            Write results to the file's datasets starting at the given
+            iteration. Default is to append after the last iteration in the
+            file.
         max_iterations : int, optional
             Set the maximum size that the arrays in the hdf file may be resized
             to. Only applies if the samples have not previously been written
             to file. The default (None) is to use the maximum size allowed by
             h5py.
         """
-        # due to clearing memory, there can be a difference between indices in
-        # memory and on disk
         nwalkers, niterations = samples.shape
-        niterations += index_offset
-        fa = start_iteration # file start index
-        if end_iteration is None:
-            end_iteration = niterations
-        fb = end_iteration # file end index
-        ma = fa - index_offset # memory start index
-        mb = fb - index_offset # memory end index
-
         if max_iterations is not None and max_iterations < niterations:
             raise IndexError("The provided max size is less than the "
                              "number of iterations")
-
-        group = samples_group + '/{name}/walker{wi}'
-
+        group = samples_group + '/{name}'
         # loop over number of dimensions
-        widx = numpy.arange(nwalkers)
         for param in parameters:
-            # loop over number of walkers
-            for wi in widx:
-                dataset_name = group.format(name=param, wi=wi)
-                try:
-                    if fb > fp[dataset_name].size:
-                        # resize the dataset
-                        fp[dataset_name].resize(fb, axis=0)
-                    fp[dataset_name][fa:fb] = samples[param][wi, ma:mb]
-                except KeyError:
-                    # dataset doesn't exist yet
-                    fp.create_dataset(dataset_name, (fb,),
-                                      maxshape=(max_iterations,),
-                                      dtype=samples[param].dtype)
-                    fp[dataset_name][fa:fb] = samples[param][wi, ma:mb]
+            dataset_name = group.format(name=param)
+            istart = start_iteration
+            try:
+                fp_niterations = fp[dataset_name].shape[-1]
+                if istart is None:
+                    istart = fp_niterations
+                istop = istart + niterations
+                if istop > fp_niterations:
+                    # resize the dataset
+                    fp[dataset_name].resize(istop, axis=1)
+            except KeyError:
+                # dataset doesn't exist yet
+                if istart is not None and istart != 0:
+                    raise ValueError("non-zero start_iteration provided, "
+                                     "but dataset doesn't exist yet")
+                istart = 0
+                istop = istart + niterations
+                fp.create_dataset(dataset_name, (nwalkers, istop),
+                                  maxshape=(nwalkers, max_iterations),
+                                  dtype=float)
+            fp[dataset_name][:,istart:istop] = samples[param]
 
-    def write_chain(self, fp, start_iteration=0, end_iteration=None,
-                    max_iterations=None):
+    def write_chain(self, fp, start_iteration=None, max_iterations=None):
         """Writes the samples from the current chain to the given file.
         
         Results are written to:
@@ -471,10 +535,10 @@ class BaseMCMCSampler(_BaseSampler):
         -----------
         fp : InferenceFile
             A file handler to an open inference file.
-        start_iteration : {0, int}
-            Write results starting from the given iteration.
-        end_iteration : {None, int}
-            Write results up to the given iteration.
+        start_iteration : int, optional
+            Write results to the file's datasets starting at the given
+            iteration. Default is to append after the last iteration in the
+            file.
         max_iterations : int, optional
             Set the maximum size that the arrays in the hdf file may be resized
             to. Only applies if the samples have not previously been written
@@ -488,14 +552,11 @@ class BaseMCMCSampler(_BaseSampler):
         parameters = self.variable_args
         samples_group = fp.samples_group
         # write data
-        self.write_samples_group(
-                         fp, samples_group, parameters, samples,
-                         start_iteration=start_iteration,
-                         end_iteration=end_iteration,
-                         index_offset=self._lastclear,
-                         max_iterations=max_iterations)
+        self.write_samples_group(fp, samples_group, parameters, samples,
+                                 start_iteration=start_iteration,
+                                 max_iterations=max_iterations)
 
-    def write_likelihood_stats(self, fp, start_iteration=0, end_iteration=None,
+    def write_likelihood_stats(self, fp, start_iteration=None,
                                max_iterations=None):
         """Writes the `likelihood_stats` to the given file.
         
@@ -512,10 +573,10 @@ class BaseMCMCSampler(_BaseSampler):
         -----------
         fp : InferenceFile
             A file handler to an open inference file.
-        start_iteration : {0, int}
-            Write results starting from the given iteration.
-        end_iteration : {None, int}
-            Write results up to the given iteration.
+        start_iteration : int, optional
+            Write results to the file's datasets starting at the given
+            iteration. Default is to append after the last iteration in the
+            file.
         max_iterations : int, optional
             Set the maximum size that the arrays in the hdf file may be resized
             to. Only applies if the samples have not previously been written
@@ -537,16 +598,13 @@ class BaseMCMCSampler(_BaseSampler):
         parameters = samples.fieldnames
         samples_group = fp.stats_group
         # write data
-        self.write_samples_group(
-                         fp, samples_group, parameters, samples,
-                         start_iteration=start_iteration,
-                         end_iteration=end_iteration,
-                         index_offset=self._lastclear,
-                         max_iterations=max_iterations)
+        self.write_samples_group(fp, samples_group, parameters, samples,
+                                 start_iteration=start_iteration,
+                                 max_iterations=max_iterations)
         return samples
 
-    def write_acceptance_fraction(self, fp, start_iteration=0,
-                                  end_iteration=None, max_iterations=None):
+    def write_acceptance_fraction(self, fp, start_iteration=None,
+                                  max_iterations=None):
         """Write acceptance_fraction data to file. Results are written to
         `fp[acceptance_fraction]`.
 
@@ -554,6 +612,10 @@ class BaseMCMCSampler(_BaseSampler):
         -----------
         fp : InferenceFile
             A file handler to an open inference file.
+        start_iteration : int, optional
+            Write results to the file's datasets starting at the given
+            iteration. Default is to append after the last iteration in the
+            file.
         max_iterations : int, optional
             Set the maximum size that the arrays in the hdf file may be resized
             to. Only applies if the acceptance fraction has not previously been
@@ -562,29 +624,31 @@ class BaseMCMCSampler(_BaseSampler):
         """
         dataset_name = "acceptance_fraction"
         acf = self.acceptance_fraction
-
-        if end_iteration is None:
-            end_iteration = acf.size
-
         if max_iterations is not None and max_iterations < acf.size:
             raise IndexError("The provided max size is less than the "
                              "number of iterations")
-
+        istart = start_iteration
         try:
-            if end_iteration > fp[dataset_name].size:
+            if istart is None:
+                istart = fp[dataset_name].size
+            istop = istart + acf.size
+            if istop > fp[dataset_name].size:
                 # resize the dataset
-                fp[dataset_name].resize(end_iteration, axis=0)
-            fp[dataset_name][start_iteration:end_iteration] = \
-                acf[start_iteration:end_iteration]
+                fp[dataset_name].resize(istop, axis=0)
+            fp[dataset_name][istart:istop] = acf
         except KeyError:
             # dataset doesn't exist yet
-            fp.create_dataset(dataset_name, (end_iteration,),
+            if istart is not None and istart != 0:
+                raise ValueError("non-zero start_iteration provided, "
+                                 "but dataset doesn't exist yet")
+            istart = 0
+            istop = istart + acf.size
+            fp.create_dataset(dataset_name, (istop,),
                               maxshape=(max_iterations,),
                               dtype=acf.dtype)
-            fp[dataset_name][start_iteration:end_iteration] = \
-                acf[start_iteration:end_iteration]
+            fp[dataset_name][istart:istop] = acf
 
-    def write_results(self, fp, start_iteration=0, end_iteration=None,
+    def write_results(self, fp, start_iteration=None,
                       max_iterations=None, **metadata):
         """Writes metadata, samples, likelihood stats, and acceptance fraction
         to the given file. Also computes and writes the autocorrleation lengths
@@ -594,10 +658,10 @@ class BaseMCMCSampler(_BaseSampler):
         -----------
         fp : InferenceFile
             A file handler to an open inference file.
-        start_iteration : {0, int}
-            Write results starting from the given iteration.
-        end_iteration : {None, int}
-            Write results up to the given iteration.
+        start_iteration : int, optional
+            Write results to the file's datasets starting at the given
+            iteration. Default is to append after the last iteration in the
+            file.
         max_iterations : int, optional
             Set the maximum size that the arrays in the hdf file may be resized
             to. Only applies if the acceptance fraction has not previously been
@@ -608,22 +672,22 @@ class BaseMCMCSampler(_BaseSampler):
         """
         self.write_metadata(fp, **metadata)
         self.write_chain(fp, start_iteration=start_iteration,
-                         end_iteration=end_iteration,
                          max_iterations=max_iterations)
         self.write_likelihood_stats(fp, start_iteration=start_iteration,
-                                    end_iteration=end_iteration,
                                     max_iterations=max_iterations)
-        self.write_acceptance_fraction(fp, start_iteration=start_iteration,
-                                    end_iteration=end_iteration,
-                                    max_iterations=max_iterations)
+        self.write_acceptance_fraction(fp, start_iteration=0,
+                                       max_iterations=max_iterations)
 
 
     @staticmethod
-    def _read_fields(fp, fields_group, fields, array_class,
+    def _read_oldstyle_fields(fp, fields_group, fields, array_class,
                      thin_start=None, thin_interval=None, thin_end=None,
                      iteration=None, walkers=None, flatten=True):
         """Base function for reading samples and likelihood stats. See
         `read_samples` and `read_likelihood_stats` for details.
+
+        This function is to provide backward compatability with older files.
+        This will be removed in a future update.
 
         Parameters
         -----------
@@ -675,7 +739,61 @@ class BaseMCMCSampler(_BaseSampler):
                 arrays[name] = numpy.vstack(these_arrays)
         return array_class.from_kwargs(**arrays)
 
+    @staticmethod
+    def _read_fields(fp, fields_group, fields, array_class,
+                     thin_start=None, thin_interval=None, thin_end=None,
+                     iteration=None, walkers=None, flatten=True):
+        """Base function for reading samples and likelihood stats. See
+        `read_samples` and `read_likelihood_stats` for details.
+
+        Parameters
+        -----------
+        fp : InferenceFile
+            An open file handler to read the samples from.
+        fields_group : str
+            The name of the group to retrieve the desired fields.
+        fields : list
+            The list of field names to retrieve. Must be names of groups in
+            `fp[fields_group/]`.
+        array_class : FieldArray or similar
+            The type of array to return. Must have a `from_kwargs` attribute.
+
+        For other details on keyword arguments, see `read_samples` and
+        `read_likelihood_stats`.
+
+        Returns
+        -------
+        array_class
+            An instance of the given array class populated with values
+            retrieved from the fields.
+        """
+        # walkers to load
+        if walkers is not None:
+            widx = numpy.zeros(fp.nwalkers, dtype=bool)
+            widx[walkers] = True
+        else:
+            widx = slice(0, None)
+        # get the slice to use
+        if iteration is not None:
+            get_index = iteration
+        else:
+            if thin_end is None:
+                # use the number of current iterations
+                thin_end = fp.niterations
+            get_index = fp.get_slice(thin_start=thin_start, thin_end=thin_end,
+                                     thin_interval=thin_interval)
+        # load
+        arrays = {}
+        group = fields_group + '/{name}'
+        for name in fields:
+            arr = fp[group.format(name=name)][widx, get_index]
+            if flatten:
+                arr = arr.flatten()
+            arrays[name] = arr
+        return array_class.from_kwargs(**arrays)
+
     @classmethod
+    @_check_fileformat
     def read_samples(cls, fp, parameters,
                      thin_start=None, thin_interval=None, thin_end=None,
                      iteration=None, walkers=None, flatten=True,
@@ -913,9 +1031,9 @@ class BaseMCMCSampler(_BaseSampler):
     def write_acls(fp, acls):
         """Writes the given autocorrelation lengths to the given file.
         
-        The ACL of each parameter is saved to
-        `fp[fp.samples_group/{param}].attrs['acl']`; the maximum over all the
-        parameters is saved to the file's 'acl' attribute.
+        The ACL of each parameter is saved to ``fp['acls/{param}']``.
+        The maximum over all the parameters is saved to the file's 'acl'
+        attribute.
 
         Parameters
         ----------
@@ -929,16 +1047,22 @@ class BaseMCMCSampler(_BaseSampler):
         ACL
             The maximum of the acls that was written to the file.
         """
+        group = 'acls/{}'
         # write the individual acls
-        pgroup = fp.samples_group + '/{param}'
         for param in acls:
-            fp[pgroup.format(param=param)].attrs['acl'] = acls[param]
+            try:
+                # we need to use the write_direct function because it's
+                # apparently the only way to update scalars in h5py
+                fp[group.format(param)].write_direct(numpy.array(acls[param]))
+            except KeyError:
+                # dataset doesn't exist yet
+                fp[group.format(param)] = acls[param]
         # write the maximum over all params
-        fp.attrs['acl'] = max(acls.values())
+        fp.attrs['acl'] = numpy.array(acls.values()).max()
         return fp.attrs['acl']
 
     @staticmethod
-    def read_acls(fp):
+    def _oldstyle_read_acls(fp):
         """Reads the acls of all the parameters in the given file.
 
         Parameters
@@ -955,12 +1079,20 @@ class BaseMCMCSampler(_BaseSampler):
         return {param: fp[group.format(param=param)]
                 for param in fp.variable_args}
 
-    def write_state(self, fp):
-        """ Saves the state of the sampler in a file.
-        """
-        raise NotImplementedError("Writing state to file not implemented.")
+    @staticmethod
+    @_check_aclfileformat
+    def read_acls(fp):
+        """Reads the acls of all the parameters in the given file.
 
-    def set_state_from_file(self, fp):
-        """ Sets the state of the sampler back to the instance saved in a file.
+        Parameters
+        ----------
+        fp : InferenceFile
+            An open file handler to read the acls from.
+
+        Returns
+        -------
+        dict
+            A dictionary of the ACLs, keyed by the parameter name.
         """
-        raise NotImplementedError("Reading state from file not implemented.")
+        group = fp['acls']
+        return {param: group[param].value for param in group.keys()}

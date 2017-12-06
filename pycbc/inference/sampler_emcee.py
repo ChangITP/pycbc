@@ -27,7 +27,7 @@ packages for parameter estimation.
 """
 
 import numpy
-from pycbc.inference.sampler_base import BaseMCMCSampler
+from pycbc.inference.sampler_base import BaseMCMCSampler, _check_fileformat
 from pycbc.io import FieldArray
 from pycbc.filter import autocorrelation
 
@@ -71,6 +71,10 @@ class EmceeEnsembleSampler(BaseMCMCSampler):
         sampler = emcee.EnsembleSampler(nwalkers, ndim,
                                         likelihood_call,
                                         pool=pool)
+        # emcee uses it's own internal random number generator; we'll set it
+        # to have the same state as the numpy generator
+        rstate = numpy.random.get_state()
+        sampler.random_state = rstate
         # initialize
         super(EmceeEnsembleSampler, self).__init__(
               sampler, likelihood_evaluator)
@@ -119,6 +123,45 @@ class EmceeEnsembleSampler(BaseMCMCSampler):
         # now clear the chain
         self._sampler.reset()
         self._sampler.clear_blobs()
+
+    def set_p0(self, samples_file=None, prior=None):
+        """Sets the initial position of the walkers.
+
+        Parameters
+        ----------
+        samples_file : InferenceFile, optional
+            If provided, use the last iteration in the given file for the
+            starting positions.
+        prior : PriorEvaluator, optional
+            Use the given prior to set the initial positions rather than
+            `likelihood_evaultor`'s prior.
+
+        Returns
+        -------
+        p0 : array
+            An nwalkers x ndim array of the initial positions that were set.
+        """
+        # we define set_p0 here to ensure that emcee's internal random number
+        # generator is set to numpy's after the distributions' rvs functions
+        # are called
+        super(EmceeEnsembleSampler, self).set_p0(samples_file=samples_file,
+            prior=prior)
+        # update the random state
+        self._sampler.random_state = numpy.random.get_state()
+
+    def write_state(self, fp):
+        """Saves the state of the sampler in a file.
+        """
+        fp.write_random_state(state=self._sampler.random_state)
+
+    def set_state_from_file(self, fp):
+        """Sets the state of the sampler back to the instance saved in a file.
+        """
+        rstate = fp.read_random_state()
+        # set the numpy random state
+        numpy.random.set_state(rstate)
+        # set emcee's generator to the same state
+        self._sampler.random_state = rstate
 
     def run(self, niterations, **kwargs):
         """Advance the ensemble for a number of samples.
@@ -190,7 +233,7 @@ class EmceeEnsembleSampler(BaseMCMCSampler):
             wmask[walkers] = True
         return fp[group][wmask]
 
-    def write_results(self, fp, start_iteration=0, end_iteration=None,
+    def write_results(self, fp, start_iteration=None,
                       max_iterations=None, **metadata):
         """Writes metadata, samples, likelihood stats, and acceptance fraction
         to the given file. See the write function for each of those for
@@ -200,10 +243,10 @@ class EmceeEnsembleSampler(BaseMCMCSampler):
         -----------
         fp : InferenceFile
             A file handler to an open inference file.
-        start_iteration : {0, int}
-            Write results starting from the given iteration.
-        end_iteration : {None, int}
-            Write results up to the given iteration.
+        start_iteration : int, optional
+            Write results to the file's datasets starting at the given
+            iteration. Default is to append after the last iteration in the
+            file.
         max_iterations : int, optional
             Set the maximum size that the arrays in the hdf file may be resized
             to. Only applies if the samples have not previously been written
@@ -214,10 +257,8 @@ class EmceeEnsembleSampler(BaseMCMCSampler):
         """
         self.write_metadata(fp, **metadata)
         self.write_chain(fp, start_iteration=start_iteration,
-                         end_iteration=end_iteration,
                          max_iterations=max_iterations)
         self.write_likelihood_stats(fp, start_iteration=start_iteration,
-                                    end_iteration=end_iteration,
                                     max_iterations=max_iterations)
         self.write_acceptance_fraction(fp)
 
@@ -358,15 +399,14 @@ class EmceePTSampler(BaseMCMCSampler):
         # emcee returns ntemps x nwalkers x niterations
         return self._sampler.lnprobability
 
-    def set_p0(self, samples=None, prior=None):
+    def set_p0(self, samples_file=None, prior=None):
         """Sets the initial position of the walkers.
 
         Parameters
         ----------
-        samples : FieldArray, optional
-            Use the given samples to set the initial positions. The samples
-            will be transformed to the likelihood evaluator's `sampling_args`
-            space.
+        samples_file : InferenceFile, optional
+            If provided, use the last iteration in the given file for the
+            starting positions.
         prior : PriorEvaluator, optional
             Use the given prior to set the initial positions rather than
             `likelihood_evaultor`'s prior.
@@ -382,8 +422,10 @@ class EmceePTSampler(BaseMCMCSampler):
         nwalkers = self.nwalkers
         ndim = len(self.variable_args)
         p0 = numpy.ones((ntemps, nwalkers, ndim))
-        # if samples are given then use those as initial poistions
-        if samples is not None:
+        # if samples are given then use those as initial positions
+        if samples_file is not None:
+            samples = self.read_samples(samples_file, self.variable_args,
+                iteration=-1, temps='all', flatten=False)[..., 0]
             # transform to sampling parameter space
             samples = self.likelihood_evaluator.apply_sampling_transforms(
                 samples)
@@ -500,17 +542,15 @@ class EmceePTSampler(BaseMCMCSampler):
 
     @staticmethod
     def write_samples_group(fp, samples_group, parameters, samples,
-                             start_iteration=0, end_iteration=None,
-                             index_offset=0, max_iterations=None):
+                             start_iteration=None, max_iterations=None):
         """Writes samples to the given file.
 
         Results are written to:
 
-            `fp[samples_group/{vararg}/temp{k}/walker{i}]`,
+            ``fp[samples_group/{vararg}]``,
             
-        where
-        `{vararg}` is the name of a variable arg, `{i}` is the index of
-        a walker, and `{k}` is the temperature.
+        where ``{vararg}`` is the name of a variable arg. The samples are
+        written as an ``ntemps x nwalkers x niterations`` array.
 
         Parameters
         -----------
@@ -523,18 +563,10 @@ class EmceePTSampler(BaseMCMCSampler):
         samples : FieldArray
             The samples to write. Should be a FieldArray with fields containing
             the samples to write and shape nwalkers x niterations.
-        start_iteration : {0, int}
-            Write results starting from the given iteration.
-        end_iteration : {None, int}
-            Write results up to the given iteration.
-        index_offset : int, optional
-            Write the samples to the arrays on disk starting at
-            `start_iteration` + `index_offset`. For example, if
-            `start_iteration=0`, `end_iteration=1000` and `index_offset=500`,
-            then `samples[0:1000]` will be written to indices `500:1500` in the
-            arrays on disk. This is needed if you are adding new samples to
-            a chain that was previously written to file, and you want to
-            preserve the history (e.g., after a checkpoint). Default is 0.
+        start_iteration : int, optional
+            Write results to the file's datasets starting at the given
+            iteration. Default is to append after the last iteration in the
+            file.
         max_iterations : int, optional
             Set the maximum size that the arrays in the hdf file may be resized
             to. Only applies if the samples have not previously been written
@@ -542,47 +574,35 @@ class EmceePTSampler(BaseMCMCSampler):
             h5py.
         """
         ntemps, nwalkers, niterations = samples.shape
-        # due to clearing memory, there can be a difference between indices in
-        # memory and on disk
-        niterations += index_offset
-        fa = start_iteration # file start index
-        if end_iteration is None:
-            end_iteration = niterations
-        fb = end_iteration # file end index
-        ma = fa - index_offset # memory start index
-        mb = fb - index_offset # memory end index
-
         if max_iterations is not None and max_iterations < niterations:
             raise IndexError("The provided max size is less than the "
                              "number of iterations")
-
-        group = samples_group + '/{name}/temp{tk}/walker{wi}'
-
-        # create indices for faster sub-looping
-        widx = numpy.arange(nwalkers)
-        tidx = numpy.arange(ntemps)
-
+        group = samples_group + '/{name}'
         # loop over number of dimensions
         for param in parameters:
-            # loop over number of temps
-            for tk in tidx:
-                # loop over number of walkers
-                for wi in widx:
-                    dataset_name = group.format(name=param, tk=tk, wi=wi)
-                    try:
-                        if fb > fp[dataset_name].size:
-                            # resize the dataset
-                            fp[dataset_name].resize(fb, axis=0)
-                        fp[dataset_name][fa:fb] = samples[param][tk, wi, ma:mb]
-                    except KeyError:
-                        # dataset doesn't exist yet
-                        fp.create_dataset(dataset_name, (fb,),
-                                          maxshape=(max_iterations,),
-                                          dtype=float)
-                        fp[dataset_name][fa:fb] = samples[param][tk, wi, ma:mb]
+            dataset_name = group.format(name=param)
+            istart = start_iteration
+            try:
+                fp_niterations = fp[dataset_name].shape[-1]
+                if istart is None:
+                    istart = fp_niterations
+                istop = istart + niterations
+                if istop > fp_niterations:
+                    # resize the dataset
+                    fp[dataset_name].resize(istop, axis=2)
+            except KeyError:
+                # dataset doesn't exist yet
+                if istart is not None and istart != 0:
+                    raise ValueError("non-zero start_iteration provided, but "
+                                     "dataset doesn't exist yet")
+                istart = 0
+                istop = istart + niterations
+                fp.create_dataset(dataset_name, (ntemps, nwalkers, istop),
+                                  maxshape=(ntemps, nwalkers, max_iterations),
+                                  dtype=float)
+            fp[dataset_name][:,:,istart:istop] = samples[param]
 
-    def write_results(self, fp, start_iteration=0, end_iteration=None,
-                      max_iterations=None,
+    def write_results(self, fp, start_iteration=None, max_iterations=None,
                       **metadata):
         """Writes metadata, samples, likelihood stats, and acceptance fraction
         to the given file. See the write function for each of those for
@@ -592,10 +612,10 @@ class EmceePTSampler(BaseMCMCSampler):
         -----------
         fp : InferenceFile
             A file handler to an open inference file.
-        start_iteration : {0, int}
-            Write results starting from the given iteration.
-        end_iteration : {None, int}
-            Write results up to the given iteration.
+        start_iteration : int, optional
+            Write results to the file's datasets starting at the given
+            iteration. Default is to append after the last iteration in the
+            file.
         max_iterations : int, optional
             Set the maximum size that the arrays in the hdf file may be resized
             to. Only applies if the samples have not previously been written
@@ -606,20 +626,21 @@ class EmceePTSampler(BaseMCMCSampler):
         """
         self.write_metadata(fp, **metadata)
         self.write_chain(fp, start_iteration=start_iteration,
-                         end_iteration=end_iteration,
                          max_iterations=max_iterations)
         self.write_likelihood_stats(fp, start_iteration=start_iteration,
-                                    end_iteration=end_iteration,
                                     max_iterations=max_iterations)
         self.write_acceptance_fraction(fp)
 
 
     @staticmethod
-    def _read_fields(fp, fields_group, fields, array_class,
+    def _read_oldstyle_fields(fp, fields_group, fields, array_class,
                      thin_start=None, thin_interval=None, thin_end=None,
                      iteration=None, temps=None, walkers=None, flatten=True):
         """Base function for reading samples and likelihood stats. See
         `read_samples` and `read_likelihood_stats` for details.
+
+        This function is to provide backward compatability with older files.
+        This will be removed in a future update.
 
         Parameters
         -----------
@@ -679,7 +700,93 @@ class EmceePTSampler(BaseMCMCSampler):
             arrays[name] = these_arrays
         return array_class.from_kwargs(**arrays)
 
+
+    @staticmethod
+    def _read_fields(fp, fields_group, fields, array_class,
+                     thin_start=None, thin_interval=None, thin_end=None,
+                     iteration=None, temps=None, walkers=None, flatten=True):
+        """Base function for reading samples and likelihood stats. See
+        `read_samples` and `read_likelihood_stats` for details.
+
+        Parameters
+        -----------
+        fp : InferenceFile
+            An open file handler to read the samples from.
+        fields_group : str
+            The name of the group to retrieve the desired fields.
+        fields : list
+            The list of field names to retrieve. Must be names of groups in
+            `fp[fields_group/]`.
+        array_class : FieldArray or similar
+            The type of array to return. Must have a `from_kwargs` attribute.
+
+        For other details on keyword arguments, see `read_samples` and
+        `read_likelihood_stats`.
+
+        Returns
+        -------
+        array_class
+            An instance of the given array class populated with values
+            retrieved from the fields.
+        """
+        # walkers to load
+        if walkers is not None:
+            widx = numpy.zeros(fp.nwalkers, dtype=bool)
+            widx[walkers] = True
+            nwalkers = widx.sum()
+        else:
+            widx = slice(None, None)
+            nwalkers = fp.nwalkers
+        # temperatures to load
+        selecttemps = False
+        if temps is None:
+            tidx = 0
+            ntemps = 1
+        elif isinstance(temps, int):
+            tidx = temps
+            ntemps = 1
+        else:
+            # temps is either 'all' or a list of temperatures;
+            # in either case, we'll get all of the temperatures from the file;
+            # if not 'all', then we'll pull out the ones we want
+            tidx = slice(None, None)
+            selecttemps = temps != 'all'
+            if selecttemps:
+                ntemps = len(temps)
+            else:
+                ntemps = fp.ntemps
+        # get the slice to use
+        if iteration is not None:
+            get_index = iteration
+            niterations = 1
+        else:
+            if thin_end is None:
+                # use the number of current iterations
+                thin_end = fp.niterations
+            get_index = fp.get_slice(thin_start=thin_start, thin_end=thin_end,
+                                     thin_interval=thin_interval)
+            # we'll just get the number of iterations from the returned shape
+            niterations = None
+        # load
+        arrays = {}
+        group = fields_group + '/{name}'
+        for name in fields:
+            arr = fp[group.format(name=name)][tidx, widx, get_index]
+            if niterations is None:
+                niterations = arr.shape[-1]
+            # pull out the temperatures we need
+            if selecttemps:
+                arr = arr[temps, ...]
+            if flatten:
+                arr = arr.flatten()
+            else:
+                # ensure that the returned array is 3D
+                arr = arr.reshape((ntemps, nwalkers, niterations))
+            arrays[name] = arr
+        return array_class.from_kwargs(**arrays)
+
     @classmethod
+    @_check_fileformat
     def read_samples(cls, fp, parameters,
                      thin_start=None, thin_interval=None, thin_end=None,
                      iteration=None, temps=0, walkers=None, flatten=True,
@@ -874,10 +981,8 @@ class EmceePTSampler(BaseMCMCSampler):
 
         Returns
         -------
-        FieldArray
-            An ntemps-long `FieldArray` containing the ACL for each temperature
-            and for each variable argument, with the variable arguments as
-            fields.
+        dict
+            A dictionary of ntemps-long arrays of the ACLs of each parameter.
         """
         acls = {}
         if end_index is None:
@@ -897,51 +1002,11 @@ class EmceePTSampler(BaseMCMCSampler):
                     acl = samples.size
                 these_acls[tk] = acl
             acls[param] = these_acls
-        return FieldArray.from_kwargs(**acls)
+        return acls
 
     @staticmethod
-    def write_acls(fp, acls):
-        """Writes the given autocorrelation lengths to the given file.
-        
-        The acl of each parameter at each temperature is saved to
-        ``fp[fp.samples_group/{param}/temp{k}].attrs['acl']``; the maximum over
-        all temperatures is saved to
-        ``fp[fp.samples_group/{param}].attrs['acl']``; the maximum over all the
-        parameters and temperatures is saved to the file's 'acl' attribute.
-
-        Parameters
-        ----------
-        fp : InferenceFile
-            An open file handler to write the samples to.
-        acls : FieldArray
-            An array of autocorrelation lengths (the sort of thing returned by
-            `compute_acls`).
-
-        Returns
-        -------
-        acl
-            The maximum of the acls that was written to the file.
-        """
-        # write the individual acls
-        pgroup = fp.samples_group + '/{param}'
-        tgroup = pgroup + '/temp{tk}'
-        tidx = numpy.arange(fp.ntemps)
-        overall_max = 0
-        param_acls = {}
-        for param in acls.fieldnames:
-            max_acls = []
-            aclp = acls[param]
-            for tk in tidx:
-                # write the acl for this temperature
-                fp[tgroup.format(param=param, tk=tk)].attrs['acl'] = aclp[tidx]
-            # save the maximum
-            param_acls[param] = aclp.max()
-        # use the parent class to write the acls overs the temps
-        return super(EmceePTSampler, EmceePTSampler).write_acls(fp, param_acls)
-
-    @staticmethod
-    def read_acls(fp):
-        """Reads the acls of all the walker chains saved in the given file.
+    def _oldstyle_read_acls(fp):
+        """Deprecated: reads acls from older style files.
 
         Parameters
         ----------
